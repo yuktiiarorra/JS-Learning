@@ -1,0 +1,272 @@
+String is basically textual information, a string of characters.They must be wrapped in quotes(double or single).
+We can't just go around typing random letters unless we happen to type something that actually makes sense to JavaScript, like true, which is Boolean.
+adsdw
+VM3268:1 Uncaught ReferenceError: adsdw is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM3268:1Understand this errorAI
+true
+true
+let userName = "apple";
+undefined
+userName
+'apple'
+let favAnimal = 'Dumbo Octopus 587349839&*(^)';
+undefined
+favAnimal
+'Dumbo Octopus 587349839&*(^)'
+'23' // string
+'23'
+23 // number
+23
+The most important thing to recognize is that we cannot mix these quotes up.
+'hello!"
+VM3449:1 Uncaught SyntaxError: Invalid or unexpected tokenUnderstand this errorAI
+Requires both starting and ending quotes 
+'assdsd
+VM3465:1 Uncaught SyntaxError: Invalid or unexpected tokenUnderstand this errorAI
+They can be a single character long, they can actually be zero characters long. 
+"" // This is an empty string, it is technically a string, it just has nothing in it.
+'' // so is this
+"asdsjdkeafdd kjrehflkdshfrelkjd"
+'asdsjdkeafdd kjrehflkdshfrelkjd'
+The only time we would ever wanna mix the quotes together is if we needed to use one of them inside of the other.
+"i told her "go away"" This is problematic, because that double quote is closing the single quote.
+VM3521:1 Uncaught SyntaxError: Unexpected identifier 'go'Understand this errorAI
+"i told her 'go away'" // acceptable
+"i told her 'go away'" 
+'she said "i hate you"'// acceptable
+'she said "i hate you"'
+
+Strings are indexed, every character in a string has a corresponding number associated with it.
+A positional number that goes in order from the beginning of a string starting at zero and we work our way from left to right.
+let animal = "Dumbo Octopus";
+undefined
+animal
+'Dumbo Octopus'
+animal[0]
+'D'
+animal[1]
+'u'
+animal[6]
+'O'
+animal[99] // What if I put a number in here that just doesn't exist? We get undefined.
+undefined
+Typically we'll do things like check the first character of a string. Let's say we had a phone number, phone number, and our phone number looks like this, where we have an area code
+Some people might enter their phone number this way, others might enter it without those parentheses.
+So maybe we wanna write some logic that we'll check. Is the first character here a parentheses? Is it an opening parentheses?
+Well, we could access that character by doing phone[0] and then compare that to an opening parentheses.
+let phone = "(123)456-7890";
+undefined
+phone[0]
+'('
+Every string has a built-in property called length. So that is the length of the string, the number of characters, not the highest index.
+The highest index is always one less.
+animal.length
+13
+animal[12]
+'s'
+"lol".length
+3
+"lol"[1]
+'o'
+We can add strings together. So the addition / (here concatenation) operator works a bit differently, where I'm concatenating(smooshing together) two strings to get a new string.
+this is a new string.
+"lol" + "lol";
+'lollol'
+let firstName = "River";
+undefined
+let lastName = "Phoenix";
+undefined
+firstName + lastName // concatenation
+'RiverPhoenix'
+firstName // original string remains unchanged
+'River'
+lastName
+'Phoenix'
+I can't change a string like I can't update one character at a time in this string.
+This is a completely new string. They're very similar or they look similar to us, but they're completely different in memory. I can just overwrite that entire string and give it a new value if I want to.
+firstName = "river"  
+'river'
+firstName
+'river'
+firstName + lastName
+'riverPhoenix'
+firstName + " " + lastName // concatenating
+'river Phoenix'
+let fullName = firstName + " " + lastName; 
+undefined
+fullName
+'river Phoenix'
+firstName
+'river'
+If I add a number to string JavaScript is going to try and coerce these to a common type. There's no logical way to add a number to a piece of text without making them both pieces of text
+or trying to make them both numbers. But that doesn't really work so JavaScript ends up making them both strings and it adds them together,
+1 + "hi"
+'1hi'
+let result = 1 + "hi"
+undefined
+result
+'1hi'
+typeof result
+'string'
+typeof 1
+'number'
+"1" + "hi"
+'1hi'
+
+METHODS
+So every string we make in JavaScript actually comes with a set of built-in funtions, which we call methods, that we can perform using that particular string.
+These methods can be found in the chrome dev tools.Now this is a non-destructive method, meaning the original message msg unchanged. It makes a new copy for us.
+If I look at one of my strings, if I do "hello" dot, and then we see all of these things listed here.
+toLowerCase(), toUpperCase(), substring(), repeat(), characterAt(), these are all methods.
+They're actions that I can, I can take, I can do these things. We can go to MDN and look at string, their documentation.
+We can replace portions of a string. We can search for something within a string. We can duplicate a string and repeat it. We can combine strings.
+"hello".length // This is how we access a property (no parentheses).
+5
+let msg = "leave me alone right now i hate you plz" 
+undefined
+msg.toUpperCase // doesn't work without parenthesesIf we add parentheses, we're accessing, or specifically we're executing a method.
+ƒ toUpperCase() { [native code] } 
+msg.toUpperCase() // We can change the casing, make something uppercase or lowercase or capitalize something.
+'LEAVE ME ALONE RIGHT NOW I HATE YOU PLZ'
+msg
+'leave me alone right now i hate you plz'
+let angryMsg = msg.toUpperCase(); // This is going to take a string and create a new version of it that is in all caps.
+undefined
+angryMsg
+'LEAVE ME ALONE RIGHT NOW I HATE YOU PLZ' // // We get a new version, a copy, all uppercase.
+msg
+'leave me alone right now i hate you plz'
+"LOLOLOLOL!!!!!".toLowerCase() 
+'lolololol!!!!!' // We get a new version, all lowercase.
+Trim
+Trim off any white space on the, either at the beginning of a string or at the end. So this is actually sometimes useful if you're getting input from a user,
+you're dealing with data that maybe you don't have full control over, and there might be extra indentation or spaces that you wanna remove.
+let userInput = "    hello my name is tim tom tammy ping pong" 
+undefined
+userInput.trim 
+ƒ trim() { [native code] }
+userInput.trim()
+'hello my name is tim tom tammy ping pong'  // new version of the string
+userInput // unchanged, it stays with the space there.
+'    hello my name is tim tom tammy ping pong'
+"    kjsfkdskhfsdjfdsk   ".trim()
+'kjsfkdskhfsdjfdsk'
+It's gonna keep everything that is not a space on the left or the right of a string. So it does keep spaces in the middle as we've seen.
+"____________jdsgfhjsfhgdfkj".trim()
+'____________jdsgfhjsfhgdfkj'
+let greeting = "     hello again!!!!!       "
+undefined
+greeting
+'     hello again!!!!!       '
+We can chain methods together. I wanna make a version of this string that is both all capitalized or capitalized and trimmed.
+greeting.trim().toUpperCase() // I can do this:
+'HELLO AGAIN!!!!!'  // I get a new copy completely capitalized and trimmed of all trailing and leading space.So I combine them into one step.
+greeting.trim().toUpperCase().toLowerCase()
+'hello again!!!!!'
+
+Many methods accept arguments. Arguments are just inputs that we can pass into the method to alter how they behave.
+"adasdd".toUpperCase() // There's no input other than the actual string we're operating on.
+'ADASDD'
+let tvShow = "catdog";
+undefined
+Index Of
+We definitely need to pass an argument. So indexOf is going to give us the string index and positional number where a given argument occurs in a string. We pass in some value, a string, a single character.
+It returns to the first occurrence of the specified value. So it's not going to give us multiple matches. So this is commonly used to test if a string contains something.
+tvShow.indexOf('cat');
+0
+tvShow.indexOf('dog');
+3
+tvShow.indexOf('z'); // If I look for something that's not in there, we'll get negative one.
+-1
+"haha that is so funny!".indexOf('h');
+0
+"haha that is so funny!".indexOf(' ');
+4
+"haha that is so funny!".indexOf('!');
+21
+"haha that is so funny!".indexOf('is');  // We can do longer strings or portions of a string
+10
+"haha that is so funny!".indexOf('H'); // 'H' and 'h' mean different things.
+-1
+"haha that is so funny!".indexOf('$'); 
+-1
+Slice
+Slice can accept more than one argument. Slice extracts or slice a portion of a string and it returns it as a new string.
+So we can pass in two numbers, the two indices(beginIndex, endIndex(optional)) that we want to slice our string from.
+beginIndex :- where to begin extraction. It just keeps going all the way to the end if there is no endIndex and it makes us a new copy.
+But I can also pass in this optional endIndex, which is the index before which the extraction will end.
+"haha that is so funny!".slice;
+ƒ slice() { [native code] }
+"haha that is so funny!".slice(5); This does not impact the original string. It gives us a copy or a new string instead.
+'that is so funny!'
+let msg = "haha that is so funny!";
+undefined
+msg.slice(5);
+'that is so funny!'
+msg
+'haha that is so funny!'
+msg.slice(5, 9);
+'that'
+msg.slice(5, 10);
+'that '
+We can actually pass in a negative index. It's not as common, but if you do pass in a negative, it's treated as the length of the string
+plus your beginning index. It's working backwards from the end.
+msg.slice(-1); // It just gives me the last single character.
+'!'
+msg.slice(-2);  // It just gives me the last two characters,
+'y!'
+msg
+'haha that is so funny!' // It's completely unchanged.
+Replace
+Replace actually is extremely powerful. We can use a regular expression to match patterns and replace a pattern instead of a specific string.
+So we need to pass in two arguments. The first is what we're trying to replace and then the second is what we want to replace it with.
+It's only gonna replace the first matching instance unless we use replace all(it's not fully implemented these days i.e. not all browsers support / recognize it.)
+msg.replace('haha', 'lololololol')
+'lololololol that is so funny!'
+msg
+'haha that is so funny!'
+msg.replace('h', 'H')
+'Haha that is so funny!'
+msg.replaceAll('h', 'H')
+'HaHa tHat is so funny!'
+Repeat
+It includes the string followed by the number of times I want something to repeat.
+It's making me a new string. The original remains unchanged.
+"lol".repeat(19)
+'lollollollollollollollollollollollollollollollollollollol'
+
+Template Literals 
+So these have not been around since the dawn of JavaScript. These template literals are a newer syntax and they're super useful.
+They allow us create strings where we can embed an expression inside the string and that expression will be evaluated.
+and turned into a string.
+let product = 'Artichoke';
+undefined
+let price = 3.99;
+undefined
+price = 2.25;
+2.25
+let qty = 5;
+undefined
+"You bought " + qty + " " + product + ". Total is: " + price * qty // I can concatenate strings with a plus sign with all the unnecessary work we had to do here.
+'You bought 5 Artichoke. Total is: 11.25'
+We have to use the back-tick characters and then a special sequence(a dollar sign and then opening and closing curly braces)
+whatever I put inside of those curly braces will be treated as an expression and it will be evaluated.
+That is going to be evaluated as JavaScript not as a string. So I am embedding variables directly inside a string.
+`hello!`
+'hello!'
+`hello ${1 + 2 + 9}`
+'hello 12'
+"hello ${1 + 2 + 9}"
+'hello ${1 + 2 + 9}'
+"You bought " + qty + " " + product + ". Total is: " + price * qty
+'You bought 5 Artichoke. Total is: 11.25'
+`You bought ${qty} ${product} .Total is: ${price * qty}`
+'You bought 5 Artichoke .Total is: 11.25'
+`You bought ${qty} ${product} .Total is: $${price * qty}` \\ If I wanted an actual dollar sign I could do a double dollar sign. That first one is part of the string template literal it's escaping our string and leaving us with a dollar sign.
+'You bought 5 Artichoke .Total is: $11.25'
+`You bought ${qty} ${product} .Total is: $`
+'You bought 5 Artichoke .Total is: $'
+`You bought ${qty} ${product.toUpperCase()} .Total is: $${price * qty}`
+'You bought 5 ARTICHOKE .Total is: $11.25'
+ 

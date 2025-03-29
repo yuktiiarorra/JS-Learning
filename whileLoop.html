@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while Loop</title>
+</head>
+<body>
+    -: So, next step we move on to our second
+
+type of loop. The while loop.
+
+-: So, a while loop is actually much simpler
+
+than a for loop to understand.
+
+There's just one piece of syntax.
+
+While and then instead of parentheses
+
+a single condition.
+
+And as long as that condition is true,
+
+whatever it is, if it evaluates to true,
+
+your loop will continue to run.
+
+If this ever evaluates to false,
+
+the loop is done. So this is a simple
+
+example, basically recreating what we've
+
+already done with a for loop.
+
+Printing numbers from 0 to 10.
+
+So let's try that out, I'm in a new file
+
+once again just to keep things separate.
+
+We have our for loops video, our files.
+
+And then while loops here, and I've got an
+
+app js. Let's loop starting at 0.
+
+So let's, we could do 'I', we could do count
+
+equals 0. And then
+
+while count is
+
+greater than
+
+let's go with less than 10. And then my curly
+
+braces. And whatever code goes in here will
+
+be run each time through the loop.
+
+But with while loops it's very easy to make
+
+an infinite loop if you're not paying attention.
+
+Because count to 0, count less than 10,
+
+that's always going to be true and there's no
+
+part of the syntax where I actually add or
+
+subtract or alter count in any way in the
+
+loop statement. Instead I do that down in
+
+the body here between the curly braces.
+
+So I need to make sure I'm doing something
+
+like count plus equals 1 or count plus plus
+
+I do that separately. So let's do a console.log
+
+count. And just see what we get.
+
+Okay, so there's 0 through 9 and that
+
+just happened because of where
+
+I'm console.logging.
+
+I'm incrementing count after I print
+
+so I could do it the other way around and
+
+now we should end up with 1 through 10.
+
+Just like that. So this is just another form
+
+of what we've already done right,
+
+the equivalent here is for and I'll use
+
+'I', equals 0 or 1.
+
+'I' less than
+
+10 or less or equal to 10,
+
+'I' plus plus, it's the same idea,
+
+we have some initial value. While some part
+
+is true, some condition is true.
+
+Do this and add 1 to 'I' or to count.
+
+So this is not where most people use a while
+
+loop, I mean you can, but generally for loops
+
+are preferred for things like this where
+
+we have a set number of iterations, it's
+
+always 0 to 10. Or if we have an array, whatever
+
+the length of that array is we're always going
+
+to iterate end times if the array is
+
+twenty items or a thousand items.
+
+That is kind of set in stone.
+
+Where a while loop is more useful in my opinion,
+
+is when we have something that is truly variable
+
+we may not know how many times it iterates.
+
+And that could involve user inputs,
+
+that could be something like a game loop
+
+where we have a board game like
+
+chess or checkers. We want to continue looping
+
+as long as nobody has won the game.
+
+So we could write something like while
+
+and then you know,
+
+game is not over,
+
+or game
+
+over is
+
+not true.
+
+And then in here
+
+we would have you know player one move
+
+and then player two move. And then after this
+
+loop, we would have something like congrats,
+
+because if you made it to this point,
+
+somebody won the game. So game loops are
+
+very common. And it's very hard to know,
+
+it's impossible to know, how many
+
+times you'll need to iterate for a game
+
+of chess or checkers. It could be very
+
+very quick if somebody is smart playing against
+
+somebody who's never played before.
+
+Or it could take a very long time.
+
+Uh, and we're not setting any sort of
+
+defined number of iterations. So I'll show
+
+you a simple example of this sort of while
+
+loop. Why don't we ask a user to enter a
+
+password. So our secret code, let's just
+
+make our secret code here, const secret code,
+
+eh I'll just do secret. Uh, is going
+
+to be how about 'Baby
+
+Hippo',
+
+one word,
+
+camel case like that. Okay, so what I'm
+
+going to do now is have a while loop
+
+where I ask you, to enter, I ask a user
+
+to enter the secret code. And as long as
+
+you don't get it right, so as long as it's
+
+not a match, I'm just gonna keep asking
+
+you over and over and over. So I'm
+
+gonna come up with a variable, let
+
+let's just go with guess equal prompt,
+
+enter the secret code... Okay?
+
+And then while your guess is not equal to
+
+secret, I'm just gonna say guess is equal to the
+
+exact same thing. Prompt enter the secret code.
+
+And that's gonna happen over and over and over
+
+until you get it exactly right, because at that
+
+point, this line inside of the parentheses
+
+will evaluate to false and our loop
+
+will be done. So if I put something
+
+else down here like congrats,
+
+congrats,
+
+you got the secret
+
+That's only going to run after this loop
+
+finishes. And that means it's
+
+only going to run after you enter
+
+BabyHippo correctly. So let's see
+
+what happens. Enter the secret code,
+
+I'll enter something wrong. Nope.
+
+Enter the secret code. Okay, how about
+
+baby? No? Now, I'll enter it correctly.
+
+We are not ignoring case so I have to match
+
+it exactly. BabyHippo. Congrats, you
+
+got the secret. So a while loop works
+
+here because I don't know how many times
+
+this could take, it could be the first
+
+try or somebody might never get it
+
+and we're just going on and on and on and on
+
+hundreds of thousands or more
+
+different times. So there's not a set number of
+
+iterations. And this is where a while loop
+
+really shines. Um, it's just easier to make a
+
+loop like this that runs an unknown number of
+
+times using a while loop. It's nice and
+
+short here, while guess is not equal to secret.
+
+So while the guess is wrong, get a new guess.
+
+And we could print something out if we wanted
+
+to, uh, but I don't think we need to do that
+
+we'll just keep it simple like I have right
+
+here. In the next video I'll show you another
+
+example of this sort of loop,
+
+where it's not really a game loop but it's
+
+kind of the same idea, while you have
+
+not won the game, while you have not
+
+guessed correctly. Uh, that sort of thing,
+
+continue this loop. So that's coming up.
+
+.
+
+
+
+    <script src="whileLoop.js"></script>
+</body>
+</html>

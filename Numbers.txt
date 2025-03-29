@@ -1,0 +1,172 @@
+JavaScript has one number type. Some other languages actually have more than one. They have a number type to represent whole numbers, usually called integers, and then a separate type to represent decimal numbers called floating points or floats often.
+And the reason for that is that it takes a lot more memory to store a decimal. In JS we have one type and that includes both positive numbers, negative numbers, whole and decimal numbers.
+Numbers get a certain amount of space in memory. They're not permitted just to take up an infinite amount of space.
+Infinite is the wrong term, but there's a hard limit.
+
+If we type a single digit in console, the console returns it back
+1
+1
+32.5
+32.5
+-2
+-2
+-2.1
+-2.1
+
+At times, the console loses precision if we have really long decimal
+1.999999999999999999
+2
+
+We have some basic math operators that are built into JavaScript. So common things like addition and subtraction, multiplication and division.
+4 + 8 
+12
+3.5 * 2
+7
+
+ORDER OF OPERATIONS => PEMDOS
+where we have parentheses runs first, then we have exponents, then multiplication, division, addition and subtraction.
+So it goes from left to right. We can use parentheses to alter the order.
+3 + 1 * 9
+12
+(3 + 1) * 9
+36
+
+Two forward slashes (//) in a row create a JavaScript comment. It gives the result as undefined when printed.
+eg //jfjfjf => input
+undefined => output
+A comment in the console is pretty useless. because this is not a file, this is not saved. 
+This is purely a moment in time in our browser when thiswindow closes, this code is gone. 
+so comments are mainly used in files
+
+jjdjdjf => Invalid js code
+VM331:1 Uncaught ReferenceError: jjdjdjf is not defined at <anonymous>:1:1 => result
+
+Modular / Remainder operator (%)
+9 % 2
+1
+
+Modular is commonly used to determine if a number is even or odd. We could take any number and mod by two, and that will tell us if it's even or odd.
+If we get one, there's a remainder of one after trying to divide two into this number, that means it's odd.
+Now if it's an even number we'll get a remainder of zero. Size of no. doesn't matter.
+
+Exponents(**)
+It's just going to take our first number and raise it to some power.
+2 ** 4
+16
+
+What is NaN(Not a Number) ?
+NaN is technically considered a number in JavaScript. It's basically a concept. It represents a value that is not a number.
+It is considered a number by JavaScript, but it represents something that is not a number.
+In ordinary math and arithmetic, dividing zero by zero is considered meaningless or it's undefined, it's impossible to assign a value to it, and in JavaScript, the same applies.
+We get the actual value from JavaScript, which is a real value, it's called Not a Number, and again, it is considered a number.
+0 / 0
+NaN
+1 + NaN
+NaN
+
+In JavaScript we have typeof. This is considered an operator actually, kind of like the plus sign or a subtraction or other operators we've seen, except it only requires a single operand.
+It is a special value in JavaScript. It represents something that is not a number, but it is considered a number type or a member of the number family in JavaScript.
+typeof Nan
+'undefined'
+typeof 4
+'number'
+typeof 4.19
+'number'
+typeof 0/0
+'number
+
+Suppose we have to type a number and we accidentally type a text, word  and then we're doing math with a word then we will get NaN.
+If we are doing an operation with Nan and any other operand the ans will be Nan.
+NaN * NaN
+NaN
+
+RANDOM NUMBERS AND MATH(Math) OBJECT
+(We can read more about it on MDN)
+Built into JavaScript, it's just a collection of properties and methods that have to do with math in some way.
+So, we have mathematical constants like PI(value of PI 3.14159), methods like rounding or round off, method called abs for absolute value.
+Math // If we just type Math and hit enter it asks for some variable/s.
+Math {abs: ƒ, acos: ƒ, acosh: ƒ, asin: ƒ, asinh: ƒ, …}E: 2.718281828459045LN2: 0.6931471805599453LN10: 2.302585092994046LOG2E: 1.4426950408889634LOG10E: 0.4342944819032518PI: 3.141592653589793SQRT1_2: 0.7071067811865476SQRT2: 1.4142135623730951abs: ƒ abs()acos: ƒ acos()acosh: ƒ acosh()asin: ƒ asin()asinh: ƒ asinh()atan: ƒ atan()atan2: ƒ atan2()atanh: ƒ atanh()cbrt: ƒ cbrt()ceil: ƒ ceil()clz32: ƒ clz32()cos: ƒ cos()cosh: ƒ cosh()exp: ƒ exp()expm1: ƒ expm1()floor: ƒ floor()fround: ƒ fround()hypot: ƒ hypot()imul: ƒ imul()log: ƒ log()log1p: ƒ log1p()log2: ƒ log2()log10: ƒ log10()max: ƒ max()min: ƒ min()pow: ƒ pow()random: ƒ random()round: ƒ round()sign: ƒ sign()sin: ƒ sin()sinh: ƒ sinh()sqrt: ƒ sqrt()tan: ƒ tan()tanh: ƒ tanh()trunc: ƒ trunc()Symbol(Symbol.toStringTag): "Math"[[Prototype]]: Object
+What is an Object?
+It's a collection of properties and methods.
+Instead of just polluting the namespace, which basically means instead of just having a bunch of variable names taken up, JavaScript's approach was to combine all of those into a single object, so they're all nested under this thing called Math.
+PI
+VM7113:1 Uncaught ReferenceError: PI is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM7113:1Understand this errorAI
+Math.PI // for PI
+3.141592653589793
+Math.E // for Euler's no.
+2.718281828459045
+Math.floor(23.1) // round-off to lower limit
+23
+Math.floor(23.999999999)
+23
+Math.ceil(34.999999999) // round-off to upper limit
+35
+Math.ceil(34.1)
+35
+// Random is going to give us a random decimal number between zero and one, but it won't actually include one.
+So it's going to be between zero and .9999999.
+Math.random 
+ƒ random() { [native code] }
+Math.random()
+0.1309384661269375
+Random Integers
+Many other programming languages actually have a method called random integer or random int or something like that to generate random integers.
+But JavaScript, doesn't.
+A :- Generate a random value
+Math.random()
+0.17049699213919367
+Math.random()
+0.9794127869432769
+Math.random()
+0.47055490753219575
+B :- Multiply it by the count of numbers you are trying to generate. Like for 20, 21, 22 multiply it by 3.
+Math.random() * 5
+2.71842541611654
+Math.random() * 5
+3.785573361770057
+Math.random() * 5
+1.0189923616480367
+Math.random() * 5
+0.2860230099296357
+C :- Floor the result
+Math.floor(Math.random() * 5) 
+4
+Math.floor(Math.random() * 5)
+4
+D :- Add the constant to include the uppercase value. Like the above case will gen value from 0 to 4 but we need value from 1 to 5 so use the case below
+Math.floor(Math.random() * 5) + 1
+3
+Math.floor(Math.random() * 5) + 1
+4
+Math.floor(Math.random() * 5) + 1
+1
+Math.floor(Math.random() * 5) + 1
+4
+Math.floor(Math.random() * 10) + 1
+7
+Math.floor(Math.random() * 10) + 1
+8
+Math.floor(Math.random() * 10) + 1
+1
+Math.floor(Math.random() * 10) + 1
+10
+Math.floor(Math.random() * 3) + 20
+21
+Math.floor(Math.random() * 3) + 20
+22
+Math.floor(Math.random() * 3) + 20
+21
+We have methods like rounding or round off.
+Math.round(4.9)
+5
+We have a method called abs for absolute value.
+Math.abs(-456)
+456
+We have a method called pow for power.
+Math.pow(2, 5)
+32
+Math.pow does the same thing as below.
+2 ** 5
+32

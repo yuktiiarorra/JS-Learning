@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operators</title>
+</head>
+<body>
+    <!-- true && true
+true
+true && false
+false
+false && true
+false
+false && false
+false
+1 === 1 && 2 < 7
+true
+VALID PASSWORD! 
+INCORRECT FORMAT FOR PASSWORD
+INCORRECT FORMAT FOR PASSWORD
+-: Next up we're gonna cover logical operators.
+
+So logical operators are operators that allow us
+
+to combine different expressions.
+
+So we can combine more than one piece of logic together
+
+to form one larger piece of logic.
+
+And there are three core logical operators built into
+
+JavaScript and every other programming language
+
+I've ever heard of.
+
+They are right here in front of us
+
+and, or, and not.
+
+Three of them and, or, not.
+
+So we're gonna begin in this video
+
+by focusing on and.
+
+So and, which we write using two ampersands.
+
+One, two. Two ampersands.
+
+You know the character located above,
+
+at least on my computer, the seven key.
+
+Two of them together is logical and,
+
+and this is going to join an expression on the left
+
+and an expression on the right.
+
+And in order for the entire thing to be considered true,
+
+the left and the right, must be true.
+
+So both of them have to be true
+
+for the whole thing to be true.
+
+That is the rule of and.
+
+So we could start nice and simple
+
+without any complicated expressions.
+
+We can just have something like this.
+
+true && true
+
+Is the left side true? Yes.
+
+Is the right side true? Yes.
+
+The whole thing is true.
+
+But if any one of them,
+
+there's only two of them.
+
+If either one becomes false,
+
+the entire thing is false.
+
+So we have false && false is false
+
+false && true is false.
+
+true && false is false.
+
+The only way to get true,
+
+from the end result, the output.
+
+Think of it as like a machine.
+
+We're putting two things in.
+
+A left and a right,
+
+a true and a true.
+
+We get true out,
+
+otherwise we get false.
+
+I read an article a while back
+
+where the author was trying to explain this
+
+in terms of asking his mom to go play
+
+outside on a school night after school.
+
+The mother would say,
+
+you can go play outside with your friends if you have,
+
+what is it?
+
+If you finish your homework and you have done the dishes
+
+or cleaned your room or whatever it is.
+
+So you have to do both of them.
+
+And if either one of them is not done,
+
+you can't go outside, right?
+
+Okay, so soon we'll see or,
+
+and you probably can get where I'm going with this.
+
+The or logical operator behaves differently.
+
+Now, typically we're not gonna do this false && true
+
+or true && true, at least not directly.
+
+We would have some expression like
+
+1 === 1 && 2 < 7
+
+That whole thing is true.
+
+Why?
+
+Well, the left is true, and the right is true.
+
+So a better example
+
+of when we would use something like this,
+
+if we come over here,
+
+I'm in a new file,
+
+logical Operators app.js is something like this.
+
+If we ask for an input,
+
+let's say a password again,
+
+so prompt("Enter your password")
+
+const password = prompt("Enter your password")
+
+Remember what we had last video, two videos ago,
+
+where we wanted to make sure
+
+a password was of a certain length
+
+and that the password did not contain spaces.
+
+Well, I can combine
+
+those two pieces of logic just like this.
+
+if (password.length >= 6 && password.indexOf(' '))
+
+So if we're checking to see if
+
+it's greater than or equal to six,
+
+it needs to be long enough,
+
+and it should not contain a space.
+
+So we wanna see if the index of a space
+
+is equal to -1.
+
+If that's the case,
+
+both of those things have to be true
+
+in order to get here.
+
+console.log("VALID PASSWORD!")
+
+Otherwise, if either one is wrong here, we'll do
+
+console.log("INCORRECT FORMAT FOR PASSWORD!")
+
+or something like that, right?
+
+So if we make it to this console.log,
+
+it means our password is
+
+greater than six characters long or equal to,
+
+and it does not contain a space.
+
+So let's try it.
+
+Refresh the page,
+
+enter my password,
+
+let's do something that is correct.
+
+So, I don't know, this is stupidpassword123
+
+That is long enough and it has no spaces.
+
+Cool, valid.
+
+Now let's try something that's too short,
+
+invalid, something that has a space.
+
+Invalid.
+
+So we've combined those two pieces of logic
+
+into a single statement using and.
+
+That's kind of all there is to it.
+
+We have our left and our right.
+
+They both need to be true for the whole thing to be true.
+
+If either side evaluates to false,
+
+the whole thing is false.
+
+In fact, if this first part is false,
+
+JavaScript won't even bother looking at the second part.
+
+If the left is false,
+
+it won't look at the right
+
+because there's no point.
+
+It's called short circuiting.
+
+It's never going to run this code
+
+inside of these braces,
+
+if the first part is false.
+
+It just knows it's a lost cause.
+
+Both parts need to be true.
+
+Okay, so next step we'll see our second operator,
+
+which is logical or.
+
+
+true || true
+true
+true || false
+true
+false || true
+true
+false || false
+false
+FREE
+INVALID AGE!
+Instructor: So the next logical operator we have is
+
+the OR operator.
+
+So, OR just like AND is going
+
+to join two different expressions.
+
+The symbols we use are two pipe characters.
+
+So these aren't ones, they're not L's.
+
+They are the pipe character.
+
+Which for me in most keyboards I've worked with,
+
+it's located above the return key
+
+on the right-hand side of my keyboard,
+
+sharing a key with the backslash.
+
+I need to hold shift to make it.
+
+So it looks like this right here.
+
+Those are pipes.
+
+Again, it's not a one.
+
+It's not an l or a capital L
+
+or something like that.
+
+Two pipes.
+
+And the OR operator behaves differently than AND.
+
+It does not require both sides to be true
+
+in order for the whole thing to be true. It just needs one.
+
+It only cares if one of the two is true.
+
+So going back to this thing that I'm stealing
+
+from a blog post I read a while back.
+
+With AND, if you're a kid,
+
+you want to play outside.
+
+And my mom says, "You can only play outside
+
+tonight on a school night,
+
+if you have finished your homework
+
+and you've cleaned your room."
+
+If either one is not true, then I can't go outside.
+
+On a Friday night or a weekend,
+
+she might say, "You can go play outside with your friend,
+
+if you have finished your homework
+
+or you've cleaned your room today."
+
+So one of them or both, sure.
+
+But if I've done only one of them,
+
+I'm still in the clear.
+
+So here are some demos, right?
+
+If we have something like one not equal to one
+
+or 10 equals 10.
+
+Well, this part's false, definitely.
+
+One is the same as one.
+
+But 10 is 10.
+
+So this is true.
+
+So one-half is true, that's all we need.
+
+So let's try another example.
+
+If I just do true or true, that evaluates to true.
+
+True or false, whole thing is true.
+
+False or true,
+
+whole thing is true.
+
+And then false or false.
+
+This is the only situation
+
+where the OR operator gives us false:
+
+if both inputs, the left and the right, are false or falsey.
+
+So let's revisit an example from earlier
+
+where we had our theme park that you could get into.
+
+And we had a couple of age ranges where we decided to price.
+
+If you were zero to five I think it was,
+
+you were free. Is that right?
+
+Well, if not, I'm just making this up again.
+
+So let's say if you're zero to five, you get in for free.
+
+If you are five to 10,
+
+you have to pay $10.
+
+And if you are 10 to 65,
+
+you pay $20.
+
+And if you are 65 or older, let's say that you're free.
+
+So what I could do,
+
+as we've already seen, make a variable age.
+
+Set it equal to some number.
+
+Let's just go with 90.
+
+And we can write our first conditional.
+
+If age, and I can actually do a couple of things here.
+
+What we started with last time was,
+
+if age is less than five,
+
+we'll do this, console.log.
+
+I'm just going to print out the price.
+
+I won't bother with anything else.
+
+So just, free.
+
+Else if age is less than 10,
+
+console.log $10.
+
+I need quotes there.
+
+And I should be consistent as I've always said.
+
+I use double or all single quotes,
+
+but I shouldn't really mix them up.
+
+Else if. Okay.
+
+So age is less than 65.
+
+And we've already been over this and how this works,
+
+where I'm relying on the order of things.
+
+So if age is less than five.
+
+Well, technically what I'm doing here is saying
+
+if it's anything below five.
+
+It could be negative 1,000.
+
+So we should come back and fix that
+
+and say if it's between zero and five.
+
+But first what we can do is combine this.
+
+Where we have age is greater than 65,
+
+you should get in for free.
+
+Or if age is less than five,
+
+you should also get in for free.
+
+So we can do that just like this.
+
+If age is less than five
+
+or age is greater than or equal to 65,
+
+you'll get in for free.
+
+If that's not the case.
+
+What if you're less than 10?
+
+Well, you'll get in for $10.
+
+That means you're between five and 10.
+
+Otherwise, if you're less than 65,
+
+we'll console.log "$20".
+
+Okay, so let's verify that this works.
+
+It's 90 so we should see free.
+
+Now if we change that to one year old,
+
+we should also see free.
+
+But if I go up to 11 years old, you're $20.
+
+If you are nine years old,
+
+you should be $10.
+
+And if you're a hundred or a thousand years old,
+
+we should be free.
+
+So that's the basic concept.
+
+Here's our example of using OR.
+
+If this thing or this thing is true,
+
+both situations you get in for free.
+
+But these can't both be true at the same time.
+
+Logically that can't happen.
+
+And in this scenario,
+
+we can't have one number that is less than five
+
+and at the same time it's also greater than 65.
+
+But that's fine.
+
+This is not AND. We have OR.
+
+We just need one of those scenarios.
+
+Now, if I really wanted to be complete here,
+
+I would make sure that we were using normal ages.
+
+For example, zero to five.
+
+We don't want negative ages.
+
+This allows for a negative age.
+
+If I did negative 10,
+
+we get free.
+
+So what I can do is
+
+actually make this left side another expression
+
+using a logical operator.
+
+So I can join two things.
+
+Because really what I want to say is
+
+if you are between zero and five
+
+or you are greater than 65.
+
+Well, how do I say between two numbers?
+
+Well, I want to make sure you're greater than zero
+
+and less than five.
+
+That brings us back to the previous video,
+
+logical AND.
+
+So anytime we're trying to use a range
+
+or check against a range of numbers,
+
+if something is inside of a range,
+
+we can use AND.
+
+So I can do this, if age is greater than.
+
+I guess I'll allow zero.
+
+Greater than or equal to zero, and age is less than five.
+
+This whole thing is one expression, right?
+
+So you're between zero and five,
+
+that means you're free.
+
+Or on the other hand,
+
+if you're just greater than 65, that also means you're free.
+
+Now, this still doesn't really fix our negative age issue.
+
+It does mean you won't get in for free with a negative age,
+
+but that doesn't mean you won't get in at all.
+
+So which one of these will match
+
+if I pass in negative 10 as age?
+
+Well, this won't.
+
+Negative 10 is not between zero and five.
+
+It's not greater than 65, but it is less than 10.
+
+That is the next thing that will be tried.
+
+So what I would do is probably rewrite this.
+
+What the age bracket really is,
+
+is if you're between five and 10.
+
+So I could do this.
+
+If age is between five and 10.
+
+So if you're greater than or equal to five.
+
+I didn't say five was inclusive
+
+for free or for $10.
+
+It doesn't really matter.
+
+If your age is greater than or equal to five
+
+and your age is less than 10,
+
+you get in for $10.
+
+And now let's see what we get.
+
+So I'm going to refresh with my negative value.
+
+All right, negative 10.
+
+Oh, we get $20.
+
+Why is that happening? Same issue.
+
+Here I'm checking to see if your age is less than 65.
+
+What I really want to check is
+
+if your age is greater than or equal to 10
+
+and also less than 65.
+
+And now we get nothing.
+
+If your age is negative.
+
+And then finally,
+
+we can add a catchall else
+
+that will just be console.log "Invalid Age".
+
+All right, and there we go.
+
+So let's try changing this.
+
+We'll go with zero years old,
+
+you get in for free.
+
+99 years old,
+
+free.
+
+How about seven years old?
+
+$10.
+
+And then 10 years old,
+
+$20.
+
+50 years old,
+
+$20.
+
+And then we go back to $10 when you get above 65.
+
+Or sorry, you go back to free when we get above 65.
+
+So here we're combining AND and OR to create these ranges.
+
+So we're using AND to make a range,
+
+a valid range we're accepting from five to 10 or 10 to 65.
+
+And we also saw a more complicated example
+
+on this first line here
+
+where we have two logical operators working together.
+
+Now, something I did not bring up is the order
+
+that this runs in.
+
+The AND is going to run before OR.
+
+It has precedence over OR.
+
+If you prefer though, you can add parentheses
+
+just to make it clearer to you.
+
+You know, how you want this to run.
+
+So if you want this to run first, it already does run first.
+
+But if it didn't or if you just want to make sure,
+
+put parentheses.
+
+This will evaluate first to true or false.
+
+And then we have this side.
+
+So I know this got a little bit crazy with these symbols,
+
+and it might look quite foreign
+
+if you've never seen this before.
+
+But we'll get lots and lots of practice with this stuff.
+
+We use these all the time, AND, OR.
+
+I was going to say AND and OR,
+
+but it's confusing to do that.
+
+So AND, OR.
+
+Next up, we've got our third and final logical operator.
+
+!false
+true
+!(1 === 1)
+false
+null
+null
+!null
+true
+!!null
+false
+YOU ARE NOT ABABY OR A SENIOR!
+Instructor: The final logical operator we'll see
+
+is the not logical operator.
+
+Now this one actually doesn't really combine
+
+two expressions, but it operates upon an expression.
+
+It is going to negate the value.
+
+If it's something that's false, it turns it true.
+
+If something is true, it turns it false.
+
+But what that really means is
+
+that if we put the exclamation point,
+
+which is the piece of syntax we use.
+
+Just like we use two ampersands for and,
+
+we use a single bang or exclamation point for not.
+
+We put that in front of some expression,
+
+it will return true if that expression is false.
+
+So here's an example.
+
+Here's a very simple expression, false.
+
+It's just false, the Boolean false.
+
+But if I put not, I am flipping it and it's now true.
+
+Or I could do something like this.
+
+Is one equal to one?
+
+Well, we know that is true.
+
+But if I put not in front of it, we get false.
+
+Another example, we can do things like this.
+
+If I have null, which is a falsey value,
+
+if I just hit Enter, we see null.
+
+But if I logically negate it using exclamation point,
+
+it's actually going to flip the Boolean-ness of it.
+
+That's a horrible way of putting it.
+
+But we know that null is inherently falsey.
+
+So it flips it to truthy.
+
+So if I flip it back, back to false,
+
+and again and again and again,
+
+not that you would really do this, but you can.
+
+It's absurd.
+
+So there's a lot of ways we could use this,
+
+but here's a simple one.
+
+We'll ask a user to enter, I don't know, a name.
+
+Enter your first name.
+
+So const firstName equals prompt.
+
+And then right afterwards, if they don't enter a first name,
+
+eh, we could just ask 'em again.
+
+If, and we could do this long thing.
+
+If firstName is equal to exactly an empty string,
+
+that means they didn't enter anything,
+
+we could ask them to enter it again.
+
+Or I can just say if there was not a first name.
+
+If firstName is falsey, remember empty string is falsey
+
+and a bunch of other values.
+
+So if that's the case, well then if I just did that,
+
+if firstName, this is going to be,
+
+if there is a first name, that's not what I want.
+
+I want, if there is not a first name,
+
+and then in here I can do the exact same thing.
+
+I'll update firstName, whoops.
+
+Or maybe I'll do it again.
+
+Try again.
+
+Let's run it.
+
+Enter your first name.
+
+So I'm gonna type my first name.
+
+That's not my first name, but I typed that in
+
+and we don't get a message.
+
+But if I leave it blank, try again.
+
+Now that only happens once.
+
+We're not doing it over and over and over.
+
+We'll soon see how to automate that or how to loop our code
+
+so that does occur until you actually enter
+
+a valid first name or you don't leave it blank.
+
+But this is a common situation, if not something
+
+where normally that thing would be a truthy thing,
+
+firstName, we're looking to run this code
+
+when firstName is falsey.
+
+So we flip it.
+
+Other situations where you can use this,
+
+I mean you can negate an entire complicated expression.
+
+So here we go.
+
+If I only wanted to target,
+
+I'm just gonna copy this down here,
+
+I only want to target people
+
+who are not getting in for free.
+
+So I'm gonna go with const age equals, I dunno, 45.
+
+So right here, I'm targeting people
+
+who are between zero and five or greater than 65.
+
+That means they are definitely getting in for free.
+
+Let's say I want the opposite though, I want everyone else.
+
+What I can do, and this is gonna be quite ugly,
+
+but I can do this here.
+
+I can negate the entire thing.
+
+So I don't need these parentheses here,
+
+but I do wanna wrap parentheses
+
+around this entire thing and then flip it.
+
+So if age is between zero and five
+
+or age is greater than or equal to 65, not that.
+
+And here I can console.log.
+
+You are not a baby or a senior.
+
+Let's try it.
+
+And we get you're not a baby or a senior with 45.
+
+If I do zero, we don't get anything.
+
+If I do 100, we don't get anything.
+
+But if I do something in between, how about eight years old?
+
+You're not a baby or a senior.
+
+So using not there is negating this entire long expression.
+
+This whole thing in parentheses is going to evaluate first,
+
+we'll get true or false, and then we flip it.
+
+So all of these work in conjunction.
+
+I mean, here's an example.
+
+We're using logical not, logical and, and logical or
+
+all together in the same expression.
+
+It's a long one and it doesn't really look like English
+
+at all, but it is valid JavaScript.
+
+So that is logical not.
+
+It's going to return true if the expression
+
+we are applying it to returns false
+
+or it evaluates to false.
+
+We saw logical or, it only needs one half, one side,
+
+left or right to be true.
+
+And logical and requires both sides to be true
+
+in order for the entire outcome to be true.
+
+So these are foundational for logic.
+
+We use them all the time.
+
+We combine things together.
+
+We're still starting simple, but you will see lots
+
+and lots of situations where we use these operators together
+
+to build more complicated logic.
+
+So bear with me, hang in there if you're struggling with it.
+
+We'll get a lot of practice
+
+and over time this will become second nature.
+
+Don't be off-put by the symbols.
+
+Yes, it's annoying to use the pipe character
+
+if that's new to you, but you'll get used to it.
+
+-->
+    <script src="LogicalOperators.js"></script>
+</body>
+</html>

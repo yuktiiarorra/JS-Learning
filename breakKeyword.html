@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>break Keyword</title>
+</head>
+<body>
+    Narrator: So while we're talking about while loops,
+
+I should also introduce the break keyword.
+
+The break keyword is most commonly used with while loops,
+
+although technically you can use it with other loops.
+
+It's just really, really rare.
+
+And what it will do is inside of a loop,
+
+if it ever actually runs,
+
+so with some condition in this case,
+
+if the guessed number is equal to a random target number,
+
+if they're the same, we break out
+
+and that is going to stop the execution
+
+of the loop immediately, as soon as break is encountered.
+
+And then code just resumes running after our loop.
+
+So whatever is down here, if anything, would be executed.
+
+So let me show this with a simple loop.
+
+We'll do a while(true) as well, while(true).
+
+And I'm not gonna run this,
+
+otherwise we'll have a bad time
+
+if it's just constantly running.
+
+And we're going to make a really annoying program, I guess,
+
+where whatever you type, let's say I type hello,
+
+our computer, the code is just gonna repeat exactly
+
+what I said back to me, hello.
+
+And then if I type something else, it's gonna repeat it
+
+to me and the only way to get out of it is by typing
+
+maybe quit or stop copying me or something.
+
+Let's do "stop copying me".
+
+All right, so I'm gonna start
+
+by asking a user to enter something.
+
+I'll do, let input = prompt,
+
+("Hey, say something!"),
+
+and then in here, I'm simply going to spit that back out.
+
+So I'm gonna prompt the user again using that input,
+
+so whatever we captured here,
+
+and then save that back to input.
+
+So basically I'm just, you know,
+
+the very first time, hey, say something.
+
+Let's say enter hello, then we're going to prompt hello.
+
+That will be the argument to prompt.
+
+And then we'll capture that value,
+
+whatever I say that time, goodbye or I hate you or haha,
+
+that will be saved in input and the process repeats.
+
+And if I ran this right now, it would be an infinite loop.
+
+But I can check in here if (input),
+
+let's just say if it equals stop bopying, "stop copying me",
+
+just like that,
+
+if that's the case, we can break out
+
+of the loop and down here
+
+I'll put something like console.log("OK YOU WIN!"),
+
+just like that.
+
+So if this is ever encountered, the loop will stop running
+
+and this code runs or whatever comes afterwards.
+
+The only other thing, I guess we can make this
+
+.toLowerCase maybe, just so that I don't
+
+have to type it perfectly.
+
+Stop copying me, let's see if it works.
+
+Oh boy, also, actually while I'm here,
+
+I could just put this break on the same line.
+
+It's such a short bit of code that I'm running
+
+inside of this conditional.
+
+So I would just do that, just like that.
+
+All right, I'm gonna refresh, say something, hello,
+
+and it says hello back to me.
+
+Lol, bye,
+
+it's gonna keep going forever
+
+until I type stop copying me and we're done.
+
+And if I open up the console, we see OK YOU WIN!
+
+But that only showed up here,
+
+you'll have to trust me on that,
+
+once I hit that break right here.
+
+So while(true) seems like it should happen forever
+
+and it would if not for break.
+
+It's a way of escaping a loop.
+
+While we're here, I guess I could show, you know,
+
+for, let's do a for loop,
+
+(let i = 0; i <),
+
+let's do (1,000; i ++)
+
+console.log(i).
+
+And that would just go to 1,000,
+
+which is not really a big deal
+
+to print out all of those numbers.
+
+I can just show that here.
+
+Let's move this over.
+
+There we go.
+
+Oh, it doesn't go to 1,000.
+
+I can't do math, but we get to 999.
+
+But in here, if I do something like if,
+
+let's do it afterwards,
+
+if (i ===),
+
+what should we do, if (i === 100) break.
+
+So it will work in here.
+
+It's just kind of odd to do it in a for loop
+
+because most frequently we use break in a situation
+
+where something is not running a set number of times.
+
+We don't know how much something needs to run for.
+
+Otherwise we would just make our loop run.
+
+You know, in this case, if we're going from 0 to 100,
+
+let's just write our loop to go from 0 to 100.
+
+Why do this weird structure?
+
+But I just wanted to show that we can.
+
+So that's the break keyword.
+
+    <script src="breakKeyword.js"></script>
+</body>
+</html>

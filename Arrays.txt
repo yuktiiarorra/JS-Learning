@@ -1,0 +1,3514 @@
+true
+true
+"akwhdfkhdfh"
+'akwhdfkhdfh'
+const bassist = 'Paul';
+undefined
+bassist[0]
+'P'
+let colors = [];
+undefined
+typeof colors
+'object'
+typeof []
+'object'
+let days = ["Monday", "Tuesday", "Wednesday"]
+undefined
+days
+(3) ['Monday', 'Tuesday', 'Wednesday']
+days.length
+3
+[].length
+0
+let arr = [true, undefined, 12, 9.9999, NaN, false, null, "HIIIIIIIIIII"]
+undefined
+arr
+(8) [true, undefined, 12, 9.9999, NaN, false, null, 'HIIIIIIIIIII']
+Person: All right, so let's begin with JavaScript arrays,
+
+our very first data structure.
+
+Now, a data structure simply is a collection of data,
+
+so we've seen little tiny pieces of data, right?
+
+The number seven, the Boolean value "true,"
+
+we've seen strings, right?
+
+That's not a collection.
+
+We could have 10 different variables.
+
+Let's say I wanted to represent the members of the Beatles,
+
+I could have four different variables, one called...
+
+You know, I'll just do one very quickly,
+
+but how about "bassist,"
+
+and set that equal to not "Pual" but "Paul," right?
+
+And then, I could do the same thing
+
+for the other three members,
+
+but they're not connected in any way,
+
+they're four separate variables,
+
+so data structures, specifically arrays,
+
+which we're seeing...
+
+Or we're about to see, allow us to group data together
+
+and we could store four different strings,
+
+as an example, Paul, John, Ringo, George,
+
+geez, I don't know why that took so long,
+
+we could store the four...
+
+Those four strings specifically
+
+in a single array, a single collection.
+
+Now, I like to visualize arrays like this pillbox here.
+
+If you've ever seen these,
+
+there's usually seven days of the week, seven spots here,
+
+Monday, Tuesday, and so on,
+
+and you put the pills for that day in that slot,
+
+I've also seen ones that are broken down
+
+into different times like morning and afternoon and evening,
+
+but the main concept here is just a bunch of slots,
+
+and there's an order.
+
+This box, you can't actually see the labels, I don't think,
+
+but there is an actual order here,
+
+Monday's on the far left,
+
+and then, Sunday's on the far right,
+
+or, you know, it might start...
+
+Depending on the part of the world you're in,
+
+it might be Sunday is the first day of the week,
+
+but whatever, it doesn't matter.
+
+Arrays are kind of like this,
+
+just a bunch of slots that we can put stuff in,
+
+but there's an order, so that's really the key...
+
+The two key concepts for an array.
+
+One, it's a collection of values.
+
+Two, it is an ordered collection of values.
+
+So in the real world, we run into arrays all the time,
+
+we may not...
+
+You probably don't think about it, but behind the scenes,
+
+there are ordered collections of information
+
+all over the place.
+
+If you ever look at the comments section of anything,
+
+an Instagram post, a Facebook photo or album,
+
+a Nextdoor post,
+
+there's some crazy, crazy garbage on Nextdoor
+
+that I'm just learning about now, as I live in the suburbs.
+
+So you can find these comment sections all over the place
+
+and they are a collection of data,
+
+there's a bunch of comments that are grouped together,
+
+but they're also ordered, often by recency,
+
+so the most recent comments are at the bottom or the top,
+
+or sometimes, by the number of votes, or hearts,
+
+or likes, or whatever.
+
+Other examples, collections of levels in a game,
+
+so just a simple game to start, like a clone of "Mario"
+
+or even a Sudoku game where you have different levels,
+
+where there's an easy one, and then, level two, level three,
+
+they get progressively more challenging.
+
+There is an order there, so there's a bunch of levels
+
+and they are ordered.
+
+Songs in a playlist, that's a collection of things.
+
+We could even just represent our songs as strings.
+
+Here's song one, song two, song three, whatever they are,
+
+and then, there's an order, so ordered collections.
+
+So how do we actually make one of these things?
+
+How do we make an array in JavaScript?
+
+Well, it's actually pretty simple.
+
+We use the square brackets.
+
+Now, we've seen another situation
+
+where we use square brackets.
+
+Can you recall what it is?
+
+Well, when we are accessing a character in a string,
+
+so I have this "bassist" variable
+
+if I want the first character, "bassist [0],"
+
+so those are not...
+
+Or this has nothing to do with an array right here,
+
+this is purely string and an index
+
+using square brackets to access a character.
+
+Now, when we have two square brackets
+
+on the right side of an equal sign,
+
+we're assigning some variable to an empty array,
+
+so it's like one of these pill boxes here
+
+with nothing in it.
+
+We can add stuff after the fact,
+
+we'll see how to do that shortly,
+
+but for now, we can make an empty one,
+
+so I can do that just like this,
+
+"let," I don't know, how about "colors = []?"
+
+And if we look at "colors,"
+
+notice this is a bit different
+
+than anything we've seen so far,
+
+I have this triangle,
+
+this is just from the Chrome dev tools,
+
+I can click to expand,
+
+and long story short, we don't need to care about this,
+
+but it does say "Array,"
+
+so there's some proof that we're working with an array.
+
+Just a little side note, if you try this, "typeof,"
+
+and then, "[]" or "typeof colors," we know that's an array,
+
+but it's telling it's "object,"
+
+just a little teaser for something we'll cover later on,
+
+don't get too tripped up
+
+and don't try and check if something is an array
+
+using "typeof," you're gonna have a bad time.
+
+Okay, so here are a couple more examples,
+
+here, I've got an array of colors
+
+that actually has colors in it,
+
+red, orange, yellow, and I put them, you know, in order,
+
+so the left one comes first,
+
+this is the first thing in the array,
+
+so even if these values
+
+don't necessarily need to be ordered,
+
+they are ordered purely by the way
+
+they appear in this array,
+
+so this is first, that's second, that's third.
+
+Or here's another example, lotto numbers.
+
+So maybe this is a lottery
+
+where it's just five random numbers, there's no order,
+
+but a lot of times in the lotteries,
+
+I haven't really played in many,
+
+but there is an order and your card has to match the order
+
+that the numbers have been drawn in, not just the numbers,
+
+so let's make another...
+
+We'll talk about why "const" is commonly used, by the way,
+
+so you can use "let" or "const,"
+
+but let's just go with "let" for now,
+
+let's make it days of the week, so "days =..."
+
+Ah, you can see I already did this,
+
+I may have recorded this video once
+
+and thrown it all away, here's a days-of-the-week array,
+
+I just put three elements in it,
+
+Monday, Tuesday, Wednesday.
+
+I hit Enter. Let's take a look at "days."
+
+Here's our little expand-o triangle thing, click on it,
+
+and we see our three elements, our three values in there,
+
+it's a container, and it's an array,
+
+and one more thing, it has a length.
+
+So just like a string has a length,
+
+they can do this, "days.length,"
+
+and that will tell me how many things are in there,
+
+we have three.
+
+If I do "[].length," zero, there's nothing in there,
+
+it's just an empty shell of an array,
+
+much like I am an empty shell of a human being most days.
+
+And then, the last thing you should know here
+
+is that we can put in any sort of collection we want,
+
+so it doesn't have to be homogenous,
+
+all strings or all numbers.
+
+We can mix everything up, I could put Booleans in there,
+
+you know, I could just do "let kitchenSink =,"
+
+a Booleans, how about "undefined, 12, 9.9999,"
+
+how about "NaN, false," what else am I missing?
+
+"null," and a string, "HIIIII!"
+
+I accidentally hit the volume key.
+
+We'll hit Enter, and that is a valid array.
+
+It makes no sense, you probably would never have
+
+this collection of data, but you can.
+
+In some other programming languages,
+
+an array consists of basically one type,
+
+it has to be an array of strings or an array of numbers,
+
+and you have to explicitly declare that upfront.
+
+With JavaScript, I can do whatever I want
+
+inside of an array,
+
+I can even put other arrays inside,
+
+which is something we'll see shortly too.
+
+All right, so we've seen how to make an array,
+
+how to initialize it with the initial stuff in that array,
+
+it might be empty, square brackets with nothing inside,
+
+or it might have a couple of values,
+
+square brackets with values separated by commas,
+
+but we haven't seen how to access information
+
+after the fact, after creation,
+
+and we haven't seen how to modify, add things in,
+
+remove things, switch the order,
+
+all of that is very important with arrays,
+
+so that's all coming up.
+
+"monday"[0]
+'m'
+days
+(3) ['Monday', 'Tuesday', 'Wednesday']
+days[0]
+'Monday'
+days.length
+3
+days[2]
+'Wednesday'
+days[3]
+undefined
+days[1][0]
+'T'
+let firstName = "colt";
+undefined
+firstName[0]
+'c'
+firstName[0] = "C"
+'C'
+firstName
+'colt'
+let colors = ["rad", "orange", "yalloww"];
+undefined
+colors[0] = "red"
+'red'
+colors
+(3) ['red', 'orange', 'yalloww']
+colors[2] = "yellow"
+'yellow'
+colors
+(3) ['red', 'orange', 'yellow']
+colors[1] = 70
+70
+colors
+(3) ['red', 70, 'yellow']
+colors[10] = "indigo"
+'indigo'
+colors
+(11) ['red', 70, 'yellow', empty × 7, 'indigo']0: "red"1: 702: "yellow"10: "indigo"length: 11[[Prototype]]: Array(0)
+colors.length
+11
+colors[5]
+undefined
+colors[10]
+'indigo'
+let beatles = ["paul", "john", "george"]
+undefined
+beatles[3] = "ringo"
+'ringo'
+beatles
+(4) ['paul', 'john', 'george', 'ringo']
+Narrator: So now that we've created arrays,
+
+let's talk about getting data out.
+
+So we put our data in, we put it in order,
+
+or at least there is an order.
+
+Sometimes we don't really care about the order,
+
+but it's there no matter what.
+
+So when we put that data in,
+
+each element is assigned an index, just like with strings.
+
+So with strings, each character in the string
+
+has an index.
+
+In an array, each individual element has its own index.
+
+So this thing right here is the first element.
+
+It has an index of zero.
+
+True index zero.
+
+Then we have a number, 68, well that's the second slot,
+
+and it has an index of one, and then two, and then three.
+
+So just like with strings, we start counting at zero.
+
+So here's an array, a hypothetical array
+
+of the Seven Dwarves, which I actually Googled.
+
+I thought it was Seven Dwarves,
+
+but the official spelling is Seven Dwarfs, not VES, I dunno.
+
+Anyway, Doc, Dopey, Bashful, Grumpy, Sneezy, Sleepy, Happy.
+
+The first one in this array is Doc,
+
+and then we have Dopey, then we have Bashful.
+
+Now these indices are important
+
+because we actually use them to refer to specific elements.
+
+Just like I can ask for the first character in a string,
+
+using this syntax here,
+
+if we take a look at any string, how about Monday?
+
+I want the first character, I use square brackets zero.
+
+Well, I actually do the exact same thing for an array.
+
+We just use an array here instead of a string.
+
+So we have our days array, it has three elements,
+
+and if I want that first value out of there,
+
+the very first thing, whatever it is, it's days of zero.
+
+And remember, days has a length, every array has a length,
+
+and the length is always one greater than the maximum index.
+
+So the maximum index here is two, right?
+
+Zero, one, two.
+
+So if I want Wednesday,
+
+or whatever that element is, days of two.
+
+So it's just a way, just like with strings,
+
+of using a positional number to access an element.
+
+Rather than a character in a string,
+
+it's the entire element.
+
+And that could be a string itself.
+
+That could be another array, it could be a Boolean,
+
+it could be false, it could be not a number.
+
+Whatever it is, we're using that number to access it.
+
+And so this is where the order comes in.
+
+Every element has this associated number, this index.
+
+So we can use them to access a value out.
+
+So to read something out, like days of two equals Wednesday,
+
+I should also show what happens
+
+if we try and access something like days of three.
+
+There is no index of three.
+
+We get undefined,
+
+which is the same value I would actually get
+
+if I did days of 30, or days, whatever that is, 300,000.
+
+There is no index, 30,000, god, why can't I do numbers?
+
+There is no index 300,000 in this array.
+
+There's not even an index of three.
+
+We get undefined.
+
+So there's not an error, it's not a problem.
+
+But we just don't have anything there.
+
+There's nothing to see.
+
+There's nothing defined.
+
+Now if we do go back to this days, let's go with Tuesday,
+
+which is the index of one, the second element,
+
+this gives me the string Tuesday.
+
+Now I actually can chain on, this is kind of bizarre
+
+to do this, but if I wanted that first letter,
+
+I could do this right here.
+
+So this is more of just an exercise
+
+to show you that this is possible.
+
+It goes from left to right.
+
+So what does days evaluate to?
+
+Well, it's the array,
+
+it's a thing in memory, this collection.
+
+And then we're asking for index of one from that array,
+
+which gives us Tuesday.
+
+So then I'm basically asking for Tuesday
+
+square brackets zero, which gives me capital T.
+
+Now we can use that same syntax, using the square brackets,
+
+to update an array,
+
+to actually change something at a particular index.
+
+For example, here I've got a colors array
+
+and I've messed up the first color,
+
+I wrote rad, what a disaster.
+
+It's supposed to be red, what an idiot.
+
+Well, if I wanna change that,
+
+I know that it's index of zero, it's the first element,
+
+and I can set it equal to red.
+
+Now this is important to understand,
+
+I actually can't do this with strings.
+
+So if I have a string, let's just go with
+
+first name equal and then I'll set it
+
+equal to my name, colt.
+
+And then I realize, ah, I want to capitalize
+
+the first letter.
+
+First name of zero is C.
+
+I cannot reassign that.
+
+It doesn't give me an error.
+
+But if I look at first name,
+
+I'm actually not changing it in any way.
+
+Now with an array, we have a totally different outcome.
+
+So let's make my array of colors.
+
+I'll just do a couple, we have rad, orange, and yalloww.
+
+And let's hit enter here.
+
+I realized I wanna change that first one.
+
+So colors of zero is rad.
+
+No, now it's going to be red.
+
+Now if we look at colors,
+
+I did actually impact that array element.
+
+So unlike with a string,
+
+I can't change particular characters.
+
+In an array, I can change the entire element.
+
+So I could make it a number instead if I wanted.
+
+So let's fix yalloww, how do I fix that?
+
+What is the index I need?
+
+Colors square bracket two equals yellow,
+
+just like that.
+
+Now we look at colors, red, orange, yellow.
+
+So I can also do things like,
+
+as I've mentioned, I could change,
+
+let's say I change orange to be, I don't know,
+
+the number 70.
+
+I dunno why.
+
+Colors of one equals 70.
+
+That was stupid, but it works.
+
+So I can change type, I can change the value.
+
+I also can try something.
+
+Let's see what happens here.
+
+Make a prediction, what happens if I do
+
+colors of how about 10 equals indigo,
+
+or some other string, or just anything?
+
+What do you think my array will look like?
+
+First of all, can I do this?
+
+Can I add all the way at index of 10?
+
+Okay, let's look at colors.
+
+I didn't get an error.
+
+So no issues.
+
+Wow, red, 70, yellow, seven empty slots, and then indigo.
+
+So if I open this up,
+
+what we actually end up with is an array
+
+with a length of 11.
+
+It has 11 slots in it.
+
+They're not all full, but what happens when we make a slot
+
+that doesn't have a value in it?
+
+Well, let's look at colors of, how about five?
+
+It's undefined.
+
+Six, undefined.
+
+8, 9, 10, whoops, we get indigo.
+
+So our array elongated, took up a whole bunch of extra space
+
+so that it could fit something in at index of 10.
+
+Is that what we did?
+
+Yes, index of 10.
+
+So it, everything else is filled with undefineds,
+
+so it's kind of a weird thing to do.
+
+Not that you would, but you can do it.
+
+Now if I did have an array
+
+and I wanted to add something to the end, let's do like a,
+
+I dunno, let the Beatles equal an array with Paul,
+
+John, and George like that.
+
+And then I want to add Ringo to the end.
+
+Well, one option is just this, Beatles of,
+
+and then I figure out, all right,
+
+what is the current highest index, zero, one, two,
+
+And then I add one to that, so three.
+
+Alternatively I could just use the length, right?
+
+What is the length?
+
+1, 2, 3, so if I use that,
+
+it gives me one more than the highest index.
+
+So Beatles of three equals poor Ringo.
+
+And there we go, let's take a look at the Beatles array.
+
+Now Ringo is at the end.
+
+Now this is kind of annoying having to figure out that index
+
+and put that number in there to add to the end of the array.
+
+So we'll see a nicer way of doing this shortly.
+
+So to wrap up what we've seen so far, arrays are indexed.
+
+Every element has a corresponding number, starting at zero,
+
+all the way up until the end of the array,
+
+with the highest index is always one less
+
+than the actual length.
+
+And we can use that index to access particular elements
+
+or to assign new values at those slots.
+
+So like we did here, we fixed rad and made it red.
+
+let movieLine = ["tom", "nancy"]
+undefined
+movieLine[2] = "pablo"
+'pablo'
+movieLine
+(3) ['tom', 'nancy', 'pablo']
+movieLine.push("oliver")
+4
+movieLine
+(4) ['tom', 'nancy', 'pablo', 'oliver']
+let cat = "blue";
+undefined
+cat.toUpperCase()
+'BLUE'
+cat
+'blue'
+movieLine.push("eva")
+5
+movieLine
+(5) ['tom', 'nancy', 'pablo', 'oliver', 'eva']
+movieLine.push("harry", "hermione")
+7
+movieLine
+(7) ['tom', 'nancy', 'pablo', 'oliver', 'eva', 'harry', 'hermione']
+movieLine.pop()
+'hermione'
+movieLine
+(6) ['tom', 'nancy', 'pablo', 'oliver', 'eva', 'harry']
+let person = movieLine.pop()
+undefined
+person
+'harry'
+movieLine
+(5) ['tom', 'nancy', 'pablo', 'oliver', 'eva']0: "tom"1: "nancy"2: "pablo"3: "oliver"4: "eva"length: 5[[Prototype]]: Array(0)
+let barbell = []
+undefined
+barbell.push(45)
+1
+barbell.push(45)
+2
+barbell.push(25)
+3
+barbell.push(10)
+4
+barbell.push(2.5)
+5
+barbell
+(5) [45, 45, 25, 10, 2.5]
+barbell.pop()
+2.5
+barbell.pop()
+10
+barbell.pop()
+25
+barbell.pop()
+45
+barbell.pop()
+45
+barbell.pop()
+undefined
+Instructor: Now that we've seen the basics,
+
+we can create an array,
+
+we can access elements using an index,
+
+we can modify elements using an index,
+
+we've seen the length property,
+
+it's time to move on to some of the built-in array methods.
+
+If you recall, for strings,
+
+each string comes with a whole bunch of different methods.
+
+Let's just take a look at one, LOL.
+
+And then if I type that dot here, we get a bunch of methods,
+
+including things like to uppercase,
+
+to lowercase, slice, split.
+
+What else do we have? Substring, trim.
+
+We didn't go over all of these, but they're all here.
+
+They're all pieces of functionality
+
+or little actions that we can use at any point
+
+on a given string.
+
+Well, with arrays, we can do the same thing.
+
+Now the set of methods is different,
+
+but they all come with a bunch of methods.
+
+In fact, if you go to MDN and you look at an array,
+
+or just the array documentation, standard built-in objects,
+
+and then you can click on array.
+
+Where are you? I just search on Google array MDN.
+
+But here it is.
+
+And then on this left hand little sidebar,
+
+there are a list of methods.
+
+There is a list of methods.
+
+There are quite a few of them,
+
+and every single array has access to these.
+
+So in this video, we'll take a look at a couple of them,
+
+kind of go together, push and pop shift and unshift.
+
+But then we'll also take a look at some of these others,
+
+some of the more commonly used ones.
+
+So let's begin with push and pop.
+
+Push and pop allow us to add and remove
+
+from the end of an array.
+
+So, from the very end, not the beginning.
+
+So, this is actually very common.
+
+We'll often have some array, which is ordered, right?
+
+As we know.
+
+And often we wanna maintain that order.
+
+So we add to the end of an array.
+
+For example, if I wanted to make a line of people waiting
+
+to get into the movie, right?
+
+I could have something like let movieLine =
+
+and then have an array.
+
+Let's just say there's two people in there, Tom and Nancy.
+
+Sure.
+
+Then if I want to add someone to this line,
+
+if Tom is the first person, then Nancy,
+
+well, I want to add to the end.
+
+And I could figure out the length
+
+or figure out the correct index as we did in the last video,
+
+and do something like movieLine[2] =
+
+who else are we adding?
+
+Tom, Nancy, how about Pablo, right?
+
+And that does work.
+
+I'm adding to the end.
+
+But that's annoying having to know that index,
+
+especially if we have a very long array
+
+or something that we're not really in control of ourself.
+
+So what we can do is use push.
+
+MovieLine.push, and then this is a method.
+
+So we need those parentheses,
+
+just like we do for to uppercase or repeat
+
+or any of the string methods we've seen.
+
+And then we pass in the items
+
+we want to push to the end of this array.
+
+So who else is coming to see this movie?
+
+Tom, Nancy, Pablo.
+
+How about Oliver? Just like that.
+
+Now we look at movieLine and you can see
+
+it has four elements.
+
+Oliver was added to the very end.
+
+Now this is very different
+
+than what happens with string methods.
+
+When I call to uppercase on a string,
+
+the string itself is not changed.
+
+Just to recap this, let cat = blue.
+
+That's one of my cats.
+
+If I call cat.toUpperCase,
+
+it gives me the uppercase version.
+
+It's just a different string.
+
+But cat remains unchanged.
+
+with arrays, when I push onto movieLine,
+
+movieLine actually is updated.
+
+And what it gives me or what it returns,
+
+is the technical term, is the new length of the array.
+
+So if I push something else on,
+
+let's see, Tom, Nancy, Pablo, Oliver.
+
+How about Eva?
+
+It gives me five.
+
+That is now the current length of movie line.
+
+Now, I also can push multiple things on,
+
+not as common, but I could.
+
+Let's see,
+
+how about Harry and Hermione?
+
+Herminoe, I think that's how it's spelled.
+
+Whatever. It tells me the new length is seven.
+
+We look at movieLine and Harry and then Hermione
+
+have been added to the end.
+
+All right, so we're preserving the order here
+
+of our line of people entering at the queue.
+
+They're added to the back of our array.
+
+Now, we also have this method called pop.
+
+And pop allows us to remove an element from the end.
+
+Now that seems kind of stupid in this example here,
+
+where the last person who joined the line
+
+would then be removed if we use pop.
+
+But let me just demonstrate that.
+
+So movieLine.pop.
+
+Now, pop does not require any arguments.
+
+We don't pass anything in between those parentheses.
+
+It's just going to give us the very last thing
+
+from the array.
+
+It returns it.
+
+So it gives it to us and it removes it from the array.
+
+So we get Hermione,
+
+and if we look at movieLine,
+
+now it's only six elements long
+
+and I can capture that in a variable.
+
+Just like I can capture an uppercase string,
+
+the result of to uppercase in a variable.
+
+So I can do that here.
+
+Let person = movieLine.pop.
+
+We look at person, not performance, person.
+
+It's now Harry. And movieLine is one item shorter.
+
+Now here's an example where it might make
+
+a little more sense to use push and pop
+
+in conjunction instead of just our movie example
+
+where we just took people from the back of the line first.
+
+If you've ever lifted weights
+
+or seen someone lifting weights with a barbell
+
+where, you know, it's a bar and you put the weights on
+
+from the inside first, right?
+
+You add the first weight on
+
+and then you put another weight on top of that,
+
+you sort of stack them.
+
+So if I wanted to create my,
+
+let's say it's just an empty barbell,
+
+and I'm going to add on a 45 pound weight,
+
+so I could push that on,
+
+and then maybe another 45 pound weight,
+
+and then a 25 pound weight.
+
+And then you usually do the smallest ones last,
+
+a 10, and then how about a 2.5 pound?
+
+I'm sorry if you use kilograms.
+
+Then we're looking at our barbell here.
+
+If I need to swap something out,
+
+if I need to remove this 45, if I'm using an actual barbell,
+
+I need to remove this and then this and then this,
+
+and then I can get to this one, right?
+
+Sort of stuck in there, sandwiched.
+
+So I could use pop to simulate that.
+
+So not something we'd really do with code,
+
+unless you're building some sort of weight simulator,
+
+I guess, or gym tracking app.
+
+But I just wanted to show this relationship.
+
+Sometimes there are situations
+
+where we want to remove something that we just added in.
+
+So it's not always like a line
+
+where the first person in line
+
+is the first person to get out.
+
+I'm actually alluding to these concepts called a stack
+
+in a queue and computer science.
+
+We don't need to worry about them for now,
+
+but push and pop and then shift and unshift,
+
+two methods we're about to see in the next video,
+
+they come from these traditional
+
+computer science structures, a stack in a queue.
+
+So think of this as a stack,
+
+a stack of papers on your desk,
+
+a stack of bills.
+
+You pull off one from the top,
+
+that is the most recently added one.
+
+You add to the top of that stack of papers,
+
+you remove from the top.
+
+Same idea here, we add to the end,
+
+and then if I use pop, I can remove from the end.
+
+Anyway, it's getting, we're getting a bit in the woods here,
+
+but I just wanted to make a point that there are times
+
+where you'll use push and pop together.
+
+Pop removes the one thing at the very end.
+
+Push will add one or more to the very end of an array.
+ 
+ 
+movieLine
+(5) ['tom', 'nancy', 'pablo', 'oliver', 'eva']
+movieLine.shift()
+'tom'
+let nextPatron = movieLine.shift()
+undefined
+nextPatron
+'nancy'
+movieLine
+(3) ['pablo', 'oliver', 'eva']
+movieLine.push("colt")
+4
+movieLine.shift()
+'pablo'
+movieLine.shift()
+'oliver'
+movieLine.shift()
+'eva'
+movieLine.shift()
+'colt'
+movieLine.shift()
+undefined
+movieLine.push("jerry", "deniz", "kevin", "carly")
+4
+movieLine
+(4) ['jerry', 'deniz', 'kevin', 'carly']
+movieLine.unshift("VIP")
+5
+movieLine
+(5) ['VIP', 'jerry', 'deniz', 'kevin', 'carly']
+Instructor: Okay, so we just covered push and pop.
+
+Push adds to the end.
+
+It inserts a new element at the very end of an array,
+
+and pop removes the very last item from an array.
+
+Shift and unshift are also a pair who operate
+
+at the beginning of the array, the start.
+
+So the terminology is often a little confusing to beginners.
+
+And truth be told to me at times, I still have been known
+
+to mix up shift and unshift.
+
+If I'm, if I'm a little sleepy, if I'm not paying attention,
+
+I often will think, okay,
+
+on shift sounds like it removes something.
+
+Even though I know if I reflect just a little bit longer,
+
+I'll remember, oh, actually you have it backwards
+
+and you have it backwards
+
+pretty much every time you're ever tired.
+
+Anyway, these names, push, pop, shift, and unshift, again,
+
+they come from other computer science structures,
+
+stacks and cues.
+
+We don't really need to concern ourselves with them,
+
+but that's where it comes from
+
+if you're wondering why it's called shift and unshift.
+
+So let's take a look at them.
+
+Let's start with shift.
+
+Shift removes from the beginning of an array.
+
+So it's like pop, but it removes from the beginning.
+
+So we have this movie line, which is just a line of people
+
+who have been waiting to see our movie.
+
+Tom is first in line, then Nancy, Pablo, Oliver,
+
+and then Ava or Eva.
+
+So to remove the first person in line,
+
+which is normally how we would do this,
+
+if you're the first person waiting,
+
+you usually are the first person to be helped
+
+or to get into the movie.
+
+So we can use shift, movieLine.shift,
+
+and this returns to me,
+
+the thing that element that it removed.
+
+In this case, it happens to be a string.
+
+If we look at movieLine,
+
+it now has four people in it, four elements.
+
+So I could shift the next person, save that to a variable,
+
+let nextPatron, right?
+
+And then nextPatron is Nancy.
+
+And movieLine is only three elements.
+
+So I can use that to remove from the beginning.
+
+And if we really wanted to mimic this idea of a line,
+
+well then the first person who's been waiting
+
+is the first person to be helped.
+
+The last person added in
+
+would be the last person to be helped.
+
+So if we had someone else come in,
+
+let's say I join late. movieLine, where would I go?
+
+If I'm going to the end of the line, I should be pushed.
+
+If we're being consistent here, we'll always add to the end
+
+and remove from the beginning.
+
+So now everyone else will be helped before me, Pablo,
+
+then Oliver, then Eva, Ava, and then me.
+
+And now it should be empty.
+
+And by the way, if I try and shift
+
+or pop from an empty array, we don't get an error,
+
+we just get nothing.
+
+We get undefined.
+
+All right, so that's shift.
+
+Unshift is how we add a new element
+
+to the beginning of an array.
+
+So let's add some stuff to our movieLine.
+
+Let's just push a bunch of times or even just one time.
+
+How about push Jerry?
+
+And then how about Dennis, Kevin and Carly?
+
+All right, so nothing involving unshift yet.
+
+There's our line of people waiting to get in.
+
+Jerry has been waiting the longest,
+
+but then we have a special VIP come along,
+
+and this VIP gets to go right to the beginning of the line.
+
+Well, how do we do that?
+
+We can use unshift,
+
+and then we'll just call them VIP.
+
+Now we look at our movieLine and VIP is at the front.
+
+And now if we shift from the front, we get VIP.
+
+So these are sort of silly examples I'm showing you here.
+
+But they show the four core things that we can do so far.
+
+We can add and remove from the end of the array,
+
+or we can add and remove from the beginning.
+
+So push and pop work on the end, and then shift
+
+and unshift work on the beginning.
+
+You can use them in conjunction
+
+to mimic things like a queue for a movie.
+
+I use the term movieLine instead of movie Q,
+
+but what we're mimicking is a a queue of people.
+
+So if you wanna do a bit more research into stacks
+
+and queues, I've really shown them to you
+
+without using the terminology very much.
+
+We saw earlier a stack of weights.
+
+We used push and pop to create a stack structure.
+
+So that's shift and unshift.
+
+We add and remove from the beginning,
+
+push and pop operate on the end.
+
+These are really, really commonly used.
+
+And if it takes a little bit of time to get used to them,
+
+if you are like me and you occasionally stumble over shift
+
+and unshift, it's not a big deal.
+
+You'll get lots of practice.
+
+These four methods are probably the most common,
+
+or at least top 10 most commonly used array methods.
+
+So next up, we're gonna take a look at some of the others.
+
+
+
+﻿
+let cats = ["blue", "kitty"];
+undefined
+let dogs = ["rusty", "wyatt"]
+undefined
+cats.concat(dogs)
+(4) ['blue', 'kitty', 'rusty', 'wyatt']
+cats
+(2) ['blue', 'kitty']
+dogs
+(2) ['rusty', 'wyatt']
+dogs.con
+undefined
+dogs.concat(cats)
+(4) ['rusty', 'wyatt', 'blue', 'kitty']
+let comboParty = dogs.concat(cats)
+undefined
+comboParty
+(4) ['rusty', 'wyatt', 'blue', 'kitty']
+cats.includes("blue")
+true
+cats.includes("Blue")
+false
+"Blue".indexOf("B")
+0
+"Blue".indexOf("0")
+-1
+comboParty
+(4) ['rusty', 'wyatt', 'blue', 'kitty']
+comboParty.indexOf("rusty")
+0
+comboParty.indexOf("kitty")
+3
+comboParty.indexOf("jhgdfkjgkjdf")
+-1
+comboParty.reverse()
+(4) ['kitty', 'blue', 'wyatt', 'rusty']
+comboParty
+(4) ['kitty', 'blue', 'wyatt', 'rusty']
+comboParty.push("blue")
+5
+comboParty
+(5) ['kitty', 'blue', 'wyatt', 'rusty', 'blue']
+comboParty.indexOf("blue")
+1
+Instructor: Next up, we'll take a quick look
+
+at some of the more commonly-used array methods.
+
+So we're not gonna go into these in a ton of detail,
+
+but I'm just gonna break it up
+
+with a couple of chunks of these methods.
+
+And in this first video, we'll start with concat.
+
+So concat, if we go to the MDN docs,
+
+and you just search for concat,
+
+or you look at the Array page, click on concat,
+
+or you just google concat MDN.
+
+Click on it,
+
+we get great documentation with examples.
+
+Really if you remember the idea of concatenation
+
+and concating or concatenating two strings,
+
+we're adding them together to form a new string.
+
+With array.concat, we are concatenating two arrays
+
+to form a new third merged array.
+
+So here's how it works.
+
+We call it on one of our arrays,
+
+.concat, and then we pass in a second array
+
+to concatenate with that initial array,
+
+and that will make us a new third array.
+
+So let me just show you this here.
+
+Let me clear this.
+
+Let's do two different arrays.
+
+Let's do let cats,
+
+this will be my two cats.
+
+So I have blue, and I have,
+
+yes, her name is just kitty at the moment.
+
+Then I'll have our dogs array,
+
+and both of my dogs no longer with us, sadly.
+
+We have rusty and then wyatt.
+
+All right, and then if I call cats.concat(dogs),
+
+that makes me a new array.
+
+So I'm not actually updating cats,
+
+if you look at cats, it's exactly the same,
+
+but it makes me a new array that combines the two,
+
+and since I did cats.concat(dogs),
+
+we get the cats first.
+
+If I did dogs.concat(cats),
+
+we get the dogs first.
+
+And I could save that,
+
+let comboParty = dogs.concat(cats),
+
+and there we go.
+
+That's all you need to know about concat for now.
+
+So it's combining the arrays,
+
+but it doesn't modify either of the originals.
+
+The next method we'll look at is includes.
+
+includes is an example of a boolean method,
+
+which means it returns true or false.
+
+It's very simple, at least its return value.
+
+It's going to tell us
+
+if an array includes a particular value.
+
+Does it include this?
+
+Does it include dog?
+
+Does it include cat?
+
+So I could try it on my cats array.
+
+Does cat, or cats, include,
+
+how about blue?
+
+The answer is yes, true.
+
+Now if I misspell that, or if I use capital B,
+
+they're entirely different strings,
+
+it's simply going to go through and compare
+
+if, at any point, any element in our array, cats,
+
+which is very short,
+
+if any element is Blue with a capital B,
+
+and we know that's not the case.
+
+So I'll get false.
+
+And that's kind of it for includes.
+
+It's a boolean method, it returns true or false.
+
+Then we have indexOf.
+
+Very, very similar to how indexOf works for a string.
+
+If you can recall,
+
+if we take a string like Blue,
+
+and I ask for the indexOf('B'),
+
+we get zero.
+
+What's the indexOf('e')?
+
+It's three.
+
+And what about if the character's not found?
+
+indexOf('0')?
+
+Negative one, there is no zero in Blue.
+
+So same idea, except the indexes here, indices,
+
+refer to the indices of an array, not of a string.
+
+So let's try it.
+
+Let's take our comboParty array,
+
+and let's figure out what the index of rusty is.
+
+It has to match capitalization.
+
+Its index is zero.
+
+What's the index of kitty?
+
+It's three.
+
+And if I misspell something,
+
+or just something that's not in the array,
+
+we get negative one.
+
+So this is an easy way to tell
+
+if some element is in an array or not.
+
+We can just quickly check is indexOf that thing
+
+equal to negative one?
+
+If so, it's not present.
+
+And then the last thing I'll show you for now is reverse.
+
+When I say for now, I mean in this video.
+
+So reverse is going to reverse an array.
+
+And the very important thing to understand
+
+is that it actually does it in place.
+
+It's known as a destructive method.
+
+It does change the original.
+
+So here is my comboParty array:
+
+rusty, wyatt, blue, kitty.
+
+Let's reverse it.
+
+combo, not bonco,
+
+oh, my goodness, I can't talk and type at the same time.
+
+comboParty.reverse,
+
+remember, that doesn't do anything.
+
+I always need those parentheses,
+
+at a bare minimum, empty parentheses,
+
+and a lot of these methods do require us
+
+to pass something in,
+
+but reverse doesn't.
+
+It's just gonna reverse it.
+
+Okay, so we get kitty, blue, wyatt, and rusty.
+
+The opposite of what we had here.
+
+And if we take a look at comboParty,
+
+it is now reversed.
+
+So it's not just returning me a reversed copy,
+
+it destructs, well, it doesn't destruct,
+
+it's destructive to the original.
+
+It reorganizes it,
+
+it reorders it entirely,
+
+and it reverses it.
+
+That's really a better way of putting it.
+
+It reverses the original array.
+
+All right, so those four
+
+hopefully are pretty straightforward.
+
+We have concat to combine two arrays.
+
+We have includes to tell
+
+if a single element is in an array or not.
+
+Then we have indexOf which we can use to tell
+
+if something is in an array or not.
+
+But it's also useful,
+
+because it tells us where that thing is
+
+if it is in there.
+
+So includes is a simple yes or no,
+
+indexOf will say,
+
+oh, yeah, the first time that occurs,
+
+that's actually something I didn't make very clear,
+
+but I'll quickly do that.
+
+If I push onto my comboParty another example of blue.
+
+I have two cats named blue, okay?
+
+If I do indexOf('blue'),
+
+it only gives me the first match,
+
+just like it does for string.indexOf,
+
+so it won't tell me that there's two blues in here.
+
+It only finds the first one and tells me the index.
+
+And then, after that, we saw reverse,
+
+which is straightforward.
+
+It reverses an array in place.
+
+let colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+undefined
+colors.slice()
+(7) ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+let coolColors = colors.slice(3)
+undefined
+coolColors
+(4) ['green', 'blue', 'indigo', 'violet']
+colors
+(7) ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+let warmColors = colors.slice(0, 3)
+undefined
+warmColors
+(3) ['red', 'orange', 'yellow']
+colors
+(7) ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+colors.slice(-2)
+(2) ['indigo', 'violet']
+colors
+(7) ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+colors.splice(5, 1)
+['indigo']
+colors
+(6) ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
+days
+(3) ['Monday', 'Tuesday', 'Wednesday']
+days.splice(1, 2)
+(2) ['Tuesday', 'Wednesday']
+days
+['Monday']
+colors
+(6) ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
+colors.splice(1, 0, "red-orange")
+[]
+colors
+(7) ['red', 'red-orange', 'orange', 'yellow', 'green', 'blue', 'violet']
+colors.splice(3, 0, "yellow-green", "forest-green")
+[]
+colors
+(9) ['red', 'red-orange', 'orange', 'yellow-green', 'forest-green', 'yellow', 'green', 'blue', 'violet']
+colors.splice(2, 2, "DELETED!!")
+(2) ['orange', 'yellow-green']
+colors
+(8) ['red', 'red-orange', 'DELETED!!', 'forest-green', 'yellow', 'green', 'blue', 'violet']
+colors.splice(-2)
+(2) ['blue', 'violet']
+colors
+(6) ['red', 'red-orange', 'DELETED!!', 'forest-green', 'yellow', 'green']
+let scores = [1, 70, 100, 2500, 9, -12, 0, 34]
+undefined
+scores.sort()
+(8) [-12, 0, 1, 100, 2500, 34, 70, 9]
+Instructor: So next up we'll take a look
+
+at a few more methods.
+
+Slice, splice, and sort.
+
+So let's focus on slice and splice.
+
+They sound very similar.
+
+We'll begin with slice.
+
+So slice is a way of getting a copy of a portion
+
+of an array, a slice of an array.
+
+So if we have an array with, you know, 10 elements in it
+
+and I just want the first 5, or the first 3,
+
+or the last 4, whatever it is, I can use slice.
+
+So I'll show you how it works.
+
+I'm gonna clear all of this.
+
+So I'll make a new array here.
+
+I'm calling it colors, and it has what, eight colors in it?
+
+ROYGBIV.
+
+No, 7.
+
+1, 2, 3, 4, 5, 6. Yeah. Okay.
+
+Anyway, if I call colors.slice,
+
+and I just pass in one number.
+
+If you see here, Chrome in giving me me a hint.
+
+It says, well you can pass in a start and an end.
+
+And that question mark actually means they're optional.
+
+So technically I could pass in neither.
+
+And what this will do is make me a copy of colors.
+
+So this is a new array that looks exactly the same.
+
+We'll learn how to test that if they're actually different
+
+or if they're the same later on.
+
+But for now, that's one thing we can do with slice.
+
+But if I just pass in a starting point, like 3,
+
+this is going to go from the index of 3.
+
+So what is that? 0, 1, 2, 3, green.
+
+To the end of the array.
+
+Or if I do colors.slice(5), it goes from index of 5,
+
+which is indigo, to the very end.
+
+Index of 1 goes from index of 1 to the end.
+
+So if I only provide a start, I can get a portion
+
+of the array until the end.
+
+So that's start index to the end.
+
+For example, if I wanted the cool colors,
+
+so red, orange, yellow I think are considered warm.
+
+So green onwards.
+
+And I wanted a new array.
+
+I would do, what's the index of green? I think it's 3.
+
+And then I can save that to an array.
+
+Let coolColors.
+
+We look at coolColors. There we are.
+
+And colors is completely unchanged.
+
+Then if I pass in a stopping point,
+
+so that's the second argument.
+
+Colors.slice.
+
+Let's go from index of 2 to index of 4.
+
+What does it do?
+
+Well, it starts at index of 2, which is yellow, 0, 1, 2.
+
+And it stops, not at index of 4, or not including 4,
+
+but it stops up to this number.
+
+So index of four is blue, right?
+
+0, 1, 2, 3, 4.
+
+So it includes the start, but it does not include the stop.
+
+So I could use this.
+
+Let's say I just wanted to get the warm colors,
+
+red, orange, yellow in a new array.
+
+How would I do that?
+
+Well, we'll start at index of 0.
+
+Where do we stop?
+
+We'll stop at index of 3, which is green.
+
+0, 1, 2, 3.
+
+Just like that.
+
+Save that to a variable.
+
+let warmColors.
+
+There we are.
+
+And colors is still unchanged.
+
+Now another thing you can do is actually use
+
+a negative index.
+
+If you give a negative index,
+
+it will start from the end of the array.
+
+So if I want the last 2 or the last 3 elements,
+
+I can do colors.slice of -3,
+
+and that gives me the last 3.
+
+If I want the last 2, -2.
+
+Now let's talk about a similar sounding method,
+
+which is splice.
+
+Splice does a little bit more.
+
+It's going to change...
+
+According to MDN, changes the contents of an array
+
+by removing or replacing existing elements
+
+and/or adding new elements in place.
+
+Oh boy.
+
+So think of the term splice.
+
+Traditionally, when we...
+
+Traditionally, I don't know why I said traditionally,
+
+but when we splice something outside of programming,
+
+we're inserting it or we're, I don't know,
+
+we're sort of like joining it to something else.
+
+It's the same idea here.
+
+So we have an array in this example called months,
+
+and it's missing February.
+
+January, March, April, June.
+
+So to get February...
+
+It's also missing May.
+
+To get February between January and March we can use splice.
+
+And the syntax is a little clunky, if you're new.
+
+We need to specify a couple different things.
+
+Where we're starting our splice.
+
+And then how many things to delete, which is this number.
+
+And then, optionally, something to insert.
+
+So everything we do with splice operates in place.
+
+It is destructive to the original array.
+
+It doesn't make a copy.
+
+So why don't we try an example.
+
+Here's our colors array that we have.
+
+It has 7 colors.
+
+And remember with splice we can insert things
+
+and we can remove things.
+
+So why don't we start by removing something.
+
+What we need to do is call splice.
+
+And then there are three different things
+
+that we can pass in.
+
+The starting index, and that's required.
+
+Where are we starting the splice?
+
+Are we deleting things? If so, how many to delete?
+
+So there's a number here.
+
+It can be zero, if we don't wanna delete
+
+and we just wanna insert.
+
+Or if we wanna delete, let's say we're deleting one thing.
+
+Let's say I wanna delete indigo.
+
+We're gonna go with the traditional rainbow
+
+I learned as a kid before chemistry, or physics,
+
+or whatever class it was, where it's just red, orange,
+
+yellow, green, blue, purple.
+
+So I'm gonna replace violet with purple eventually,
+
+but let's do indigo.
+
+I'm gonna get rid of...
+
+Or let's, eh, either one.
+
+Let's get rid of indigo.
+
+So colors.splice.
+
+What is that Index? 0, 1, 2, 3, 4, 5.
+
+So index of 5 is the starting point.
+
+How many do I want to delete?
+
+I'll delete one. Just like that.
+
+Okay, so it returns to me,
+
+it gives me back an array containing what I deleted.
+
+And I can delete more than one thing,
+
+which is why it gives me an array
+
+instead of just indigo.
+
+I might delete five things.
+
+So if we look at colors, now, take a look.
+
+There's no indigo, and that wound has healed.
+
+Where indigo used to be, it has squished together,
+
+and now we have blue and then violet.
+
+So I could remove multiple things.
+
+Just as another example...
+
+Do I have this days array still?
+
+Okay, if I did days.splice, starting from index 1,
+
+I want to remove 2 things.
+
+I get back this array with the two things I deleted,
+
+and days is mutated, it's updated, to only contain Monday.
+
+All right, so let's go back to colors.
+
+So now let's see how we can insert something new.
+
+Let's insert a value between red and orange.
+
+We'll call it red-orange, I guess.
+
+Nothing crazy.
+
+Or maybe dark orange, or I don't know.
+
+Red-orange is fine.
+
+So I need to do colors.splice.
+
+And then I need to specify the starting point.
+
+Where is this happening?
+
+At index of 1, right?
+
+I wanted to go after red, which is index of 0.
+
+So index of 1. Delete nothing.
+
+I don't want to replace something,
+
+I just want to add this in between.
+
+And then the color, or in this case the string, red-orange.
+
+Okay?
+
+So I'm not replacing, I'm just inserting between.
+
+Let's see if it works.
+
+Let's look at colors.
+
+Red, red-orange, orange, yellow, green, blue, violet.
+
+Awesome.
+
+So I can also use it to replace.
+
+I also can insert multiple things.
+
+So let's say I want to insert, I don't know,
+
+after green.
+
+What's between green and blue?
+
+Or between yellow and green?
+
+Let's do a green-yellow,
+
+and then a light green or something.
+
+Let's do two or three colors in between.
+
+So I'm gonna do colors.splice,
+
+and then the index here that I wanna go after.
+
+So 0, 1, 2, 3.
+
+Right there, 3.
+
+So after 3, delete nothing.
+
+And I want to insert...
+
+Let's go with...
+
+These are horrible color names, aren't they?
+
+Yellow-green, and then maybe forestgreen,
+
+which I don't know.
+
+This seems stupid to do those two colors, but whatever.
+
+We're doing it.
+
+Let's look at colors. And there we go.
+
+Oh, well I got...
+
+Oh geez, I got the index wrong.
+
+We wanna do it after index of 3, not at index of 3.
+
+So that's a good learning experience here.
+
+As you can see what just happened,
+
+we did red, red-orange, orange.
+
+I was trying to go after yellow,
+
+but instead of doing index of 4,
+
+which is where I want the insertion to happen,
+
+I specified index of 3, which was the old index for yellow.
+
+But we inserted two new things there.
+
+So now we have index 3, 4, and then index of 5 is yellow.
+
+Anyway, it's not that common to use splice
+
+to insert things in the middle of an array.
+
+You'll learn more.
+
+Well, we will cover more later on.
+
+It's actually not terribly efficient
+
+to update the middle of an array.
+
+It's better to update the end of an array whenever possible.
+
+Sometimes you can't avoid it.
+
+And this can be useful to delete things, as we've seen.
+
+And also, if I do the same thing,
+
+let's do colors.splice,
+
+and I'll just pick an index here.
+
+How about index of 2?
+
+And I'm gonna delete 2 things.
+
+And then we can insert something.
+
+How about DELETED!!
+
+All right, so we start with red, red-orange, orange,
+
+yellow, green, blah, blah, blah.
+
+Let's look at colors now.
+
+We have red, red-orange.
+
+And then at index of 2, two things are missing.
+
+Orange and yellow,-green have been removed,
+
+and we replace them with a single element DELETED!!.
+
+All right, so that's enough for splice, for now at least.
+
+Don't feel like you have to commit at all to memory.
+
+It's definitely the most complicated method we've seen.
+
+It has the most uses of the methods so far.
+
+But it's also not something
+
+we necessarily use every single day.
+
+Now finally, sort.
+
+The array sort method.
+
+In the real world, we do sort arrays pretty frequently.
+
+But with what we know so far, the array sort method
+
+is kind of, I don't wanna say useless,
+
+but for now it's not going to be terribly useful
+
+because the default way that it sorts things.
+
+If you think about it, in order to sort an array,
+
+there has to be some comparison, right?
+
+If we sort numbers, are we sorting from lowest number
+
+to highest, ascending, descending?
+
+What about strings? Is alphabetical order?
+
+What about when you have strings and numbers?
+
+Oh geez.
+
+What about if you have things that are more complicated,
+
+like arrays of arrays?
+
+How do you sort that?
+
+Well, this is the kind of stuff we haven't really gotten to.
+
+We need to understand functions.
+
+And just as a a sneak preview,
+
+we'll be writing things like this
+
+where we pass a function into sort.
+
+But we're not there yet.
+
+So I just wanna show it to you because this comes up,
+
+usually when I'm teaching in person,
+
+students start to use sort, seems like it should work,
+
+but the default way that it sorts,
+
+if you just call array.sort with empty parentheses,
+
+it is going to convert everything into strings,
+
+and then compare their UTF-16 code unit values.
+
+So these underlying code numbers,
+
+basically, for each string,
+
+behind the scenes, it compares them.
+
+And that's very janky
+
+compared to other programming languages.
+
+So even if we have an array of all numbers, which we can do,
+
+let's make an array of nums.
+
+So let, let's call this scores.
+
+We'll have 1, how about 70.
+
+We'll have 100.
+
+Or yeah, sure, 100.
+
+We'll have 2500, and 9,
+
+and then -12, 0, and 34.
+
+Okay, now if I call scores.sort, you would expect,
+
+a lot of people would expect this to sort
+
+at least consistently, ascending or descending numerically,
+
+but that's not what happens.
+
+Take a look at this.
+
+All right, we have our smallest number, -12, then 0, then 1.
+
+So far so good.
+
+But then 100, 2500, 34, 70, 9.
+
+So it's basically using that first digit, right?
+
+-: 1, 0, 1.
+
+And then 1 plus 0, or 2, and then something,
+
+3 and then something, 7, 9.
+
+So this is not a reliable numeric sort.
+
+So this is more of a warning just around sorting.
+
+There is a way involving functions where we can write a sort
+
+and customize it and say,
+
+"I want you to sort numbers ascending or descending,"
+
+or, "I want you to sort based off of X piece of an array,"
+
+or whatever it is.
+
+But we're not there yet.
+
+So, that's sort, and that wraps up our basic survey
+
+of common array methods.
+
+Now if you do look at the documentation,
+
+there are quite a few methods on MDN that we are ignoring.
+
+That does not mean that they're not used.
+
+There's really two groups.
+
+There are some that are not commonly used,
+
+or not as commonly used.
+
+Things like toString.
+
+You know, if you really wanted to,
+
+you can turn an array into a string.
+
+Sure.
+
+You know, if that's something you need, it's here.
+
+But I didn't wanna spend a lot of time talking about it,
+
+although I just did talk about it.
+
+The second camp for these methods
+
+include things like reduce,
+
+and let's do filter.
+
+These are things we will learn more of later.
+
+They require us to understand functions
+
+and to be, I won't say more skilled,
+
+but more knowledgeable around JavaScript.
+
+So just keep that in mind.
+
+We're not done with array methods.
+
+We're done with the simple ones.
+
+And we'll revisit some of these forEach, filter, some, any.
+
+These are things that we'll learn.
+
+Map, I don't know how I forgot map.
+
+Once we have functions under our belt.
+
+So that's coming up later, but for now, that's a good start.
+
+"hi" === "hi"
+true
+["hi" , "bye"] === ["hi" , "bye"]
+false
+[1] === [1]
+false
+[] === []
+false
+[1] == [1]
+false
+let luckyNum = 87
+undefined
+let luckyNums = [67, 89, 4]
+undefined
+[1, 2, 3] === [1, 2, 3]
+false
+let nums = [1, 2, 3]
+undefined
+let numsCopy = nums
+undefined
+nums
+(3) [1, 2, 3]
+numsCopy
+(3) [1, 2, 3]
+nums.push(4)
+4
+nums
+(4) [1, 2, 3, 4]
+numsCopy
+(4) [1, 2, 3, 4]
+numsCopy.pop()
+4
+numsCopy
+(3) [1, 2, 3]
+nums
+(3) [1, 2, 3]
+nums === numsCopy
+true
+Instructor: Next up we need to talk about our friend,
+
+the triple equals operator.
+
+And our kind of friend,
+
+the double equals operator,
+
+in terms of arrays.
+
+So if we have two numbers or let's do strings, right?
+
+I have the string, "hi",
+
+and another string
+
+that looks exactly the same, "hi."
+
+They are the same.
+
+They are considered triple equal to one another.
+
+So they are, yeah,
+
+they're equal to each other.
+
+I don't know what else I was gonna say there.
+
+Now if we have an array,
+
+and this array contains,
+
+let's just say "hi",
+
+and "bye".
+
+Two strings,
+
+and if I triple equal that array to the same exact array
+
+or what looks like the same array,
+
+we get false.
+
+So why is this happening?
+
+Let's try it with numbers.
+
+Just the array one equals one.
+
+Okay, what about double equals?
+
+No?
+
+What about just an empty array?
+
+Still no.
+
+Why?
+
+Well, what happens here,
+
+when we work with an array,
+
+what you have to understand,
+
+and it's a little bit tricky
+
+and that sounded forceful,
+
+"what you have to understand,"
+
+but what's important to understand is that
+
+we're not comparing the contents.
+
+JavaScript actually doesn't care about what's inside,
+
+at least with arrays.
+
+What it's comparing instead
+
+are the references in memory.
+
+So let's take a step back.
+
+I'm gonna clear my screen for a moment.
+
+When I store a number,
+
+like let's do lucky number,
+
+"luckyNum" is 87.
+
+When I store that number there,
+
+there is a certain amount of space allocated
+
+in memory for this number.
+
+In fact, every number is going to get a certain amount
+
+of space because there is a maximum size
+
+for numbers, right?
+
+As I get to, where is it?
+
+Right about here,
+
+I'm outer space and now this number
+
+basically just turns to one.
+
+There's a maximum amount of memory allocated
+
+for every single number in JavaScript that I make.
+
+But with arrays that is not the case.
+
+I could have an array that has ten numbers,
+
+or an array that has 10,000 numbers
+
+and they're all super long,
+
+or 10,000 strings,
+
+or 10,000 arrays of arrays of arrays,
+
+where it could take up a lot of space.
+
+So the way they're stored is a little bit different.
+
+Instead of, you can kind of think of it as
+
+what we have right here,
+
+87 being stored in "luckyNum",
+
+which is not exactly how it works,
+
+but instead of "luckyNum" just being the spot in memory
+
+where 87 is,
+
+which is kind of what happens here.
+
+With an array If I do something like,
+
+"let luckyNums"
+
+equal this array, and I'll just type
+
+some random numbers in here,
+
+what JavaScript does is instead of trying
+
+to associate LuckyNums with all the contents of this array,
+
+we don't know how big it is,
+
+JavaScript doesn't know how much space it takes up
+
+or how much it could take up
+
+'cause it can change and all this stuff.
+
+So instead, what is stored
+
+and what's associated here with luckyNums
+
+in this array is a reference.
+
+So behind the scenes you can think of,
+
+almost like a social security number,
+
+or a home address, that corresponds
+
+to this container, to the array.
+
+So when I do something like this,
+
+"1, 2, 3"
+
+that is making a new array in memory
+
+and it has its own address,
+
+its own reference,
+
+its own social security number.
+
+And then when I do this here,
+
+"1, 2, 3,"
+
+I'm making another new array in memory,
+
+a new spot, a new social security number,
+
+whatever you wanna refer to it as.
+
+And they are distinct.
+
+They are not referring to the same thing in memory.
+
+The contents are the same,
+
+but that doesn't matter here.
+
+So I can demonstrate this.
+
+If I make a variable,
+
+"let nums = 1, 2, 3"
+
+Same thing that we've already done here.
+
+And then I make another variable.
+
+"let numsCopy = nums"
+
+So I'm saying nums is equal to this array in memory.
+
+And then I say,
+
+make it a new variable,
+
+and set it equal to whatever nums is equal to,
+
+whatever they're referring to.
+
+Okay?
+
+Now if I do something to nums,
+
+let's just look at numsCopy first.
+
+Nums and numsCopy, they look the same.
+
+If I do something to nums,
+
+"nums.push(4)"
+
+Let's look at nums.
+
+It has four on the end.
+
+Let's look at the copy.
+
+It also has four.
+
+They both are referring to the same thing in memory.
+
+I didn't make a new array here,
+
+I just said nums is equal to this array in memory.
+
+And I want a new variable pointing to the same thing.
+
+So think of an arrow.
+
+Nums has an arrow pointing to this,
+
+numsCopy has another arrow
+
+pointing to that same array.
+
+So when I change one, the other is altered.
+
+If I go the other direction,
+
+"numsCopy." Then I do "pop",
+
+nums is also changed.
+
+So they are linked.
+
+"numsCopy"
+
+They are the same exact reference.
+
+So now if I triple equal them,
+
+nums triple equals numsCopy,
+
+what is being compared is the reference,
+
+do they have the same arrow?
+
+Are they pointing to the same thing in our memory,
+
+not our memory, but in JavaScript memory?
+
+And they are.
+
+So trying to compare arrays
+
+in JavaScript is really only a thing
+
+if you're trying to check if they're the same array.
+
+If they're referring to the same thing,
+
+but it's not gonna help us if we're trying
+
+to compare the contents.
+
+There are ways of doing that,
+
+but they involve a lot more work
+
+and we're just not there yet.
+
+So double equals, triple equals
+
+are just going to check
+
+for the reference in memory.
+
+Are they the same?
+
+They're not looking at the insides.
+
+It doesn't matter at all.
+
+const PI = 3.14159
+undefined
+PI += 1
+VM6839:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:4
+(anonymous) @ VM6839:1Understand this errorAI
+const nums = [1, 2, 3]
+undefined
+nums.push(4)
+4
+nums
+(4) [1, 2, 3, 4]
+nums = 1
+VM6966:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:6
+(anonymous) @ VM6966:1Understand this errorAI
+nums
+(4) [1, 2, 3, 4]
+nums = [1, 2, 3, 4]
+VM7033:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:6
+Instructor: Very early on in the course,
+
+when I first introduced Let and Const,
+
+I talked about how const does not allow
+
+for reassignment, right?
+
+And with what we knew at the time,
+
+we could do things like const PI = 3.14159
+
+or whatever our sequence is for PI.
+
+And that makes sense because this should never change.
+
+It's always the same.
+
+And that's why we're using const, right?
+
+If I try and do something like PI += 1
+
+I get an error.
+
+But then I also mentioned once we get to things like arrays
+
+and eventually objects, we'll see that const has other uses.
+
+And now that we're dealing with arrays,
+
+let's talk about that.
+
+So in the previous video we talked about
+
+how variables really refer to, there's a reference
+
+to an array, sort of an address.
+
+And it's not the content necessarily
+
+that are stored in the variable itself.
+
+Unlike with a primitive where things are a lot simpler
+
+and they take up a finite amount of space,
+
+an array could grow to some obscene size,
+
+or it could be very small.
+
+So it all has to do with these references.
+
+And I use this, this idea of arrows pointing.
+
+So when I make an array, we actually can use const.
+
+And it's really common to do that
+
+because we can still change the contents of our array.
+
+What const cares about is that
+
+the variable itself is not reassigned.
+
+So when we store an array using const, let's do const,
+
+just nice and easy numbers.
+
+nums = 1, 2, 3, right?
+
+What I'm storing with nums is not the contents.
+
+It is a reference.
+
+So as long as that reference
+
+to the array does not change, think of it this way.
+
+If this shell remains the same, the contents can change.
+
+I could delete everything in here.
+
+I could add a thousand new numbers,
+
+or I could just change the order.
+
+I could reverse it entirely.
+
+None of that impacts the address of this array.
+
+The reference, so there's an arrow pointing from
+
+nums to this.
+
+So I can do things like nums.push(4)
+
+and it changes.
+
+I don't get an error,
+
+unlike with a primitive, like a number.
+
+When I use const, I try and reassign
+
+or update that variable.
+
+There's a big problem. I can't do it.
+
+With an array, we're in the clear,
+
+as long as I'm changing the content.
+
+So in this example, my eggs equals the array
+
+brown, comma brown.
+
+I have two brown eggs in my carton.
+
+As long as this arrow pointing to the carton,
+
+which is our array, as long as that stays the same,
+
+I can do whatever I want.
+
+I can push on a new egg, I can change one
+
+of the eggs at the beginning, change the color,
+
+reassign the value in the array.
+
+But as soon as I try
+
+and set my eggs to something entirely different,
+
+a new reference, we get an error.
+
+So if I try to do, you know, nums equals one,
+
+well that's clearly a reassignment.
+
+I'm going from an array to a number. Can't do that.
+
+But I also can't do this.
+
+nums equals, let's just take a look at what nums is.
+
+1, 2, 3, 4. I can't do this.
+
+nums equals 1, 2, 3, 4.
+
+Why?
+
+Well, as we saw previously,
+
+this makes a brand new array,
+
+completely different in JavaScript's eyes
+
+from the one that's currently in nums.
+
+They look the same to us.
+
+They have the same contents,
+
+but they are different in memory.
+
+So I get an error, and this is generally something we want,
+
+if we're working with arrays, we want to be able
+
+to rely on the fact
+
+that our container will remain the same, right?
+
+If we have a list of chat messages we need to respond to,
+
+or let's say we're making a customer service app
+
+where we have, you know, a queue of people we need
+
+to reply to and we want them to, we wanna be able
+
+to sort them and order them.
+
+I want that queue to always be there.
+
+It might be empty, it might have a thousand
+
+entries if it's a busy day.
+
+But I don't want to be able to just reassign that
+
+to something else entirely.
+
+I don't want to be able to set it to, you know, false
+
+or null or something.
+
+I want it to always have that same shell,
+
+that same reference to the array,
+
+and then the contents can change.
+
+So it's just a safer way of working with arrays.
+
+You don't have to use it,
+
+but just keep in mind that it behaves differently than you
+
+might expect based off of what we've seen with const so far.
+
+Const with just a primitive, you can't change it at all.
+
+Const with an array
+
+or as we'll see with objects,
+
+you can't change the reference.
+
+You cannot reassign,
+
+but you can alter the insides as much as you want.
+
+Get an interior decorator
+
+and completely renovate the interior.
+
+But that exterior, that shell is still the same.
+
+const gameBoard = [["X", "O", "X"], ["O", null, "X"], ["O", "O", "X"]]
+undefined
+gameBoard
+(3) [Array(3), Array(3), Array(3)]
+gameBoard[1]
+(3) ['O', null, 'X']
+gameBoard[1][1]
+null
+-: I mentioned this early on
+
+that arrays can store whatever we want,
+
+right?
+
+They can store primitives like strings
+
+and numbers
+
+and Boolean,
+
+null and undefined,
+
+but they can also store other data structures
+
+like more arrays.
+
+They can store objects when we get to objects.
+
+So here's an example of a nested array.
+
+It's just two levels of arrays.
+
+Colors is our top level.
+
+It's an array that contains a bunch of arrays,
+
+and each one of those arrays is a pair of color strings.
+
+Red,
+
+crimson,
+
+orange,
+
+dark orange,
+
+yellow,
+
+golden rod.
+
+Ah,
+
+I don't really know why,
+
+what the meaning of this is.
+
+I think what I was going for is like,
+
+here's a common,
+
+just a color.
+
+Everyone knows a category like red,
+
+and then here's a detailed,
+
+more specific crimson,
+
+or here's a,
+
+you know,
+
+blue,
+
+and navy blue
+
+or green versus olive.
+
+I don't know.
+
+So let's do a little demo here.
+
+This is a tic-tac toe board where I'm storing the state
+
+of the board using nested arrays.
+
+So we have our main array for the entire board,
+
+and then three different rows,
+
+which is each a sub array.
+
+And inside of that,
+
+the first one I've got an O,
+
+and then null,
+
+and then X.
+
+So it kind of is visualized
+
+or represented by what you can see over here.
+
+O nothing X
+
+null XO,
+
+XO null.
+
+So in order to work with nested arrays,
+
+we can do our own game board.
+
+Let's do constant game board equals
+
+we need our first array
+
+and then we can nest as much as we want.
+
+So I'll do,
+
+let's just do an X O X like that,
+
+and then I'll do our second row,
+
+which will be O,
+
+let's do null.
+
+It's empty.
+
+Nobody took the middle spot,
+
+which is rare,
+
+X.
+
+And then here's our third row.
+
+We've got,
+
+I'm not even visualizing this
+
+to see if anyone's winning,
+
+but let's do O O X.
+
+So I think X should win,
+
+is that correct?
+
+Let's take a look at gameboard.
+
+Now,
+
+if I open it up,
+
+first of all,
+
+what we see before I do that is just array
+
+of three items,
+
+array of three items,
+
+array of three.
+
+It's not gonna show it to me the contents,
+
+but I can expand it
+
+and see,
+
+here we go,
+
+X O X O null X,
+
+O O X.
+
+So we have a winner here,
+
+which you know,
+
+we're not really computing,
+
+we don't have logic for that
+
+or anything,
+
+but it does,
+
+we can visually see it,
+
+but that doesn't really matter.
+
+What matters is how we would
+
+access each one of these letters.
+
+So I have a question for you,
+
+which is,
+
+how would I access Null out of this array?
+
+I want the center spot.
+
+I wanna just see what is the center spot of this game board.
+
+Well,
+
+think about it.
+
+I need to go through two levels of arrays.
+
+So the first level is gonna give me this array.
+
+There's only three elements in this top game board.
+
+Here's the first one,
+
+the second one,
+
+the third one.
+
+So I need to use an index.
+
+Index of one zero versus one.
+
+So game board of one gives me that first array,
+
+or technically second one,
+
+index of one.
+
+Then I want the second element inside,
+
+which is also index of one.
+
+So I can chain that just like this.
+
+So if I had three levels of arrays,
+
+I could continue to go on
+
+and on
+
+and on.
+
+No,
+
+I don't.
+
+But if we did,
+
+if we had a Rubik's cube
+
+that we were modeling,
+
+then I would have three different levels.
+
+So that's all I wanted to demonstrate here is one,
+
+we can,
+
+it's perfectly valid to put arrays inside of arrays.
+
+And more than that,
+
+it's really common,
+
+especially in situations like a game board.
+
+And then once we get to objects,
+
+which is right
+
+around the corner,
+
+we'll see that we often work
+
+with objects in arrays together.
+
+We could put objects inside of an array
+
+or a arrays inside of an object.
+
+And that's really,
+
+really common.
+
+And then in order to access data out of a nested array,
+
+we just chain together square brackets,
+
+right?
+
+This happens first,
+
+and that will simplify to some array.
+
+And then we're accessing some index of
+
+that new array that we've accessed.
+
+So don't get too tripped up.
+
+It's common to be confused by nested arrays,
+
+but don't be intimidated.
+
+Okay?
+
+Alright.

@@ -1,0 +1,28 @@
+Null, Undefined are neither a string, nor a Boolean. They are actual values in JavaScript. 
+Undefined
+JavaScript's way of saying, "I don't know. I don't know what you want. I don't know the value. It's not defined." It is not something that we set ourselves usually,
+or that we use. We don't set a variable to undefined. Undefined, instead, is a concept that just means something not being there, not being defined. Undefined is something
+that we will run into pretty frequently. Especially later on once we start working with more methods and writing our own functions etc.
+Null
+It is the intentional lack of value. And this is something that we assign. So it's a value. We can make a variable and set it to null.
+Null is something we won't run into really very often at all. It is something we may set as a value for a variable.
+null // it is a variable and returns the same
+null
+true // it is a variable and returns the same
+true
+false // it is a variable and returns the same
+false
+undefined // it is a variable and returns the same
+undefined
+"hello"[99] // index 99 doesn't exist
+undefined
+let x; // I don't give it a value so it's initially set to undefined. i.e. it does not have a defined value.
+undefined
+x
+undefined
+For example, if we have a variable called loggedInUser. And initially, there is no logged in user, we could set it to false or to zero or to, I don't know,
+an empty string, or we could set it to null, which clearly indicates, explicitly, there is nothing here. It's just the concept of nothing,
+let loggedInUser = null;
+undefined
+loggedInUser = 'Alan Rickman';
+'Alan Rickman'

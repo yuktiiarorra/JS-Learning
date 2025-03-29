@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guessing Game</title>
+</head>
+<body>
+    Instructor: So next up,
+
+let's make a relatively simple guessing game.
+
+This is a demo of how it will work when it's done.
+
+So it starts by asking us to enter a maximum number.
+
+So basically a difficulty, let's go from one to 20,
+
+and then I need to enter my first guess.
+
+Let's go with, I don't know, 10?
+
+That's too low. So it tells me I need to guess again.
+
+Okay, so let's try guessing higher.
+
+How about 15? Too high.
+
+13? Too low.
+
+14? And then it tells us it took you four guesses.
+
+Also, if I refresh and I try entering, you know,
+
+a really large max, like a thousand,
+
+it could take me a long time.
+
+So if I'm getting frustrated with that,
+
+I can type Q and I just quit the game immediately.
+
+So let's try building it.
+
+The first thing I wanna do is ask a user
+
+to enter in their maximum number.
+
+So if we're going from one to 10, or 20, or 50,
+
+or a thousand, or whatever it is.
+
+So I'm gonna "prompt("Enter the maximum number!")"
+
+and I'll save that to a variable.
+
+So we'll go with "let"
+
+and I'll tell you why I'm using "let" in just a minute,
+
+"maximum = prompt".
+
+You would think this doesn't need to change, right?
+
+It's a one time thing and then we should just take
+
+that value and save it.
+
+But there's a possibility that I enter something in
+
+that is not actually a number.
+
+Well, everything is going to be a string technically,
+
+even if it's three, it needs to be converted into a number.
+
+And so if I try and call "parseInt"
+
+which is how we're going to do that,
+
+on something that's not a number we get not a number.
+
+So it will work on things that can be converted,
+
+even like that, that contain an integer.
+
+So I just wanna check
+
+and make sure that a user has actually entered something in
+
+that is valid and that can be parsed.
+
+So I am gonna "parseInt" here, "parseInt".
+
+I'll just do it on the same line,
+
+"parseInt" on whatever we got from prompting the user.
+
+And then let's assume that it works to start.
+
+Let's assume that that's a fine number.
+
+It's, I don't know, it's 90.
+
+How do we generate our random number from one to 90
+
+or one to whatever maximum is?
+
+Well, remember how we generate a number from one to 10.
+
+It's "Math.random", we multiply by 10,
+
+and then we floor that entire thing
+
+and then we add one at the end.
+
+So we're going from zero to one as a decimal,
+
+we multiply by 10, then we chop off the decimal,
+
+and then we add one.
+
+Okay? Now this is gonna give us one to 10,
+
+but if I want one to our maximum, it just looks like that.
+
+So let's save that in a variable, "const targetNum".
+
+This is what we're trying to guess.
+
+And let's just "console.log" it so we can see it.
+
+"console.log(targetNum)".
+
+All right, so I'm gonna refresh, enter our maximum number.
+
+Let's do four. Ooh, maximum is not defined.
+
+What did I call this? Oh, well I can't spell.
+
+(instructor laughs)
+
+Wow, there we go, "maximum". Try that again.
+
+We'll enter four.
+
+Okay, so the random number was one.
+
+If I enter 1000, the random number is 643.
+
+If I enter a much larger number, there we go.
+
+We get a much larger random number.
+
+So technically we are not really testing to see
+
+that the entire range is working,
+
+we're just picking one random number.
+
+But there is a problem, which is if I enter something
+
+that is not valid when we "parseInt", I get not a number
+
+as my random number because "parseInt"
+
+gives me not a number and I'm multiplying by not a number.
+
+So the end result is always not a number.
+
+Anytime we do math with NAN, we get NAN.
+
+So I wanna make sure that we actually get a valid maximum
+
+that is a number before we we move on to this line.
+
+So I could just do this if, if there's not a maximum,
+
+remember that not a number is falsy.
+
+So I'm checking right here. If maximum happens to be falsy,
+
+why don't we just get this line again, right?
+
+I could update maximum. How about enter a valid number?
+
+So I could do that. So I'm gonna enter something invalid.
+
+"Please enter a valid number." Okay, and that works.
+
+If I enter something valid right away, we skip that step.
+
+But the problem is we're only checking one time.
+
+So I could enter something incorrect, invalid like that,
+
+and then again and we move on.
+
+But that's not what I want to do.
+
+So I'm gonna use a while loop.
+
+I'm just gonna replace this while
+
+there is not a maximum number that is valid.
+
+So while there's a falsy max, just update max
+
+and keep asking.
+
+So why don't we "console.log(targetNum)" again,
+
+I don't know why I got rid of that.
+
+Now take a look, not valid, not valid, not valid.
+
+We're all stuck in that while loop
+
+and now I'll enter into something that is valid,
+
+and we're good to go.
+
+Cool. So that's the first step.
+
+We have now made it so that a user has
+
+to enter in a valid number.
+
+Technically this also screens out zero
+
+because zero is considered falsy
+
+and we're not gonna worry about negative numbers for now.
+
+Alright, so now I want to actually make the game.
+
+So now that you have picked your number, the maximum number,
+
+and we have our own random number, your target here,
+
+what we wanna do is ask you to enter a guess.
+
+And then as long as that guess is incorrect,
+
+we're going to tell you if it's too high or too low.
+
+So to get that guess, we could just prompt you.
+
+"Let guess = prompt("enter your first guess!")."
+
+Cool, and then we'll write our while loop.
+
+While your guess is not equal to targetNum,
+
+but there's a problem here which is
+
+that your guess is going to be a string.
+
+And we're comparing guess and targetNum, which is a number.
+
+Those are not going to ever be equal
+
+or that's going to be problematic for comparisons.
+
+So I could "parseInt" like this, as we've seen.
+
+Cool. So we're parsing your prompt, whatever you enter.
+
+And while they're not the same, let's check.
+
+If your guess is greater than target number,
+
+let's prompt you again
+
+"Too high! Enter a new guess"
+
+and save that to our guess variable.
+
+And then otherwise we'll do "Too low!"
+
+Because if we're in this loop at all, right,
+
+if we've made it into this loop, we know they're not equal.
+
+So it's either greater or less.
+
+We don't have to worry about the case of equality.
+
+And let's just at the end down here, do a console.log.
+
+"YOU GOT IT!" Let's see what happens.
+
+Hopefully no infinite loops.
+
+Oh, there is gonna be a problem, actually,
+
+we're parsing Int one time,
+
+but then assuming you don't get it right on the first guess,
+
+we're gonna ask you again, enter a new guess,
+
+enter a new guess, and we're not parsing Int.
+
+So we could do this here, "parseInt" on both of them,
+
+just like that.
+
+And then "parseInt" over here.
+
+Let's see if that works.
+
+So, oh, I need to enter a valid number still.
+
+Enter our max.
+
+Okay, so what is our maximum number gonna be?
+
+Let's go from one to 10.
+
+My first guess will be five.
+
+Seven?
+
+Nine?
+
+10? Oh, it happened to be 10 and it ends.
+
+Alright, so that seems to be working.
+
+The next thing I wanna do is,
+
+well there's really a couple things.
+
+Let's keep track of the number of attempts
+
+that it takes you, the number of guesses.
+
+So let's do, let's create a variable.
+
+Let's just call it "attempts".
+
+And it starts at one because that's the bare minimum, right?
+
+You've already made one guess we'll start it at one
+
+and then every time you make it in this loop,
+
+we just add one.
+
+We could do plus equals one or just plus plus
+
+because the fact that you've made it into this loop
+
+means that you're guessing again.
+
+And then at the end we can do "YOU GOT IT!"
+
+Let's do a string template literal.
+
+So we'll say like, you know, it took you five guesses
+
+or 10 guesses, "YOU GOT IT! It took you ${attempts}"
+
+it took you and then dollar sign attempts
+
+and we're not gonna pluralize correctly,
+
+so I'll just say "guesses".
+
+We'll assume it took you more than one,
+
+but there's a chance you get it right in the first time
+
+and it'll say "It took you one guesses."
+
+It should be "one guess". So let's see if that works.
+
+So my first guess, five, too low. First guess, five again,
+
+too low. 10, too high. Eight, too high.
+
+Seven, six. Okay, five guesses. Awesome.
+
+Now the last thing I wanna add in here
+
+is the ability to quit early.
+
+Because I could enter in a very large number,
+
+like a thousand or 10,000
+
+and I could be here for a while trying to end this game.
+
+So to make that work, all that we'll do is check
+
+to see if your prompt at any point is equal to Q,
+
+or quits, or something like that.
+
+So "if(guess === 'q'),
+
+how do we get outta this loop?
+
+We can break, but there's a problem
+
+with this approach as it stands.
+
+Guess is never going to be Q
+
+because I'm parsing Int as soon as we get your prompt.
+
+So even if you enter Q, I "parseInt", we get not a number.
+
+Now there is a way around this,
+
+which is that we just don't "parseInt" right away.
+
+We'll save your input, the result of prompt as a string.
+
+And then when I compare the guess
+
+to target number, I can "parseInt" then.
+
+This is just one approach, at least.
+
+So if I enter Q, that's fine.
+
+I'll stay in our variable guess
+
+and then we can "parseInt" here,
+
+but we're not actually changing the variable guess.
+
+We're just parsing Int, see what it looks like.
+
+Compare it to targetNum.
+
+But if it happens to be Q,
+
+it still stays Q in the variable itself.
+
+So let's verify that. I'll enter in a large number, 100.
+
+I don't wanna deal with this.
+
+So I'm gonna type Q and I get outta there.
+
+Technically, yeah, it's gonna tell me "You got it!
+
+It took you three guesses."
+
+We could add a little conditional at the end.
+
+We could do something like if guess equals Q down here,
+
+we can console.log.
+
+"OK, QUITTING" or "OK, YOU QUIT!" or something.
+
+Otherwise we'll display "Congratulations!"
+
+You know, this sort of thing.
+
+Maybe two console.logs, console log "CONGRATS YOU WIN!"
+
+Okay, so we're just checking to see what guess is equal to
+
+after this entire loop finishes.
+
+Let's try one more. So let's go to 40, maybe.
+
+My first guess is 20, too high. How about 10? Too high.
+
+One, too low, five. "`CONGRATS YOU WIN!
+
+You got it! It took you four guesses."
+
+Now let's do the same thing, one to 100.
+
+My first guess is 50, too low. Let's just enter two.
+
+Oh, that makes no sense. But let's quit.
+
+Okay, you quit and we're all done.
+
+So this combines a lot of what we've learned so far,
+
+conditionals, a while loop, another while loop up top
+
+to make sure we're getting valid input,
+
+as well as the break keyword.
+
+So that's our simple guessing game.
+Arco: Hello everyone, this is Arco
+
+and I'm your course teaching assistant.
+
+So, we know the students were having difficulty
+
+with the guess and game exercise.
+
+Therefore, we're adding this video
+
+to further explain the logic of the code
+
+and also make some small bug fixes
+
+and improvements along the way.
+
+After following the previous lecture,
+
+we basically end up with this code for our guessing game.
+
+So, not much going on in the HTML code,
+
+but the app.js JavaScript code is a bit more substantial.
+
+So, what we did here is we made a guessing game
+
+where we can enter a maximum number
+
+and the game generates a number
+
+between one and this provided maximum number.
+
+Then, the player has to guess the correct number.
+
+If the player guesses a wrong number,
+
+they will be alerted
+
+that their guess is either too high or too low,
+
+compared to this secret number that was generated
+
+that we're actually trying to guess.
+
+Now, let's actually demonstrate
+
+how this works really quickly.
+
+So, we can open the index.html file in our browser.
+
+I already had it opened,
+
+so, we can see that we start off with this prompt
+
+to enter the maximum number.
+
+So, let's say we enter number 10 here.
+
+Then, we get the prompt to enter our first guess.
+
+So, we can start with, let's say, number five
+
+and it's saying number five is too low.
+
+So, let's try with a number greater than five.
+
+So, for example, let's try with eight here.
+
+And now, it's saying eight is too high,
+
+so, we could try number seven here.
+
+And yes, it says, "Congrats, you win!"
+
+And it took me three tries
+
+to actually guess this correct secret number.
+
+Now, let's go back to our code editor
+
+to explain the logic of our JavaScript code.
+
+We can start with the first line of code here.
+
+This line prompts the user
+
+to enter the maximum number for the game as we've seen.
+
+And the prompt function displays a dialog box
+
+that asks for the user input.
+
+And then, the parseInt function here,
+
+parses the user's input as an integer.
+
+Finally, we save the user's input to this maximum variable.
+
+Next, we use the while loop
+
+to make sure the user enters a valid number.
+
+If the user enters an invalid input,
+
+we keep prompting them,
+
+until they actually enter a valid number.
+
+The exclamation point maximum while loop condition,
+
+checks the value of the maximum variable is falsey.
+
+And falsey values in JavaScript include values,
+
+such as null, undefined, zero, an empty string,
+
+or the special NaN value,
+
+which stands for not a number.
+
+Now, the parseInt function here,
+
+will actually return this NaN value
+
+if we type a invalid input,
+
+so, it cannot be converted to an integer.
+
+That means if the user keeps inputting something
+
+that cannot be parsed to an integer,
+
+we will actually keep prompting the user
+
+to enter a valid number
+
+and reassign their input to the maximum variable.
+
+In other words,
+
+we keep looping until the user enters a valid number.
+
+Next, we use a combination
+
+of Math.floor and Math.random methods
+
+in this expression here
+
+to actually generate a random secret number
+
+between one and the maximum number
+
+that the user previously entered.
+
+Now, the Math.random function here returns a random number,
+
+starting from zero inclusive up to one,
+
+but not including one exactly.
+
+Then, we multiply this number
+
+by the maximum number that the user entered
+
+and rounding down to the nearest integer,
+
+using this Math.floor built-in method in JavaScript.
+
+This gives us a random integer starting from zero
+
+and up to the maximum number.
+
+We, then, add one to the result to shift the range
+
+to start from one up to the maximum number,
+
+but including the maximum number now.
+
+And then, we save this random number
+
+to a variable named targetNum.
+
+Next, we prompt the user to enter their first guess here.
+
+We again use the prompt function
+
+to ask the user for their guess
+
+and then, parse their input as an integer,
+
+using the parseInt function again.
+
+And we save the user's input
+
+into a variable called guess here.
+
+Also, we initialize a variable called attempts
+
+to keep track of the number of attempts the user takes
+
+to actually guess the correct number.
+
+As you can see,
+
+we set the initial value of attempts to one,
+
+since the user has already technically made one guess
+
+at this point.
+
+From there, we actually use another while loop
+
+to keep the game running,
+
+until the user guesses the correct number,
+
+or types q to actually quit.
+
+The condition of the while loop here actually checks
+
+if the user's guess is not equal to the target number.
+
+That means on every iteration or repetition
+
+of the while loop,
+
+it would check this condition
+
+and it would only run the while loop code
+
+if the guess is not equal to the target number.
+
+If the guess is equal to the target number,
+
+this condition would be false
+
+and the loop would not continue to run.
+
+If the user's guess is incorrect,
+
+we give them a hint by prompting them to enter a new guess
+
+that is either lower or higher than the previous guess,
+
+depending on whether their previous guess,
+
+was actually too high or too low.
+
+We also increment the attempts variable
+
+to keep track of the number of attempts
+
+that the user has made.
+
+And then, as mentioned, if the user types q in the prompt,
+
+we break out of the while loop using this break statement.
+
+And that would basically end the game.
+
+If we scroll down our code here,
+
+we can see that if the guess equals q,
+
+then, we say, "Okay, you quit!"
+
+Otherwise, if this part of the code is reached
+
+and they haven't typed q,
+
+it means that they actually guessed the correct number.
+
+So, we say, "Congrats, you win!"
+
+And we show them how many attempts they actually needed
+
+to guess the right secret number.
+
+However, in this code, we actually discovered a bug
+
+where the user cannot type q to quit the game
+
+after setting the maximum, so, on the first attempt.
+
+Instead, the user had to actually type q again
+
+in the repeated prompt for the game to finally quit.
+
+So, now, we'll address this bug
+
+and actually provide a way to fix it.
+
+Let's now switch back to our browser
+
+to actually demonstrate this first.
+
+So, I'll just refresh the page to start a new game here.
+
+And then, let's type in any maximum number here.
+
+Let's say five, press okay.
+
+And then, if we type q on this first guess
+
+and press Enter here,
+
+we actually see that it did not quit the game.
+
+It actually said, "Too low," here,
+
+so, that's not what we want.
+
+So, what happens here is if the user types q
+
+on their first guess before the actual while loop,
+
+the program treats it as a valid guess
+
+and prompts the user to enter a new guess,
+
+leading to unexpected behavior.
+
+Let's now jump back to our code editor
+
+to review our code here.
+
+Basically, the bug occurs because of this line here.
+
+Because if the user types q on their first guess,
+
+the parseInt function returns NaN, the not-a-number value,
+
+but that scenario is not really handled here.
+
+So, the code can actually enter the while loop
+
+and keep prompting the user for new guesses,
+
+not realizing that the user actually tried
+
+to quit the game there.
+
+So, if we enter q in the prompt,
+
+parseInt will actually try to parse it to an integer.
+
+But it will fail
+
+and it'll return the NaN or the not-a-number value
+
+and assign that to the guess variable here.
+
+Then, we actually try to parse it to an integer again.
+
+And that's not going to be equal to the targetNum for sure,
+
+which means the while loop can actually run.
+
+Because the loop condition is true
+
+and that's why the game continues.
+
+And you probably notice that it actually said, "Too low,"
+
+when we entered q as our first guess.
+
+And that happens,
+
+because of the way,
+
+we actually structured our if-else logic here.
+
+So, the if condition will check if our guess is greater
+
+than the target number.
+
+And if it's not, the else condition would run,
+
+meaning it would also run when the guess is invalid,
+
+or when it's at the NaN, not-a-number value as well.
+
+So, the else block does not only run
+
+when our guess is lower than the target number,
+
+but it also runs if we type an invalid input
+
+that actually stores the NaN, or the not-a-number value
+
+into the guess variable.
+
+So, the lesson here is that we want to be explicit
+
+with our conditions.
+
+And that's what we're going to do
+
+when we actually start fixing this issue in the code.
+
+Now, to start fixing this,
+
+we definitely want to remove the parseInt call here,
+
+so, we can actually allow the user to enter q
+
+on the first attempt to quit the game.
+
+And so, we avoid all this potential issues
+
+that we've just seen.
+
+So, let's remove the parseInt call here
+
+and this parenthesis here.
+
+And so, we just leave this prompt directly
+
+and store that to the guess variable.
+
+And in the prompt, we can actually let the user know
+
+that they can actually type q to quit the game like this.
+
+We still need to parse the input from the prompt.
+
+Because again, a reminder,
+
+the prompt function always returns a string,
+
+even if we type just digits into it.
+
+And we can basically do the parseInt here
+
+inside of the while loop
+
+after we check if the guess equals q.
+
+So, to give it a chance
+
+to see if the user wants to quit the game first.
+
+And if they don't want to quit the game,
+
+we add this line here,
+
+saying guess equals parseInt(guess) again here.
+
+So, this takes whatever the current value of the guess is
+
+and then, tries to parse it to an integer
+
+and assigns that or updates that
+
+to the guess variable again.
+
+So, again, we first check if the guess equals q here.
+
+If it does, we break the game.
+
+If not, we can actually continue to parse the guess
+
+to an integer.
+
+We increment the attempts.
+
+And then, we can do the conditional logic
+
+to actually check
+
+if the guess is greater than targetNum first,
+
+that's fine.
+
+But to avoid any issues or any confusion,
+
+we want to be explicit with our else-if here
+
+to actually check if the guess is lower than the targetNum.
+
+So, we can write guess less than targetNum.
+
+Now, this handles both situations
+
+when the guess is actually a valid number
+
+that we were able to convert to an integer,
+
+but if the user entered an invalid input,
+
+both of these if and else-if conditions will be false.
+
+So, we actually need to add one more else block here
+
+to actually treat the invalid input scenarios as well.
+
+So, let's write the else block here.
+
+So, else and then, we open a set of curly brackets there.
+
+And inside of the curly brackets,
+
+we should actually just write guess equals
+
+and then, a new prompt here.
+
+In the prompt,
+
+we can say something like, "Invalid guess.
+
+Please enter a number or q to quit."
+
+With this, we basically handle all the situations,
+
+so, when the user enters a valid number or an invalid guess,
+
+or if they type q to actually quit the game.
+
+However, there's a small detail here
+
+about incrementing the attempts variable.
+
+So, as it stands now,
+
+the attempts variable would be incremented,
+
+even if the user made an invalid guess.
+
+So, if you don't want to do that,
+
+we could actually remove the attempts++ line from here.
+
+And then, we can just add it to the if block
+
+and to the if-else block as well.
+
+So, it only gets incremented in the scenarios
+
+where a user enters a valid number.
+
+So, we can type attempts++ here and also go here as well
+
+and let's scroll down a bit.
+
+And yeah, just type attempts++ here as well.
+
+So, that should hopefully get our guessing game
+
+to work absolutely correctly here.
+
+So, if we recap what we did,
+
+we can first see that we removed the parseInt call here
+
+to allow the user to actually type q
+
+and quit the game on their first attempt.
+
+And then, we move the parseInt logic to the while loop.
+
+So, we first check if the guess is q,
+
+if it's not, we can then, parse it to an integer.
+
+If it was a valid number guess,
+
+then, the if condition,
+
+or the else-if condition would work fine
+
+to tell the user if their input was too high or too low,
+
+or, of course, if they made the correct guess,
+
+then, neither of these would run.
+
+The while loop would actually break,
+
+because this condition would be false.
+
+The parseInt guess would be equal to the targetNum.
+
+And that's what finishes the game and the correct guess.
+
+And then, this code runs here if you scroll down.
+
+But if the user types in an invalid input on the other hand,
+
+the if or the else-if here won't work,
+
+because an invalid input,
+
+the not-a-number value would not be higher or lower
+
+than the targetNum.
+
+It'll actually trigger this else block
+
+where we would tell them
+
+that they actually made an invalid guess.
+
+And then, we would allow them
+
+to actually enter a new number value and a new guess
+
+and save that into the guess variable again.
+
+Now, let's open up the game again and check if this worked.
+
+Though before that,
+
+let's not forget to actually save the file changes here.
+
+So, back in our browser, make sure to first refresh the page
+
+and then, we start a new game.
+
+And yeah, let's handle the scenario
+
+where we actually try to write q as the first attempt
+
+and see if it works now.
+
+First, let's type any number for the maximum.
+
+Let's say 10 here, press Enter.
+
+And now, let's actually try to type q as our first guess.
+
+So, q and let's click on okay here.
+
+And yeah, success,
+
+so, it actually quits the game on the first attempt.
+
+So, the bug was actually resolved.
+
+Now, let's also try to test out the scenario
+
+where we try an invalid input as well.
+
+And so, let's refresh the page again
+
+and we can enter 10, let's say, again
+
+for the maximum number, press okay.
+
+Then, let's say for our first guess,
+
+we type something invalid, like some letters here,
+
+instead of a number
+
+and let's press okay.
+
+And yeah, it says, "Invalid guess.
+
+Please enter a number or q to quit."
+
+Okay, so, let's try a number guess now, press okay.
+
+So, "Too low!"
+
+If you try something invalid again,
+
+it says, "Invalid guess."
+
+Okay, so, and then, if we type q,
+
+let's not finish this game.
+
+So, let's type q here and press okay.
+
+So, it quits the game successfully.
+
+Okay, so, that's good.
+
+Now, let's refresh again.
+
+Let's try to actually win the game now.
+
+So, maximum number, let's say, again 10.
+
+Enter our first guess.
+
+So, let's say we enter five, it's too low.
+
+Okay, so, let's try to enter something invalid here.
+
+So, it says, "Invalid guess."
+
+Let's try to enter something invalid multiple times.
+
+So, I'm just kind of spamming my keys here, my letters
+
+and then, just pressing okay.
+
+And that's because I want
+
+to check the attempts counter as well
+
+to make sure it wasn't incremented and invalid guesses.
+
+We made a few of them, nothing worked.
+
+Obviously, it says, "Invalid guess."
+
+And that's what we want here.
+
+Now, let's get serious,
+
+let's try to actually guess the number.
+
+So, let's say, number seven here.
+
+Number seven is too high.
+
+Okay, so, number five was too low
+
+and then, number seven was too high,
+
+which means that we should type number six here.
+
+And yes, it says, "Congrats, you win!"
+
+And it says, it took me three times, three guesses
+
+to actually guess the correct number.
+
+That means that the invalid guesses weren't counted,
+
+the attempts variable wasn't incremented
+
+and that's actually what we wanted here.
+
+So, as it stands now, it looks like we've fixed the bugs
+
+and we made some improvements to the game.
+
+So, we can now safely continue with the lectures.
+
+Also, I will add these fixed code files
+
+to the resources menu for this lecture,
+
+so, you can actually download it from there.
+
+
+
+    <script src="guessingGame.js"></script>
+</body>
+</html>

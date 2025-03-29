@@ -1,0 +1,1585 @@
+Instructor: Well, I hope you're still hanging in there.
+
+I know it's been a lot of JavaScript content
+
+and we haven't really made anything yet with JavaScript.
+
+We will. That's the whole point.
+
+We just have to go through these basics.
+
+As I mentioned a while ago, it is a much larger topic.
+
+There's a lot more we have to get through
+
+before we can make something that you would say is a thing
+
+versus HTML and CSS.
+
+In the first hour we could make a very simple website.
+
+With JavaScript in the first hour,
+
+I mean, we could make a variable,
+
+could make a conditional statement.
+
+It's not that exciting, I fully recognize that,
+
+but hang in there.
+
+This section is pretty quick.
+
+It's on something called objects,
+
+JavaScript Object Literals,
+
+another data structure similar to an array
+
+in the sense that it stores information
+
+and can combine multiple types of data together
+
+and multiple pieces of data.
+
+There's honestly not a ton to discuss in this section,
+
+there's just two big topics.
+
+Creating, working with, accessing,
+
+modifying object literals,
+
+that's going to be going under crucial,
+
+and then working with arrays and objects together.
+
+Another yellow topic,
+
+it will take a little bit of time, potentially,
+
+to get comfortable with, and it's also crucial,
+
+but there's just two of them.
+
+So this section should go by relatively quickly.
+
+There's not a lot of methods we have to cover.
+
+You know, none of that push, pop, shift, unshift,
+
+concat, index, or all that craziness with arrays.
+
+Objects are generally simpler.
+
+So take a breath, take a break if you need it,
+
+we've got a lot of JavaScript to go
+
+so I hope you're not trying to sprint through this section
+
+or through this chunk of JavaScript.
+
+It deserves at least a couple of days of time.
+
+All right, I hope you're doing great. You can do it.
+
+Goodbye.
+
+Instructor: So let's talk about JavaScript objects,
+
+our second data structure after arrays.
+
+So just like arrays, objects are going
+
+to help store multiple pieces
+
+of data together in some sort of structure.
+
+But unlike arrays,
+
+where the whole point is to order our data, right?
+
+There's a first thing, a second thing, a third thing.
+
+That's not the case with objects.
+
+Instead, our data is stored using
+
+what we call key value pairs or properties.
+
+So a property is just two pieces of information, a key,
+
+like a label, and then a value.
+
+And they form a pair.
+
+And an object is just a bunch of these pairs.
+
+So on the right side, you can see this diagram.
+
+An object obviously does not look like this.
+
+It doesn't really look like anything to us,
+
+but I like to imagine it as this wiggly amorphous blob,
+
+a sack full of these properties,
+
+little pieces of data where there's not an order,
+
+there's not a priority, it's just these pairs.
+
+So we can store whatever we want.
+
+There are restrictions, we'll talk about that.
+
+But we can store things like age is 20, city is Tulsa,
+
+zip is 91003, isAdmin is true or false,
+
+favorite color is purple,
+
+whatever these pieces of information are, key value pairs.
+
+We put them in an object,
+
+and then we can access them back out using a custom key,
+
+whatever we store them in under.
+
+So imagine we'd needed to store this sort of data here.
+
+This is information from a a Fitbit
+
+or something similar to a Fitbit application
+
+where it stores different types of data,
+
+or it remembers, it tracks different types of data,
+
+like the number of floors you've climbed,
+
+the number of total steps,
+
+the number of total active minutes,
+
+the total, what else?
+
+Total miles, how restful your sleep is.
+
+How would we store this using JavaScript?
+
+We could use an array, but it'd be kind of janky
+
+to do something like, you know, what would we do?
+
+We just put the numbers in here.
+
+So 308,000 would be first, how do you know what that is?
+
+308,000.
+
+And then let's say you burn 1200 calories. Okay?
+
+This is not very helpful to see.
+
+We just have to know for sure that the first thing,
+
+I already forgot, what is it?
+
+Steps. And the second thing is calories.
+
+It's just not practical.
+
+So this is where an object comes in.
+
+We can instead label things.
+
+There's not really an order here that matters.
+
+It's all about labeling our information, giving it a name.
+
+This is total steps.
+
+Total floors, 1800, total miles, 211.
+
+So here's how we would do that using an object.
+
+We'll go into the syntax in more depth in the next video,
+
+but notice how we have a key and a value.
+
+Total steps is 308,727; total miles, 211.7;
+
+average calorie burn, 5,700,
+
+that's not a number, 5,755;
+
+workouts this week, five of seven;
+
+average good sleep, two hours, 13 minutes.
+
+These are all properties.
+
+They are a pair, each one.
+
+We have five pairs of information.
+
+There's no real order. The order doesn't matter at all.
+
+And they're all floating around
+
+inside this one shared object.
+
+And we stored it in a variable called Fitbit data.
+
+So remember, a property is a key and a value,
+
+and we need to use that key to get our data back out.
+
+Here's an example of some other key value pairs.
+
+These are things we could store.
+
+Maybe we're modeling a person,
+
+or a post, a blog post, or a comment.
+
+I think this is actually a comment here,
+
+where there's a username for who created it.
+
+So username, crazyCatLady; number of upvotes, 7;
+
+the text of the comment: "Great post!"
+
+Maybe we have the time,
+
+maybe we have the isAdmin, or security level,
+
+or something like that for the user.
+
+All of these are pieces of data
+
+that wouldn't really make sense to store in a list
+
+or an array, right?
+
+We could, I mean,
+
+you could store whatever you want in an array,
+
+but structurally it just doesn't make sense.
+
+Some things definitely do, right,
+
+when there's a clear order, when it's a collection
+
+of especially homogenous or very similar things.
+
+But this is just a collection
+
+of different pieces of information.
+
+They're related in the sense that they all have to do
+
+with a comment, or a post,
+
+or something on a website, but that's kind of it.
+
+So an object lets us do that.
+
+An object let's us create these key value pairs
+
+where we don't need to use a number to access a piece
+
+of information, right?
+
+If I have an array with certain things in it,
+
+I'm gonna need to access that data out using an index,
+
+index of zero, index of two.
+
+But if I have an object, I can access my data by saying,
+
+"Hello, Fitbit data.
+
+Please give me average good sleep.
+
+Please give me total steps."
+
+And assuming it knows what I'm talking about,
+
+and it's a property that exists,
+
+there's a key called total steps,
+
+it will fetch it for me.
+
+It will return it to me just like it would
+
+if it were an array, and I used an index.
+
+So in the next video, we'll start creating some objects
+
+and see how we can access data out.
+
+
+typeof []
+'object'
+const obj = {}
+undefined
+const person = {firstName : "Mick", lastName : "Jagger"}
+undefined
+person
+{firstName: 'Mick', lastName: 'Jagger'}
+const kitchenSink = {
+    favNum : 345349,
+    isFunny : true,
+    colors : ["red", "orange"]
+}
+undefined
+Instructor: Alright, let's see how we create
+
+our first object literal.
+
+Now I'm using the term object literal
+
+because an object, the term object in JavaScript,
+
+is a bit of a loaded term.
+
+You may have noticed things,
+
+well hopefully you noticed I showed this to you early on.
+
+When we do type of on an array, for example,
+
+it's telling me object.
+
+So without going into any detail at all,
+
+all that I'll say is that objects are,
+
+they pop up in a lot of places in JavaScript,
+
+even if they don't necessarily look like objects.
+
+That's something we'll cover.
+
+For now, when I say object literal,
+
+I'm referring to these key value pair data stores.
+
+This data structure we create using curly braces.
+
+So I could make my very first one.
+
+Let's just mimic or let's model a person.
+
+A very simple person.
+
+So we'll do const person equals,
+
+and just like with a arrays,
+
+we commonly use const.
+
+Objects are also reference types.
+
+So think of person as having an arrow pointing to my object.
+
+So this makes me an empty object.
+
+If I hit enter, it makes me an empty object.
+
+But I'm gonna start by populating it
+
+with at least one or two key value pairs.
+
+So why don't we do first name.
+
+And then we need a colon.
+
+And then after that I'll do a string. How about first name?
+
+Who is a person we'll do? How about Mick?
+
+And then last name Jagger.
+
+Two Gs? I think so.
+
+Okay, so we have two key value pairs.
+
+Each pair is a key, a colon,
+
+and then a value separated by commas.
+
+Separate the individual pairs by commas.
+
+You can do this on separate lines like I did here.
+
+That just makes it easier for a longer object,
+
+but for something short, this is fine.
+
+So I'm gonna hit enter.
+
+Now if we look at person, here we are,
+
+we have two different properties.
+
+First name Mick, last name Jagger. Cool.
+
+Now when we create an object,
+
+we can store all sorts of data in there as values.
+
+I can put whatever I want as a value.
+
+Keys are something separate. We'll talk about that.
+
+But remember, a value is the right side of that colon.
+
+Also here you can see I'm formatting it differently
+
+just to make it clean ish.
+
+It's not perfect, but you don't have to do this at all.
+
+You can have it formatted however you want,
+
+but I thought this just fit nicely on the slide.
+
+So I've got a string for a value,
+
+sillyGoose420 for username.
+
+Down votes is a number, 19.
+
+Up votes, 214. The net score is 195.
+
+Comment text, tastes like chicken LOL.
+
+That's a string.
+
+Tags, that's an array of strings.
+
+Is gilded, is false.
+
+So this whole thing is supposed to represent a comment
+
+like on a website like Reddit.
+
+So there's a username, there's votes,
+
+there's the text, all that stuff.
+
+So the point here
+
+is that we can have different types of values in an object.
+
+It's not, or it doesn't have to be all the same.
+
+Not that an array has to either.
+
+But the key distinction, of course,
+
+is that arrays are ordered.
+
+Here, there's no real order.
+
+All that matters is what we store a value under.
+
+What is the name of that key?
+
+So we could make something else completely different.
+
+We'll just go with const kitchen sink.
+
+I'll do this one on multiple lines.
+
+I'm just in the console.
+
+If you hold shift and then return,
+
+we can add multiple lines in here.
+
+So let's do you know, I don't know,
+
+fave numb will be that number right there.
+
+And then let's do is funny will be true.
+
+And then let's do colors
+
+red and orange.
+
+And let's see, we've got a number, a Boolean, an array.
+
+I think that's good enough. There we go.
+
+We have an object with different types of values.
+
+So we can put whatever we want.
+
+That's really the main takeaway.
+
+In fact, I didn't show this,
+
+but you could actually put another object in there.
+
+We'll see some examples of that later on.
+
+Next up, we need to talk about accessing data out.
+
+nums
+(4) [1, 2, 3, 4]
+nums[2]
+3
+person
+{firstName: 'Mick', lastName: 'Jagger'}
+person["firstName"]
+'Mick'
+kitchenSink
+{favNum: 345349, isFunny: true, colors: Array(2)}
+kitchenSink["colfdk"]
+undefined
+kitchenSink["colors"]
+(2) ['red', 'orange']
+person
+{firstName: 'Mick', lastName: 'Jagger'}
+person.firstName
+'Mick'
+person."firstName"
+VM8061:1 Uncaught SyntaxError: Unexpected stringUnderstand this errorAI
+"dufskdu".length
+7
+const years = {1999:"GOOD", 2020:"BAD"}
+undefined
+years
+{1999: 'GOOD', 2020: 'BAD'}
+years["1999"]
+'GOOD'
+years[1999]
+'GOOD'
+const dumbdumb = {true:"dat", null:"khdkdu"}
+undefined
+dumbdumb
+{true: 'dat', null: 'khdkdu'}
+dumbdumb["true"]
+'dat'
+dumbdumb["null"]
+'khdkdu'
+dumbdumb[true]
+'dat'
+person
+{firstName: 'Mick', lastName: 'Jagger'}
+person.firstName
+'Mick'
+person["firstName"]
+'Mick'
+person[firstName]
+VM8711:1 Uncaught ReferenceError: firstName is not defined
+    at <anonymous>:1:8
+(anonymous) @ VM8711:1Understand this errorAI
+person.firstName
+'Mick'
+person["first" + "Name"]
+'Mick'
+years
+{1999: 'GOOD', 2020: 'BAD'}
+let birthYear = 1999
+1999
+years.birthYear
+undefined
+years[birthYear]
+'GOOD'
+birthYear
+1999
+Instructor: All right, so let's talk
+
+about getting our data out of an object.
+
+How do we access something?
+
+With an array, we use square brackets and a number, right?
+
+If I have an array of nums, lemme just copy one of these.
+
+Oh, I've already declared it.
+
+So, we have nums,
+
+and if I want the second thing, it's index of one.
+
+There we go. I get 45.
+
+With an object, like with the object I have here
+
+called person, if I want last name out of here,
+
+I use something similar, or at least one option is
+
+to use the square brackets as well,
+
+which is kind of confusing.
+
+You might think we should use the curly braces.
+
+Unfortunately, with objects,
+
+the only time we use curly braces is when we're declaring
+
+that object, when we're creating it.
+
+But then to access data out, we use square brackets.
+
+That's one option.
+
+And then this is what's kind of confusing.
+
+I need to use quotation marks here.
+
+First name, I can use single or double quotes,
+
+or I'll get last name out.
+
+I just need to match what I have here.
+
+But this doesn't look like it's a string.
+
+We will come back to that.
+
+But this is one option.
+
+Person, square brackets, last name, that gives me Jagger.
+
+Or what was the other object I made?
+
+I've already forgotten.
+
+Kitchen sink.
+
+If I want to get colors out of there,
+
+square bracket, colors.
+
+Notice if I misspell it, if I do something
+
+that's not in there, what are we going to get?
+
+Undefined.
+
+Just like accessing an array at an index that doesn't exist.
+
+So colors, quotes, gives me the value.
+
+This is the key, I'm unlocking that value using a key,
+
+assuming the key is in there.
+
+So there's another syntax though,
+
+to access information out of an object.
+
+So I'll go back to person.
+
+The first was to use square brackets and then quotes.
+
+The second is to use the dot syntax.
+
+And it looks like this.
+
+Person dot firstName,
+
+where I don't need quotes.
+
+In fact, I can't add the quotes here.
+
+I will break things if I do that.
+
+I'm not gonna get anything.
+
+It tells me unexpected string.
+
+But if I do person dot firstName
+
+or person dot lastName,
+
+just in the same way I would do an array.length
+
+or a string.length.
+
+It's the same concept.
+
+So, this is another option,
+
+and this seems nice and easy, and it is easy.
+
+We don't have to worry about these quotes,
+
+but there is an important distinction.
+
+And to help us understand what's going on,
+
+first, let's talk about what happens when I make an object.
+
+So when I make an object with a key,
+
+let's do const years and then make our object literal.
+
+I'm just gonna do something really easy.
+
+Let's say year 1999.
+
+I'm just gonna make up whether they were good or not.
+
+So I'll just say good.
+
+I have no reason to say that year is good or not.
+
+I'll say 2020 though, definitively not so good.
+
+All right, so I'm using numbers as keys.
+
+These are clearly numbers, 1999, 2020.
+
+Those are numbers.
+
+When I look at years,
+
+okay, they still kind of look like numbers.
+
+They look the same as any other property
+
+or any key that we've set so far.
+
+But what actually happens behind the scenes
+
+is that every key we make in an object
+
+is converted to a string.
+
+There is a little star here.
+
+We haven't talked about symbols.
+
+They're not super common.
+
+Technically though, you can use symbols as a key,
+
+and they'll stay a symbol,
+
+but everything else is going to be converted to a string.
+
+So it doesn't look like a string.
+
+But this is a string right there, 1999, the string.
+
+So to access it, I can do this.
+
+Years 1999, good.
+
+Years 2020, bad.
+
+Now what if I do this?
+
+1999 right there.
+
+It also works.
+
+Why is that?
+
+It's going to convert this to a string
+
+and then look to see if there's a corresponding string
+
+in my object.
+
+So I'm showing this to you
+
+because it's important that you understand
+
+what we're actually doing here.
+
+This is not making a number as a key.
+
+Or if I made some other, let's just call this dumbdumb.
+
+I don't know why. It makes no sense.
+
+But if I set true as a key,
+
+true dat is my value,
+
+and then how about null as a key?
+
+I actually don't know if I've ever used null as a key.
+
+Let's see what happens.
+
+Does it allow me to do that?
+
+Yes it does,
+
+because if we look at dumbdumb,
+
+these two properties,
+
+these two keys are turned into strings.
+
+So I can do dumbdumb of, in quotes, the string true,
+
+and I get dat.
+
+Same thing with null.
+
+All right, so if we accept that every key is turned
+
+into a string, whether it's a Boolean
+
+or it looks like a Boolean or null or a number
+
+or an actual string, they're all turned into strings, okay?
+
+That's the first thing we need to accept.
+
+Now, let's talk about the difference
+
+between the dot syntax,
+
+if we go back to person, person dot firstName,
+
+versus person, square bracket, firstName,
+
+with quotes.
+
+I cannot do this without those quotes.
+
+Just to be clear here, this is not valid.
+
+It's expecting or it assumes
+
+this is actually a variable name, and it's not.
+
+I don't have a variable called first name.
+
+So that's the main difference.
+
+If I do person dot firstName just like that,
+
+I'm always gonna get Mick, and that's great.
+
+This is exactly what I'm looking for, first name.
+
+But if I do person with square brackets,
+
+I have the ability to put an expression in here.
+
+So I might, I mean, this is ridiculous to do,
+
+but I could do something like this, first plus name,
+
+and this is going to run first as code.
+
+So first concatenating with name gives me first name,
+
+and then that is used as the key.
+
+Why would you do this?
+
+Well, you wouldn't.
+
+But what you might do is create a variable.
+
+You might have a variable that you're using.
+
+So let me show you an example.
+
+We have our years demo.
+
+Well, imagine I have a variable called birth year,
+
+and I'm gonna hide it so you can't see what it is, okay?
+
+So I have this birth year variable,
+
+and if I'm trying to use it to look something up in years,
+
+I cannot do this, years dot birthYear.
+
+Geez, can't type there, huh?
+
+There is no birth year property.
+
+This gives us no flexibility.
+
+It's looking exactly
+
+for something called birthYear in my object.
+
+But if I do this instead, years birthYear,
+
+and it's just come to my attention through an error
+
+that this is actually lowercase, I wasn't paying attention.
+
+I did not camel case things.
+
+Notice what we end up with.
+
+Birth year is going to be evaluated
+
+and turned into whatever the result is
+
+of that variable, whatever it's holding.
+
+And it just so happens it's holding 2020.
+
+So that is an important distinction.
+
+The dot syntax is nice,
+
+but if you're ever trying to use something dynamic
+
+like a variable as a key in an object,
+
+you can use the square brackets.
+
+If you use the dot notation, it just doesn't work.
+
+Even if I use the correct capitalization here,
+
+birthyear, which is the same thing,
+
+it looks in the object, there is no birth year.
+
+What are you talking about?
+
+Square brackets, it will run this code first.
+
+Okay, so I've gone on long enough about that.
+
+I'm sure I've lost a lot of you out of boredom,
+
+but hopefully that distinction is clear.
+
+const midterms = {danielle:96, thomas:78}
+undefined
+midterms
+{danielle: 96, thomas: 78}
+danielle
+VM9345:1 Uncaught ReferenceError: danielle is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM9345:1Understand this errorAI
+midterms.thomas
+78
+midterms.thomas = 79;
+79
+midterms
+{danielle: 96, thomas: 79}
+midterms[thomas] = 78;
+VM9455:1 Uncaught ReferenceError: thomas is not defined
+    at <anonymous>:1:10
+(anonymous) @ VM9455:1Understand this errorAI
+midterms["thomas"] = 78;
+78
+midterms
+{danielle: 96, thomas: 78}
+midterms.thomas = "C++"
+'C++'
+midterms
+{danielle: 96, thomas: 'C++'}
+midterms["danielle"] = "A"
+'A'
+midterms
+{danielle: 'A', thomas: 'C++'}
+midterms.ezra
+undefined
+midterms.ezra = "B+"
+'B+'
+midterms["antonio"] = "A-"
+'A-'
+midterms
+{danielle: 'A', thomas: 'C++', ezra: 'B+', antonio: 'A-'}
+["jfhds", "odhf"]
+(2) ['jfhds', 'odhf']
+Presenter: Alright,
+
+so we've talked about accessing data out of an object
+
+or retrieving information,
+
+but what about adding new information
+
+or updating information?
+
+So let's say that I have a new object.
+
+I'm a teacher and I have a classroom of students,
+
+and we have, I don't know, midterms.
+
+We just took midterms.
+
+So I'm gonna make an object called "midterms."
+
+And I wanna keep track of the scores
+
+for my individual students on the midterm test.
+
+So let's say I just have a couple of students,
+
+let's go with, I don't know, Danielle,
+
+and her grade, let's see, do we wanna do numbers?
+
+Yeah, let's just use numbers.
+
+So she got a 96 out of 100,
+
+And then I'll add in, how about Thomas who got a 78.
+
+Okay, so let's start there.
+
+We look at midterms, two properties in there.
+
+Remember, these keys are turned into strings.
+
+Normally this is not valid in JavaScript,
+
+but inside of an object this is totally fine,
+
+but on their own, if I just type "Danielle" like that,
+
+it thinks, or JavaScript thinks,
+
+I'm talking about a variable
+
+or some identifier that does not exist.
+
+But inside of this object, it's turned into a string.
+
+Okay, so if I wanna update one of these things,
+
+so let's say, I want to change Thomas's score.
+
+I was wrong, it's actually a 79.
+
+I can do this, midterms, and then .Thomas
+
+or square brackets Thomas with quotes.
+
+But I like to use the dot notation whenever I can.
+
+It's just shorter.
+
+But remember, there's a distinction,
+
+the square bracket notation allows you to do more.
+
+You can have evaluate something
+
+before you access using that key.
+
+Anyway, midterms.Thomas = 79, and that's it.
+
+So, midterms.Thomas is 78, I can change it.
+
+It now equals 79.
+
+So just like with an array, when we use the keyword "const"
+
+to declare an object variable,
+
+the container, in this case, the object itself,
+
+needs to stay the same,
+
+but the insides can be swapped.
+
+We can remove things, we can add new properties,
+
+we can update properties, no problem.
+
+So I just set Thomas to be 79, if we look at midterm now.
+
+Midterms.
+
+Thomas is indeed 79.
+
+I can also change it to be a string if I wanted to.
+
+I could go through and say,
+
+actually I wanna do it this way.
+
+Midterms, I want letter grades.
+
+So that will be a C plus, at least in the US grading scale
+
+or whatever you wanna call it.
+
+And then let's do Danielle.
+
+This time, I'll do the other syntax just for more practice.
+
+So she has a what? A 96? Is that an A or an A plus?
+
+I think it's just an A. I think A plus is 98.
+
+I don't, it doesn't matter.
+
+So now we've updated those two.
+
+And if I wanna add something else in,
+
+all I have to do is use the exact same syntax and that's it.
+
+Actually, it's just the same syntax.
+
+So let's do midterms of, and who's our next person?
+
+Thomas, Danielle.
+
+How about Ezra?
+
+And set that equal to something.
+
+It's not in there at the moment. It's totally undefined.
+
+Totally undefined. It's undefined.
+
+And then I can set it to be, how about Ezra gets a B plus.
+
+and I can do midterms of, let's add one more person,
+
+let's do square brackets this time.
+
+How about Antonio.
+
+And Antonio got a A minus. Sure.
+
+Just like that right there.
+
+Alright, so we use that syntax, both options,
+
+square brackets with quotes or some expression in here,
+
+or the dot syntax to access values,
+
+as well as update or create new properties in there.
+
+So we added in Antonio and Ezra,
+
+we updated Danielle and Thomas.
+
+Same exact process. We do this all the time.
+
+So it's just like updating an array
+
+except we're not using a number.
+
+Well, you can think of arrays as objects
+
+where the keys are numbers.
+
+So we still have a key value pair,
+
+but we're associating the position.
+
+So whatever we have here with zero, that's the key, zero.
+
+The value is asdasd
+
+And then the key is one, and the value is asdasd.
+
+But here, we're using people's names as the key
+
+and then the value is a letter grade.
+
+All right, so this basic syntax
+
+is something we'll see all the time.
+
+Key value pairs, use the dot syntax,
+
+use the square brackets,
+
+and then assign a new value.
+
+We're just updating something in this object.
+
+const comments = [
+    {userName: "tammy", text: "lololololol", votes: 9}
+    {userName: "FishBoi", text: "glub glub", votes: 889239780}
+]
+VM9902:3 Uncaught SyntaxError: Unexpected token '{'Understand this errorAI
+const comments = [ {userName: "tammy", text: "lololololol", votes: 9},
+    {userName: "FishBoi", text: "glub glub", votes: 889239780}
+]
+undefined
+comments[1]
+{userName: 'FishBoi', text: 'glub glub', votes: 889239780}
+comments[1].text
+'glub glub'
+const student = {
+    firstName = "David",
+    lastName = "Jones",
+    strengths: ["Music", "Art"],
+    exams: {
+        midterm: 92,
+        final: 88
+    }
+              }
+              Instructor: So inside of an array,
+
+we can store really anything we want.
+
+We can store other arrays, numbers, strings, booleans.
+
+Inside of an object,
+
+we can store whatever we want as the values.
+
+We can store numbers, strings, booleans, null, undefined,
+
+other objects and arrays.
+
+So we can mix and match
+
+and often we do work with arrays and objects together.
+
+And that's what I wanna talk about in this video.
+
+This is a really common pattern
+
+to have an array of objects
+
+or to have an object with an object inside of it,
+
+or an object with arrays inside of it.
+
+The combination of the two is far more powerful
+
+than either one on their own.
+
+Sometimes, often we have some ordered data,
+
+but not every single thing makes sense to put in an array.
+
+And other times, we have data
+
+that makes sense to store as key value pairs
+
+and sometimes some of it's ordered so we'll use an array.
+
+So on the left I've got an example of an array
+
+that consists of a bunch of objects.
+
+So this is an array, it's called shoppingCart
+
+or the variable is.
+
+And then inside each one of those elements is an object.
+
+It has a product name,
+
+Jenga Classic, a price, 6.88, a quantity one,
+
+product, Echo Dot, price, 29.99, quantity three.
+
+So we get a bunch of information,
+
+and this is super abbreviated.
+
+For a real shopping cart,
+
+there'd be a lot more information in here for each item,
+
+but this pattern would hold true.
+
+And then over here, I've got an object called student
+
+and inside of it, this is kind of a silly example,
+
+but I'm storing strengths, which is an array.
+
+I'm putting an object inside a nested object for exams.
+
+Midterm, 92, final, 88.
+
+All I wanna show you is that this is incredibly common
+
+and we should get some practice working with them
+
+so let's make it really simple.
+
+Let's do this first example of an array.
+
+Let's go with comments.
+
+And this will be an array of objects.
+
+So I'll do this in the console still,
+
+just use Shift + Enter here.
+
+So each comment is an object, which will have,
+
+let's say a username of the person who made it.
+
+Let's just go with Tammy.
+
+And then her comment text will be,
+
+I'm just gonna do really stupid stuff.
+
+And the number of votes is nine, okay?
+
+And then let's add another person or another entry rather.
+
+We don't have to indent like this at all.
+
+I'm just doing it so you can clearly see what I'm doing.
+
+Typically, we would follow the same pattern.
+
+I can put whatever I want in each object though.
+
+I don't have to be consistent
+
+and do username and text and votes.
+
+But in most applications,
+
+we want to have a consistent pattern.
+
+Everyone has a username.
+
+I don't wanna suddenly call this,
+
+you know, username like that, or just name,
+
+or I don't want to omit it entirely.
+
+So let's go with username.
+
+This time, we've got Tammy, how about FishBoi?
+
+That doesn't mean anything to me,
+
+but just came to mind.
+
+And then the text of the comment will be,
+
+what sort of noise does a fish make?
+
+Like glub glub?
+
+Is that the right way of writing that?
+
+And then votes will be, how about really high?
+
+Everybody loves that comment, everyone loves FishBoi.
+
+Let's just start with that, okay?
+
+So now we have an array of comments.
+
+Let's say two comments on one post.
+
+This is the first comment, that's the second comment.
+
+How do I access glub glub?
+
+Think about it for a moment.
+
+Okay, here's what we need to do.
+
+Comments,
+
+and then I need to access this element of the array,
+
+which is the second element, index of one.
+
+And then I need to chain onto that text, .text
+
+or I could use square brackets and I get glub glub.
+
+Let me show you an example
+
+of something slightly more complicated.
+
+So this is data that I took from reddit.com.
+
+This is actually their underlying data structure
+
+that they use.
+
+So we've got this massive object.
+
+I put it in a variable.
+
+It was not in a variable.
+
+We'll actually learn more about this later.
+
+It's something called JSON.
+
+We haven't considered APIs and servers
+
+and anything like that yet.
+
+But if we take a look, we've got a lot of object brackets,
+
+a lot of array brackets.
+
+So let's scroll down and just take a look
+
+at what represents a single post on Reddit.
+
+So this is a single post right here.
+
+There's a list called children, an array of children.
+
+And then this one ends somewhere all the way down here.
+
+So all of this information corresponds
+
+to a single post on the homepage of Reddit.
+
+So there's a lot of stuff in here,
+
+like I don't even know what kind means, t3, I don't know.
+
+But then we've got the full name of the author.
+
+We've got if it was gilded.
+
+It looks like it has not been gilded.
+
+Zero times it's been gilded.
+
+Is it hidden?
+
+It's false.
+
+Have I clicked it or someone clicked it?
+
+Have I saved it?
+
+False, false.
+
+Those are booleans.
+
+Here's the title.
+
+Here is, let's see, there's no thumbnail associated with it.
+
+so they're null, I believe.
+
+The number of up votes,
+
+I think they just call it ups.
+
+It's a public subreddit.
+
+You know, all this stuff here, lots of information.
+
+But then take a look at this.
+
+On Reddit, you can award people's comments
+
+or people's posts.
+
+So there's an array called all_awardings,
+
+and I don't really know how this works,
+
+if it has awards or not, does it?
+
+I'm not sure.
+
+I honestly haven't taken a look at this in detail,
+
+but there's a nested structure,
+
+an array with objects inside once again.
+
+And remember, we're inside of an object,
+
+inside of an array.
+
+So we've got an array with an object, with an object,
+
+with an array, and it's just nested,
+
+and it's super common to have that.
+
+So here's an example.
+
+I think this one has an image on it, whatever this post is,
+
+and it has this preview property
+
+and then an array called images.
+
+The property is images, there's an array
+
+and then each image is a large object,
+
+which has all this information about it,
+
+different resolutions in a different array.
+
+So I hope I'm not scaring you
+
+because that's not the point.
+
+I mean, if I was faced with this data structure,
+
+it takes time, you got to get used to it
+
+and get comfortable with how it's set up, right?
+
+You don't just memorize this,
+
+but you should be able
+
+to hopefully leave this video understanding
+
+that it's really, really common
+
+to mix and match arrays and objects together.
+
+They are far more powerful in tandem
+
+than they are on their own.
+
+Because most of our data
+
+in the real world is a mixture of key value stuff
+
+and ordered lists of information.
+
+You put it all together,
+
+you get a mess of arrays and objects all nested,
+
+and it makes everything a lot easier to represent.
+
+Even if it can be a little intimidating to follow,
+
+it is a super common pattern.
+
+So there we go.
+
+Arrays and objects living in harmony forever.
+
+
+

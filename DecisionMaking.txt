@@ -1,0 +1,579 @@
+COMPARISON OPERATORS
+We are comparing two values, a left and a right and they give us a boolean value. They become very useful in the real world when we're working with data that is unknown. 
+-1 > 20
+false
+-1 > -1
+false
+-1 < 20
+true
+-1 <= -1
+true
+-1 >= -2
+true
+let age = 21
+undefined
+age >= 18
+true
+We're not limited to doing this with numbers, we can actually compare two strings.
+What happens is that every character, like A or B, or even the star character, an asterisk or a period or less than bracket itself, they all have an underlying code, a numeric code,
+called Unicode.
+What we're comparing there is not necessarily which one comes first in the alphabet, but their unicode value. Uppercase letters come first. 
+'a' < 'b'
+true
+'A' > 'a'
+false
+0.2 > 0.3
+false
+'' < ''
+false
+'A' > ''
+true
+
+COMPARISON OPERATORS => EQUALITY AND INEQUALITY OPERATORS
+1 == 1
+true
+1 == '1'
+true
+0 == ''
+true
+0 == false
+true
+null == undefined
+true
+'a' == 'b'
+false
+1 === 1
+true
+1 === '1'
+false
+0 === false
+false
+null === undefined
+false
+0 === ''
+false
+'a' === 'b'
+false
+5 === 5
+true
+1 != 2
+true
+1 != '2'
+true
+1 != '1'
+false
+1 !== '1'
+true
+
+
+To check if two values are the same, if they're equal, we actually have two options i.e. == and === sign. This is a pretty important distinction.
+== two equal signs in a row
+This is going to check if two values are equal, but it does not care if they are of the same type.      
+It will attempt to coerce two values, if they are of different types, it will attempt to coerce them to move them into or transform them into the same type so that it can 
+compare them and this can lead to some unexpected results.
+
+
+But something like this one == the string one.
+
+Those are not the same.
+
+One is a string, one is a number
+
+and that might seem like it's not a big deal.
+
+You know it's close, right?
+
+It's the string one versus the number one.
+
+But that can be very problematic.
+
+So it does not care about type.
+
+So it converts them to the same type and then compares.
+
+I have a few examples just to illustrate this oddity.
+
+Something like zero and an empty string,
+
+they are considered the same with ==,
+
+zero and false are considered the same.
+
+Null and undefined are considered the same.
+
+Those are completely different concepts. It still says true.
+
+Now obviously if we do things like one equals two false
+
+or A equals B,
+
+those are completely different.
+
+But if we have something like, you know, zero equals false,
+
+those seem like they're completely different concepts.
+
+One is a Boolean, one is a number,
+
+but for some reason we get true.
+
+Now we'll understand more how this works
+
+and why zero and false are considered similar enough
+
+when they're converted to the same type.
+
+We'll get to that.
+
+But for now, hopefully this illustrates this concept
+
+that a lot of the time
+
+it doesn't matter if we are working with data
+
+of the same type, it just works like inequality operator.
+
+That's what it is, is checking to see
+
+is this thing equal to this other thing?
+
+But when we are working with different types,
+
+we get unexpected results at times.
+
+So that brings us to ===,
+
+which is also known as the strict equality operator.
+
+But almost everyone just says ===.
+
+It does care about type, so type and value.
+
+It's not going to attempt
+
+to coerce anything to the same type.
+
+So one === one is the same as == one, they're the same type.
+
+But now if I have one === the string one,
+
+that now is false.
+
+Remember with two equal signs, that is true.
+
+It coerces them to be the same type with double
+
+with triple it does not.
+
+Same thing with zero === false.
+
+Well not all caps false. There we go.
+
+That is false.
+
+With ==, that is considered true.
+
+Now we also have two operators to check for non equality
+
+to verify or to compare two things
+
+and see if they are not the same.
+
+We have a version they both use an exclamation point
+
+by the way, we have our first version, which is similar
+
+to == where it does not care about type.
+
+And then we have a second version
+
+which does care about type,
+
+which goes along with the strict equality
+
+or ===.
+
+So here's an example.
+
+If I wanna know if one is not equal to two, simple enough,
+
+this version does not care about type.
+
+So it will tell me one is not the same as two.
+
+Now if I did one is not the same as two, the string,
+
+we get true, they are not the same.
+
+But what about this one is not equal to the string one?
+
+Well it tells me false because it does not care about type.
+
+It converts them so that they are similar type.
+
+It compares them into what do you know? They are the same.
+
+It's the opposite of doing this.
+
+Whereas if I use the strict equality version like that
+
+with two equal signs, three characters though,
+
+so it goes along with ===,
+
+even though we don't have three equal signs,
+
+we have three total characters, here I get true.
+
+They are not at all the same,
+
+they are not equal.
+
+So this can get a little confusing to talk about
+
+with all the equal signs and double and triple.
+
+The takeaway that you should leave here
+
+with is pretty much always use ===
+
+when you're comparing things
+
+to see if they're equal.
+
+Always use ===.
+
+Maybe there's a time where it will make sense
+
+for you to to use ==,
+
+but if you get to that point,
+
+you'll be a skilled enough developer
+
+that you're able to decide on your own,
+
+until then always use ===.
+
+Remember it does care about type
+
+and it's important that it cares about type.
+
+That is something that can really trip you up
+
+and cause issues later on.
+
+And then along with that,
+
+if you're checking to see if two things are not equal,
+
+use this version which also cares about type.
+
+It is the strict non equality operator.
+
+So it goes along with ===.
+
+So no == is a thing.
+
+This is a thing as well, but you should use ===
+
+and strict non equality.
+
+Those are the two operators you should use
+
+for equality and non equality.
+
+And I'm gonna shut up now, keep that in mind,
+
+just cement it as a rule in your brain for now,
+
+=== always.
+
+CONSOLE, ALERT, PROMPT
+console.log("HELLO")
+HELLO
+undefined
+1 + 4
+5
+console.log(1 + 4, "HI", true) 
+5 'HI' true
+undefined
+console.warn("UH OH WARNING!")
+UH OH WARNING!
+undefined
+console.error("KINDA BORING")
+KINDA BORING
+undefined
+alert("HI THERE")
+undefined
+prompt("please enter a number")
+'5'
+let userInput = prompt("please enter a number")
+undefined
+userInput
+'97'
+userInput + '1'
+'971'
+parseInt(userInput)
+97
+parseInt('101')
+101
+parseInt('101vkjsdfhhfgf')
+101
+parseInt(userInput) + 1
+98
+parseInt('vkjsdfhhfgf')
+NaN
+Instructor: So we're about to learn how to run code
+
+from an actual JavaScript file,
+
+not just a good friend, the console,
+
+but actually from a script
+
+that we then include in an HTML document,
+
+we open that in the browser,
+
+kind of like the way we include a CSS stylesheet
+
+in an HTML document.
+
+But before we do that, I need to mention a couple of things,
+
+a couple of important methods
+
+that you'll want to know about.
+
+And the first one is called console.log.
+
+Now, console.log is not very exciting.
+
+In other languages, it would just be called print.
+
+I don't know why it's console.log,
+
+it's just the JavaScript way.
+
+And this is going to print whatever arguments
+
+we pass in to our console.
+
+So if we run this in the console,
+
+it seems kind of ridiculous to do console.log Hello.
+
+It prints out Hello, right?
+
+We don't really need that
+
+if we're working in the console.
+
+If I wanna see the value of something like one plus four,
+
+I can just type it in and get five.
+
+But when I'm working in a file,
+
+that file is completely disconnected from my console.
+
+I don't see anything that I'm typing in that file.
+
+I don't see live feedback.
+
+Remember this term REPL?
+
+Read, evaluate, print loop?
+
+Well, this is a REPL.
+
+When I run my code in a file, it's more like RE,
+
+read, evaluate.
+
+So in order to print anything out, we can use console.log.
+
+You can pass in multiple arguments.
+
+So I can do something like
+
+one plus four, Hi and true.
+
+Those all get printed out, separated by spaces.
+
+Now, this console thing is actually an object.
+
+Remember how we had math
+
+and there's a bunch of these methods on math.
+
+Math dots a whole bunch of stuff.
+
+Ceiling, random, floor, power, well,
+
+console's not as complicated.
+
+Console., but we have things like console., well, clear.
+
+Console.error, console.warning console.time.
+
+Console.log is the most common one.
+
+I think I said warning, it's warn,
+
+but if I do warn, Uh oh warning,
+
+it's gonna print it out differently, right?
+
+It makes it clear that it's a warning,
+
+gives us this little warning sign
+
+and I can do a console.error.
+
+Here's my error, and it prints out,
+
+just like I would see if I did something like this,
+
+I mean, the error message is different,
+
+but it's showing up in the same color
+
+in the same way in my console.
+
+So console.log is what we'll be using.
+
+And then also, while we're here,
+
+another method that you might care about,
+
+another two, first one is called alert.
+
+And alert is going to print out something
+
+to the user but not in the console.
+
+So if I do something like Hi there
+
+and I hit Enter, can you see?
+
+I get this popup.
+
+It's really annoying when websites do this,
+
+so I don't recommend you do this in any production apps,
+
+but it is a thing that you may see.
+
+And another option is something called prompt.
+
+So prompt is going to accept an argument.
+
+How about this?
+
+Please enter a number
+
+and if I hit Enter, it actually pops up
+
+and asks a user to enter a number.
+
+So let's enter 13.
+
+Okay, so it just now shows me the string 13.
+
+Normally what we do is save that to a variable,
+
+like let num or userInput = prompt.
+
+So now, enter a number.
+
+Let's go with 97.
+
+And if I look at userInput, we have the string 97.
+
+So that is something that may be useful for us
+
+for some of these early exercises and sort of,
+
+I won't say project, but little demos
+
+where we need to get some user input.
+
+Typically, if you need user input, you make a form, right?
+
+We make an input in the browser with HTML,
+
+and we can use JavaScript once we learn
+
+how to connect the two, but we don't know that yet.
+
+So prompt is an easy way
+
+to get some user input, to prompt a user,
+
+and then it gives us a string.
+
+So if we're trying to do math with this, for example,
+
+I wanted to compare it to a number,
+
+I wanna add something to 97.
+
+I wanna add one.
+
+Let's say it's a birth year or a birthday.
+
+I want to add one.
+
+So we go up to 98.
+
+Well, I can't really do this, right?
+
+I get 971.
+
+I'm concatenating two strings.
+
+Well, this is a number,
+
+but it's going to be turned into a string
+
+and then it will be concatenated.
+
+What we want instead is to turn this
+
+into a number and there's a way of doing this.
+
+ParseInt, userInput.
+
+That gives us the integer 97.
+
+So it accepts a string and we'll parse an integer from it.
+
+So I can have parseInt of the string 101, right?
+
+I get 101.
+
+If I have letters in there,
+
+it's gonna try and find the integer.
+
+It can be a little bit janky at times,
+
+but it's trying to extract a number,
+
+and actually it will give you a number instead of a string.
+
+So I can now add one to that.
+
+I can do parseInt of userInput + 1, we get 98.
+
+All right, so those are a couple of methods.
+
+Really, console.log is the key one for now.
+
+It seems useless, but in the next video,
+
+it'll become a lot more useful
+
+when we're actually running code from a file.

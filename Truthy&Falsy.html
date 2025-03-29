@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truthy & Falsy</title>
+</head>
+<body>
+    <!-- FALSY!
+     FALSY!
+     FALSY!
+     FALSY!
+     FALSY!
+     FALSY!
+     FALSY!
+     TRUTHY! 
+     Instructor: All right, quick little topic here,
+
+but an important one.
+
+We need to talk about truthiness
+
+and faultiness, or just truthy
+
+and falsely values or inherent truthiness and falseness.
+
+I don't know how to even spell truthiness
+
+and falseness, honestly, it doesn't matter.
+
+I don't think they're official terms,
+
+but most people recognize them.
+
+Anyway, let's talk about what they mean.
+
+Every value in JavaScript,
+
+every single one, has an inherent truthiness
+
+and falseness that obviously does not mean
+
+they are true and they are false.
+
+There's only two values that are actually true and false.
+
+We know them, exactly true and exactly false,
+
+but every value,
+
+whether it's the string alksjd
+
+or the number 98 or the value null,
+
+they all have an inherent truthiness or falseness to them.
+
+They all have either a light side or dark side
+
+or good or evil, or just true and false, right?
+
+And we don't need to assign inherent moral to them either.
+
+It's just are they truthy or falsey.
+
+Now, this matters for a couple of reasons
+
+we'll see as we make more progress,
+
+but let me just lay out the rules.
+
+Every single value in JavaScript
+
+is considered truthy except for the following.
+
+False, okay, that one makes sense.
+
+It should be falsey,
+
+zero, empty string, null,
+
+undefined, and not a number or NaN.
+
+Everything else is truthy.
+
+So let me show you what this looks like
+
+or how we could see this in practice.
+
+I have a new script, a new HTML document,
+
+and I'm gonna do something.
+
+Right here, I'm going to prompt a user, Enter something,
+
+save that to a variable,
+
+constInput or userInput or something like that.
+
+Okay?
+
+Now, if a user enters nothing,
+
+if it just pops up right away, refreshing, here it is,
+
+enter something and I just hit Enter right away,
+
+the value of userInput, if I look at it,
+
+it's an empty string and we've seen
+
+that empty strings are inherently falsey.
+
+So I can do this right here.
+
+If userInput and I don't have to compare it to anything.
+
+I can literally just say if there is a userInput,
+
+because if it's any string
+
+other than an empty string, that will be truthy.
+
+So console.log, truthy,
+
+otherwise, console.log falsey.
+
+Okay, so I'm gonna try this.
+
+I'm gonna type something, anything, a string.
+
+Truthy.
+
+All we wrote was if userInput.
+
+I didn't say if it equals something,
+
+if it's greater than something,
+
+I just said if userInput.
+
+So we know userInput is not true or false,
+
+the actual value true or false,
+
+but it's going to be coerced into a Boolean,
+
+into its truthiness or inherent faultiness.
+
+It will be revealed.
+
+So if it's a string that has anything in it,
+
+it's truthy and see, console.log truthy.
+
+But if I just hit Enter right away, no text, we get falsey.
+
+This tells us, well, it doesn't really tell us anything
+
+because we already knew this,
+
+but it shows that an empty string is considered falsey.
+
+So I'll show you a few more examples.
+
+We can do something like if false,
+
+well, we know what happens with if false,
+
+but if we do if zero, console.log
+
+zero, let's just do truthy there.
+
+Else, console.log falsey.
+
+And we should see falsey
+
+because zero itself is considered falsey.
+
+So if we do if zero, it's like doing if false.
+
+That's just not going to be true.
+
+And the same goes for some of the other values we've seen.
+
+For example, null, falsey.
+
+If I have any other number, by the way, I didn't show that,
+
+but they're truthy.
+
+Even a negative number, negative one, truthy.
+
+It's just zero, and not a number.
+
+So let's try not a number, falsey.
+
+And the last one we have after null,
+
+we've gotta do undefined,
+
+which is inherently falsey as well.
+
+So anything else, a string, a number,
+
+what else do we have?
+
+The Boolean true.
+
+Any number, any string that is not empty,
+
+even if it's just a space, that's truthy.
+
+The falsey here is because I didn't comment this one out.
+
+Okay, so this is something
+
+we can take advantage of often
+
+in a situation like this right here,
+
+where we have some variable,
+
+some input or something that's coming from somewhere else.
+
+And we're going to check
+
+just if it exists or if there's a value
+
+inside of that string,
+
+or if it's an empty string or if a value has been defined.
+
+If a variable actually has data in it
+
+and it's not undefined or it's not null,
+
+I can simply write if userInput.
+
+I don't need to do if it equals or if it's not equal
+
+to an empty string, I can simply do,
+
+if it's inherently truthy, do that.
+
+Otherwise, do that.
+
+And this will come into play
+
+in a little bit because next up,
+
+we're gonna learn more about logical operators
+
+and combining pieces of logic.
+
+And often, this inherent truthiness
+
+and falsiness will come into play.
+-->
+    <script src="Truthy&Falsy.js"></script>
+</body>
+</html> 

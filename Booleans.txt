@@ -1,0 +1,53 @@
+Booleans are very simple. We have two options for a Boolean value:- true or false. That's it, so Booleans are used to store yes or no values, a true or false value.
+We write the word true and the word false. So these are special words in JavaScript.
+If I go to my console and type truth, that gives me an error.
+But if I type true different color and I don't get an error, I get the exact similar feedback / result that I do when I type a number i.e. it just prints it back out to me.
+It's telling me this is JavaScript or the console's way of telling me I recognize that it and we're allowed to do that versus typing something else, I get an error.
+truth
+VM2284:1 Uncaught ReferenceError: truth is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM2284:1Understand this errorAI
+true
+true
+12
+12
+Booleans are used for things like if you're making a game, is the game still playing or is has the person won or has they have they lost?
+So we can store them in a variable just like anything else that we've seen.
+let isActiveGame = true;
+undefined
+isActiveGame
+true
+So isActiveGame is true, but I could save it or set it to be false instead.
+isActiveGame = false;
+false
+isActiveGame
+false
+true and false are lowercase and If I do true like that, I get an error.
+In other languages, like Python for example, they are uppercase, but not in JavaScript.
+True
+VM2427:1 Uncaught ReferenceError: True is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM2427:1Understand this errorAI
+let isLoggedIn = true;
+undefined
+We could replicate this functionality of true or false.We could do something like let isGameOver and use one and zero maybe. And just switch between the two.
+let isGameOver = 1;
+undefined
+isGameOver
+1
+In JavaScript we can have a single variable that changes type. If we make a numeric variable, it is not stuck storing a number forever. We could make it store a Boolean. So I have isGameOver which stores a Boolean. I could change that to a number.
+Although in some other programming languages, it's common that when you make a variable, if it's a number that you're storing, that variable can only ever store a number.
+Or if we make a Boolean, it can only, or that variable, can only ever store a Boolean value.
+isGameOver = 12345;
+12345
+isGameOver
+12345
+isGameOver = false;
+false
+isGameOver
+false
+
+TYPESCRIPT
+It's sort of like a, an add-on or a fancier version of JavaScript that does enforce those sort of type restrictions.
+Where a variable, if you declare it as a number variable, must remain and always store a number instead of a Boolean or something else.
+But on its own, regular old JavaScript does not have any restrictions like that.

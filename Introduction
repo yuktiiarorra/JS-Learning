@@ -1,0 +1,233 @@
+WHY JAVASCRIPT IS AWESOME / IMP ?
+JavaScript is the world of possibilities, the things that we can do just expands drastically. HTML and CSS are great, but on their own, we're kind of limited to making static websites, maybe some animations or a hover effect or something. We can display information and we can make it look nice. But with JavaScript, we can do so much more.
+JavaScript is a lot more logic heavy. It is a lot more creative in some ways. There are many different waysof achieving the same end result, and so it's not as cut and dry as just put on H1 or make this thing red.
+
+HTML, CSS, and JavaScript are the three main tools that your browser can understand and do something with.
+So when we request a webpage, google.com/search, and we're looking for chickens, we're searching chickens, there is an HTTP request that is sent to Google servers. Eventually it makes it to, hopefully, one of Google's servers,Google server is going to parse what I'm asking for, go and do all the hard work to find chicken search results. It builds the webpage for me. And that webpage consists of HTML, and CSS, and JavaScript. It's sent back to my browser,
+and my browser can render that for me. HTML is the nouns, CSS is the adjectives, JavaScript is the action and the verbs, the stuff that happens on our webpage.
+
+What JavaScript can be used for ?
+
+We can make content. We can change the color. We could show a graph even, really without much JavaScript at all,but then to update things while the page is still here, it hasn't refreshed, it hasn't reloaded, to get new information, new data, and update what I see, that's done with JavaScript.
+Long story short, JavaScript does a lot of stuff for us, ranging from relatively simple, creating a timer, nice animations and UI effects, up to charts and graphs that update live, creating really complex UIs like Instacart, live chats.
+
+PRIMITIVES AND CONSOLE
+
+What are the basics?
+The first fundamental thing we have to know are the primitive types in JavaScript. So primitive types or just types in general are a concept across any programming language. Whatever language you're working with will have some set of types.
+TYPES => different types of information it can store, it can handle, and work with.
+Like on a youtube page the channel name, video name are strings, numbers of likes, subscribers are numbers and subscribe option is bool etc are some diff types.  These all are things that we can store in JavaScript.
+There are these basic building blocks, these basic types of information that we can store.
+
+Numbers, Strings, Boolean, Null and Undefined. Those are the five basic primitive types, the most sort of fundamental unit in Javascript, or they're at least the most fundamental unit that we interact with on a daily basis, or an even like a minutely basis as a JavaScript developer, there's really no other place to start.
+Technically, there are two other primitive types, something called a Symbol and BigInt or Big Integer. Those are way, way, way less commonly used.
+
+Where we type our code ?
+1. we're gonna start typing our code in the JavaScript console in Chrome, which is the easiest place to start.
+It is absolutely not the standard place that developers type code in a professional setting.
+
+2. We will be writing our code in our editor and saving files and all of that, but that requires some overhead where we have to first connect a file to an HTML document and open that in the browser and make sure our scripts included in the right place. And it just is more work when we're doing these basic things like learning primitive types, it doesn't matter.
+
+
+How to use browser console ?
+You can use Chrome, Firefox, Safari etc. Pretty much every browser has a console.
+So all we need to do in Chrome on any webpage. We can right click, go to inspect, go to console.
+There's also a shortcut => CTRL + J.
+Another option, if you're in Chrome, go to View developer, and then JavaScript console.
+
+Console is right here is a place for me to type code. So I can do simple things like some math here. Well, assuming I type valid numbers, I can hit enter and that code is run and it's repeated back to me, or the result is shown to me.
+This is actually something known as a REPL(Read, evaluate, print, loop). So it's reading in my code, it evaluates it, it adds it together in this case, it prints out the result and it loops, meaning, it just keeps going. It doesn't just stop.
+Compared to most scripts, in most programming languages, you type some code, you hit run, and it runs and then you're done. The console is a place where I can just quickly and interactively play around with code.So it's a great place to demonstrate things and just to learn the basics.
+But we don't write long or really anything in here that we want to have any permanence because as soon as I close this Window or refresh, my code is gone.
+So we definitely will be working in files soon enough.
+The other thing we can do is to pop the console out when I'm just writing JavaScript into its own Window, because we're not gonna worry about the rest of the HTML and CSS. We don't care about the content at the moment. We're just gonna type some code.
+
+VARIABLES
+Variables are a way of giving some name to a value and storing it using JavaScript so that we can come back to it later, and reuse it, or update it, or just recall it. So all that we're doing is storing a value with a name so that I can come back to it. We don't need the semicolon in console technically but it's better to use it when declaring a variable although JavaScript will add a semicolon if we're missing one and it thinks we need one. We can have multiple variables, they do need to have distinct names.
+Using Keyword Let 
+let year = 1985;
+undefined
+year
+1985
+// We have two variables numA, numB
+let numA = 5;
+undefined
+let numB = 1;
+undefined
+numA
+5
+numB
+1
+numA + numB // JavaScript goes and finds those values in memory, and it adds them together.
+6
+numA
+5
+numB
+1
+numA + 1 // if I did this equation the value of numA doesn't change. JS is just retrieving the value and adding 1 to it but I'm not actually changing it.
+6
+numA
+5
+let totalNum = numA + numB // saving result in a new variable 
+undefined
+totalNum
+6
+numA = 6
+6
+numA = numA + 1; // updating value of numA
+7
+totalNum // It is exactly the same as it was when we created it. It's a snapshot in time, this is not intrinsically linked together.
+6
+totalNum = numA + numB; // we need to update the totalNum to get the value with updated numA 
+8
+
+Let's say I'm playing a game. So I'm gonna make a new variable called score and every time I collect a coin, we're adding five to my score.
+let  score = 0; // My score starts at zero.
+undefined
+score = score + 5; // if I wanna update score by five, obviously I could do this. But that's only gonna work the first time.
+5
+score = score + 5; // Now, if I want to add five, I need to do this. I could do this every time I want to update.
+10
+score = score + 5;
+15
+score += 5; // shorter syntax
+20
+score += 10;
+30
+score = score - 5; // similary, we can decrease our score
+25
+score -= 5; // shorter syntax
+20
+score *= 2; // multiply 
+40
+score /= 2; // divide
+20
+// as increment and decrement by 1 are pretty common we can do this.
+score += 1;
+21
+score -= 1;
+20
+
+Let's make a new variable numLives i.e. the number of lives we have left in your game. We're going to increment or decrement it by one.
+let numLives = 9;
+undefined
+numLives -= 1; // decrementing it by 1
+8
+numLives-- // shorter syntax. It's mildly confusing in the console. It's just giving us the current value of numLives before it's updated.
+8
+numLives // But we can see numLives did actually go down by one. It was decremented by one.
+7
+numLives--
+7
+numLives
+6
+numLives++
+6
+numLives
+7
+
+Clear console => clear(), shortcut => ctrl + L
+
+PreIncrement(++i) & PostIncrement(i++)
+The increment or the plus-plus operator adds one to a number and returns a value, but it can return a number value before or after the increment depending on the actual placement of the plus-plus operator.
+i++ / Post-Increment / Postfix Increment Operator.
+It first returns the current value of the variable and then increments it by one.
+So, what happened here is that the i++ expression was executed, but it returned the value prior to the increment and then it updated the actual i variable after that.
+let i  = 0
+undefined
+i++
+0
+i
+1
+let result = i++
+undefined
+result
+1
+i
+2
+++i / Pre-Increment / Prefix Increment Operator.
+It increments the variable's value by one first, and then it returns the incremented value after that.
+Let's declare the i variable again and set it equal to zero. And then, if we write ++i, press enter here, we can seethat it actually returned the number one, so it returned the new incremented value this time.
+let i  = 0
+undefined
+result = ++i;
+1
+i // So if we type i again, we can see we get one back, so we got one back in both cases.
+1
+
+CONST AND VAR
+Const 
+Const stands for constant i.e it's value does not change. A constant variable does not allow you to update the value or change that value.
+Why use constant / const?
+For now, it may seem quite limited. We could use it to do things like store the value of pi or store things that we know won't change.
+If we're making some application where we need to somehow convert from feet to miles or miles to feet, we're not gonna change that number.
+But when we get to arrays and objects, data structures in JavaScript, we'll see that const becomes a bit more useful.
+undefined
+Num
+5
+Num += 1 // After we create our variable I can recall it at any point, but I cannot increment it or change it or reassign it. So I can't do += 1. I get this error, "Assignment to constant variable."
+VM2070:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:5
+(anonymous) @ VM2070:1Understand this errorAI
+Num = 7
+VM2111:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:5
+(anonymous) @ VM2111:1Understand this errorAI
+const feetInMile = 5280
+undefined
+feetInMile
+5280
+Why use variable / var?
+Now this is the old way of making variables. Originally in JavaScript, this was the only method / keyword we had to make variables.
+Everything was done using var and it still works.
+It works very similarly to let. There are some distinctions.
+const Num = 5
+var runDistance = 26.2;
+undefined
+runDistance
+26.2
+runDistance += 1;
+27.2
+
+VARIABLE / IDENTIFIER NAMING
+Identifier - identifiers are case-sensitive. They can contain letters, a dollar sign, underscore and digits zero through nine,but may not start with the digit.
+1. We can't have spaces between variable names.
+let hello world;
+VM2632:1 Uncaught SyntaxError: Unexpected identifier 'world'Understand this errorAI
+let hello world = 5;
+VM2682:1 Uncaught SyntaxError: Unexpected identifier 'world'Understand this errorAI
+let user1;
+undefined
+let user1 = 5;
+undefined
+user1
+5
+2. Variable name shouldn't start with a no.
+let 1user = 5;
+VM2840:1 Uncaught SyntaxError: Invalid or unexpected tokenUnderstand this errorAI
+3.Can start with an underscore.
+let _age = 9;
+undefined
+_age
+9
+Good to use
+1. Give our variables names that are camel-cased
+let currentAge;
+undefined
+Generally not good to use
+let current_Age; // snake-case
+undefined
+let CurrentAge; // pascal-case
+undefined
+let current-Age; // kebab-case
+undefined
+2. Use good names for variables instead of naming them randomly.
+let n = 9; // Poor variable naming
+undefined
+let userInputNum; // Good variable naming
+undefined
+When we're making a Boolean variable, come up with a nice name that explains what it is.
+let isGameOver = true; //  Good variable naming
+undefined
+let gameOver = true; // Poor variable naming
+undefined

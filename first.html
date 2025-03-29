@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first js script</title>
+</head>
+<body>
+    <h1>FIRST JS SCRIPT</h1>
+    <script src="first.js"></script>
+    <!-- HeLLO FROM OUR FIRST JS FILE!!!!
+GOODBYE
+total
+5
+    
+    Speaker: Okie dokie.
+
+It's finally time to run our code, our JavaScript code
+
+that is from a separate file that we can save and revisit.
+
+Typing our code in the console is great for, you know,
+
+one-off things.
+
+We're just quickly testing what is one plus three?
+
+Great.
+
+We don't need to make a file and save a script
+
+and execute that script in the browser.
+
+Let's just do it in the console.
+
+But if we wanna write more than one line at a time, I mean,
+
+technically you can do multiple lines.
+
+If you hit shift enter, you can type multiple lines there.
+
+But still the point remains that as soon as I do hit enter,
+
+or I close this Window and come back,
+
+or my computer dies, you know, I thought
+
+that charger was plugged in and it wasn't.
+
+It happens to me all the time.
+
+My code is gone, right?
+
+This is not permanent in any way
+
+and most websites, most applications are gonna consist
+
+of hundreds if not thousands of lines of JavaScript.
+
+So this is really not where we wanna write real code.
+
+It's a great place to test things out.
+
+It's a great place to debug your code
+
+to figure out what's going wrong,
+
+but it's not a real editor.
+
+That's why we have VS code.
+
+So to run a JavaScript file, what we have
+
+to do is make a JavaScript file so we can start there.
+
+I'm in a new folder here, I'm calling it Running_Js_Script.
+
+And the only requirement here is that our file ends in .js.
+
+So why don't we go with script.js or app,
+
+I like app.js, but whatever works, notice VS code
+
+gives me the little JavaScript logo, the icon.
+
+Yours might look different.
+
+So in here, we can put some code,
+
+like, you know, one plus three.
+
+But remember, this is not gonna show up anywhere
+
+unless I print it out.
+
+So we'll do a console.log as we just learned.
+
+"Hello from our first file,
+
+our first JS file", okay?
+
+Now I'm gonna save this file.
+
+Now in my index.html, I need to connect this script
+
+with the HTML file.
+
+So I can't just open this in the browser unfortunately,
+
+to connect it, what I need to do is use a script element.
+
+So in HTML, we have a script element.
+
+It does kind of what I've already said.
+
+So the script element accepts an attribute called source,
+
+src, just like we have on a image.
+
+And this source needs to be the path to a script.
+
+So app.js, just like that.
+
+Okay?
+
+And then I can open this in the browser.
+
+So I'm just gonna give this a new title.
+
+First JS Script.
+
+I'll open this in the browser,
+
+like we've opened everything else.
+
+I mean, I can put an h1 or something in here if I want,
+
+but we're not gonna be working with the HTML.
+
+We're simply using this HTML document as like a vessel
+
+to carry our script.
+
+It's just a conduit so that we can actually run our script,
+
+but our script won't be interacting with the elements.
+
+Not yet at least.
+
+So, I've got my h1 First Script.
+
+Now, I'm gonna open this up.
+
+Here it is in all its glory, a beautiful webpage,
+
+and I'm gonna open the console.
+
+And there we go. So, it's up to you
+
+how you wanna manage this,
+
+if you want this to be collapsed
+
+as a drawer in the actual browser webpage,
+
+but since we're not interacting with this content,
+
+I usually just pop it out like we've been doing.
+
+This is now where we'll go
+
+to see the result of our code running.
+
+So I just want to emphasize this one more time
+
+if I wasn't clear enough.
+
+Doing something like one plus three, that is going to run,
+
+but we won't see any output.
+
+I'm refreshing the page here, which is what we need to do
+
+anytime I change my file, just like an HTML
+
+or CSS file, if I change this, I need to save
+
+and then rerun it in the browser or just refresh.
+
+So I don't see that, even though,
+
+it actually did execute, it's just not there.
+
+Now what I could do is make a variable,
+
+let total equal one plus three, and then refresh over here.
+
+I still don't see it, but I do have access
+
+to those variables I've declared over in my script, assuming
+
+that the page is open.
+
+So it's not like every browser Window ever
+
+will have access to total.
+
+It's just in this file that I've made right now.
+
+So I can put multiple console.logs in here,
+
+of course, console.log, hello from a file, console.log,
+
+goodbye, refresh.
+
+And now we get both of them.
+
+The other thing I wanna make clear upfront, you'll learn,
+
+or we hopefully will learn together as we progress
+
+through JavaScript, that this is actually not
+
+the ideal placement.
+
+It's not the ideal place to put a JavaScript script
+
+in our document.
+
+Usually, we put these down at the very end of our body.
+
+Now it's not gonna make a single,
+
+I was gonna say a wink of difference.
+
+I don't know if that's a real expression,
+
+an iota of difference.
+
+It's not gonna matter right now
+
+because the reason we do this has to do
+
+with when we're writing JavaScript that interacts
+
+with HTML elements.
+
+Like if I wanted to have a button in here
+
+and I could click it and it would run some JavaScript code,
+
+I want those elements to be loaded.
+
+I want them to be acknowledged by the browser
+
+before my script.
+
+But right now, we're not doing it.
+
+So it really won't matter or doesn't matter right now,
+
+but it's a good habit to get into.
+
+You can add your scripts at the bottom of the body, not
+
+outside it, but at the end of the body.
+
+And I think that's pretty much it.
+
+So make a file with .js as the extension.
+
+Put your code in there.
+
+We'll be doing this all the time.
+
+Connect it to your HTML document with script,
+
+the script element with the source attribute.
+
+Make sure that path is correct.
+
+File name matches, you know,
+
+if you have something like js/, if it's in a folder.
+
+And then open that file in your browser.
+
+I have it open right here.
+
+And then open up the dev tools
+
+and our console will print out, well,
+
+it will show us whatever we've printed out
+
+from our JavaScript file.
+
+Okay, so that's the recipe to follow.
+ -->
+</body>
+</html>

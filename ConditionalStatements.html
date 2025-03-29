@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Statementst</title>
+</head>
+<body>
+    <!-- BEFORE CONDITIONAL1
+         MATH STILL WORKS!
+         AFTER CONDITIONAL1 
+         
+         BEFORE CONDITIONAL2
+         AFTER CONDITIONAL2
+         
+         BEFORE CONDITIONAL3
+         AFTER CONDITIONAL3
+         
+         BEFORE CONDITIONAL4
+         YOUR NUMBER IS GREATER THAN 0.5
+         0.501171281884609
+         AFTER CONDITIONAL4
+         Instructor: Okay, so we've seen how to run our code
+
+from a file and we've seen
+
+how to do some simple comparisons.
+
+How to do something like, well,
+
+where's my console? Here we are,
+
+is some variable, let's say age greater than 18.
+
+But we haven't seen how to do anything
+
+using these comparisons.
+
+So I can check if this is true or false,
+
+but what if I want to have one outcome if it is true,
+
+something as simple as printing good versus bad,
+
+or you know, enter the bar
+
+or I'm sorry kid, you gotta go home, you're not 18.
+
+Two different outcomes. How do we do that?
+
+Well, that's what we're gonna see right now.
+
+We're gonna talk about conditional statements,
+
+so making decisions with our code.
+
+And the first thing we'll see is the If Statement.
+
+So down here,
+
+if and then parentheses, some condition.
+
+Now this condition is simply anything
+
+that evaluates to true or false.
+
+So if it evaluates to true,
+
+the code in between these curly braces will execute.
+
+Now if that condition is false, nothing happens.
+
+Well it's not necessarily true that nothing happens,
+
+but this code will not run.
+
+In other words, this console.log only runs in this scenario,
+
+if the rating variable is exactly 3,
+
+and it's very stupid because we know it's 3.
+
+But imagine this is coming from a database
+
+or from a user or I don't know,
+
+some library or some fancy website
+
+where we don't know what rating is.
+
+This is a way of saying if rating is exactly 3, do this.
+
+So this syntax is incredibly commonly used.
+
+We'll see it all over the place.
+
+If, parentheses, some condition in that parentheses
+
+or inside those parentheses.
+
+So let's try it. I'm gonna make a new file,
+
+just to get a little bit more practice here.
+
+Conditionals and just so we're clear here,
+
+this is an If Statement,
+
+but we can combine this with other pieces
+
+like Else If and Else to form a full conditional,
+
+but it doesn't really matter in terms of terminology.
+
+I'm gonna call this conditionals.
+
+I'm gonna include a new script that doesn't exist yet.
+
+New file app.js.
+
+I'll put some code in here.
+
+I always just like to make sure it's working.
+
+Console.log, "ITS WORKING!!!".
+
+Include my script, script source.
+
+Well I did the wrong auto complete,
+
+but we can add source ourself,
+
+app.js, open it in my browser. Here it is.
+
+Refresh the page, go to the console. Perfect.
+
+It's working. Okay,
+
+so let's now actually do our own conditional.
+
+Let's create something really simple like if,
+
+and we can do something trivial.
+
+If 1 plus 1 triple equals 2,
+
+curly braces, console.log.
+
+How about, "MATH STILL WORKS!"?
+
+Okay, so if that's the case, 1 plus 1 is 2.
+
+Well hopefully, I refresh and we get, "MATH STILL WORKS!".
+
+Now if I put something else after here,
+
+console.log, "AFTER CONDITIONAL"
+
+and I'll do one before it as well.
+
+Console.log, "BEFORE" and I save.
+
+I can't, cannot spell, but that's okay.
+
+I refresh. We see all 3.
+
+But if I change this condition to now be,
+
+if 1 plus 2 equals 2, well we know that's false,
+
+we just get before and after.
+
+But I wanna be very clear if this is false,
+
+only the code inside the curly braces does not run.
+
+It doesn't stop everything.
+
+Our code still lives on afterwards.
+
+It's just this stuff doesn't run
+
+and I can have as many lines as needed in here.
+
+So instead of doing if 1 plus 2 equals 2,
+
+why don't we do something more like,
+
+let's pick a random number.
+
+Okay, so Math.random,
+
+remember that gives us a tiny little decimal
+
+between 0 and 1, Math.random.
+
+And let's pretend I'm flipping a coin or something.
+
+So I'm gonna save that Math.random to a variable.
+
+I'll call it let rand or random equal Math.random.
+
+Now I'm not gonna be able to do a comparison with equality.
+
+I mean I could, but a random number
+
+is something crazy like that.
+
+So I'm not gonna be able to say
+
+if random equals that, we'll be here all day.
+
+But what I could do is just say is random less than 0.5.
+
+So if random is less than 0.5, it's between 0 and 1.
+
+So roughly half the time it should be less than 0.5
+
+and the other half it should be greater than.
+
+If that's the case, I'll do something like,
+
+console.log, "YOUR NUMBER IS LESS THAN 0.5!!!", right?
+
+And then I could console.log the number 2.
+
+Why don't we do that,
+
+console.log, I mean our random number,
+
+not the actual digit 2, console.log random.
+
+Alright, and let's just get rid of before and after.
+
+You already saw how that works. Let's refresh, nothing.
+
+So that must mean that our random number
+
+was not less than 0.5.
+
+One more time. Nope. Again, again, I'm still refreshing.
+
+Hey, it finally worked.
+
+Your number is less than 0.5,
+
+we got 0.416, blah, blah, blah, blah, blah.
+
+Try again. Here we go.
+
+Your number is less than 0.5, 0.09. Small one.
+
+Okay. So this is the basic syntax of a conditional.
+
+We can have as many if as we want.
+
+I mean I could do something like this.
+
+If random is greater than 0.5,
+
+should do greater than or equal to technically,
+
+just in case there's that magical chance
+
+that it actually is exactly 0.5.
+
+If that's the case, let's just duplicate this.
+
+Your number is greater than.
+
+Now this seems kind of silly to do it this way and it is.
+
+I'll show you a better way in the next video,
+
+but this will work if I refresh.
+
+Now we get your number is greater than 0.5
+
+and here's the number.
+
+Greater, less, greater and less.
+
+So we have two different ifs,
+
+two things that we're checking,
+
+is random less than 0.5? Do this.
+
+Is it greater? Do this.
+
+Alright, so this is our first piece.
+
+The If Statement, simple enough, hopefully.
+
+We have if and then in parentheses,
+
+something that evaluates to true or false.
+
+We'll see more and more complex stuff
+
+that can go inside of those parens,
+
+but at the end of the day,
+
+they all evaluate to true or false.
+
+A binary Boolean, yes or no.
+
+So next up, another piece of our conditional.
+
+FRIDAYS ARE DECENT, ESPECIALLY AFTER WORK!
+You are a child. You pay $10
+Instructor: Okay, so that's the if statement.
+
+Next I'm gonna show another piece that we can chain on.
+
+It works in conjunction with an if,
+
+in fact it only works if it's proceeded
+
+by an if it's called the else if.
+
+So you can think of this as if not the first thing.
+
+If the if part was false,
+
+then maybe try this other thing.
+
+Else if, so in this case, once again, it's very,
+
+very stupid to have this variable rating.
+
+I'm setting it to two.
+
+It's kind of redundant to then check if it's three or two.
+
+But imagine it's random
+
+or it's coming from a user or something.
+
+We don't know what it is.
+
+Put your finger over it
+
+and pretend it's not two. (chuckles)
+
+We check if rating is equal to three.
+
+That's false here.
+
+So this does not run,
+
+and we instead move on to this one right here, else if.
+
+So this will only run if the first thing was false.
+
+So only one of them will run.
+
+Let me demonstrate that over here.
+
+Why don't we start with a simpler non-random thing.
+
+So I'm gonna comment this out in VS code.
+
+In case you don't remember,
+
+it's the same shortcut to comment CSS or html.
+
+For me it's command forward slash.
+
+So let's do something involving the days
+
+of the week and strings.
+
+So I'll make a variable here, I'll call it day of week.
+
+I'll use const because I'm not gonna be altering this.
+
+So const day of week equals,
+
+and then I'll start it off as Monday.
+
+All right, which I think most people agree is if you work
+
+a seven or a five day a week, typical schedule,
+
+it's a pretty bad day if you had to pick one.
+
+So we'll add an if, (laughs) if day of week equals Monday.
+
+And if that's the case, we'll console.log,
+
+"Ughhh, I hate Mondays."
+
+All right, so we can just verify that works.
+
+I'll refresh the page.
+
+We get "Ughhh, I hate Mondays."
+
+But there's other days, some that are better,
+
+some that are terrible, let's say Saturday.
+
+If we get a Saturday, I wanna say,
+
+"Yes, I love Saturdays."
+
+So I can do an else if day of week
+
+equals Saturday console.log.
+
+"Yay I love Saturdays."
+
+So notice I put this on the same line
+
+as the closing bracket for my if,
+
+you don't have to do that at all,
+
+it's just a habit that I have.
+
+It's not a bad habit, it's just a style
+
+or a convention that you can follow.
+
+But please by all means don't feel like you have to do that.
+
+All right? So these are linked.
+
+Remember, only one of these will ever run.
+
+Only one console.log will print.
+
+And in this case it's, "Ughhh I hate Mondays."
+
+If I change it to Saturday,
+
+hopefully Saturday, and refresh.
+
+"Yay I love Saturdays."
+
+Now I can chain these together.
+
+I can have as many else ifs as I want.
+
+I just put another else if afterwards,
+
+so I could add another one on here.
+
+I'll duplicate this.
+
+What should I check for Monday is not great.
+
+Saturday, you know, Sunday is good.
+
+Sunday night though, it's a little eh, you know,
+
+people get that Sunday night blues thing going on.
+
+How about Friday?
+
+If day, week, day of week is Friday, we'll go with,
+
+"Fridays are decent,
+
+especially after work!"
+
+All right, so we now have three possible options,
+
+three possible outcomes.
+
+Let's change this to be Friday.
+
+So the first one, not true, it's skipped.
+
+Next one, not true, it's skipped.
+
+And our final one, it is true, we print this out.
+
+So if I have something else like fry daddy, (laughs)
+
+nothing will be printed out,
+
+unless I had some other stuff down here.
+
+So this one seems okay,
+
+it seems hopefully clear enough how this works.
+
+But let me just demonstrate one more example.
+
+I'm gonna comment this out again.
+
+Let's go back to Friday though
+
+just in case you run that yourself.
+
+And let's make a variable called how about age.
+
+And I use this example a lot.
+
+I know it's not very exciting,
+
+but let's say that we're running a,
+
+I don't know, a theme park or something,
+
+and we have different age brackets.
+
+If you're zero to maybe five years old,
+
+you can get in for free.
+
+If you are 5 to 10, you pay a child price,
+
+which will be, I don't know, how about $10.
+
+And then if you are between 10
+
+and what else do we have?
+
+10 and 65, that's considered adult.
+
+And that, I mean, 10 is kind of a weird cutoff,
+
+but nah, whatever. I already committed to it.
+
+So your price is $20,
+
+and then if you get to 65 plus
+
+you're going to be a senior,
+
+and you get in for $10, you get a discount.
+
+Okay, quite a lot there.
+
+So to implement this, if I wanted just a simple conditional,
+
+I'm just gonna comment this out
+
+'cause it's all completely invalid,
+
+but we'll leave it there to follow.
+
+If I had some conditional
+
+or some variable, we'll call it age, const age,
+
+and I'm using const again just 'cause this won't be changing
+
+after I create it, just like with day of the week,
+
+I can alter it here, but it's not gonna be
+
+updated after the fact.
+
+I'm not adding to age.
+
+So age will be about eight to begin with.
+
+So I can start if age is, how do I wanna do this?
+
+If it's less than five, I could start with that.
+
+If age is less than five, console.log,
+
+"You are child." (laughs)
+
+I dunno why I do this in all caps, let's just do,
+
+"You are a child.
+
+You get in for free."
+
+All right, let's verify it doesn't work right
+
+because price or age is eight.
+
+So then can add in my else if,
+
+and this time I can do else if, if you are under 10.
+
+And the reason this works,
+
+remember it's all hinging upon this order.
+
+This code only runs this conditional here will only be
+
+attempted if the first one was false.
+
+So that means if we make it to this point,
+
+we're already guaranteed not to be less than five.
+
+So else if age is less than 10.
+
+This is really saying, all right,
+
+if you're not less than five, are you less than 10?
+
+And for this to be true, you would be between 5 and 10.
+
+Hopefully that makes sense.
+
+I'm trying to demonstrate that these are linked together.
+
+It's not just two things we're testing.
+
+This thing is only tested if this is false.
+
+So console.log, "You are a child."
+
+Oh I think I went with child
+
+and then this is also child.
+
+Why don't I rename this?
+
+"You are a baby. (laughs) You get in for free."
+
+"You are a child. You pay $10."
+
+Okay, and then let's check that out. I'll refresh.
+
+"You are a child. You pay $10."
+
+Let's try it with two years old.
+
+"You are a baby. You get in for free."
+
+Now I can add another one else if age is less than 65,
+
+console.log, "You are an adult.
+
+You pay," and then what did I say? "$20."
+
+All righty, so let's make this how about 34 years old.
+
+Refresh. "You are an adult. You pay 20."
+
+We go back to three, "You're a baby."
+
+So hopefully that demonstrates
+
+how these are linked together, right?
+
+In order for this to be true,
+
+we already know to make it to this point,
+
+this was false and this was false.
+
+So we know for sure age is not less than five.
+
+It's definitely not less than 10.
+
+And then if this is true,
+
+we know all right, well it's somewhere between 10 and 65.
+
+So the order matters, at least with the way
+
+I've set this up right now.
+
+But I'm shortly gonna show you some other options
+
+for how we could rewrite this.
+
+But really my point I wanted to make clear right now
+
+is it's just that these are linked.
+
+If you use an else if, it's gotta come after an if,
+
+or it could come after another else if,
+
+and they are sequential.
+
+So this thing is tried.
+
+Is that true? Well then we're done.
+
+We just completely leave this whole chunk.
+
+If it's not true, we try this.
+
+And if that's not true, we try this.
+
+We could have as many as we want.
+
+I could've had seven different ones
+
+for each day of the week,
+
+but I just didn't wanna waste your time with that.
+
+All right, so next up we'll see another piece
+
+to our conditional, the final piece, which is else.
+
+BEFORE CONDITIONAL1
+MATH STILL WORKS!
+AFTER CONDITIONAL1
+BEFORE CONDITIONAL2
+MATH STILL WORKS!
+AFTER CONDITIONAL2
+YOUR NUMBER IS LESS THAN 0.5
+0.35525360653934146
+UGHH I HATE MONDAYS!
+You are senior. You pay $10
+Instructor: All right, so let's revisit
+
+this day of the week thing from earlier here.
+
+const dayOfWeek = 'Friday';
+
+and then I'm checking if it's Monday,
+
+if it's Saturday, or if it's Friday.
+
+Now we've got a whole bunch of other days
+
+and let's say for each of the other days.
+
+so if (dayOfWeek === 'Tuesday')
+
+I want to console.log('MEH')
+
+like meh, not a great day.
+
+And then I wanna do the same thing for every other day.
+
+So that leaves us, let's see,
+
+we've got Monday, Tuesday,
+
+I've got Wednesday,
+
+which I can never, Wednesday.
+
+Is that right? Oh boy.
+
+And then we've got Thursday and then Sunday.
+
+Well, you know, Sunday's not really meh,
+
+but if I wanted to, I could put that in here too.
+
+They all have the same outcome.
+
+This seems a bit redundant, it's not redundant,
+
+but it seems unnecessary and that's because it is.
+
+There is a better way of doing this.
+
+But just to show what I mean, right?
+
+I have Thursday of as the day of the week,
+
+we get, MEH,
+
+if I have Tuesday as the day of the week,
+
+we get a big fat MEH.
+
+So it would be great if I could combine them.
+
+They're kind of the otherwise the last case, right?
+
+I'm checking singling out Monday, Saturday, and Friday.
+
+Everything else I just wanna print out MEH.
+
+So we have a way of doing that.
+
+It is the else statement.
+
+It's part of our conditional here.
+
+So else is going to be the last part.
+
+If you have an else, you don't have to,
+
+but if you do, it's the last piece
+
+of the entire conditional.
+
+And we don't specify any condition.
+
+We don't have parentheses.
+
+It's simply a catchall.
+
+It's going to run as the last thing.
+
+If nothing else matched first,
+
+if nothing else was true along this journey, then do this.
+
+Think of it as just, if nothing else was true, do this.
+
+All right, I'm here.
+
+If nothing else was true, I'm gonna run.
+
+But if anything was true along the way,
+
+then our conditional is done.
+
+We never hit that else.
+
+So here I'm using it.
+
+In this case rating = -99.
+
+I'm checking, is it 3? Nope.
+
+else if 2? Nope.
+
+else if rating is 1? No.
+
+And then instead of having else if 0 and -1
+
+and -2 in every possible option,
+
+I can simply add else.
+
+If it's anything else,
+
+then print out INVALID RATING!
+
+So I could rewrite what I have right here.
+
+Instead of doing Tuesday, Wednesday,
+
+Thursday and singling them out.
+
+I can simply do else.
+
+It's just a catchall,
+
+console.log("MEH")
+
+so I don't have to specify if it's equal to Tuesday
+
+and Wednesday and Thursday.
+
+I don't need that at all.
+
+I'm simply saying otherwise.
+
+So now we still get MEH, right?
+
+I can make it Tuesday.
+
+You know, I could even prompt a user if I wanted to.
+
+prompt('ENTER A DAY')
+
+Now, one thing to consider is that I have these uppercased,
+
+so we'll need a user to either enter it uppercase.
+
+So here it's prompting me.
+
+I'll enter Monday uppercased or capitalized,
+
+I'll refresh again.
+
+Let's do Wednesday, I get MEH.
+
+Refresh again, I'll do Friday.
+
+FRIDAYS ARE DECENT, ESPECIALLY AFTER WORK!
+
+Now one thing that is, it's not problematic,
+
+but to be aware of, I can type anything in here
+
+and I'll get MEH.
+
+So we're not checking to see if it's, you know,
+
+Tuesday, Wednesday, Thursday,
+
+if it's a valid day of the week.
+
+I'm just looking to see if it's Monday, Saturday, Friday,
+
+or literally anything else.
+
+It could be zero and I'm still gonna get MEH.
+
+So keep that in mind.
+
+And another way we could improve that is
+
+by downcasing everything or by uppercasing everything.
+
+So we can eliminate any user capitalization.
+
+so we know how to do that.
+
+.to, let's do .toLowerCase();
+
+So whatever the user enters,
+
+they might type Monday like this for some reason,
+
+we're gonna lowercase it
+
+and we'll end up with all lowercase monday.
+
+And then we can compare that to all lowercase right here.
+
+So saturday lowercase, friday,
+
+we're sort of getting everything on a level playing field.
+
+We're neutralizing all of the capitalization.
+
+And we could go the other way.
+
+We could capitalize everything and make it all caps.
+
+So now I should be able to type in MONday like that
+
+and still see, UGHHH I HATE MONDAYS!
+
+or fridAy in all lowercase, except for a capital A.
+
+FRIDAYS ARE DECENT.
+
+Okay, so that's the basic concept of else,
+
+it's a catchall, it's a little bit,
+
+it's not a great use here,
+
+because we're not ensuring
+
+that your day of the week is valid, right?
+
+You could type zero or pink or something.
+
+The other thing I'll show you
+
+is how we could rewrite this here.
+
+Here, this is kind of silly,
+
+to check if one number is less than 0.5,
+
+do this and then just right afterwards check if
+
+that exact same number is greater than or equal to 0.5.
+
+Well it's only one of these, right?
+
+It's either or in this situation.
+
+So I could simplify this whole thing by deleting that if,
+
+and then just adding my else right here.
+
+Console.log("YOUR NUMBER IS GREATER THAN 0.5!!!")
+
+Right?
+
+If it's not less than,
+
+technically, I guess your number is greater
+
+or equal is possible, than 0.5.
+
+So I don't need that second if statement, right?
+
+These are links, it's only one or the other.
+
+And then if I really wanted to do this nicely,
+
+so I could print the random in both places
+
+or what's nicer is just to print the random
+
+after the fact so that I don't have to duplicate that code.
+
+I want it to happen no matter what.
+
+So only one of these runs and then this always runs.
+
+So let's see what we get.
+
+Gotta refresh my page here.
+
+YOUR NUMBER IS LESS THAN 0.5!!!
+
+LESS, LESS, GREATER.
+
+There we go. LESS.
+
+So it's just either or.
+
+But that's not always the case as we've seen.
+
+We can have as many else ifs as we want.
+
+We don't have to even have an else.
+
+You can just have an if on its own.
+
+You can have an if and an else if,
+
+but if you want to catch all, we can use an else.
+
+So I could update this code here for our age.
+
+Comment this out,
+
+where we're checking for a user's age
+
+or somebody's age.
+
+And I have a couple of options.
+
+So right now I'm saying,
+
+if you're greater than 65, you're an adult.
+
+And then I could do else anything else.
+
+We'll say console.log("You are a senior. You pay $10")
+
+Okay?
+
+Now we technically have a small issue here,
+
+which is that age could be super, super massive.
+
+It could be 55,000 kajillion billion.
+
+Not a real number, but it could be 500, right?
+
+And it's gonna hit this else,
+
+but we can worry about that later.
+
+So let's do 89.
+
+Refresh the page.
+
+You are a senior. You pay $10.
+
+So yes, we're still not accounting
+
+for every possible situation, right?
+
+Our age could be,
+
+I mean technically right now you could have a negative age
+
+and it's still going to trigger this right here
+
+because -100 is less than 5.
+
+You are a baby. You get in for free!
+
+But we'll learn how to tighten these things up.
+
+You know, there's a lot we could do.
+
+First of all, we're not even checking if age is a number,
+
+then we're also, you know, allowing super large ages.
+
+You could have 890 and you'll still be considered a senior.
+
+We can have very tiny ages here, considered a baby.
+
+This is kind of silly in the first place,
+
+but we'll see better ways of combining logic together
+
+to make more complicated statements.
+
+But the core mechanic here of having an if
+
+and then optional else ifs
+
+and an optional else at the end,
+
+that is never going to change.
+
+So, just to be very clear, we can have an if on its own,
+
+we can have an if and then an else.
+
+We can have an if and then else ifs.
+
+We can have an if with else if and then an else.
+
+In all cases, if we ever have an else,
+
+it comes at the end, just a pure else.
+
+It's the last thing.
+
+And if we ever have an else if it must come
+
+after the initial if or another else if
+
+so I could have something like this.
+
+So I don't know if that was at all,
+
+that might have just confused you more,
+
+but we always have an if at a bare minimum,
+
+if we're going to have any sort of conditional,
+
+there's gotta be an if we can't have an else on its own
+
+or an else if.
+
+They are relative to our first if.
+
+then we can just have an if else
+
+for a yes or no sort of binary, this or that.
+
+We can have 10 else ifs and then an else at the end.
+
+Anyway, I think that's, hopefully that's clear.
+
+We'll get a lot of practice with this stuff.
+
+So that's the basics of making decisions.
+
+Now what we're going to add on are just fancier stuff
+
+inside of those parentheses.
+
+There's a lot more that we can do in there,
+
+other than just checking to see if one thing is greater than
+
+or one thing is equal to another.
+
+We can start chaining things together
+
+and adding more complicated logic.
+
+PASSWORD TOO SHORT! Must be 6+ characters
+Instructor: Next up, we don't have any new syntax.
+
+I just wanna show you a really important concept,
+
+which is that we can nest conditionals
+
+inside other conditionals.
+
+So, I've got two requirements here for our little demo.
+
+We're going to ask a user for a password.
+
+So, enter a password.
+
+And we don't know how to connect an HTML form
+
+with JavaScripts and all of that
+
+so we're gonna use prompt.
+
+So let's make a variable.
+
+Const, once again, it's not going to change,
+
+so it's fine to use const.
+
+Const, let's do password or user input equals prompt.
+
+Please enter a new password.
+
+Something like that, all right?
+
+And then these are the two requirements.
+
+I need the password to be at least six characters.
+
+So we can do that part pretty simply.
+
+And then I wanna make sure it does not include a space.
+
+So hopefully we know how to do both of these.
+
+You may not remember exactly how to do this one.
+
+We could check if there's a space inside of the string
+
+by using index of.
+
+That's one option.
+
+That would be probably the simplest.
+
+And then to check the length,
+
+well we can just use the length property.
+
+So let's begin there.
+
+Password must be six plus characters.
+
+So we can do password dot length
+
+and we want that to be greater than or equal to six, right?
+
+So let's just do an if.
+
+If password dot length is greater than or equal to six,
+
+then, well we can put something here if we want,
+
+we can do a console dot log, long enough password.
+
+And then we could have an else right here.
+
+Console dot log password too short.
+
+Must be six plus characters, right?
+
+Okay, so we can begin with that.
+
+Let me just make sure everything else
+
+is commented out in here.
+
+Let's execute this.
+
+Please enter a new password.
+
+Let's do, I don't know, cat.
+
+Password too short!
+
+Must be 6+ characters.
+
+Let's refresh.
+
+Enter a new password.
+
+How about just gibberish?
+
+Long enough password!
+
+Great.
+
+Okay, so now let's work on the second part.
+
+Password cannot include space.
+
+So I could just add this down here
+
+as a separate conditional.
+
+I could do this.
+
+If, well, let me keep the comment there.
+
+There we go.
+
+If password.
+
+And then after that we could do,
+
+just to refresh your memory how this works.
+
+We have a string like hello dot index of,
+
+and then I check to see if an H is in there, right?
+
+It's gonna give me the index zero.
+
+But if I look for something that's not in there,
+
+like a space, it gives me negative one.
+
+So we want the password to have an index
+
+of space of negative one.
+
+We want that negative one.
+
+That means there is no space.
+
+Okay?
+
+So what we can do is do that down here.
+
+If password dot index of,
+
+and then space equals,
+
+triple equals negative one.
+
+If that's the case, we can console dot log.
+
+I mean what, what should we console dot log?
+
+You don't have a space, good job.
+
+Good job, no space.
+
+Else, console dot log,
+
+password cannot contain spaces.
+
+All right, so totally separate conditional.
+
+And let's see what happens.
+
+So I'm gonna hit enter or refresh the page, rather.
+
+Enter my password with no space.
+
+So I'll make sure it's long enough.
+
+How about that?
+
+It says long enough password and good job, no space.
+
+Now let's try one that is not long enough like cats.
+
+All right, password too short.
+
+But we're also getting good job, no space.
+
+One more time, I'm gonna have a long password
+
+with a space in it.
+
+Long enough password.
+
+Password cannot contain spaces.
+
+So right now I have two totally separate pieces of logic.
+
+but really if this was a real website,
+
+which it's obviously not even close to being,
+
+but if it were, we usually just give the user
+
+one piece of feedback at a time.
+
+Here's one problem, right.
+
+We're not gonna say good job on this and bad job on this.
+
+We're probably just gonna say
+
+password cannot contain spaces.
+
+And then we'll say good job or you know,
+
+valid password or something if both of these are valid.
+
+So if the password's long enough
+
+and the password does not contain a space.
+
+so I can nest this.
+
+I could say if password dot length
+
+is greater than equal to six,
+
+if that's the case, let's not just print something out,
+
+let's check to see if there is a space or not.
+
+So I can copy this and just put it right there.
+
+So now this code only runs to even check if there's a space,
+
+if the password is long enough.
+
+If the password's not long enough,
+
+we immediately print that out, too short.
+
+If it is long enough, we look for a space.
+
+And now instead of saying good job, no space,
+
+we'll probably say something like valid password.
+
+If we make it to this point right here,
+
+it means this was true
+
+because that's the only way we get to this code.
+
+And then this has to be true to make it
+
+to this line right there.
+
+The only way that happens is if line 50 and 48
+
+both evaluate to true.
+
+If anything goes wrong along the way,
+
+we either hit this one or this one,
+
+depending on what the issue is.
+
+So let's try it now.
+
+Let's enter a valid password.
+
+How about butterfly?
+
+Valid password.
+
+And how about one that is long enough but contains spaces
+
+or just one space.
+
+Password cannot contain spaces.
+
+Okay, so this is working,
+
+but it's a little bit clunky, having to manage this nesting.
+
+Not that nesting is necessarily bad,
+
+but really what we care about is
+
+if the password's long enough and
+
+it does not contain spaces.
+
+And there's another way that we could combine this logic,
+
+because that's basically what we're doing here.
+
+We're combining this logic by nesting it.
+
+But there's another way
+
+that we'll see coming up very shortly.
+-->
+    <script src="ConditionalStatements.js"></script>
+</body>
+</html>
