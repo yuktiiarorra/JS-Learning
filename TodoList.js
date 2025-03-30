@@ -1,11 +1,6 @@
-let prompt=console.log;
-
-let input = prompt("nonon");
-
+let input = prompt("What would you like to do?");
 
 const toDo = [];
-
-console.log('HEREEE');
 
 while(input !== "quit" && input !== "q")
 {
