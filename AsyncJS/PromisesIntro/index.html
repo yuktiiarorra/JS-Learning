@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises Intro</title>
+</head>
+
+<body>
+    <!-- Instructor: All right, so now we get to promises,
+
+kind of.
+
+This is gonna be a multi-step introduction.
+
+Let's begin with the overarching idea.
+
+Promises are objects that represent the eventual completion
+
+or let's say eventual success
+
+or failure of some operation, some async operation.
+
+So the most common example
+
+and the one that we'll be working with a lot
+
+is making a request,
+
+getting data from some other location,
+
+getting data from a movies like IMDB API
+
+or from Netflix's API
+
+or getting information from what else is there?
+
+Amazon's API, Goodreads API, the weather API,
+
+whatever it is.
+
+We haven't actually seen how we do that,
+
+but we've talked about how it takes time
+
+and sometimes it works and sometimes it won't.
+
+Maybe you don't have the right credentials
+
+or the URL is incorrect.
+
+Maybe you know the API's down or your internet's down.
+
+There's a whole bunch of things that could go wrong.
+
+So what I'm gonna do, if you download the code,
+
+there's a folder called Promisesintro.
+
+And there are two functions in here I've already written
+
+and we're not gonna touch them at all.
+
+I'm just gonna show you how they work,
+
+or rather how we work with them.
+
+So I mentioned in the previous video
+
+that a really common pattern
+
+for things like making requests,
+
+at least in the past would be something like this,
+
+make, you know, request.
+
+And then we would pass in two callbacks,
+
+the success callback.
+
+So we could have our first callback.
+
+And then a second callback, only one of which
+
+is going to run, which often we would call our failure
+
+or fail callback.
+
+So makeRequest would be some function implemented
+
+that basically checks, all right, did this request work?
+
+Then call this function.
+
+If it didn't work, call this function.
+
+So we end up with two callbacks per request.
+
+And then if I wanna do something
+
+after in the success, I end up nesting again
+
+and again, right?
+
+I get this very nasty looking thing.
+
+And that's actually what I've written here.
+
+I've written a function called fakeRequestCallback.
+
+So it's not making a real request,
+
+we're not loading real data,
+
+but what it wants you to do is pass in a URL.
+
+So I'm just gonna try it here,
+
+fakeRequestCallback, I'm gonna pass in a fake URL
+
+or a real one, it doesn't matter.
+
+But let's just say books.com, okay?
+
+And then I have to pass in two callbacks,
+
+success and failure.
+
+And only one of these is going to run
+
+and it's all based upon a random number.
+
+So I'm picking a delay from 500 milliseconds to 5,000
+
+or to five seconds.
+
+And if that delay is greater than four seconds,
+
+I'm going to call the failure callback.
+
+So it's all based upon the order, right?
+
+Success is the first callback, failure is the second.
+
+So if it takes more than four seconds,
+
+we'll get a connection timeout.
+
+Otherwise we'll call success, which is just the name
+
+for the first callback.
+
+So we can pass in two callbacks.
+
+Again, here's the first one, this would be our success.
+
+Let's do console.log, "IT WORKED!!!!"
+
+And then our second callback, a second argument here,
+
+another function, console.log "ERROR!!!"
+
+All right, so let's just see what happens. I'll run it.
+
+We wait and we get "IT WORKED!!!!" Let's try it again.
+
+It worked, and eventually, nope, still it worked.
+
+Eventually we'll get the error. Come on.
+
+There it is.
+
+It only took me like 10 more tries.
+
+Okay, so we see error.
+
+All right, so imagine this is real.
+
+This is not random number basis,
+
+it's an actual real request we're making
+
+and that will help us understand why we would do this.
+
+It's a little trivial when we, you know,
+
+completely manufacture this random number thing.
+
+But if I introduce real requests right now,
+
+there's just a lot to talk about.
+
+The nature of requests and get versus posts and status codes
+
+and the response bot.
+
+There's just a lot of additional baggage
+
+that we have to cover.
+
+So we're starting with our fake requests.
+
+Anyway, if you notice, these callbacks are called,
+
+I execute them,
+
+but I'm also passing information in.
+
+So this is a really common pattern as well.
+
+And we've seen it before.
+
+If we do something like, imagine there's an array
+
+called array or arr,
+
+when we map over it, we pass in a function, right?
+
+And this function has a parameter we define, like,
+
+we'll call it elements,
+
+and element is filled, it's actually passed, right?
+
+Map is automatically gonna pass a value to this callback.
+
+Same idea here.
+
+My callbacks, if I look at how this function works,
+
+or if I didn't write this function,
+
+if I looked at the documentation,
+
+I would see that there's going to be a failure message
+
+passed to the failure callback.
+
+And then there's a success message passed
+
+to the success callback.
+
+In this case, they're just strings.
+
+But if I wanted to work with them, also,
+
+you'll see people do this as well where you indent.
+
+So this is success.
+
+The first one, we'll call this data
+
+or response, console.log, "IT WORKED!!!!"
+
+And then we'll console.log the response.
+
+And then here we can call this error
+
+and we'll just console.log the error here.
+
+All right?
+
+So nothing really different except now,
+
+all right, we see "IT WORKED!!!!"
+
+And "Here is your fake data from books.com."
+
+That is what was passed to this callback right there.
+
+Here's your fake data.
+
+Okay, so now let's say I wanna make another request
+
+only if books.com works.
+
+Let's say I'm doing books.com/page1.
+
+So if we got page one,
+
+I also wanna make a request to page two.
+
+So I need to do another fake request
+
+and then books.com/page2.
+
+And then I have to have my two callbacks.
+
+I have my success callback. Here's our response.
+
+Let's just do that right there.
+
+"IT WORKED AGAIN!!!!"
+
+And we'll print the response.
+
+Otherwise we have our second callback
+
+where we have an error.
+
+'Cause this second one could go wrong.
+
+The first one might have worked,
+
+but the second one could go wrong.
+
+So we'll print error here, we'll do "ERROR (2nd req)!!!"
+
+Just so we can tell what's what.
+
+Okay, and already this is pretty nested
+
+and obnoxious, but let's take a look.
+
+Does the first one work? Hmm.
+
+Okay, so our first request came back
+
+and then our second request came back.
+
+So in order for us to wait to only make that second request
+
+after the first one finished
+
+and was successful, we have to nest it inside
+
+of this success callback, right?
+
+It's like a branching path.
+
+Success, fail,
+
+but then inside of success can make another one.
+
+And we have success and fail.
+
+And I'll make one more, which is,
+
+it's definitely a thing in the real world
+
+where we might have three requests, I wanna make one
+
+after another, but in a chain, sort of a series.
+
+Only if each one worked.
+
+So if one of them at any point fails, I wanna stop,
+
+which is what we're doing here.
+
+So inside of here, one more fake request
+
+and then I'll put my books.com/page3.
+
+And then my first callback, right?
+
+And this one, we'll do the same thing.
+
+I'll just console.log it worked again,
+
+let's do third request,
+
+and then our error callback.
+
+And this whole thing just gets hideous.
+
+And this is exactly what people are referring to
+
+when they say callback hell,
+
+It's just a nightmare to try and, you know,
+
+figure out, "All right, if I need
+
+to change the second request, fail callback."
+
+I mean, it's not that hard to figure it out,
+
+but it's just not immediately obvious.
+
+And then keeping things indented properly
+
+and you know, associating, "All right,
+
+these two are connected to success, fail, success, fail."
+
+It just gets overwhelming. But let's update this.
+
+So this would be an error for the third request.
+
+Now we'll make our first one, if it works,
+
+we make the second one.
+
+If that one works, we make the third.
+
+If at any point it does not work,
+
+all right, good so far,
+
+and oh, timed out and now we're done.
+
+We didn't make that next request
+
+because we didn't run that success callback,
+
+but one of these times we'll get all three
+
+just sitting here waiting.
+
+Oh, first one failed.
+
+So again, this is mimicking
+
+something in the real world, right?
+
+This function I wrote is completely fake and silly.
+
+But this is something that is real
+
+where a request may not work.
+
+Hopefully it has a much better success rate
+
+than ours right here.
+
+Okay, two for two.
+
+Hey, there we go. We get all three.
+
+Okay, so this is the callback approach,
+
+and this is how we would do things
+
+for a very long time, when making requests,
+
+we would have our success and our fail callback.
+
+And then if we needed a nested request,
+
+it was the same thing, two callbacks per request,
+
+over and over and over.
+
+And it wasn't limited to just making requests,
+
+but that's a really common use.
+
+And again, we haven't seen real requests.
+
+So this is all silly and fake for the moment.
+
+Anyway, then along came promises.
+
+People got very frustrated with this experience,
+
+as you can probably imagine, it's just annoying.
+
+Look at this code, it's scary, it's ugly.
+
+So promises came along
+
+and they promised a future
+
+where we could have asynchronous code,
+
+where we didn't need to have all these nested,
+
+crazy callbacks,
+
+but we could still have the exact same logic
+
+or the same flow where, you know,
+
+we only make this second request if the first one works.
+
+We only make the third one if the second one works.
+
+And then at any point, if there's an error,
+
+we'll print out the error or we'll do something.
+
+We handle the error.
+
+So promises still allow us to have that branching path,
+
+do this, and then do this, and then do that.
+
+But it looks a lot, lot nicer,
+
+it's a lot easier to understand.
+
+There's just a bit of syntax we have to cover.
+
+So in the next video we'll see how we work with promises.
+
+Instructor: Okay, I kind of cheated you
+
+in the last video.
+
+I said we were gonna talk about Promises,
+
+but I still kind of just set up the idea of Promises,
+
+but now we're actually gonna see the syntax.
+
+So we saw this horrible callback hell situation
+
+where we have a success and a failure callback.
+
+Everything's nested, it's hideous.
+
+And I said, Promises make it better.
+
+Or they can.
+
+Remember, Promises have not been around
+
+since the dawn of JavaScript.
+
+If we just go to MDN and we take a look about,
+
+or we take a look at the Promise page, you'll see
+
+that there's not support in Internet Explorer.
+
+But these days, IE support is not necessarily mandatory,
+
+depending on what you're working on.
+
+Anyway, Promises are new.
+
+That's the first thing I want you to understand.
+
+Second, there's a bit of syntax involved in Promises,
+
+and we're gonna go through it step-by-step.
+
+And you might feel lost
+
+or you might feel confused at some point.
+
+If this is all new to you, this has been a whirlwind
+
+of asynchronous JavaScript and we're going quickly.
+
+I recognize that,
+
+and this is even in person when I'm teaching this
+
+and we have, you know, multiple TAs and exercises
+
+and office hours and students study together,
+
+it's still one of those topics
+
+that just some people have a rough time with.
+
+So don't feel bad about that.
+
+If you do, I'll point out the stuff that's really essential
+
+and then the stuff that's, mm, good to know,
+
+but not mandatory in any way.
+
+Okay.
+
+So a Promise is just an object.
+
+It's a promise of an eventual value
+
+that may or may not work out.
+
+I like to use the explanation
+
+or the analogy of a promise in the real world.
+
+When I was a kid, let's say I really wanted to get candy.
+
+My parents would never let me have candy,
+
+and now I have a massive sweet tooth.
+
+It's horrible.
+
+I wish I was allowed to have more.
+
+Maybe I could have some self-control
+
+as an adult, but I don't.
+
+So as a kid, I would beg to go
+
+to the candy store anytime we were near the candy store
+
+in the food court where I lived
+
+or not, where I lived, near where I lived.
+
+And I would ask and say, "Can I please have candy?"
+
+And I would be promised, if you are a good boy
+
+and you eat all of your dinner
+
+and you eat all your vegetables, then you can have candy.
+
+Now, that is not the same
+
+as me having candy right then, right?
+
+It's not the same as just handing me candy when I wanted it.
+
+It's a promise for the eventual,
+
+hopefully resolution of me getting candy.
+
+But also, I might not eat my vegetables.
+
+Most of the time I had a pretty rough time with that.
+
+I might fake eating the vegetables,
+
+put 'em in a napkin under the table,
+
+wait until we go by the trash can, throw it away.
+
+Sometimes that worked.
+
+Long story short, a Promise is the eventual guarantee
+
+of either a value or an error.
+
+It's the eventual resolution of something good or bad,
+
+but it's not the same as having that value.
+
+So if I've written a function in here
+
+called fakeRequestPromise, it does the exact same thing
+
+as this callback version,
+
+except it does not involve callbacks.
+
+We're not gonna talk about the syntax here just yet.
+
+We're just gonna use this.
+
+We'll be on the the other side of calling this function.
+
+We're not gonna write it.
+
+But if you notice something,
+
+it only expects you to pass in a URL.
+
+It does not expect a success in a failure callback.
+
+It doesn't expect callbacks at all to be passed in.
+
+So if we just call it,
+
+I'm just gonna comment out our callback hell,
+
+if I call it over here, fakeRequestPromise,
+
+what you'll see, I can pass in any URL here.
+
+It doesn't matter.
+
+What we get back, the return value,
+
+is this thing called a Promise.
+
+Now, if I save that to a variable,
+
+I don't know if you could see that,
+
+but at the very beginning it says "pending"
+
+and then it's not gonna update here.
+
+But if I open it up, it actually says "resolved".
+
+So I'm gonna save that to a variable, fakeRequest,
+
+lemme just hit the up arrow,
+
+fakeRequestPromise.
+
+Let's say I'm going to, I don't know,
+
+hikingtrails.com/api/nearme.
+
+Okay, I'm gonna save that to a variable.
+
+I'm just gonna call it res.
+
+If we look at res, it says "pending",
+
+and I look at res again, now it says "resolved".
+
+So it's this object that just represents at the beginning,
+
+the eventual value.
+
+It doesn't have anything.
+
+It just says them.
+
+There's going to be something here.
+
+And then in this case it was resolved,
+
+but I could make another one.
+
+If I just redo this,
+
+oh, I shouldn't have used const.
+
+Let's do response
+
+and I'll use let.
+
+All right, so if we look at response here,
+
+is it still pending?
+
+Yeah.
+
+Oh, there we go.
+
+Now it says "Connection Timeout".
+
+If we look at our Promise, which we got back,
+
+rejected.
+
+So those terms resolved and rejected
+
+represent basically success and failure.
+
+It's just the terms that are used, resolved and rejected.
+
+So this Promise can have three states.
+
+It can be pending, like it is at the beginning
+
+while we're waiting for something, right?
+
+Promises represent this asynchronous value
+
+that eventually will be resolved or rejected.
+
+But at the beginning, that might be almost instantaneous,
+
+but it could be about an hour that it's just pending.
+
+I don't think I've ever done anything like that,
+
+but it could be.
+
+So it's pending and then eventually resolved or rejected.
+
+Now, what I can do,
+
+and the whole point of Promises is that I can run code
+
+when the Promise is rejected or when it's resolved.
+
+And the way that we do this is by attaching callbacks
+
+to the object, to the Promise itself.
+
+Rather than passing callbacks into a function, we wait
+
+for the function to return a Promise object,
+
+like it has here, right?
+
+Every time I call this,
+
+I get this object, which is a Promise
+
+if I can spell it correctly
+
+and I can attach methods,
+
+or I can attach callbacks to it,
+
+that will run depending on whether the Promise
+
+was rejected or resolved.
+
+So here's how it works.
+
+I've got this fakeRequestPromise.
+
+It's the same thing we just called in the console.
+
+I need to pass in my url.
+
+Let's do what else?
+
+See yelp.com/api/coffee.
+
+All right, let's pretend that gives us some real results.
+
+It doesn't.
+
+I save that to a variable.
+
+If I want const,
+
+and I could call this, I'll just call it Promise or request.
+
+Sure.
+
+So this gives me an object.
+
+And then if I wanna run code, if this is resolved,
+
+if the Promise is resolved, I do this,
+
+request., and then this is the important part, .then
+
+and I pass a callback in here.
+
+So I'll just do an arrow function
+
+and I'll console.log.
+
+It worked.
+
+Okay?
+
+So, let's just see if we get that.
+
+Hey, we did.
+
+So that tells us the Promise was resolved.
+
+If I look at, or no, what did I call it?
+
+Request.
+
+If I look at that, it says resolved in here.
+
+Okay?
+
+Now eventually, and I could do this again,
+
+that one worked too,
+
+but eventually we'll see that
+
+we'll get one that was not resolved.
+
+Here we go.
+
+We got a Connection Timeout.
+
+Again, fake, but that's how I've written this function
+
+to return a Promise that sometimes is rejected.
+
+And if we look at it, request,
+
+it says "rejected".
+
+So I can also run code when the Promise is rejected
+
+or if it's rejected.
+
+And to do that, there is a method called .catch,
+
+and I can pass a callback into that
+
+and I can console.log.
+
+Oh, no.
+
+Error.
+
+Okay?
+
+And often what you'll see is people space these out
+
+or they put them on the next line like this
+
+so it's just a little bit flatter looking.
+
+Okay, there we go.
+
+So, this is an object.
+
+There's a method on it, .then.
+
+There's another one, .catch.
+
+We pass a callback into both of them.
+
+Only one will run.
+
+If the Promise is resolved, this function runs.
+
+If it's rejected, this function runs.
+
+So I'll even make that clearer,
+
+console.log ("PROMISE RESOLVED!")
+
+And then here, ("PROMISE REJECTED!")
+
+All right.
+
+So we wait.
+
+Hey, it worked.
+
+That was a quick one.
+
+Promise resolved, it worked.
+
+Next up.
+
+Ah, I'm trying to get a rejection.
+
+Come on.
+
+Nope.
+
+Nope.
+
+Oh.
+
+Yes, there we go.
+
+Promise rejected.
+
+Oh, no error.
+
+So I could make a second request, right?
+
+If I mimic what we did before,
+
+let's do coffee/page1
+
+and then I'll do the same thing for page 2.
+
+First I'll show you though that you really don't need
+
+to save this to a variable.
+
+What a lot of people do is just chain it like this,
+
+just like that,
+
+fakeRequestPromise.
+
+This returns an object, a Promise object,
+
+and we chain our .then and our .catch.
+
+Then, in the .then, in this callback,
+
+that means it worked.
+
+I can make another one, right?
+
+Page 2.
+
+And then I need to add my own .then.
+
+So we'll just do two levels to start.
+
+Okay.
+
+So in my .then, what do I wanna do?
+
+I'm gonna do a ("PROMISE RESOLVED!")
+
+It worked, but I'm gonna say,
+
+(2), just so we can see there's a difference.
+
+Alrighty.
+
+So this may not seem a lot better
+
+than what we've seen so far,
+
+but I promise it will be cleaned up.
+
+Right, this is still nested.
+
+We're nesting more.
+
+Here we have our .then.
+
+Let's just see what happens though.
+
+So the first one worked
+
+and then the second one worked.
+
+Good news, right?
+
+So we made one and then the other.
+
+But what if this second one doesn't work?
+
+Well, I can have a .catch here as well
+
+and I'll just copy this and I just duplicate that.
+
+Okay?
+
+So we have our .catch for the second request,
+
+this fake request, and let's see what we get now.
+
+It worked.
+
+Oh, and it didn't work that second time.
+
+So our .catch, this callback, ran.
+
+So I'm gonna clean things up just a tiny bit.
+
+We won't say ("PROMISE RESOLVED!") every time now.
+
+Let's just say it worked.
+
+And then I'll put request,
+
+or how about (page1) here?
+
+And then I'll duplicate this
+
+and say (page2) here.
+
+What did I do there?
+
+Just so we can tell where things are going wrong.
+
+And then I'll do ERROR!!! (page2)
+
+so we know versus ERROR!!! (page1).
+
+And then I'll make a third request.
+
+So the same exact thing after,
+
+and only if the second request works,
+
+which means the first one also worked.
+
+So fakeRequestPromise,
+
+I should just copy that url, fake url,
+
+page 3.
+
+And then I chain on my .then with my callback,
+
+and we'll do "IT WORKED!!!!!! (page3)"
+
+Oof.
+
+This seems like it's not really an improvement at all.
+
+Trust me, it will be.
+
+But I just wanna show the very basics
+
+how we can recreate what we already had.
+
+Okay, so lots of nesting.
+
+How is that any better?
+
+But let's just see that it works.
+
+So we make our first request that return to promise.
+
+If it's resolved, this callback runs.
+
+If it's not, we stop.
+
+It's a dead end.
+
+We get an error.
+
+So then if it is resolved,
+
+we make our second request.
+
+First we print this out, "IT WORKED!!!!!! (page1)".
+
+Then we make our second fake request,
+
+and the same thing repeats.
+
+If it's resolved, this runs.
+
+Otherwise, this runs.
+
+So here we are.
+
+I refreshed the page.
+
+First one.
+
+Oh, we errored out on the very first one.
+
+Let's try it again.
+
+Come on.
+
+IT WORKED!!!!!!
+
+Now, next page.
+
+IT WORKED!!!!!!
+
+And, IT WORKED!!!!!!
+
+All right, so we made it.
+
+We got all three pages of data, which really is nothing.
+
+We didn't get any data.
+
+However, this really doesn't seem like an improvement
+
+at all and it's not.
+
+We just moved the nesting
+
+from inside our function call, right here.
+
+We're passing callbacks in,
+
+into fakeRequestCallback.
+
+This is all nested
+
+between the opening and closing parentheses.
+
+Here, we're not nesting it that way, right?
+
+We're not passing it into fakeRequestPromise.
+
+Instead, we're calling it .then and .catch methods
+
+or method on the returned to Promise object
+
+but that still requires us to nest stuff.
+
+Well, in the next video we'll see the magic Promises
+
+that allows us to actually significantly shorten this
+
+and flatten it a lot.
+
+So that's coming up next.
+
+At this point, it seems like Promises are kind of
+
+maybe a waste of time, but they're not.
+
+
+Instructor: Now, onto the cool part,
+
+the magical part of promises.
+
+Magical might be a bit strong.
+
+Actually, cool might be a bit strong too.
+
+But the nicer part about promises,
+
+the part where they get better than callbacks,
+
+because at the moment,
+
+this really doesn't look any different.
+
+We still have that same level of nesting.
+
+So here's the secret.
+
+With promises instead of .then,
+
+I can actually return a promise to myself.
+
+So this is a promise here, or it gives me a promise.
+
+If I return that from within .then,
+
+I can chain other .thens on without having to nest them.
+
+So I'll rewrite this.
+
+I'll keep this, I'm gonna make the first bit here.
+
+So here's our first request.
+
+Just comment this out.
+
+And then we're gonna have a .then.
+
+We know that.
+
+So let's just start there.
+
+And inside of this .then, what do I wanna do?
+
+I'll just console.log that same thing again.
+
+And then I'll make my next request, like this, for page two.
+
+This is no different than what we did before,
+
+but what we did before
+
+was that we wrote our .then right here
+
+and we chained it on, well, that's not valid syntax.
+
+There we go.
+
+Inside of there,
+
+we chained it onto this promise,
+
+the object that's returned from this method
+
+or from that function.
+
+But I can instead return this promise
+
+and what that allows me to do is just write my .then here.
+
+I don't need to nest it.
+
+I'm returning a promise here
+
+and I'm calling .then on that returned promise.
+
+So in here I can do the same thing.
+
+I'll print out page two, or it worked for page two,
+
+and then I'll return another promise to do page three.
+
+And then I can do another,
+
+I'm just gonna copy the whole thing, .then, page three
+
+and I won't make another request.
+
+We'll just finish there.
+
+So we still don't have .catches in the picture
+
+but the extra nice part
+
+is that I can use a single .catch for all of these.
+
+So in here, my callback, console.log,
+
+oh no,
+
+a request failed.
+
+So if at any point of these promises is rejected,
+
+it falls through and it hits this .catch.
+
+So this is the same idea as what we had up here.
+
+The one big difference is that I'm actually printing
+
+something different in each .catch.
+
+I'm saying error for page three,
+
+error for page two, error for page one.
+
+Here, we'll always get that same message,
+
+oh no, a request failed.
+
+It doesn't matter really in this example,
+
+but that's something to be aware of.
+
+I can put my own .then and .catches and I can nest things.
+
+But this is far nicer.
+
+It's flat. It's completely flat.
+
+Well, almost completely.
+
+We do have some indentation,
+
+but I could make 10 subsequent or sequential requests.
+
+First this one,
+
+and only if that works, then the second one.
+
+Only if the second one works, then the third one and so on.
+
+And I wouldn't have to go nested 10 levels deep
+
+like I would with callbacks
+
+or with what we saw in the previous video.
+
+But let me shut up and just prove that this works.
+
+So I refresh.
+
+Okay, first one worked.
+
+Second one worked.
+
+Eh, third one worked.
+
+Alright, let's see one where we get a rejected promise.
+
+First one worked.
+
+Second one
+
+worked.
+
+Come on, ugh.
+
+We need one of these to be rejected
+
+so I can prove that the catch works.
+
+Okay, well there's our first .catch.
+
+That was the very first request failed.
+
+First one works.
+
+Second one.
+
+Oh.
+
+There we go. It failed.
+
+So we didn't have a separate .catch for that second request.
+
+It just fell through to this right here.
+
+So again, the trick to all of this
+
+is that we return a promise from within our callback
+
+from within the .then callback.
+
+And that allows us to chain things on.
+
+So run this if the first promise is resolved.
+
+Oh, return a new promise.
+
+So then run this if it's resolved.
+
+And if it is, return this new promise.
+
+Here's our .then for that new promise.
+
+But if at any point that promise is not resolved,
+
+AKA it's rejected, our .catch will run.
+
+Okay?
+
+Now the next thing to know about promises
+
+is that they are resolved and rejected with values.
+
+So right now, our callbacks here,
+
+they don't have any parameters,
+
+but actually a promise can be rejected
+
+and resolved with a value pass to it.
+
+And that's important.
+
+If I was actually making a real request,
+
+we would want the data.
+
+And the way I wrote fake request promise
+
+is that it actually does pass in some data.
+
+It's not real data, it just passes in a string.
+
+So let's use that.
+
+Let's print out the data.
+
+Just like that.
+
+And then I'll just duplicate that for each one of these.
+
+And you'll see that we do get data passed through.
+
+Alright, so let's try it now.
+
+And we should see,
+
+you know, here's your fake data from this page.
+
+Here's your fake data from that page.
+
+So this is coming from the function.
+
+I didn't write that here,
+
+but imagine that this is real data, right?
+
+That's what we're waiting on.
+
+We care if a request worked or didn't work,
+
+but a lot of the time what we want is the information,
+
+the actual data from that request.
+
+Anyway, this whole thing has taken us
+
+into the weeds quite a bit.
+
+But this principle, if the .then is being chained,
+
+as long as you return a promise from within
+
+each .then callback,
+
+that is crucial to working with promises.
+
+That's really the thing that makes it all work.
+
+That makes our code so much cleaner.
+
+I mean, compare this so much easier to just logically read,
+
+do this, and then do this,
+
+and then do this, and then do this.
+
+Compared to this here.
+
+Oof.
+
+Or especially this right here.
+
+I mean, this is a nightmare.
+
+All this functions and nestedness and callbacks.
+
+I mean, I'm not saying that this is a joy to read,
+
+but it's substantially better.
+
+Alright, so also when a promise is rejected,
+
+we can pass a value through when it's rejected.
+
+So in here,
+
+I believe I passed something through
+
+when I wrote this function.
+
+Let's print out that error.
+
+Let's see if we get a rejected promise.
+
+Resolved.
+
+Come on.
+
+Okay, connection timeout.
+
+That was what it was rejected with.
+
+That was the error.
+
+Okay so hopefully you can see how this is nice.
+
+We still haven't written promises ourself, right?
+
+We're working with them.
+
+You probably have taken a peek at this
+
+if you're following along in the file.
+
+Here is the function.
+
+It returns a new promise object.
+
+We'll learn more about how this works.
+
+But really what's crucial is that you understand .then
+
+and .catch and this thing called promise chaining,
+
+where I can have dependent asynchronous actions
+
+where this only happens if this happened
+
+and if this happened, or if they all worked.
+
+And if at any point something went wrong,
+
+this callback runs.
+
+So this is really, really important to understand.
+
+We'll get more practice with it
+
+and soon we'll be making real requests
+
+where you'll see the utility of this.
+
+If you're feeling lost or shaky or confused or afraid,
+
+totally normal.
+
+I promise, this is a big step.
+
+We will actually see another iteration
+
+of improvement upon this syntax
+
+when we talk about async functions.
+
+So try and get familiar with this.
+
+Don't stress too much.
+
+We'll get more practice,
+
+and this is one of those things that you'll use a lot
+
+and eventually it will start to make sense.
+
+So don't feel like you need to rewatch
+
+the last couple videos a million times.
+
+I know they're hard to watch.
+
+They're long.
+
+They're bit dull.
+
+I know.
+
+I recorded them, okay?
+
+I know.
+
+So don't panic.
+
+
+
+ -->
+    <script src="app.js"></script>
+</body>
+
+</html>

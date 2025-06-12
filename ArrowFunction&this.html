@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow function & "this"</title>
+</head>
+<body>
+    <!-- Instructor: All right, so next step
+
+we're going to quickly return to arrow functions.
+
+I'd like to tell you one very important aspect
+
+of working with arrow functions that has to do
+
+with everyone's favorite keyword,
+
+the keyword this.
+
+I know that's tongue in cheek.
+
+A lot of people don't like the keyword this.
+
+But this is an important topic here.
+
+Arrow functions behave very differently
+
+in terms of the value for the keyword this
+
+inside of an arrow function versus a non arrow function
+
+or just a traditional function.
+
+So let me show you an example.
+
+We've got a very simple object.
+
+Person has two properties.
+
+First name Viggo, last name Mortensen.
+
+If I add a method on here,
+
+call it fullName int,
+
+we'll start with a regular old function,
+
+and I'm just gonna print Viggo Mortensen,
+
+first name, last name with a space in between.
+
+So I'll do a string template literal.
+
+This.firstName this.lastName, right?
+
+Okay, if I execute this...
+
+Very confusing when I say the keyword this,
+
+but if I execute person.fullName,
+
+oh, I didn't return anything.
+
+Serves me right.
+
+Okay, try that again.
+
+Now if I execute it,
+
+there we go, it works, right?
+
+The keyword this refers to whatever in this case comes
+
+to the left of the function.
+
+So that means the object person, right?
+
+This.firstName this.lastName gives us Viggo and Mortensen.
+
+But if I replace this with an arrow function,
+
+exact same logic, and I refresh the page
+
+and I call person.fullName,
+
+undefined undefined, okay?
+
+So what happened here is that inside of an arrow function,
+
+the keyword this is just going to refer
+
+to the scope that it was created in.
+
+So in this case, that means the keyword this refers
+
+to the window object.
+
+Console.log(this).
+
+Try it again.
+
+We can see it's the window object.
+
+So when it tries to do window.firstName,
+
+it doesn't find it and it gets undefined.
+
+Versus when we use a traditional function,
+
+a non arrow function,
+
+the keyword this has nothing to do with this scope
+
+where the function is created.
+
+It has to do with how the function is executed.
+
+That is not how arrow functions work.
+
+Now, this is by design because there are times
+
+where it can be a little bit annoying
+
+having to worry about the execution context
+
+and how that impacts the keyword this.
+
+I'll show you an example.
+
+If I wanted to delay...
+
+I don't know, how about after three seconds,
+
+I wanted to call fullName.
+
+So down here I could add a second method.
+
+We'll call this shoutName.
+
+shoutName is going to be a function.
+
+And then I want it to call setTimeout.
+
+And instead of here,
+
+we'll do something in our function here
+
+where we wait three seconds
+
+before we console.log(this.fullName), okay?
+
+So the idea is if I call shoutName,
+
+we're going to set a timeout for three seconds.
+
+And then when those three seconds are over,
+
+we're going to call this.fullName, which is right there,
+
+and then print out the result.
+
+So what happens?
+
+Well, let's try.
+
+Oh, I gotta refresh the page.
+
+I want person.shoutName.
+
+We wait three seconds.
+
+And oh, this.fullName is not a function.
+
+So what happened?
+
+What was the keyword this?
+
+Well, again, it has to do with the execution context.
+
+And setTimeout is a method on the window.
+
+So it's implicit.
+
+We don't actually see that window there, right?
+
+But window.setTimeout.
+
+So the keyword this in our setTimeout callback,
+
+if I print it out,
+
+it refers to the window object.
+
+So I'll try that again.
+
+We wait three seconds.
+
+And you can see it is indeed the window.
+
+So this is kind of annoying,
+
+this nebulous weird value that changes,
+
+even within just the same function.
+
+Well, it's not the same function, it's nested.
+
+But it may not seem like the execution context changed,
+
+but it did.
+
+But if we instead use an arrow function here,
+
+which is kind of one,
+
+this is definitely one situation that's common enough
+
+where arrow functions just make sense.
+
+And again, I mentioned arrow functions were designed
+
+to behave this way because this is obnoxious.
+
+So if I use an arrow function in here instead
+
+in my setTimeout,
+
+remember, their keyword this,
+
+instead of any arrow function,
+
+it's just the same value of the keyword this
+
+in the scope of where the function was created.
+
+So that means the keyword this is exactly the same
+
+as the keyword this in this function.
+
+So now if we try it, refresh our page, shoutName,
+
+we wait three seconds, and there we go,
+
+you can see the keyword this refers to the person object.
+
+And we are successfully calling fullName,
+
+but recall that I set this using an arrow function,
+
+which means that the keyword this is not set
+
+to the individual object,
+
+which is not what we want.
+
+So gonna set that back to a regular function expression.
+
+We're kind of mixing and matching here, which is common.
+
+So to summarize or to conclude here,
+
+the keyword this behaves differently in arrow functions,
+
+and sometimes we can use that to our advantage
+
+like we did here.
+
+But other times, that's a problem.
+
+For example, you wouldn't use an arrow function
+
+to define a method or at least not commonly.
+
+As I showed you here, if this was an arrow function,
+
+this.firstName is just undefined.
+
+The keyword this does not refer to the object.
+
+But in other situations like we had here,
+
+where dealing with the keyword this
+
+and its constant changes is obnoxious,
+
+then we could use an arrow function
+
+and we don't have to worry
+
+about getting a new value for this.
+
+If this confuses you right now,
+
+don't freak out about it.
+
+This is definitely
+
+one of the more confusing aspects of JavaScript.
+
+All that you should really take away is that
+
+the keyword this behaves differently
+
+in an arrow function compared to a regular function.
+
+That's the only thing you need to remember.
+
+Even if you don't remember exactly how it differs,
+
+just know that it does differ.
+
+Okay, goodbye.
+
+I hope you're still with me.
+
+I hope you're still alive.
+
+Take some nice deep breaths.
+
+Get some relaxing tea.
+
+Put your feet up, some nice cozy socks,
+
+and try and erase this from your memory. -->
+    <script src="ArrowFunction&this.js"></script>
+</body>
+</html>

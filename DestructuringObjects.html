@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring Objects</Object></title>
+</head>
+<body>
+    <!-- Instructor: So next up,
+
+we'll see how we can use de structuring
+
+to extract values not from an array, but from objects.
+
+And this in my experience, is more commonly used.
+
+It's more practical than destructuring from an array
+
+because it's not all about order.
+
+Often we'll have some object,
+
+like here's an example object representing a user,
+
+and I need to single out
+
+or access a couple of properties frequently.
+
+Let's say that I wanted to get first name
+
+and last name out of here.
+
+One option is just to do this.
+
+Const firstName = and then user.firstName.
+
+And then do the same thing for last name.
+
+Const lastName = user.lastName, right?
+
+And that should give me first name and last name.
+
+And that's fine.
+
+But now imagine I also need to do that for email
+
+and I need to do that for born and died.
+
+So const email.
+
+I'll stop after email.
+
+But if I have four or five different properties
+
+I wanted to single out and do something with,
+
+this gets kind of annoying.
+
+So we can destructure them using a similar syntax.
+
+So we write our let or const
+
+and then curly brackets or curly braces and then user.
+
+And then inside of here,
+
+we need to call out individual properties.
+
+So the order doesn't matter like it does with an array.
+
+We're simply doing it by name.
+
+So the name matters.
+
+If I want email, I need to do that.
+
+There must be a property in here called email.
+
+And I'm making a variable called email with that value.
+
+So these are equivalent.
+
+Make me a variable called email from user.email.
+
+Make me a variable called email from user
+
+under the email property.
+
+So let's verify.
+
+Refresh the page, email,
+
+and harvey@gmail.com.
+
+It works.
+
+So I could do email, firstName, lastName, city, bio.
+
+And that's gonna make me one, two, three, four,
+
+five separate variables.
+
+Here's bio, here's email.
+
+Here's firstName, here's lastName.
+
+What else did I do, city?
+
+We pulled them out.
+
+Although I don't like saying we pulled them out
+
+because they're still in there.
+
+But we singled them out into their own variables.
+
+So we didn't change the original object in any way.
+
+But now we have five new variables based upon values
+
+in that object.
+
+So that can be really helpful.
+
+Now sometimes there are values
+
+or there are properties rather
+
+that have a particular name.
+
+For example, let's say born and died.
+
+And I want to extract them or destructure them,
+
+but I also wanna rename them
+
+because here my variable is going to be called
+
+exactly email or firstName or lastName or city or bio.
+
+But let's say that the property,
+
+well, it is called born and died,
+
+and I instead want my variables to be called birth year
+
+and death year I guess.
+
+Death year sounds a bit grim.
+
+I don't know what you would say instead of that.
+
+But let's just go with birth year to start.
+
+So I could extract it, born equals user,
+
+and that gives me the variable called born.
+
+But if I wanna rename that, I can do this.
+
+Add a colon and then my name, birthYear.
+
+So this will make me a variable called birthYear, not born.
+
+But it will be using user.born.
+
+So the born property,
+
+extract that from user into a variable called birthYear.
+
+And if I refresh, there is no born variable
+
+and there is a birth year.
+
+All right, so I can do the same thing with death.
+
+Say death, or what did we say, died,
+
+I'm gonna rename to deathYear.
+
+And there it is, birthYear and deathYear.
+
+And the last thing I'll mention
+
+is that we can add default values.
+
+So let's say that I have another user.
+
+Here's my second user, user2,
+
+and she has fewer properties.
+
+Her name is Stacy Gonzalez,
+
+and she doesn't have things like a died property
+
+because let's say she's still alive.
+
+And she's not a famous figure,
+
+so she doesn't have a bio.
+
+And what else?
+
+She doesn't have a password.
+
+That was just because I was lazy
+
+and wanted to keep this shorter.
+
+So if I was to destructure from user2,
+
+and let's say I don't know what that looks like,
+
+so I'll go with const {} = and I could pull out...
+
+What do we wanna use here?
+
+Let's go with...
+
+I'm gonna comment these out
+
+just so we don't get conflicts.
+
+I'll go with city and state.
+
+And then if I wanted to go with died,
+
+which does not exist,
+
+and I set that equal to user2,
+
+let's see what we get.
+
+What does died equal?
+
+It's set to undefined.
+
+It just is not found in there.
+
+It's the same as if I had done this.
+
+Const, let's just make something up
+
+like silly = user2.silly.
+
+Well, that makes me a variable that's set to undefined
+
+'cause that's just not a value, it's undefined.
+
+No error.
+
+But if I wanna give a default value,
+
+I can do this with an equal sign.
+
+So if she hasn't died, what should I put here?
+
+Maybe N/A.
+
+And now that default value will be used.
+
+But if I did the same thing for our Harvey Milk example,
+
+and I give it a default value N/A,
+
+you'll see that that is not used.
+
+What did we call it, deathYear?
+
+1978 is used because there is a value found for died
+
+in that object,
+
+and there's not one found in user2.
+
+So we can pull out individual properties,
+
+single them out into variables using the same name,
+
+or we can assign a new name using colon
+
+and then our new variable name.
+
+And we can assign a fallback
+
+or default value using an equal sign.
+
+So that is destructuring from objects.
+
+
+ -->
+    <script src="DestructuringObjects.js"></script>
+</body>
+</html>

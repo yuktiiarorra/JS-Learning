@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Hell</title>
+
+    <style>
+        body {
+            transition: 1s background-color;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Instructor: Next up,
+
+a little bit of a demo involving callbacks.
+
+So I have a new empty, almost empty HTML page,
+
+just my h1 that says hello.
+
+And what I'd like to do is write some JavaScript
+
+that will change the background color.
+
+Let's just go through the rainbow from red or to red,
+
+then to orange, then to yellow.
+
+But I wanted to be spaced out so you know,
+
+I can't do it all at once.
+
+Obviously if I did everything at once,
+
+document.body.backgroundColor or style.backgroundColor,
+
+I'll set it to red.
+
+If I did that, that will work, hopefully.
+
+But then if I do orange immediately after,
+
+it's just gonna be orange.
+
+There's a split second where it is red,
+
+but we don't pick it up.
+
+So what I'd like to do is delay it so that we get,
+
+I don't know, maybe one second of red,
+
+then one second of orange, and then one second of yellow.
+
+And we know that in order to do that, in order to wait,
+
+we need to use setTimeout,
+
+or at least we need to do something to delay it.
+
+So I'm gonna do just that.
+
+I'm gonna set a timeout, setTimeout,
+
+and then we pass in a callback function and then a delay.
+
+I like to do that first.
+
+So what I say two seconds, three seconds, I can't remember.
+
+One second, something like that.
+
+And then I'll put my code in there that I want to do.
+
+So in this case, I'm just gonna turn it red
+
+after two seconds.
+
+Let's do one just to keep it easier and shorter.
+
+So white and then red.
+
+Okay, so that works well enough.
+
+And now if I wanna make it orange one second later,
+
+I have a couple of options.
+
+I mean, I could duplicate this and then,
+
+now if I run it right now, it's not gonna work.
+
+Well, it's gonna be red, but if I change it to orange here,
+
+we're doing the exact same interval
+
+or same delay of one second.
+
+So it just ends up turning orange after a second.
+
+But I could double this and say, wait two seconds.
+
+So this is gonna be one second,
+
+and then this will be a second after that one.
+
+It's kind of janky to do this though,
+
+because I'm depending upon
+
+the timing of the first one, right?
+
+I have to sum that in, I have to add that.
+
+So if I wanted to do yellow
+
+and I want that to be a second later,
+
+I'm gonna do 3,000 milliseconds,
+
+and all of a sudden I'm doing some math.
+
+So it'd be nice if I could just say,
+
+I want this to be one second,
+
+and then one second later do this, one second later do this.
+
+Now, the way that I can do that involves nesting,
+
+so I could nest this in here.
+
+So setTimeout after one second, run this function,
+
+and then after we change it to red,
+
+set another time out for one second.
+
+After one second, run this function.
+
+So this function only runs after the first one runs,
+
+which is one second,
+
+and then the second one is another second later.
+
+So two seconds, all right?
+
+And then I can do the same thing.
+
+I could just put this in here and I end up nesting.
+
+So this will be a full second later.
+
+Let's verify that it works.
+
+We should have red, then a second,
+
+and then another second, cool.
+
+Also, just to get fancy,
+
+I'll add a little transition, style.
+
+I'm just gonna do it here in my HTML.
+
+I'll do it on the body,
+
+body, transition: background
+
+-: color, I don't know.
+
+Let's just do one second, linear.
+
+There we go.
+
+Nice little transition there.
+
+Okay, so if I wanted to keep going, right,
+
+we know what I could do, I could just keep
+
+nesting this further.
+
+So we'll do red, orange, yellow, green, and then blue.
+
+And there's our beautiful rainbow.
+
+Okay, so this is fine, right?
+
+This works, I mean, we're getting quite nested.
+
+Now, we could also extract this into a function.
+
+So if I wanted to do this a lot, not just, you know,
+
+change it to red, orange, yellow, green, blue,
+
+but maybe I wanted to be able to reuse this
+
+and maybe have different delays.
+
+I could write a function, maybe something like,
+
+what should we call it?
+
+I guess I'll use an arrow function just to be consistent,
+
+constant about delayedColorChange.
+
+It's kind of long, but that's fine.
+
+And then in order for this to work,
+
+we'll need to pass in a couple of things.
+
+We need to pass in the color we want to change to.
+
+So newColor, we need to pass in the delay
+
+and we need to pass in what you're supposed to do next.
+
+So I could just do this once, like this,
+
+delayed color change.
+
+Inside of here, we'll call setTimeout.
+
+So I'm just duplicating what I've done,
+
+but I'm trying to make it more generic
+
+so that I could reuse it.
+
+So setTimeouts, and here I'll have my callback.
+
+And then I'm going to have some number of seconds
+
+which you pass in, which will be delay.
+
+And then in here we'll do
+
+our document.body.style.backgroundColor
+
+equals whatever that new color is that was passed in.
+
+So to use this, I would call delayedColorChange.
+
+And then after that, I'd pass in, or not after that,
+
+but in there I'd pass in my new color.
+
+And then the number of seconds or milliseconds,
+
+let's do three seconds change to olive.
+
+Let's see if it works. Moment of truth, come on.
+
+There we go. So it does work.
+
+But now if I want to have a second one, right?
+
+I could do this where I could have
+
+a different color afterwards, how about,
+
+is there a dark olive?
+
+I swear there's a dark olive.
+
+I don't want to risk it though. I might be wrong.
+
+So how about magenta? That's gonna be, or how about teal?
+
+And I want that to be three seconds later.
+
+Well, this isn't gonna work.
+
+We'll just end up with it being teal after three seconds.
+
+It's the same thing that we did earlier where I said
+
+it wouldn't work.
+
+We'd have to either we add on and do six seconds here.
+
+If we wanted three seconds later, or I need to nest them.
+
+And to nest them, I can totally do that.
+
+But I need to work with callbacks.
+
+I need to pass in a callback here.
+
+I'm gonna call it do next and whatever do next is,
+
+it will be a function.
+
+I'm gonna execute it after we change the color.
+
+So I'm just replicating what we had here.
+
+All this nesting, it's gonna look like this,
+
+delayed color change.
+
+Let's go with the rainbow, just 'cause it's easy.
+
+Let's do red after one second.
+
+And then the third argument is a function.
+
+So I'm gonna call or pass in a function,
+
+and in this function I can do whatever I want.
+
+You know, I could just do console.log,
+
+inside callback,
+
+and we should see that after one second,
+
+we get inside callback, so it doesn't run immediately,
+
+right, because it's part of,
+
+or it's inside of a setTimeout callback,
+
+it runs after this delay, which was one second.
+
+So now I could add another delayed color change.
+
+And this time I can do orange.
+
+And after one second, I should also probably check.
+
+I'm gonna do if there is a do next. So do next.
+
+And just in case you don't pass it in,
+
+it'll be undefined.
+
+Anyway, 1000.
+
+And we'll do another one here.
+
+I'm just gonna duplicate this whole thing
+
+and keep nesting this.
+
+So in here we'll go to yellow and then to green,
+
+and then to blue, red, orange, yellow, green, blue.
+
+All right, we'll stop there.
+
+Okay, so these are all after one second.
+
+Let's see if it works.
+
+Red, orange, yellow, green, blue.
+
+Just beautiful. All right.
+
+So we just replicated what we had before, right?
+
+But now we have a generic function
+
+where I can pass in a number of seconds,
+
+I can pass in a callback afterwards.
+
+This pattern is super common.
+
+It seems weird, but anytime we have dependent actions
+
+where one thing needs to happen,
+
+and then only after the first thing is finished,
+
+can the second thing happen,
+
+well, that's where we frequently use callbacks.
+
+Here, we could do the math, and I could say,
+
+you know, this thing needs to happen,
+
+what, five seconds later?
+
+One, two, three, four, five, right?
+
+I could just say 5,000 milliseconds.
+
+But there are times where we don't know, for example,
+
+this is all fake code
+
+or not real functions that don't exist at the moment.
+
+Let's say that I'm working with some data
+
+from a movies database,
+
+and I'm going to search movies, I'm gonna call it moviesAPI
+
+for "Amadeus," one probably my favorite movie ever.
+
+That could take a lot of time.
+
+It might be very quick, but it might be a couple of seconds.
+
+I don't know.
+
+So this function, which again, does not exist,
+
+it doesn't work.
+
+But we'll see how to do this later, pretty shortly actually.
+
+It will accept a callback and it will execute this callback
+
+whenever it finishes searching for movies.
+
+So let's say it finishes, then what I wanna do
+
+is I actually wanna send the movies that I search for
+
+and I wanna save them to my database
+
+so I could have another function saveToMyDB
+
+and whatever those movies are that came back from searching.
+
+But that might take time as well.
+
+And it might work and it might not work.
+
+And this is where it gets crazy,
+
+because often what you'll see is actually a pattern
+
+where we have two callbacks that we pass into a function,
+
+a success, and a failure.
+
+So if things go well, this could be our first callback,
+
+and then if they don't go well,
+
+we can have a second callback.
+
+Now, things might be getting crazy in here,
+
+and you might be a little bit confused,
+
+but this is a really common pattern.
+
+So if it works, run this.
+
+If it doesn't work, run this.
+
+This is incredibly common because we just don't know.
+
+This might work, saving to the database,
+
+but maybe the internet's down,
+
+maybe the database doesn't exist,
+
+we don't have permission, it's full.
+
+I don't know. So it might not work.
+
+So we need to anticipate two possible outcomes,
+
+and we won't know until it happens multiple seconds later.
+
+Same thing with this, actually, searching for an API,
+
+it might work.
+
+We might get data back,
+
+but there could be a whole second callback here
+
+if API is down or request failed, right?
+
+So we could do something else in here.
+
+So what I'm trying to show you is that yes,
+
+nesting like this is bad,
+
+but frequently what we'll actually have
+
+is more than one callback we pass in to each function
+
+for these asynchronous operations,
+
+like this fake searching for movies or saving to database.
+
+They could work, they could not work.
+
+And the results of this
+
+is something that a lot of programmers,
+
+JavaScript developers refer to as callback hell,
+
+where we end up passing a whole bunch of callbacks,
+
+our code gets very nested, very deep and just crazy
+
+and ugly and confusing.
+
+So this is a problem in JavaScript.
+
+The whole idea of having to use callbacks
+
+is something we can't really get around.
+
+Or at least having to provide a mechanism
+
+for running code later at some undetermined point in time,
+
+whether it's a second or 10 seconds from now,
+
+or you know, 0.2 seconds, it doesn't matter
+
+because JavaScript just moves on, right?
+
+We've talked about that. It just does one thing at a time.
+
+It keeps going, it hands things off to the browser
+
+and says, all right, let me know when that finishes up.
+
+So we have to use callbacks or something
+
+to delay code execution.
+
+And because of that, things, they get messy,
+
+especially when we're using callbacks.
+
+Fortunately, there are some newer additions to the language
+
+that make things a little bit easier,
+
+namely promises and async functions,
+
+which is where we're working towards.
+
+I just needed to explain this concept
+
+of why callbacks can be so frustrating to work with.
+
+If you're doing a single setTimeout, it's not bad.
+
+But if we have five or six dependent actions,
+
+all of a sudden our code's very nested.
+
+And then if each one of these actually could have
+
+multiple callbacks, like I showed here
+
+where something might work, but it also might not work,
+
+that nesting grows even crazier,
+
+and we really end up in callback hell.
+
+So this is where promises come in,
+
+and it's what we're gonna start in the next video.
+
+If you're feeling a bit confused, hang in there.
+
+
+ -->
+    <h1>Hello!</h1>
+    <script src="app.js"></script>
+</body>
+
+</html>

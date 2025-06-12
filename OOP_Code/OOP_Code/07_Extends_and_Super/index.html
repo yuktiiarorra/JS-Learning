@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Extends</title>
+</head>
+
+<body>
+  <!-- Instructor: All right, we've made it.
+
+We have one last important topic
+
+around classes in JavaScript.
+
+It is the keyword extend along with a keyword called super.
+
+They both have to do with subclassing,
+
+essentially inheritance.
+
+This is a way of sharing functionality between classes.
+
+So typically, I would wanna show something more realistic,
+
+kind of what we did here.
+
+This is nothing crazy, but I've used plenty of libraries
+
+that are color libraries.
+
+They exist just to do this.
+
+Some of them are more fully featured,
+
+but this is not totally unrealistic.
+
+It's not the the typical intro to classes idea
+
+of dog and cat or bank account or deck of cards.
+
+It's something slightly better,
+
+but for this video on inheritance and extends
+
+and subclassing and super, I'm gonna dial it down.
+
+We're gonna go back to the basics,
+
+the most cliche possible classes.
+
+Let's define a class called cats, I know,
+
+and we'll pass in a name and age.
+
+How about that?
+
+All right, and then we'll set this.name to be name
+
+and then this.age to be age.
+
+So the reason I'm going simple
+
+is so we can focus on the concepts
+
+and not get too bogged down
+
+in the the actual logic of things.
+
+The logic here will be incredibly simple.
+
+So a cat class, and we'll have a simple method called eat,
+
+and in here, we will return the string,
+
+let's do this.name is eating.
+
+Okay, so I can make a new class or a new cat.
+
+New cat, save it to a variable, const Monty equals new cat,
+
+Monty, who is technically dead, but I'll say nine.
+
+Let's look at Monty.
+
+It has name of Monty, age of nine,
+
+and I call Monty.eat.
+
+Monty is eating.
+
+All right, so now let's say I have another class.
+
+This class is called dog.
+
+Dog is very similar.
+
+Surprise, surprise, it's almost like I planned it that way.
+
+Oh, that was stupid. I don't know why I said that.
+
+I'm sorry.
+
+So a dog also has a name and an age.
+
+We set this.name to be name, this.age to be age.
+
+It also has an eat method. Let's just copy that over.
+
+Okay, let's make a dog.
+
+So I'll call new dog. I'll pass in Wyatt.
+
+Const Wyatt equals new dog and age. He's also dead. Yikes.
+
+We look at Wyatt, it's an object, has a name and an age,
+
+and it has a eat method.
+
+They're basically the same thing, just different names,
+
+but we could go ahead and add some method to cat
+
+that doesn't exist on dog, like meow,
+
+and then it could just return meow,
+
+and we could do the same thing for dog.
+
+We could have a method called bark, which returns woof.
+
+Okay, so now they're slightly different,
+
+but there is a lot of duplicated functionality,
+
+so one of the options we have in JavaScript
+
+is to move this duplicated code from here
+
+and from cat and from dog into a separate standalone class
+
+that both of these classes could extend,
+
+so you can think of it
+
+as kind of like a parent-child relationship.
+
+We could have a parent class,
+
+I'd call it probably animal or pet.
+
+Let's do pet, class pet,
+
+and let's just copy this entire thing here like that
+
+and remove all of that from cat, all of that from dog.
+
+So right now, I'm not gonna be able to make a new cat.
+
+I won't be able to make a new dog.
+
+I can make a new pet,
+
+but if I try and rerun this code and make a new dog,
+
+let's look at why it is.
+
+An empty object, there's no constructor,
+
+no constructor on dog, and no constructor on cat,
+
+so here is how we can tell cat and dog
+
+to include the functionality of pet to extend pet.
+
+It's as simple as saying class cat extends pet.
+
+I'll do the same thing for dog, class dog extends pet.
+
+So now does it work?
+
+Well, let's see what happens
+
+when I make a new cat or a new dog.
+
+All right, I just made a new dog.
+
+Look at that.
+
+Age and name were already filled out,
+
+but I don't have a constructor in dog.
+
+It doesn't matter.
+
+Because I extended from pet,
+
+it's going to use that constructor if it doesn't find one
+
+on my dog or on this dog class, which it didn't,
+
+so it looked to the constructor from pet.
+
+So we end up with age and name, and take a look,
+
+we also have bark, bark, which was defined on dog,
+
+and even more exciting, we have access to eat,
+
+which is not defined on dog at all.
+
+So we don't see it here.
+
+We don't see eat there, I don't see eat here,
+
+but if I look at this proto here and proto again,
+
+there we go, so we have dog.
+
+This is a functionality from dog, which is just bark,
+
+then we have the functionality from pet, which is eat.
+
+So I can call Wyatt.eat,
+
+even though I never defined eat on the dog class.
+
+We are extending the functionality from pet,
+
+both on cat and dog.
+
+So I could do it again with a cat.
+
+Let's just make that Monty, where are you? Here we go.
+
+We have monty.eat.
+
+Not defined on cat. Monty.meow is defined on cat.
+
+That's the basics.
+
+A couple of other things that are important to note.
+
+If I had another method, let's say on dog, also called eat,
+
+and this one returned,
+
+I need to use a string template literal,
+
+something else, like this.name scarfs his food, like that,
+
+and now I make a dog, if we call Wyatt.eat,
+
+which version of eat does it call?
+
+It calls the dog version.
+
+So if it doesn't find eat on the dog prototype,
+
+it will look up on the pet prototype, where it does find it,
+
+and if it didn't find it there,
+
+it would look on the object prototype.
+
+If it didn't find it there, it's going to be unhappy,
+
+and it will let you know.
+
+So I'll leave that there so you can see how it works.
+
+The other important keyword here
+
+that we haven't talked about yet is called super.
+
+So sometimes, you wanna rely on the exact same constructor
+
+from your superclass, from pet in this case.
+
+Cat extends pet, we don't have a constructor,
+
+but if I wanted to have some additional information for cat,
+
+like, I don't know, what else could we pass in?
+
+Let's say you pass in a name and age, and we wanna pass in,
+
+how about lives left, which will default to nine?
+
+Very good, to cat, nine lives.
+
+In here, I could manually set this.name equals name,
+
+this age equals age, but I'm already doing that here,
+
+so really, all I wanna do is set this.livesLeft
+
+equals lives left, and if I don't wanna duplicate that,
+
+I can use the super keyword.
+
+Super is going to reference the class
+
+that we are extending from,
+
+so if I call super inside of here
+
+and I pass in name and age,
+
+it's going to call this constructor,
+
+so we can see this in action.
+
+It's console.log in cat constructor,
+
+and then duplicate this up here, in pet constructor,
+
+and let's see what happens.
+
+We'll make a new cat. I'll pass in a number of lives.
+
+Actually I won't. It will default to nine.
+
+Take a look, in cat constructor, in pet constructor.
+
+If we look at Monty, Monty has a name, Monty, and age nine,
+
+and lives left was set to nine.
+
+So we reused the functionality from this constructor,
+
+but we added on our own for cat.
+
+So very important,
+
+super is going to be a reference to this superclass.
+
+It can be confusing, definitely trips people up,
+
+but it's a reference to what we're extending from,
+
+which is pet.
+
+So we could do it, we could use it instead of dog,
+
+but just to save you time and not bore you to death,
+
+we'll keep it simple here.
+
+So this is a common pattern.
+
+You have some base class,
+
+you have other classes that extend from it,
+
+and in this case of dog,
+
+we didn't add any new properties in.
+
+It's the exact same constructor as pet, and that's fine.
+
+It will call that constructor automatically
+
+if we don't define our own.
+
+But in the case of cat, which is common,
+
+when we're building more realistic things,
+
+we have other data, just a simple lives left,
+
+which we wanna add on to this, so we call super,
+
+we can take advantage of this constructor
+
+and then add on lives left as well,
+
+and that's the basics of inheritance.
+
+I mean, you can continue to go multiple levels.
+
+We could have pet extend from animal,
+
+we could have animal extend from living thing.
+
+There's so many different things we could do,
+
+and you'll see this with things like HTML elements
+
+in the DOM that extends from five or six different classes,
+
+but remember, when you extend something
+
+and when you define a class,
+
+it's all just setting up these constructor functions
+
+and calling it with new and adding methods to the prototype,
+
+so this is all just nice, syntactic sugar.
+
+Okay. -->
+  <script src="app.js"></script>
+</body>
+
+</html>

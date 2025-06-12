@@ -6,6 +6,270 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Instructor: So the first of these fancy array methods
+
+that accepts a function as its argument is called forEach.
+
+Now forEach actually used to be a lot more commonly used
+
+before the advent of the for of loop.
+
+Basically what it does is it allows us to run a function,
+
+run some code once per item in some array.
+
+So whatever function we pass in,
+
+that function will be called once per item
+
+where each item will be passed
+
+into the function automatically.
+
+So I've got an array here, it's called numbers.
+
+It's very simple, just a bunch of numbers.
+
+And if I wanted to print out each number,
+
+I could use forEach, numbers.forEach like this.
+
+And then it expects us to pass in a callback.
+
+So we could define this function separately,
+
+like function print.
+
+It just accepts some elements
+
+and then it console.logs
+
+that elements just like that.
+
+So I can call print myself, you know, I could do this print
+
+of numbers zero, right?
+
+And print numbers one and so on.
+
+And hopefully we see both of those printed out
+
+and we do, we see one and two, right?
+
+The first and second elements.
+
+Now I'm not going to do that.
+
+I'm gonna use forEach,
+
+and forEach is going to do it for me.
+
+So I'll just pass in the function I want it to call
+
+for each element.
+
+So it will execute print once per element.
+
+And it's not just doing it one time per element,
+
+but it's passing in the element.
+
+So it will pass one to print, two to print, three to print.
+
+So let's try it.
+
+And there we go.
+
+We get every element printed out.
+
+So nothing crazy there,
+
+but this is pretty uncommon to do forEach
+
+and just pass in a function that you've already defined.
+
+What we most commonly see
+
+is defining a function in line here.
+
+We've seen this before, an anonymous function expression,
+
+like this right here.
+
+We need to come up with our parameter name,
+
+let's just call this el.
+
+And then inside those curly braces console.log el.
+
+So this is incredibly common,
+
+this format, this pattern here.
+
+Something like forEach
+
+we could pass in a named function we've already created,
+
+but most of the time we'll just pass in a function
+
+that exists solely for this moment in time.
+
+So it's not something we plan on calling again.
+
+So let's just verify this works
+
+and it does, we get the same outcome.
+
+So it seems kind of silly,
+
+especially for something like forEach
+
+because we know how to print out each element now
+
+using a for of, just as an example,
+
+for let element of numbers
+
+console.log el, and that's easier to read, right?
+
+It's shorter and it doesn't have to involve functions,
+
+which is nice, but this has not always been a thing,
+
+this is newer.
+
+So forEach for a long time was people's first choice
+
+for printing out, well, not for printing out,
+
+but for doing something once per element in some array.
+
+So instead of just printing things, right,
+
+we can do something a little bit more complicated.
+
+Let's print out the even numbers.
+
+So if, and then el, mod two,
+
+that's how we tell if something is even.
+
+If it's cleanly divisible by two.
+
+If that's the case,
+
+we will console.log the element.
+
+Refresh.
+
+Now we only see 2, 4, 6, 8, and so on.
+
+Alright, so that's one example of forEach.
+
+Let's do another one though.
+
+I have a more slightly complicated example here
+
+or data structure.
+
+A movie's array and it contains objects.
+
+So each movie is an object with a title and a score.
+
+What I'd like to do is print out something like, you know,
+
+maybe just the movie.
+
+So let's say Alien
+
+and then 90 out of 100 will be at score.
+
+Okay?
+
+So I wanna do 90/100 or 95/100.
+
+So I'm gonna call a function once per element in this array.
+
+So movies.forEach.
+
+And as we talked about,
+
+most commonly we use an anonymous function expression
+
+that exists just for this purpose.
+
+And then we need to come up with our parameter here.
+
+What do we want to call this?
+
+Let's call it movie.
+
+So movie is going to be each element
+
+one at a time from this array.
+
+It will be passed in automatically to this function.
+
+So I'm simply providing a function to forEach
+
+and I'm saying hello forEach
+
+here's a function I would like you to call.
+
+We're not executing this function, right?
+
+We're just defining it.
+
+If we wrote this out here, I mean technically it needs
+
+to be saved in a variable const f.
+
+This defines a function, but it never executes it.
+
+I still would have to use parentheses to execute it.
+
+So we're not calling this, we are just writing it.
+
+So forEach movie we'll do something simple, console.log,
+
+and if we just print out movie,
+
+it will just be the entire object.
+
+Each element is an object.
+
+So I wanted to print out a string that had the movie title
+
+and the movie rating.
+
+So I'll do something like this
+
+with a string template literal.
+
+We'll do the movie title, movie.title -
+
+and then another dollar sign, curly brace, movie.score.
+
+And then I wanted to do it out of 100.
+
+So here we go.
+
+And that's kind of it.
+
+So forEach these days, not actually used very often
+
+because we do have access to for of, but it's our first
+
+and simplest example of these array callback methods,
+
+these methods that expect a function to be passed in.
+
+So I want to start here.
+
+Next up we're gonna talk about one called map.
+
+
+ -->
     <script src="forEachLoop.js"></script>
 </body>
 </html>

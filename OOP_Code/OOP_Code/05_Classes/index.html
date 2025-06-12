@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Classes</title>
+</head>
+
+<body>
+  <!-- Instructor: All right, so next up,
+
+we're going to see an even better way
+
+of replicating the exact same functionality,
+
+creating a template for a color, in our case,
+
+where we have different properties
+
+like r, g and b that are numbers in this case.
+
+And then we also add methods
+
+that are on the Color.prototype.
+
+So there's only one copy of them
+
+across all instances of that color.
+
+And this better option is the new class syntax.
+
+So it is just syntactic sugar
+
+for exactly what we've been doing.
+
+Syntactic sugar, remember,
+
+is just like a cleaner, cuter way of writing something
+
+that behind the scenes is going to turn
+
+into what we already have here.
+
+So you still have to understand prototypes
+
+and the keyword, this;
+
+but I'm gonna show you how we could rewrite this
+
+as a single class.
+
+And the main benefit in my opinion
+
+is that we don't have to add methods
+
+to the prototype manually like we have here.
+
+We don't have to break up the constructor function
+
+and then separately add methods.
+
+I hate doing that.
+
+'Cause you end up with this nice little compact function
+
+that explains the properties of your object
+
+and then you realize, oh wait, no,
+
+there's all these other properties,
+
+they're on the prototype.
+
+So they're defined separately and individually like this.
+
+It just is kind of clunky.
+
+So let's see the alternative.
+
+I'll comment this out.
+
+And you'll have to hang in there
+
+with a bit of this syntax upfront.
+
+So we have a keyword called class.
+
+And then I can give my class a name.
+
+And typically, we use an uppercase letter
+
+to indicate that it is a class or a constructor function.
+
+It is a pattern for some sort of object,
+
+just like we have XMLHttpRequest where the X is uppercased.
+
+Normally in JavaScript for a function name,
+
+you know, document.querySelector,
+
+you don't capitalize the q,
+
+but we do when we are creating classes
+
+or constructor functions.
+
+So this gives us a class.
+
+Next, probably the most confusing part for beginners,
+
+we always add in a constructor.
+
+Now a constructor is a function
+
+that will execute immediately
+
+whenever a new color is created.
+
+So it's kind of like this constructor function here.
+
+So we would add in three arguments.
+
+And if I called this console.log(r, g, b);
+
+and maybe also console.log("INSIDE CONSTRUCTOR"), like that.
+
+If I create a new color,
+
+we have to use the same syntax we've already seen,
+
+new Color,
+
+save it to a variable,
+
+const, er, what should we call it,
+
+c1, very boring;
+
+pass in some numbers, (255,67,89), okay?
+
+And if I try running this in my browser, refresh,
+
+you can see my INSIDE CONSTRUCTOR console.log
+
+ran immediately and I have r, g, and b printed out.
+
+So those arguments are passed through.
+
+So I never said run the constructor,
+
+I never called .constructor or anything like that.
+
+It automatically runs as long as it's named constructor.
+
+So that is a must-have whenever you define a class.
+
+You have to have the class keyword,
+
+you need to have the constructor which will run immediately
+
+whenever we instantiate a new instance of color
+
+or whatever the class is;
+
+XMLHttpRequest
+
+or the .class or the alert class or button class.
+
+You have to call it with new
+
+and you need to have a constructor there.
+
+So usually in the constructor,
+
+we're going to access this;
+
+this.a or this.r = r;
+
+this.b = b;
+
+and this.g = g.
+
+So these are going to be added as properties
+
+on this color object that we get returned.
+
+Just like we had this here
+
+in our constructor function, same idea.
+
+This will automatically refer to a new object.
+
+So when we call new Color,
+
+it still follows those same steps
+
+even though it's in a class.
+
+It's going to make a new empty object
+
+and it sets the value of this to that object.
+
+So this.r will be whatever is passed in as r,
+
+this.b will be whatever is passed into b,
+
+and this.g.
+
+The order doesn't matter
+
+but it's driving me crazy to have b before g,
+
+so I would probably change that up
+
+but it won't change anything.
+
+Let's also add in a name for the color.
+
+We can do that last maybe;
+
+this.name =,
+
+and then this could be a name to describe the color.
+
+So this.name = whatever name was passed in.
+
+And you can change these,
+
+they don't have to match, right?
+
+We could have name, and name it as colorName instead.
+
+But this is the property we are adding to the object.
+
+And typically, we use the exact same name.
+
+Very common to see that.
+
+Okay, so as far as a name for this color,
+
+what even is this color?
+
+Let's just take a look.
+
+Using VS Code here, let's just put rgb in front of that.
+
+Okay, it's a reddish color.
+
+We'll call that tomato.
+
+So we'll pass that in,
+
+tomato as a string,
+
+like that.
+
+Okay!
+
+So let's look at this c1 when I run the code;
+
+c1 is an object!
+
+It has a b, a g, a name and an r.
+
+They were all set in this constructor.
+
+So I never made an empty object myself,
+
+just like I never did it here.
+
+The new keyword takes care of that.
+
+All I did was say,
+
+on this new object that will be created for me,
+
+even though I'm not ever seeing it,
+
+and it magically is stored in the value of this,
+
+add an r property,
+
+set it to this argument or this parameter r.
+
+Same for g, b and name.
+
+All right, now let's look at the proto for this color.
+
+This object, you can see, the constructor is set to Color.
+
+All right!
+
+So we didn't do that either,
+
+but by using new, it all takes care of it.
+
+Now what about methods?
+
+This is the real advantage in my opinion.
+
+We don't have to do Color.prototype, whatever,
+
+like we did up here.
+
+We could do something trivial like, how about greets?
+
+I don't know why a color would have greets.
+
+The easiest way to do this is with this adorable syntax
+
+that we can use inside of classes.
+
+We can actually use this inside of objects in general.
+
+We talked about it in our objects,
+
+what we call "The Secret Life of Objects" section.
+
+It's a new shorthand syntax for defining a method.
+
+In here I can just, return 'HELLO FROM A COLOR!!!'.
+
+And actually, why don't we include the color name,
+
+FROM, I'll need to make this a template literal,
+
+backticks, this.name.
+
+And then we'll add an ! at the end.
+
+So this is now a method on every color.
+
+But not on the instances.
+
+This is the nice part.
+
+It's just like we had done this here,
+
+Color.prototype.greet = some function.
+
+But we don't have to type prototype,
+
+we don't have to type color.
+
+We just put it inside this class.
+
+So we can group everything together,
+
+which makes things much easier.
+
+So let's try it.
+
+We have this color one, let's open it up.
+
+It does not have greet showing here.
+
+Instead, greet is on the prototype.
+
+There's only one copy of greet,
+
+c1.greet().
+
+Let's execute it, "HELLO FROM tomato!"
+
+Let's make a different color.
+
+New Color,
+
+let's do (255,255,255)
+
+and I think that's white.
+
+Save that to a variable,
+
+const white, sure.
+
+And call white.greet().
+
+"HELLO FROM white!"
+
+All right!
+
+So let's actually add in some methods
+
+that we would want like an rgb method.
+
+We can copy the logic from what we did earlier.
+
+We'll just return this string,
+
+but we need to make sure we get r, g and b.
+
+And we have access to those just like we did here
+
+by using the keyword, this.
+
+So this, any time we're inside of a class,
+
+this refers to the instance of the class,
+
+the individual color object.
+
+So not the prototype or anything,
+
+not the function, not the window.
+
+Unless you're not using the new keyword, that is.
+
+But if you use a new keyword,
+
+this will refer to the individual object.
+
+And then whenever we have an object color,
+
+like white.greet, white is a color object.
+
+When we greet,
+
+the keyword, this, when it's used instead of greet,
+
+I got rid of it but we had this.name;
+
+this refer to the individual object, the instance.
+
+So we can de-structure.
+
+We could do this.r, this.g, this.b
+
+or just de-structure { r, g, b } = this.
+
+Now if I call it, we have c1;
+
+c1.rgb() gives me this nice rgb string.
+
+Take a look and we get that reddish tomato-ey color.
+
+Let's add another method in.
+
+Let's go with this hex method.
+
+So I'm just gonna copy the logic and add hex.
+
+And that relies on r, g and b
+
+which we already have on the object.
+
+So I'm going to de-structure again.
+
+Let's try that one out;
+
+c1.hex().
+
+And did we have another color, white?
+
+I think I defined that and refresh the page.
+
+So let's define another color over here.
+
+Let's call this one red.
+
+And then another one which will be white.
+
+And just have (255,255,255).
+
+Now, need to save that to a different variable; white.
+
+Okay!
+
+So if we check here, white.hex(),
+
+we get "#ffffff", that's accurate.
+
+I do know that one hex color.
+
+And then if we do red.hex(), we get a different outcome.
+
+And if we compare them, red.hex,
+
+not execute them but compare the references,
+
+=== white.hex,
+
+they are the same function because they're on the prototype.
+
+They are not in the individual instance,
+
+they're over here.
+
+And let's add in our rgba as well.
+
+Let's see,
+
+this was rgba.
+
+We'll copy this logic
+
+but I think I'm gonna refactor this.
+
+If we look at rgba,
+
+it accepts a parameter called alpha.
+
+We set it to be 1.0 as the default value.
+
+It returned something very similar to rgb.
+
+This right here is the same thing.
+
+We just have, a, added after the fact in rgba.
+
+And we have rgba at the start
+
+and rgb at the start of rgb.
+
+So we could make a separate function,
+
+maybe call it innerRGB,
+
+like that.
+
+And all that I'll do there, nice and easy,
+
+is return this part of the string.
+
+So I'm just gonna copy the whole thing over,
+
+you'll see what I'm going for.
+
+I'm just gonna return this string.
+
+No parens, just a comma separated list.
+
+So it would look like 255,255,255.
+
+So if I called this from within another method,
+
+I could easily do rgb and put parens around that.
+
+Or I could add in another number and do rgba around that.
+
+So I just made a method that is gonna help me out,
+
+it's called innerRGB.
+
+And now we get the opportunity to talk about
+
+how we would call one of these methods
+
+from within another instance method,
+
+another method on this class.
+
+To do that, we just referenced this;
+
+same thing.
+
+So we could call this.innerRGB.
+
+That should give us a string that will go
+
+on the inside of our rgb right here.
+
+And I need to escape that with my dollar sign,
+
+curly braces.
+
+Let's make sure that works for rgb.
+
+Refresh the page;
+
+white.rgb();
+
+that looks good.
+
+We can verify if we paste that down here, it is white;
+
+at least according to VS Code.
+
+Now we can rewrite rgba to do the same thing.
+
+So I can get rid of that
+
+and replace it with this.innerRGB.
+
+And execute it.
+
+It is a function.
+
+And then we add rgba, open paren,
+
+and then closing paren at the end
+
+as well as comma, the alpha value.
+
+So very similar.
+
+Because we're using the same function on the inside,
+
+it just gives us a good opportunity
+
+to call a function from within,
+
+or a method to be more accurate,
+
+from within another method on the class.
+
+So, does white.rgba work?
+
+It's gonna be quite boring,
+
+not as exciting as, let's do red.rgba.
+
+There we go.
+
+And if we try 0.4, we get a more transparent color.
+
+We could do the same thing,
+
+document.body.style.backgroundColor = red.rgba().
+
+This is the full strength of that red color,
+
+and this is half strength.
+
+This is a 10th of the strength.
+
+Cool!
+
+So we've added a couple of methods
+
+and we've covered most of the basics of classes so far.
+
+You define a class with the class keyword.
+
+You usually capitalize that name,
+
+and you should always capitalize it.
+
+Although you don't have to, you should!
+
+And then inside of those curly braces,
+
+the first thing we need to add is a constructor.
+
+This function will run automatically
+
+whenever you instantiate a new instance of the class.
+
+So we don't call it manually.
+
+Inside of that constructor
+
+and inside of the entire class,
+
+if we're in a method like I have here, constructor,
+
+or down here,
+
+the keyword, this, will refer to the individual object.
+
+So this.r, this.g, this.b,
+
+I'm assigning properties to each color.
+
+Not to the prototype but to the color.
+
+Then these methods I've added,
+
+they are added to the prototype automatically.
+
+So I don't have to do any of this
+
+Color.prototype.blah, blah, blah.
+
+I can keep everything together inside this class.
+
+I don't have to have the separate constructor function,
+
+then later add my methods.
+
+I can put it all in one happy family,
+
+and define my class, define my pattern for every color.
+
+Every color has an r, g and b, and a name.
+
+And every color has these four methods,
+
+but they're located on the prototype.
+
+They look up to that one prototype template object.
+
+Okay, so we're gonna continue to add on
+
+to our class in the next video.
+
+
+ -->
+  <h1>Hello!!</h1>
+  <h1>Goodbye!</h1>
+  <script src="app.js"></script>
+</body>
+
+</html>

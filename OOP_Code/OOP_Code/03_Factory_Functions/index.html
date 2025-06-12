@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Factory Functions</title>
+</head>
+
+<body>
+  <!-- Instructor: Okay, so I've got a function here called hex.
+
+I did not write this.
+
+I adapted it from a Stack Overflow post.
+
+Don't worry about line 2 at all.
+
+Don't worry about how the function works.
+
+I took it from Stack Overflow, I don't know how
+
+to explain it anyway, but it converts RGB colors
+
+to hexadecimal colors.
+
+It simply takes some RGB value.
+
+So three arguments we pass in.
+
+Let's go with 255, 100 and 25.
+
+That will spit back
+
+to us a hexadecimal color that looks like that.
+
+So if I put this in my VS Code, you can see the color there.
+
+It's an orangey color
+
+and if I wrote the correct RGB string, just
+
+so we can double check, it needs to be RGB
+
+and then 255, 100, 25.
+
+It's the same color, at least according to VS Code.
+
+So we have this function.
+
+I could also write another function
+
+to take three numbers like we have here, RG and B,
+
+and actually return a valid RGB string for use in CSS.
+
+I could just call that function RGB,
+
+it accepts RG and B,
+
+and then it returns a template literal where we have RGB
+
+and then dollar sign R, comma, dollar sign B, comma,
+
+dollar sign C, and that should be it.
+
+Let's make sure that works.
+
+If I use the same values,
+
+but I call RGB instead, that's the name of our function,
+
+which the VS Code extension has actually already
+
+given me a preview of, oh, this should be G.
+
+Not sure where C came from.
+
+If I try running this.
+
+Alright, we get our string.
+
+Okay, so we have two different functions.
+
+They are perfectly fine on their own as is,
+
+but if I wanted to make a nice little object
+
+where I can convert back
+
+and forth from RGB to hex without having
+
+to pass in numbers each time, kind of
+
+what I showed you in the last video,
+
+I could use a factory function which would make me an object
+
+that automatically had a hex method and an RGB method
+
+and it stored the RG and B values as values
+
+or properties on the object.
+
+So we could just make a function, function
+
+and give it a name like color make or makeColor,
+
+and we would pass in R, G, and B.
+
+And then in here I could make a new object.
+
+Const color equals an empty object.
+
+I'm going to add some stuff into that,
+
+but at the end I'll return color.
+
+So I could say color.r equals r, color.g equals g,
+
+color.b equals b.
+
+Those are the values that were passed in.
+
+So I would use this if I run the code by calling,
+
+makeColor, pass in some numbers,
+
+like 35, 255, 255,
+
+and then I get back object R 35, G 255, B 255.
+
+Now I could add in a method on this object.
+
+Color dot, let's go with RGB equals a function.
+
+So I'm building up an object, hence the term factory.
+
+We pass in some values and this factory makes us an object
+
+and returns it at the end so that I can use it.
+
+Okay, so color.RGB equals,
+
+and then I'll basically copy this.
+
+But instead of RGB, R, B, and G,
+
+I just realized they're in the wrong order, R, G, B.
+
+But instead of doing this
+
+and hard coding it, I'm going to use the keyword this,
+
+which we also saw back in that secret life
+
+of object section, the keyword, this,
+
+in this context, if I were to call, you know,
+
+firstColor const, firstColor equals,
+
+and then makeColor,
+
+I pass in some numbers 35, 255, and 150.
+
+If I call firstColor dot RGB in this method,
+
+RGB right here, the value of this, we'll refer
+
+to this object to the left of the dot.
+
+So if I use this, I can access this dot R, this dot G,
+
+and if I just console log this, just
+
+to give you a refresher,
+
+because that section was a while ago.
+
+I'll comment that line out.
+
+We're simply printing this inside of this method.
+
+So if I call makeColor some numbers,
+
+35, 150, 140, save that to a variable,
+
+I'll call it C and I call C dot rgb.
+
+You can see that this is set to the same color object to C.
+
+So it has access to R, G and B via this.
+
+So what I would do is probably extract
+
+or destructure from this RG
+
+and B, instead of having to create my string
+
+and access to this dot R, this dot G
+
+and this dot B, it gets kind of annoying.
+
+So instead we can leave this as is
+
+and now destructure from this.
+
+Let's see if it works.
+
+I have this firstColor, I'll access firstColor dot rgb,
+
+and I have an RGB string.
+
+I could also add in a hex function like we saw earlier.
+
+So I'll just paste it in and then I'll adapt it.
+
+I'm going to write color.hex equals a function.
+
+No arguments necessary, unlike here where I have
+
+to pass them in each time to the function
+
+by storing these methods on an object,
+
+I'm calling it color here, but I'm returning it at the end.
+
+The name doesn't matter, but
+
+because I store the methods on the object
+
+and that object also contains the RG
+
+and B properties, I can access them just like I did here.
+
+So I'm just gonna repeat this line to extract
+
+or destructure, R, G, and B from this.
+
+Just like in this function here, this referred
+
+to this color object,
+
+this entire object we've been adding onto, as long
+
+as I'm calling it like firstColor dot RGB or dot hex,
+
+just like we would call some array dot push, right?
+
+The dot is very important here.
+
+We're not calling push and passing in the array,
+
+we're not calling hex
+
+and passing in some numbers, we're calling some color.hex.
+
+We don't provide arguments. It looks on this object.
+
+So I could have another color, you know,
+
+I could have purple dot rgb.
+
+Purple dot hex. All right, so this should work.
+
+Let's make sure the math doesn't matter whatsoever.
+
+It's not the point.
+
+I don't even want to take time
+
+to explain it honestly,
+
+because I haven't even looked at how it works.
+
+I know that it's going to convert to base 16 at some point.
+
+I think, yeah, it's doing that right here,
+
+but really it does not matter to this video.
+
+All right, so it returns that. Let's make sure it works.
+
+I call firstColor.hex.
+
+There we go. firstColor.rgb.
+
+And I could also change the R value
+
+or the G value at any point I could say R is now going
+
+to be 255 full R, full red.
+
+And now if I look at firstColor.rgb,
+
+it reflects that change.
+
+So it may not be the most useful object on earth,
+
+but it can be nice because
+
+if you do have these color values,
+
+working with them, converting them can suck.
+
+And later on we'll add some more useful methods
+
+like a lighten method or a darken
+
+or a saturation, all those different things, opposite color.
+
+Anyway, the focus here is on this function,
+
+this function makes us an object.
+
+It starts empty, but then we add some properties based off
+
+of arguments that we were provided.
+
+Then we add some methods and then we return that object.
+
+This is called a factory function and it does work.
+
+This is one way of making objects based off
+
+of a pattern or a recipe.
+
+We've defined a recipe for a color. We call makeColor.
+
+We pass in three numbers and we get back an object.
+
+And that object contains a whole bunch of things.
+
+Well, a whole bunch is an exaggeration.
+
+It contains three properties that are numbers
+
+and then two methods.
+
+And I could make another color, right, makeColor
+
+where let's say it's 000,
+
+same pattern, different values.
+
+I get different outcomes from the methods,
+
+but the same pattern in general.
+
+But this is actually not the main way most people
+
+create objects based off of a pattern.
+
+This is not how people like to do it and to understand why,
+
+we're gonna have to talk about our friend prototype
+
+in the next video, and we'll see a better approach.
+
+So there's nothing wrong with this, it's just not
+
+as ideal as it could be.
+
+So we'll see another option. Just hang in there.
+
+So that's coming up.
+
+
+ -->
+  <h1>Hello!!</h1>
+  <h1>Goodbye!</h1>
+  <script src="app.js"></script>
+</body>
+
+</html>

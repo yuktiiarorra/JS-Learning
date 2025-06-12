@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout & setInterval</title>
+</head>
+<body>
+    <!-- Instructor: So next up we're gonna
+
+take a look at two functions
+
+that expect you to pass a callback function in.
+
+But they are not array methods.
+
+They have nothing to do with arrays, they have to do
+
+with delaying or waiting, pausing execution
+
+and postponing execution for a later date.
+
+We're basically scheduling something.
+
+So the first one we'll look at is called setTimeout.
+
+And before I show you that, I just wanna explain
+
+how this would work in some other programming languages.
+
+Imagine you have something
+
+like you're printing some string, okay, "hello...".
+
+And then you want to wait three seconds
+
+before you print hello again.
+
+Or you know, maybe you'll print something
+
+like are you still there?
+
+Okay, so this is not JavaScript.
+
+This would be closer to something like Python or Ruby.
+
+Print, "are you still there?"
+
+And if I wanna wait in between, in some languages it's
+
+as simple as sleep for 3000 milliseconds
+
+or pause for 3000 milliseconds.
+
+I mean it depends on the specifics of the language,
+
+but there are specific functions that you can call
+
+that just stop execution.
+
+Nothing happens until this finishes.
+
+Well in JavaScript we don't quite
+
+have the same interface, we can print,
+
+"are you still there" after three seconds.
+
+But it's a little bit clunkier and we'll go into why
+
+and sort of the mechanics of this,
+
+when we talk about asynchronous JavaScript,
+
+we have a whole designated section on it later in the course
+
+for now, I'm just showing it as an example of callbacks.
+
+So the first function, as I mentioned,
+
+is called setTimeout.
+
+And it expects you to pass two things in.
+
+First, a callback, second, a number of milliseconds
+
+to delay the execution of the function.
+
+So here's how it works, setTimeout.
+
+And you can see VS Code is
+
+explaining the two expected arguments,
+
+a timer handler, a function basically,
+
+and then a timeout number, how long something should take
+
+or how long the delay should be.
+
+So I'm gonna pass in a simple function,
+
+I'll do an arrow function to keep it simple.
+
+Console.log, "HELLO!!!"
+
+Okay, and then the second argument.
+
+So this is the first argument.
+
+The second one is gonna be a number of milliseconds.
+
+I'll do 3000. So three seconds.
+
+If I refresh my page now where I've included this script,
+
+we wait three seconds and we get "HELLO!!!"
+
+So that's kind of all there is to set time out,
+
+it's just gonna run one time.
+
+After this number of milliseconds,
+
+it will execute this function.
+
+So we have to pass in a callback.
+
+Otherwise you know, if we just passed in console.log
+
+for example, that's just gonna execute right away.
+
+That's gonna break things.
+
+The whole point is that JavaScript is going to wait,
+
+the browser will wait to call whatever this function is
+
+until the appropriate time.
+
+So if I wanted to do something like, you know,
+
+print "HELLO!!!" first and then
+
+after three seconds do something like,
+
+"...are you still there?"
+
+So I'll do "HELLO!!!"
+
+and then three seconds later, "...are you still there?"
+
+And just to show you this, if I put something else
+
+after it, console.log, you know, "GOODBYE!!"
+
+This is going to run immediately.
+
+So this will run, this runs or the setTimeout is called,
+
+but it doesn't call this function until three seconds later.
+
+So it just keeps going and it prints "GOODBYE!!"
+
+and then three seconds later this function will run.
+
+So let's refresh the page.
+
+You can see "HELLO!!!" "GOODBYE!!" both there immediately
+
+and then three seconds later, "...are you still there?"
+
+Okay, so that's setTimeout.
+
+Another option or another function,
+
+pretty similar is called setInterval.
+
+And setInterval will call a function that we pass in.
+
+It will call a callback every X number of milliseconds.
+
+So we can repeat something at an interval.
+
+I'll show you an example.
+
+Let's do something like if we console.log, just Math.random.
+
+'Cause if we console.log the same thing every time,
+
+Chrome just sort of collapses it
+
+so you don't actually see it as a separate line.
+
+But if I do Math.random, it'll just be a random decimal.
+
+And if I call setInterval
+
+and then pass in a function, arrow function
+
+or not, doesn't matter.
+
+And then I specify an interval, let's do every two seconds.
+
+So 2000 milliseconds, exact same signature
+
+as setTimeout, pass in our function.
+
+And then comma second argument number of milliseconds.
+
+What you'll see after two seconds is
+
+that it continues over and over
+
+and over to call that function.
+
+So this is not as commonly used,
+
+but there are definitely situations when you want
+
+to do something at an interval.
+
+Now one thing that's important to know is how to stop it.
+
+So I actually said we were gonna see two functions,
+
+we're actually gonna see three.
+
+But the function I'm gonna show you
+
+right now is very straightforward.
+
+It's called clear interval.
+
+And all that we need
+
+to do is actually save the return value of setInterval.
+
+Every time we call it, it gives us an id,
+
+it returns the ID corresponding
+
+to whatever interval we set up.
+
+So there we could have like five
+
+or six, seven, a whole bunch
+
+of these different setInterval function calls
+
+running at different intervals.
+
+And we can specify which one we want to stop
+
+by using this id.
+
+So if I save that ID, just call it const id.
+
+I'm gonna refresh the page.
+
+If we look at id, it's just set to 1
+
+for this particular interval.
+
+But if I call setInterval again, I'll get a different id.
+
+So now what I can do is call clear interval
+
+and then pass in that ID and it should stop and it does.
+
+So not as commonly used,
+
+but it's definitely worth knowing.
+
+And if you're going to know setInterval,
+
+you should definitely know clear interval
+
+so you don't have something just going forever
+
+while the page is open.
+
+Now if you close page, it's not like you're, you know,
+
+the browser just keeps printing that until the end of time.
+
+But as long as the window's open you're going
+
+to be printing a lot.
+
+Okay, so that's it.
+
+Set time out to something we will learn more about.
+
+It will play a pretty pivotal role
+
+in our async JavaScript section,
+
+but for now it just serves as another illustration
+
+of passing functions to other functions.
+
+So we pass that function in.
+
+It's not called right away, it's called
+
+after X number of milliseconds.
+
+Same thing here, pass the function in
+
+and pass in an interval.
+
+The only difference is that setInterval will repeatedly
+
+call my function at that interval
+
+and then it returns an ID that we can use to clear it.
+
+So I'll just put that down here, clear interval
+
+and then we'll pass that ID in.
+
+But if I ran this right away,
+
+we won't see our console.logs occur.
+
+So I'll leave it commented out.
+
+Okay, that is pretty much it for setTimeout and setInterval.
+
+
+ -->
+    <script src="setTimeout&setInterval.js"></script>
+</body>
+</html>

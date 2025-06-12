@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Default Params</title>
+</head>
+<body>
+    <!-- Instructor: So the first of these newer features
+
+we'll look at is default params or default parameters.
+
+Often when we write a function,
+
+we'll have some parameter,
+
+and it may be optional.
+
+If a user passes it in, we'll use it,
+
+and if they don't, we'd like to give it a default value.
+
+For example, let's go back to this good old function
+
+we've written a couple of times, roll a die.
+
+And let's say that this rollDie function
+
+accepts a number of sides.
+
+So we'll call that numSides.
+
+So we're rolling a six-sided die, a 10-sided,
+
+a 20-sided or whatever number of sides for our die.
+
+And we want to return our good old friend here Math.floor
+
+of Math.random times the number of sides
+
+and then plus one to shift that.
+
+So if I pass in numSides of six,
+
+let's just verify over here.
+
+rollDie.
+
+I'll pass in six.
+
+We should get a number from one to six and we do.
+
+Now if I try that instead with 20,
+
+we should get a number between one and 20.
+
+And it looks like that's working as well.
+
+But let's say that I want to allow a user
+
+to just default numSides if they don't pass it in.
+
+I want it to be six because that's the most commonly sized
+
+or most common sized die.
+
+So if I try that right now, if I don't pass it in,
+
+we get our good friend,
+
+equally good friend not a number.
+
+And that makes sense because it's undefined.
+
+And that means we'd be using undefined here.
+
+And multiplying Math.random by undefined,
+
+that always gives us not a number.
+
+So that's not good.
+
+So in the past,
+
+before this syntax improvement I'm about to show you,
+
+this is what we would do.
+
+We would check to see if a value,
+
+if a parameter was undefined.
+
+So something like right here.
+
+So this is a one-line way of doing it.
+
+So you do something like this.
+
+If numSides equals undefined,
+
+then numSides equals six.
+
+So let's try that now.
+
+rollDie.
+
+You don't pass in parentheses.
+
+(sighs) You don't pass in parentheses.
+
+You don't pass in a number, it defaults to six.
+
+But if you do pass something in like 20,
+
+you can see that it's working.
+
+It's not just defaulting to six anymore.
+
+So this was the old way of doing things,
+
+and it's kind of annoying.
+
+It's not ideal,
+
+especially if you have more than one parameter
+
+that's optional.
+
+Now, the new way of doing it is
+
+using this syntax improvement
+
+where we add an equal sign and a default value directly
+
+in our parameter list.
+
+So in this example, multiply,
+
+A has no default value.
+
+A will be whatever you passed in as the first argument.
+
+B does have a default value.
+
+If you leave it off, it will default to one.
+
+So we could rewrite this function right here like this.
+
+rollDie (numSides).
+
+If you leave it off, equals six.
+
+And that's it.
+
+This is easier to read, right?
+
+And it's just more compact.
+
+It's a nicer alternative.
+
+Let's verify.
+
+You pass in 20.
+
+We get our larger range 20-sided die.
+
+If you pass in nothing, we go from one to six,
+
+our six-sided die.
+
+So we can write multiple default params,
+
+but one thing you need to watch out for is the order.
+
+So if I wrote a very trivial,
+
+stupid honestly, silly, dumb,
+
+ridiculous function like greet,
+
+and greet is expecting a message
+
+that you'll pass in and a person,
+
+and it's going to return something very simple
+
+like the message comma the person's name,
+
+and then an exclamation point.
+
+So I would call it like this.
+
+And actually, instead of returning, let's just print.
+
+Okay, so we print that out, and I call greet.
+
+I pass in a message like hello.
+
+I don't know why I'm doing all caps.
+
+And then a person's name.
+
+How about Joaquin?
+
+Okay.
+
+Then we get hello, Joaquin with an exclamation point.
+
+Or if I do someone else's name or some other greeting
+
+like up top big guy, there we go.
+
+Up top big guy, Joaquin.
+
+All right.
+
+Let's say I wanna make message have a default value.
+
+So I want message, if you don't pass one in,
+
+just to default to hey there.
+
+Just like that, okay?
+
+Let's see what happens.
+
+So I try calling greet and I pass in both hello and Joaquin.
+
+That works.
+
+But what if I just pass in Joaquin?
+
+Well, hopefully you can see what the issue is here.
+
+JavaScript isn't smart enough
+
+to know that this is a person's name
+
+and that it should use the default for message.
+
+It's going off of the order, and that's it.
+
+So this is the first thing we passed in.
+
+It's going to be applied
+
+to that first parameter here, message.
+
+And then person is undefined.
+
+So the order matters, and you cannot...
+
+I mean, I guess technically you can have a default parameter
+
+at the beginning before other parameters
+
+that don't have a default value,
+
+but it's just not gonna work.
+
+So you should always have your default parameters
+
+come second or third or whatever it is.
+
+They need to come after any parameters that are not default.
+
+And you can also have multiple of them.
+
+So we could have a message.
+
+Let me just verify and show you that that does work.
+
+Greet Joaquin.
+
+We get hey there, Joaquin.
+
+But if we pass something else in after like hi like that,
+
+we get hi, Joaquin.
+
+Okay, lastly,
+
+we can put something else in here like punctuation.
+
+Let's call it punc.
+
+And it will be a default of just one exclamation point.
+
+So we'll put that in right there right after the fact.
+
+So if we try calling greet,
+
+this time with Rosa,
+
+we get hey there, Rosa with one exclamation point.
+
+But if I pass in a greeting like hiya and punctuation,
+
+I want a whole bunch of exclamation points,
+
+I don't know why I'm not being consistent
+
+with my quotes there,
+
+I need double quotes,
+
+you can see that we're not relying
+
+on any of the default parameters.
+
+So that's all there is to default params.
+
+Using that equal sign,
+
+it's a significant improvement over something like this.
+
+New feature, use it, it's nice.
+
+Okay.
+
+
+ -->
+    <script src="DefaultParams.js"></script>
+</body>
+</html>

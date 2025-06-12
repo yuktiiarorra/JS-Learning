@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Params</title>
+</head>
+<body>
+    <!-- Instructor: Next up we have rest, which looks like spread
+
+because it also uses three dots,
+
+but it means something entirely different.
+
+So to help explain this, we need to go back
+
+and talk about something called the arguments object.
+
+Inside of every function we've written so far,
+
+we have access to this magical, it's not so magical,
+
+but this thing created for us automatically
+
+called arguments and it kind of looks
+
+and acts like an array.
+
+It's what we call an array like object.
+
+We can use in indices to access elements out,
+
+in that sense, it works exactly like an array,
+
+except we don't have access to array methods like push
+
+and pop and reduce and all of that stuff.
+
+So what does it contain? What does it do?
+
+It automatically will hold
+
+all of the arguments passed to our function.
+
+So I can just demonstrate this very quickly.
+
+Let's just do a function called sum,
+
+and we're not going to expect any arguments.
+
+I'm just gonna say, you know, pass in whatever you want.
+
+And I'm gonna console.log arguments.
+
+This arguments object.
+
+And if I refresh my page,
+
+remember how we have methods like math.min
+
+where I can pass in one argument or two or 10
+
+or a thousand arguments, right?
+
+There's no way to specify that we want one, two,
+
+or a thousand arguments inside of the parameter list.
+
+But this arguments object is going
+
+to automatically collect all arguments.
+
+So if I call some with nothing,
+
+we see that arguments is empty.
+
+But if I call it now with a bunch of arguments
+
+about 34, 65 and 77,
+
+it contains all of those values in an order.
+
+So I can look at the zero width or the first or the second
+
+or index of zero, index of one and two,
+
+elements from arguments.
+
+But I can't actually use array methods.
+
+So it looks like an array, it acts kind of like an array,
+
+but it's not an array.
+
+So if I wanted to make this method sum
+
+where I'm gonna sum all elements together.
+
+So all arguments together, I wanna be able to do some
+
+of three, four, five
+
+or this where I have a bunch of numbers.
+
+To do that, I need to loop over every argument
+
+and sum them together.
+
+Or I could use, reduce a standard array method.
+
+So I could do return arguments.reduce,
+
+and then for each, and we have our total
+
+and then our elements.
+
+And we'll return total plus element.
+
+So hopefully that's review of reduce,
+
+the problem we run into here.
+
+This will work except for the fact
+
+that arguments is not an array
+
+and it doesn't have a reduced method.
+
+So if I try that, no arguments.reduce is not a function.
+
+So if it were a regular array, it would be, but it's not.
+
+So this kind of sucks.
+
+Arguments is this thing that's created for us,
+
+but for whatever reason,
+
+which I've actually never really thought about
+
+or tried to look into,
+
+but for whatever reason it's not an array.
+
+It acts like one in some ways,
+
+but it falls short in a lot of others.
+
+So this is where rest comes in.
+
+The rest operator, which is three dots,
+
+goes in our parameter list
+
+and it's gonna collect all remaining arguments
+
+and put them in an actual array.
+
+So lemme show you what that looks like.
+
+Instead of this, I'm gonna comment that out
+
+'cause this doesn't even work.
+
+I'm going to create another function called sum,
+
+and then I'm going to add a parameter in here.
+
+I'll call it nums.
+
+And if I just left it as nums,
+
+that's only going to be one parameter, right?
+
+So if I called sum
+
+and I passed in three nums would be three.
+
+But if I did three comma five nums is still three,
+
+five is just ignored.
+
+But if I use rest, one, two, three dots,
+
+I'm collecting the rest of the parameters.
+
+In this case, all values passed in will be
+
+stored inside of nums.
+
+So if I console.log nums here
+
+and I call sum now it is an actual real array.
+
+So it could have one value in it
+
+or it could have a hundred values in it or more.
+
+Lots of 23s, there we go. That's our nums array.
+
+It's up to us to come up with that name.
+
+But what's great about this is that it's a real array.
+
+So I can now do things like I'll just copy this,
+
+return, but instead of arguments.reduce,
+
+I can also just name this something like nums,
+
+arguments, we can't choose that name.
+
+It's just always arguments.
+
+Nums is just the name of a parameter
+
+I can customize at will.
+
+All right, so let's see if this works. There we go.
+
+I assume that's a correct answer.
+
+Let's just do something a little bit easier.
+
+One, two, and three. And we do get six.
+
+Okay, now it is called rest.
+
+So collect the rest of the values.
+
+And that does mean that we can have some named parameters
+
+that we call out first.
+
+For example, if I had a function called medal ceremony.
+
+Now how about race results?
+
+And we're expecting a gold medal finisher, a silver.
+
+And then just for the sake of brevity,
+
+let's just do everyone else
+
+and collect them all in their own parameter.
+
+So that will be an array, just like it was here with nums.
+
+And let's just print out, I don't know, console.log
+
+gold medal goes to.
+
+And then here we'll do gold
+
+and then we'll do the same thing here.
+
+Silver goes to silver.
+
+And then our final one will just be everyone else,
+
+I don't know, and thanks to everyone else.
+
+And then we'll just print out everyone else,
+
+which will be an array.
+
+Okay, so let's try calling that race results.
+
+We'll say first place gold medal was, I don't know, Tammy.
+
+And then silver was Todd.
+
+And then everyone else really,
+
+it's just a list of arguments.
+
+So let's do Tina and Trevor and Travis.
+
+Lots of T names there. And there we go.
+
+Gold medal goes to Tammy, silver goes to Todd.
+
+And thanks to everyone else, Tina, Trevor, Travis.
+
+So what we did there was called out
+
+the first two specifically
+
+and then collected the rest into everyone else.
+
+So this is super useful. We can't do that with arguments.
+
+Arguments just holds everything in it.
+
+So if I tried to replicate this,
+
+I would have to call out arguments of zero,
+
+arguments of one, to get the first two,
+
+and then everything else would be arguments of two onwards.
+
+The last thing to note about arguments is
+
+that it just doesn't work instead of arrow functions at all.
+
+So that's another reason to use rest parameters.
+
+Remember, it's three dots. It's different than spread.
+
+We're not spreading things out.
+
+We're actually doing the opposite.
+
+We're collecting things into a single parameter.
+
+So that's rest.
+
+
+ -->
+    <script src="RestParams.js"></script>
+</body>
+</html>

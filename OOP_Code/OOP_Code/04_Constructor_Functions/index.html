@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Constructor Functions</title>
+</head>
+
+<body>
+  <!-- Instructor: Next, up we're going to talk
+
+about why this pattern, a factory function,
+
+is not commonly used and why instead,
+
+we use something called the constructor pattern
+
+or constructor function.
+
+So let's start
+
+with what you probably have seen at this point.
+
+We've seen this new keyword occasionally,
+
+like new XML HTTP request, I hate typing this,
+
+but we run this if we need to make an XML HTTP request.
+
+We're not using fetch, we're not using Axios.
+
+Check out the requests section
+
+if you're not sure what the heck I'm talking about.
+
+This makes us a new object following a pattern.
+
+Also, we can make an array with this syntax, new array.
+
+It's definitely lengthier, it's not commonly used at all.
+
+You could do new string.
+
+Notice I'm using capital letters. What is that new keyword?
+
+It's actually an operator, and we'll get to it,
+
+and we'll talk about why it's preferable to this approach,
+
+but let's start with understanding the shortcoming here.
+
+It's not a huge one, but it's important to understand.
+
+Every time I make a new color object,
+
+we start with an empty object.
+
+We have three unique properties.
+
+They're added directly to the object, that makes sense,
+
+but then these functions, they're recreated,
+
+and a unique copy is added to each color object,
+
+so each color object has its own RGB function.
+
+Yeah, the values are going to always be different,
+
+assuming that the colors are different.
+
+We have different R, G, and Bs,
+
+we can end up with a different result, but there's no reason
+
+to have a unique copy of the function itself.
+
+Just like if we were to write a regular function
+
+called RGB out here, function RGB,
+
+we could reuse that with any inputs.
+
+We don't need to have function RGB two
+
+and RGB three and RGB four
+
+any time we wanna pass in different values.
+
+We just make one function.
+
+That is not what's happening here, and I can show you that.
+
+I have two colors I've created using make color.
+
+I have first color and I have black.
+
+They have different values that I passed in,
+
+so we get different objects.
+
+We have black, where R, G, and B are zero, zero, zero,
+
+and we have first color, not a very original name,
+
+35, 255, 150.
+
+Notice they have their own copy,
+
+well, it looks like they have their own copy
+
+of hex and RGB, and we could verify that
+
+in a bunch of different ways.
+
+The simplest would be if we compare black dot,
+
+let's take hex, and compare it to firstColor.hex.
+
+They are not equal.
+
+Triple equals for a reference type is going to check,
+
+and functions are reference types, as a reminder,
+
+it will check to see if they are referring
+
+to the same function, in this case, and they are not.
+
+But if we compare that to something like a string,
+
+any string, "hi" dot, what's a good method to use?
+
+How about we use dot slice?
+
+I'm not gonna call it,
+
+just hi.slice triple equals bye.slice,
+
+two different strings, notice that we get true.
+
+Hmm.
+
+What's happening here is that the slice method
+
+is not defined on every single string,
+
+or if I had worked with an array,
+
+if we look at some array, one, two, three, four,
+
+the methods are not defined in this individual object.
+
+Arrays are objects.
+
+A weird part of JavaScript, they are considered objects.
+
+Instead, they are defined on the prototype.
+
+Remember, we started this section off with prototypes.
+
+Every array gets its built-in array methods
+
+from one prototype array object.
+
+This contains all of the methods and functionality
+
+that we're used to using, array.pop, array.concat.
+
+Same thing with strings.
+
+The string prototype contains the methods,
+
+so instead of having their own copy,
+
+this array does not have its own copy of pop.
+
+This string does not have its own copy of slice.
+
+They're referencing one function,
+
+and it's located on the prototype.
+
+With what we've set up here,
+
+we don't have an easy way of making that work,
+
+so this is where the constructor function enters.
+
+A constructor function
+
+is kind of a weird part of JavaScript, honestly.
+
+It's pretty different
+
+than most other programming languages I've worked with,
+
+but don't let that scare you.
+
+It's not too bad.
+
+If we go to MDN, there's a nice little explanation
+
+of this new operator which we will use,
+
+but first, take a look at this code right here.
+
+We have a function.
+
+It's starting with a capital letter,
+
+which is just a style choice,
+
+but inside the function, there's never a return value,
+
+and we're referencing this directly in the function.
+
+We're not in an object like we had here,
+
+we created an object color
+
+and we referenced this inside that object on a method.
+
+Here, it's just a function,
+
+this.make equals something, this.model.
+
+What is going on? Well, let's try it out.
+
+So on the docs, we had a function
+
+and it had a capital letter, which is really just a way
+
+of indicating that this isn't a regular function,
+
+it is a function that helps you create objects.
+
+It's a constructor function.
+
+Function color, we pass in R, G and B,
+
+and then what they did on MDN was this.R equals R,
+
+this.G equals G, and this.B equals B.
+
+Okay, well, let's see what happens when I call color.
+
+When I come over here, refresh my page,
+
+I'm gonna execute color and pass in,
+
+and I'll just do 255, zero, and zero.
+
+I didn't get anything back. It doesn't appear be working.
+
+If I save that to a variable, I would just see undefined.
+
+What if we print out this, console.log this,
+
+and let's print it out at the end
+
+after we've added those properties, R, G and B.
+
+What do you think this is going to refer to?
+
+Ooh, it refers to the window. Why is that?
+
+Well, if you remember back
+
+in the secret life of objects section,
+
+we talked about the keyword this and how it behaves.
+
+In the scope of this function,
+
+it's not inside of any other object,
+
+this is going to refer to the global scope,
+
+the nearest object, which is the window object.
+
+So then why on earth would the docs talk
+
+about making a function like this and referring to this
+
+in your function, not returning anything?
+
+Well, the secret is this new operator.
+
+When we call this function
+
+but we call it with new before the function call,
+
+it behaves differently.
+
+These are the steps.
+
+I guess I'll just copy these over and show them to you here.
+
+When we call this color function with new, new color,
+
+and then we pass in values 255, 40, and 100, just like that,
+
+it's going to create a blank plain JavaScript object.
+
+It sets the constructor of this object to another object,
+
+we'll come back to that, passes the newly created object
+
+from step one as the this in this context,
+
+so it's going to make us a new object,
+
+and it will set this to that new object,
+
+so we'll be adding R, G, and B to that new object,
+
+then it returns this at the end.
+
+So it's kind of doing what we saw earlier,
+
+const, let's just call it O, equals an object,
+
+and then this would be referring to this object,
+
+and then it adds these properties to that object,
+
+and then at the end, it would return O,
+
+but it's doing it all implicitly behind the scenes for us.
+
+This behaves differently here than it normally does.
+
+As we saw, if we don't use a new keyword,
+
+this refers to the window object,
+
+but when we use new, it's just how JavaScript works.
+
+It's the magic of this operator.
+
+It will be used to create a new object for you
+
+based off of this pattern, so why don't we try it now?
+
+I'm gonna copy this over. go back to my code, refresh.
+
+If we just call color like that, not good.
+
+If we call it with new, all right, take a look at this.
+
+We get an object, and this object has properties on it
+
+that we assigned using this.
+
+I never told it to make an object explicitly,
+
+I never said return an object.
+
+It did that, and it did something else.
+
+If we look under proto here,
+
+it has a constructor property set to color.
+
+That was the first or the second thing, links,
+
+or it sets the constructor of the object to another object
+
+using whatever we named this function,
+
+so it sets the constructor to this color function.
+
+What this allows us to do is now we can add methods
+
+not to the individual objects, not to the instances,
+
+but to the prototype.
+
+So if I copied what we did earlier, like this RGB method,
+
+and I put it in here,
+
+I'll have to uncomment some of this and fix it up,
+
+we would have something like this.rgb equals that function,
+
+and we can access this.
+
+It should work fine. This is not new.
+
+This is kind of what we saw earlier.
+
+Let's see what happens when I call new color again.
+
+Inside of color, ah,
+
+it still has RGB defined on the individual object.
+
+It's not defined on the prototype, but we have a workaround.
+
+Rather than doing this,
+
+we would define that method on the prototype
+
+outside of this constructor function.
+
+It's kind of odd, but that's how it works.
+
+We call Color.prototype.rgb equals this function.
+
+So it's a little clunkier, but we saw the syntax already.
+
+We saw how we could change Array.prototype.pop
+
+and overwrite it to be some other function that did nothing.
+
+Same idea,
+
+so we have now made this constructor function for color.
+
+Anytime we call it with the new keyword,
+
+it makes us a new object,
+
+it sets the constructor to color of that object,
+
+and then it sets the value of this to that new empty object.
+
+We can add properties to it, it returns that object,
+
+so if I call, new color 40, 50, 60,
+
+I save that to a variable, const color one.
+
+I now have an object here that has R, G, and B,
+
+but not only that, if we take a look at color one,
+
+it does not have that method RGB defined
+
+on itself on the actual object.
+
+It's defined on the prototype.
+
+So I can still call color1.rgb,
+
+which is the very important part.
+
+If we couldn't, then it wouldn't be worth doing,
+
+but I don't have a unique copy of it here.
+
+I can still access it from the prototype object,
+
+just like with an array or a string, so this is now better
+
+or more efficient than our factory approach,
+
+where we returned a new object every time it was called,
+
+and on that object, we added in individual methods
+
+that were unique each time.
+
+Now I could have two colors, color one and color two,
+
+it could be totally different.
+
+this one could be zero, zero, zero, zero,
+
+and why don't I add in a second method?
+
+We'll do Color.prototype.hex equals function,
+
+and I'll just copy the code from right here.
+
+Have to tweak it a bit.
+
+Don't need that, don't need that, uncomment you, save,
+
+and everything else should work.
+
+We still have access to this inside of these functions.
+
+This will be set to whatever
+
+is on the left side of that dot, so color1.hex.
+
+Color one will be the value of this.
+
+If I do color two, color two will be the value of this,
+
+even though the function is defined
+
+as a method on the prototype.
+
+So let's verify that color1.hex is the same as color2.hex,
+
+because they are on the shared prototype object
+
+rather than uniquely defined on each instance.
+
+So we've defined a recipe for a color.
+
+We've said every color will have this one prototype
+
+that has RGB and hex,
+
+and we need one copy and one copy only of those methods.
+
+Let's test it out.
+
+So we have color one, I can still call dot hex.
+
+Color2.hex, I get different results
+
+because the value of this is different inside those methods,
+
+but then if I call color1.hex triple equals color2.hex,
+
+hallelujah, it's true, they're pointing to the same thing,
+
+and we can verify that also.
+
+You just open up this object here in the dev tools.
+
+We don't see hex and RGB defined here.
+
+They're defined on the prototype,
+
+so a key distinction from what we saw earlier.
+
+All right, so why don't we end by adding one more method in?
+
+This method will be RGBA, which I could call by color1.rgba,
+
+and I can pass in a number from zero to one, like 0.5,
+
+and this should give me an RGB color or an RGBA color,
+
+which follows the same pattern here,
+
+but it has a fourth channel, A, alpha,
+
+which is in charge of opacity.
+
+So I would define Color.prototype.rgba equals function,
+
+and while I'm doing this, an important thing to note,
+
+you don't wanna use arrow functions for this.
+
+Remember that they behave differently with the keyword this,
+
+so you can run into trouble,
+
+so use traditional standard function expressions,
+
+like I'm doing here.
+
+So we could duplicate this line to get R, G, and B.
+
+We also want the parameter for the alpha channel,
+
+and why don't we give it a default of one?
+
+If it's not passed in, we'll just do a full regular color.
+
+It won't have any translucent, alpha will be 1.0.
+
+Then we have to return our string template literal,
+
+and it should be RGBA, and then we interpolate R,
+
+we interpolate G, we interpolate B, forgot the dollar sign,
+
+and then finally, we interpolate A,
+
+and we also need the closing paren,
+
+so let's test it out here.
+
+We've got color one.
+
+Let's see what color one looks like. I don't even know.
+
+Color1.rgb gives us this color. Is it at all interesting?
+
+I'm just gonna paste it in here.
+
+Nah, it's pretty ugly.
+
+Why don't we change that to be, how about much greener?
+
+We'll try again. Color1.rgb gives us this.
+
+Let's take a look. Okay, very bright green.
+
+Now, if I wanna use that somewhere,
+
+let's just do document.body.style.backgroundColor equals,
+
+and I'll use color1.rgb.
+
+There we go, pretty green. Now, let's try our RGBA method.
+
+It has a default parameter,
+
+so it should be the exact same color,
+
+but now if I pass in a number like 0.80,
+
+it's getting more translucent.
+
+Let's go down to 0.4, 0.2, 0.1.
+
+There we go.
+
+So we've made this one method defined
+
+on the color prototype,
+
+and it works across any instances of color.
+
+Anytime we ran new color, that's the main takeaway here,
+
+the new keyword does these mysterious operations.
+
+It's very confusing when you're starting out,
+
+because if you look at this function on its own,
+
+it seems like it shouldn't really do anything.
+
+It doesn't ever make an object,
+
+it doesn't ever return anything,
+
+but you put that new keyword in front
+
+when you execute the function,
+
+and it changes how it behaves entirely,
+
+and then we saw that we can add methods
+
+to the color prototype
+
+so that they are only defined one time
+
+rather than on each individual color, like we had up here.
+
+So as you can see, the syntax is kind of annoying,
+
+and it leads to these long files
+
+where things aren't really grouped together.
+
+We have our color definition here,
+
+but then all of the methods are defined separately.
+
+This is why the class keyword
+
+and the new class syntax was introduced,
+
+which is what we'll see right after this,
+
+another way of achieving the exact same outcome,
+
+but a prettier syntax.
+
+
+ -->
+  <h1>Hello!!</h1>
+  <h1>Goodbye!</h1>
+  <script src="app.js"></script>
+</body>
+
+</html>

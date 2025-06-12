@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring Array</title>
+</head>
+<body>
+    <!-- Instructor: Next up, destructuring.
+
+So destructuring is another new syntax improvement.
+
+It's a nice way of unpacking or extracting
+
+or singling out values from arrays or from objects.
+
+And we can unpack them,
+
+basically put them into distinct variables.
+
+So let me show you a few examples,
+
+we'll start with arrays.
+
+Imagine that I have an array, like this one right here.
+
+And it has scores that, in this case, they're in order.
+
+Let's say these are pinball scores or something.
+
+And what I want to do is take that first score,
+
+and maybe the second score,
+
+and award them or separate them into separate variables
+
+so that we'll have something like const highScore =,
+
+and then I can do scores[0], right?
+
+And then I can do const secondHighScore = scores[1], right?
+
+And that's singling out this value in this value.
+
+And that works just fine,
+
+but there's actually a much shorter way of doing this.
+
+And that shorter syntax looks like this,
+
+using destructuring, const,
+
+and then array brackets, = scores.
+
+And then, in those array brackets, I can single out,
+
+I want the first value in this array to be called,
+
+let's just go with gold and silver.
+
+That will be the second value.
+
+So let me just show you what gold looks like at this point.
+
+There's gold, 929321.
+
+Let me remind you this is scores.
+
+So the first element was saved to gold.
+
+And then silver is a new variable that was created
+
+with that second element.
+
+Notice scores is unchanged.
+
+So we're not actually extracting something
+
+by removing it from this array,
+
+we're more just copying it over,
+
+the value, into its own variable.
+
+So I could continue with that, I could add bronze in there.
+
+And this would be our bronze score.
+
+So I'm making three variables
+
+based upon these three values in order,
+
+that order matters.
+
+Here's another example.
+
+I used marathon runners.
+
+I think they're marathon, maybe they're just milers,
+
+I don't remember. (snickers)
+
+It's from Wikipedia,
+
+but we have Eliud Kipchoge.
+
+No, he's definitely a marathoner. Okay.
+
+And then, I'm going to butcher this name, I'm sorry.
+
+Feyisa Lelisa.
+
+And then Galen Rupp.
+
+And I did the exact same thing,
+
+[ gold, silver, Bronze ] = raceResults.
+
+Now, we have to have those square brackets there,
+
+the array braces,
+
+to indicate we are destructuring from an array.
+
+So, we had a whole bunch more.
+
+We had, what, like seven values here,
+
+and I only extracted three into standalone variables.
+
+That doesn't really cause a problem at all.
+
+But let's say I wanted everybody else
+
+in a new array called everyoneElse.
+
+I can actually use ..., the rest operator we've seen before,
+
+and then some variable name I'll make up,
+
+like everyoneElse. (snickers)
+
+And now if we take a look at everyoneElse,
+
+it contains everybody who was not called out,
+
+who was not singled out gold, silver, or bronze.
+
+So these four elements.
+
+So it's all based upon position.
+
+This will be the first value in the array,
+
+this will be the second, and this will be the third.
+
+And this, everyoneElse,
+
+will be everything else in the array
+
+that was not singled out.
+
+So that's how we can destructure from an array.
+
+And that is common. Although what is more common
+
+is what we'll see in the next video,
+
+destructuring from objects.
+
+
+ -->
+    <script src="DestructuringArray.js"></script>
+</body>
+</html>

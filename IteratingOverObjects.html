@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Instructor: Okay, so we just talked about for of
+
+and how it works with any iterable object in JavaScript.
+
+And that might make it seem like we can use it
+
+to iterate over an actual object.
+
+An object literal, but unfortunately, objects,
+
+actual object literals with curly braces
+
+like this one right here, right, key value pairs,
+
+they're not considered iterable.
+
+Yes, they're objects, but they are not iterable objects.
+
+An array, behind the scenes, is technically an object.
+
+A string, actually, is an object too.
+
+Lots of other things like maps and sets,
+
+which we have not yet covered.
+
+Those are considered objects behind the scenes.
+
+So long story short, the term object
+
+is a bit of a confusing one in JavaScript.
+
+But when we're talking about an actual object literal
+
+with our curly braces, key value pairs,
+
+if we wanna iterate over them,
+
+this is not gonna cut it.
+
+Let's just go with person of test scores.
+
+You'll see what I get here, console log person.
+
+This is exactly what we just saw in the last video.
+
+I've got this test scores object.
+
+I just have students' names
+
+and then their score on the test.
+
+If I refresh and I look at my code,
+
+"uncaught error, test scores is not iterable."
+
+So we do have an option to iterate over an object.
+
+There is a loop that's been around
+
+for a very long time in JavaScript,
+
+which is the four in loop.
+
+It's kind of confusing, right?
+
+To have for of and then also for in.
+
+Just know that for of is used all the time.
+
+For in is pretty uncommon these days,
+
+but for in is going to iterate over an object.
+
+Now what does it iterate over?
+
+There's two pieces of information.
+
+It's just gonna give us the key.
+
+So if I take a look at this now and I refresh,
+
+we get Keenan, Damon, Kim, all the way down.
+
+So it's just giving us the key in the object.
+
+If I want the value, well I already have the key,
+
+I can get the value out.
+
+So I can do something like this.
+
+Let's do a string template literal,
+
+and let's have the person's name.
+
+So we'll do person, scored.
+
+And then the value, which would be test scores, right?
+
+Square brackets, person.
+
+Okay, let's see what happens now, refresh.
+
+Keenan scored 80, Damon scored 67,
+
+all that all the way down.
+
+So key and then value.
+
+So that's one option.
+
+Another option, if you did need to iterate over an object
+
+is to use special methods that we have not yet seen.
+
+These are new.
+
+There's a method, capital O, Object.keys,
+
+and then you pass it in object like test scores.
+
+And this gives us an array, an actual array,
+
+made up of the keys from the object test scores.
+
+And there's also a values.
+
+So we get the values out of that object.
+
+And there's also one called entries.
+
+And this gives us nested array of key value pairs.
+
+So these all are object, capital O Object.keys
+
+values and entries.
+
+So they just give us an array.
+
+So if I needed to iterate over the keys, for example,
+
+I could just turn it into an array.
+
+Well, I'm not turning it into an array,
+
+but make an array from those keys and then use a for of,
+
+because that does work over arrays.
+
+Now if I just needed the keys,
+
+I could also just do what we saw here.
+
+But let's say I was interested in the values
+
+and I wanted to sum up all of these values.
+
+So all of the scores and average them, maybe.
+
+Well I could do this.
+
+For let score of
+
+and then I can do object values, test scores.
+
+I can do that once again because this will give me an array.
+
+As we saw here, object.values.
+
+You give it an object inside,
+
+it returns to you an array
+
+of that object's values.
+
+So now I can iterate over that with a for of,
+
+let's just do console.log score first, refresh.
+
+And there we go. We're getting all of our scores.
+
+Now let's sum them up. So I'm gonna make a variable here.
+
+Let total equal zero
+
+and then we'll add to total, total plus equals score
+
+inside of our loop.
+
+So each time through, we'll add 80
+
+and then 67, all the way down to 60.
+
+Let's see what we end up with for total. 797.
+
+So to average, now I just wanna take the length
+
+of my object values test scores.
+
+I just wanna know how many items are in this object.
+
+Now unfortunately, objects actually don't have a length.
+
+So if I do test scores length,
+
+hmm, it's not gonna work for me.
+
+It's not an array or a string or something with a length.
+
+So what I'll do though, I mean, if I have this array
+
+that has all the values, right?
+
+Every value is in this array.
+
+I could just take the length of that.
+
+So if I wanted to, I could just do let scores equal
+
+that for let score of scores.
+
+Then at the very end I can console.log the average,
+
+which is our total divided by scores.length.
+
+Scores is the array of scores, right?
+
+It looks like this, where it's just whatever the scores are.
+
+I already forgot the order, but whatever that is.
+
+And then we're just taking our total
+
+that we summed up thanks to our loop
+
+and then dividing by the total length
+
+of that array called scores.
+
+And the average is 79.7.
+
+All right, so that's kind of all I wanted to show you.
+
+Iterating over objects is not as common,
+
+nowhere near as common as iterating over arrays.
+
+But we do have a couple of options,
+
+we can use a for in and that will give us the key.
+
+But we can use each key to access the value,
+
+or I can use special object methods, capital O,
+
+Object.values.keys.entries to create new arrays
+
+that are based upon the keys or the values
+
+from some object that we pass in.
+
+And then I can use a regular old for of with that,
+
+because I'm working with an array. -->
+
+
+<script src="IteratingOverObjects.js"></script>
+</body>
+</html>

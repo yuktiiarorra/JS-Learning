@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Functions</title>
+</head>
+
+<body>
+    <!-- Colt Steele: Okay, so hopefully you're feeling okay
+
+with promises.
+
+I'm not, notice I said okay,
+
+I didn't say great or comfortable or thrilled.
+
+I am gonna throw a little bit of a wrench in here,
+
+a good wrench.
+
+We're gonna talk about async functions,
+
+which are another syntax improvement,
+
+a newer feature in JavaScript,
+
+so not supported in Internet Explorer, unfortunately,
+
+but really, really useful.
+
+Async functions help us write
+
+really, really clean asynchronous code.
+
+So nothing new that we couldn't do before.
+
+They don't give us some new superpowers.
+
+They just make our code a lot cleaner.
+
+And it's all built on top of promises.
+
+So I call it, people say syntactical or syntax sugar
+
+or syntax makeup.
+
+I've never heard somebody say makeup,
+
+but I like to use that term, I guess,
+
+where you're just trying to pretty something up.
+
+It's still the same thing behind the scenes.
+
+It's still promises, but we're just prettying it up.
+
+We're putting a new paint of coat, a new paint of coat,
+
+a new coat of paint on it.
+
+So there are two keywords here, async and await,
+
+and they work together,
+
+and we'll spend some time with each one.
+
+So we're gonna begin with the async keyword.
+
+And before we go too much further,
+
+I just wanna lay out sort of the game plan here.
+
+Async and await, those two keywords
+
+are what we'll be using from here on out.
+
+We have to understand how promises work,
+
+which is why we talked about promises.
+
+But as you'll see,
+
+async and await make things a lot cleaner.
+
+So we'll be using that for example,
+
+in the next section
+
+when we talk about making requests and AJAX.
+
+So this is really the thing that matters the most
+
+in terms of syntax.
+
+But understanding promises in the past few videos
+
+is also crucial.
+
+Okay, so the async keyword itself is a keyword we use
+
+to declare a function as an async function.
+
+It stands for asynchronous.
+
+And the first thing you should know is
+
+that if we declare a function as async,
+
+which we do by just putting the async keyword
+
+in front of the function,
+
+that function automatically returns a promise.
+
+Even though I never said return a promise,
+
+explicitly at least,
+
+it returns a promise.
+
+So I can show you that here.
+
+I've got a new JavaScript file,
+
+open it up in my browser, I'm gonna make a function.
+
+We'll just call it hello to start.
+
+Okay, that returns nothing,
+
+or it returns undefined at this point.
+
+Hopefully that goes without saying,
+
+but if I declare it as an async function just like that,
+
+I refresh my page and I call hello,
+
+I get a promise automatically for me.
+
+I didn't have to do any of this
+
+you know, return, new promise, none of that stuff.
+
+Simply declaring it as async
+
+returns a promise automatically.
+
+Now, we can also do async arrow functions.
+
+So that's a function declaration.
+
+I can do things like this, const sing equals,
+
+and then here's my function.
+
+That's non async, but I can declare it async just like that.
+
+And if I call sing, we also get a promise.
+
+Okay.
+
+So here's how these promises work.
+
+If our function returns a value,
+
+then the promise will be resolved with that value.
+
+So if I have a return value in sing,
+
+how about la, la, la, la like that,
+
+it's going to return a promise,
+
+just like it did before,
+
+but it was undefined,
+
+it was resolved with the value of undefined.
+
+Now it's resolved with whatever value I returned,
+
+which is la la la la.
+
+It still may not seem all that useful at this point,
+
+but trust me,
+
+once you see the awake keyword, it gets even better.
+
+But I can do things like sing, right?
+
+I can call that and then chain on my dot then,
+
+because it returns a promise.
+
+There's nothing fancy about that promise.
+
+It's just made for me in a slightly mysterious way
+
+behind the scenes.
+
+I don't actually write new promise.
+
+So I can add my dot then.
+
+And then in here,
+
+why don't we just take that resolved value,
+
+we'll just call that data
+
+and we can console log promise resolved with,
+
+and then we'll print out data.
+
+Okay?
+
+So let's see what we get.
+
+There we go.
+
+Promise resolved with la, la, la, la.
+
+Now, there's nothing asynchronous
+
+really happening here at all.
+
+This, I'm just returning a string.
+
+There's no reason to use an async function,
+
+but we'll see some examples
+
+where it does make sense shortly.
+
+But first, let's talk about that promise
+
+that is automatically made for us.
+
+If we return a value,
+
+that promise is resolved, as we've seen.
+
+But what about promises that might be rejected?
+
+How do we reject a promise,
+
+which happens frequently as well?
+
+The way that we reject a promise is by throwing an error
+
+inside of an asynchronous function
+
+or an async function.
+
+So that could be anything ranging
+
+from something like this right here,
+
+just a syntax error.
+
+That's not gonna make JavaScript happy.
+
+I'm just gonna comment this out.
+
+If I try executing sing right now,
+
+I still get a promise.
+
+But this promise has been rejected, as you can see.
+
+And the value says reference error,
+
+blah, blah, blah, blah, blah.
+
+So usually that's not what we do.
+
+Usually we can throw our own error.
+
+So I can literally throw an error like this,
+
+just to show you here, throw new Error.
+
+Ah, and there we go.
+
+Uncaught error.
+
+So I can do that from within here,
+
+throw new Error, uh oh.
+
+And you'll see that if I execute sing,
+
+we get our promise, it's been rejected,
+
+and the promise value is error uh oh at sing.
+
+I also can just throw a string like oh no, problem.
+
+Wow, that comma makes a big difference.
+
+Oh, no problem versus oh no, problem.
+
+Okay, so what I'm trying to show you here,
+
+before we go into the details,
+
+is just that if we throw an error
+
+or there is an error inside of an async function,
+
+that magical promise that's created is going to be rejected.
+
+So if I return a value, the promise is resolved.
+
+There we go, resolve promise.
+
+And if I throw an error,
+
+or if something goes wrong along the way,
+
+whoops, I didn't save,
+
+then that promise is rejected.
+
+There we go.
+
+And it's rejected with whatever that error value is.
+
+So I can do things now like, you know,
+
+I could chain on my dot catch of course, should do that.
+
+If there's an error,
+
+just be consistent here with our parens.
+
+If there's an error, we'll console log
+
+oh no, promise rejected,
+
+and then we could console.log the error itself like that.
+
+And we get oh no, promise rejected.
+
+Oh geez.
+
+Oh no, problem.
+
+It's not the best error.
+
+But you can see
+
+that it is actually hitting this dot catch callback, right,
+
+because it is a promise generated for us.
+
+And in this case, this code will never run.
+
+We're just throwing immediately, it's a rejected promise.
+
+So of course, something like sing makes no sense here,
+
+but we'll do something slightly more complicated,
+
+but still trivial.
+
+But in the next video, when we add in the await keyword,
+
+it will all come together hopefully.
+
+Let's make a function here.
+
+An async function called hmm, what should we call it?
+
+Let's call it login.
+
+And it's going to expect a password, maybe a username too.
+
+And this is usually, in the real world,
+
+if we're actually logging somebody in,
+
+I don't know what sort of syntax I just typed here,
+
+that is not a valid function declaration,
+
+const login equals, and we'll do an async arrow function.
+
+There we go.
+
+Oh, the perils of talking and typing at the same time.
+
+Anyway, what I was going to say
+
+is that logging somebody in is usually an operation
+
+that it does take time,
+
+because usually we have to contact a server somewhere else,
+
+check you know, credentials against a database.
+
+And that can take a little bit of time.
+
+It's definitely not instantaneous.
+
+So we might actually use an async function for that,
+
+almost certainly,
+
+but we're not gonna actually implement the backend logic
+
+at this point.
+
+We're just gonna fake it.
+
+So we're expecting a username and password.
+
+And if neither of those have been passed in,
+
+why don't we just throw an error right away?
+
+So we could do something like if you know, username,
+
+username, let's just say not username
+
+or not password, if either one of those is missing,
+
+we can throw whatever we want here.
+
+You know, missing credentials.
+
+Credentials.
+
+All righty.
+
+And then otherwise, why don't we check,
+
+let's just say that the, the password just has to be
+
+some magical password we have in mind.
+
+This is still very silly and trivial.
+
+Let's say the password has to be,
+
+if password equals, what should it be here?
+
+How about corgifeetarecute.
+
+Okay.
+
+If that's what the password is,
+
+we will return maybe true.
+
+Or how about just welcome.
+
+Otherwise, at the very end we will throw invalid password
+
+or something.
+
+This is so silly,
+
+but we have three different outcomes.
+
+And imagine this is real
+
+and it's happening somewhere else on a server.
+
+It takes time.
+
+I can now call login,
+
+and I'll just pass a username in just to start,
+
+just like that.
+
+And then I'll add my dot then.
+
+Alrighty, here is our,
+
+let's just call it message,
+
+console.log logged in.
+
+And we'll print the message.
+
+And then we can have our dot catch.
+
+And if there's an error,
+
+we can print the error,
+
+console.log error,
+
+and then we'll print the error itself.
+
+So at this point,
+
+we know we're just passing one argument in,
+
+we're expecting two,
+
+we should get missing credentials.
+
+Let's see.
+
+And we do.
+
+Now, if I pass something else in,
+
+an invalid password, that's what we get.
+
+And if I have the valid password, corgifeetarecute.
+
+They really are.
+
+We get logged in, welcome.
+
+All right, so still silly.
+
+It seems like a waste of time, nothing asynchronous,
+
+but I promise in the next video this will all make sense.
+
+So far, all we've seen is the async keyword
+
+we use to declare a function as an async function,
+
+which means that it magically behind the scenes
+
+returns a promise for us.
+
+That promise is either resolved or rejected,
+
+depending on what's going on inside of it.
+
+If we return a value,
+
+the promise will be resolved with that value.
+
+If we throw an error, the promise will be rejected
+
+with that value, or with the error value.
+
+Alrighty, so next up, the await keyword,
+
+the missing piece
+
+Instructor: All right, so we talked about
+
+the first of the two pieces here.
+
+The async keyword we use to declare a function
+
+as an async function,
+
+which means that it magically returns a promise for us.
+
+It's not really magic,
+
+but it returns a promise
+
+even though we don't write the promise ourself.
+
+Now, the really cool part is the await keyword.
+
+The await keyword is what allows us
+
+to write asynchronous code
+
+that it looks like is synchronous.
+
+So what it does is it will await.
+
+Whenever we use the await keyword,
+
+it will pause the execution of our async function
+
+and wait for a promise
+
+to be resolved before continuing on.
+
+Now, this only works in an async function.
+
+That's why they're a pair together.
+
+I mean, last I checked at least.
+
+I don't think you can just type await something.
+
+Oh, I guess you can.
+
+So maybe I'm wrong
+
+that it has to be in an async function.
+
+Oh, and I guess we have async loops,
+
+something we're not getting into now.
+
+So scratch what I said about it
+
+only working in async functions,
+
+but that is by far the most commonplace to use it.
+
+So here's what it will do.
+
+I've got a function here from a couple videos ago,
+
+delayedColorChange.
+
+If you remember this, it returned a promise.
+
+We talked about how we make promises.
+
+And we have a bunch of .thens we're chaining, right?
+
+So we go from red to orange all the way to violet,
+
+and that looks like this.
+
+If I refresh, red, orange.
+
+Oh, I forgot to add my little transition to my CSS,
+
+so it's quite harsh.
+
+But there we go.
+
+One thing, and then the next,
+
+and then the next, and then the next.
+
+And this is still nice
+
+compared to what we had with callbacks.
+
+But what I can actually do instead
+
+is write an async function.
+
+So I'm just gonna call it,
+
+I'll do a function declaration this time.
+
+Async function, let's call it rainbow().
+
+Just like that.
+
+And I'm going to call delayedColorChange('red').
+
+We'll just recreate this.
+
+Now, this returned a promise, right?
+
+So let's just verify that that does work.
+
+There's nothing crazy going on just yet.
+
+But we should see, if I call rainbow,
+
+it does turn red.
+
+Okay.
+
+Now, if I wanted it to turn orange afterwards,
+
+well I can't do this
+
+because, as we already know,
+
+they're not gonna wait for each other.
+
+It just happens at the same time.
+
+But if I use the await keyword,
+
+it's going to wait for a promise to be resolved.
+
+This returns a promise.
+
+This returns a promise.
+
+So essentially, things will just pause
+
+until this promise is resolved after a second.
+
+Oh, it was waiting there.
+
+I never called it.
+
+And there we go.
+
+So if I wanted to keep going,
+
+I can just keep awaiting things.
+
+So if I had a console.log in here,
+
+console.log("HI!!"),
+
+that's only gonna run
+
+after that first promise is resolved
+
+and we get a value back.
+
+I did the same thing again.
+
+I forgot to execute it.
+
+Okay, let's try that again.
+
+Watch here.
+
+We don't see hi,
+
+and then it shows up after a second.
+
+So now I can rewrite this.
+
+ROYGBIV, so red, orange, yellow, green, blue.
+
+And look at how flat and easy this is to read.
+
+I'm just saying wait this or await this
+
+and then this and then this.
+
+I don't even have to bother with the .thens.
+
+It's all, hopefully, a lot cleaner.
+
+Red, orange, yellow, green, blue, indigo, almost there.
+
+I don't know why I care about doing this full rainbow,
+
+but we're doing it.
+
+Violet.
+
+I'll call rainbow.
+
+And there we are.
+
+I've written this function,
+
+which is asynchronous, right?
+
+Each one of these promises
+
+is gonna take a full second to resolve.
+
+And I just await each one.
+
+So this is really nice not having to worry about .thens
+
+and passing in these callbacks
+
+and returning promises and chaining things.
+
+I can just say wait this and then this, and then this.
+
+So this line will only run after this is finished,
+
+after this promise is resolved.
+
+So I only await promises or functions
+
+that return a promise, right?
+
+Like this here, delayedColorChange.
+
+That returns a promise.
+
+I can also, of course, await other async functions.
+
+So I could do something like this,
+
+return "ALL DONE!".
+
+This is going to return a promise, rainbow().
+
+When it finishes, it will be a resolved promise
+
+because I return a value.
+
+So then I can await it down here.
+
+I'll execute it, rainbow(),
+
+and then I could do a .then if I wanted to,
+
+you know, and print something afterwards, like,
+
+I don't know, what should I do here?
+
+"END OF RAINBOW!"
+
+Just like that.
+
+And we should see after seven-ish seconds.
+
+Keep going.
+
+Okay, that async function finishes.
+
+We return a value.
+
+And I'm a moron.
+
+I didn't console.log.
+
+I just typed a string.
+
+Try that one more time.
+
+Ooh, that was a bad one.
+
+All right, red, orange, yellow, come on.
+
+Almost there.
+
+And there we go, "END OF RAINBOW!"
+
+All right, so the await keyword is awesome.
+
+It really allows our code to be a lot cleaner.
+
+It promises we're already in improvement.
+
+But this is super easy to read, in my opinion.
+
+And you know, I could even rewrite something like this.
+
+If I wanted to wait until rainbow is finished,
+
+I could do something like async function printRainbow.
+
+And in here I can await rainbow.
+
+And then afterwards, just console.log("END OF RAINBOW!").
+
+I don't need to bother with .thens either.
+
+It's an async function.
+
+So this await here is going to wait
+
+for this promise to be resolved.
+
+Rainbow returns a promise,
+
+but that promise is not resolved
+
+until all the way down here
+
+and it's awaiting all this other stuff.
+
+So this takes seven seconds,
+
+then the promise is resolved.
+
+So this will take seven seconds until it's resolved.
+
+Then, we can move on to print "END OF RAINBOW!"
+
+So I can mix and match them, right?
+
+I can use promises explicitly, if you will,
+
+and chain on the .then and all of that.
+
+Or I can just write another async function
+
+and call printRainbow.
+
+And we should get the exact same outcome.
+
+"END OF RAINBOW!"
+
+So that is the await keyword.
+
+It works inside of async functions,
+
+and it will wait,
+
+it will pause execution until a promise is resolved.
+
+Now so far, these promises
+
+are being resolved without any values.
+
+The way that this promise is resolved,
+
+we're not passing anything in.
+
+It's simply a mechanism for delaying code execution
+
+for asynchronous code.
+
+But a lot of the time,
+
+we do have promises that are resolved with information,
+
+like this fake request function
+
+from a while back where it returned a promise.
+
+That promise is resolved with some fake data.
+
+Not really, it's resolved with a string that says,
+
+(`Here's your fake data from ${url}`),
+
+or it's rejected with a connection timeout.
+
+Now, we haven't talked about
+
+how we handle rejection yet.
+
+It's very hard to handle rejection.
+
+But what happens if our promise
+
+is rejected in an async function?
+
+That will be in the next video.
+
+But I'll just show you here
+
+that if I have an async function,
+
+we'll call this async makeTwo requests.
+
+And I'm just gonna await fakeRequest the first time,
+
+and we'll pass in some value like ('/page1');.
+
+What I can do is actually await the value
+
+and save it in a variable.
+
+So I could do let data1 = await fakeRequest('/page1');.
+
+And then I could console.log(data1); just like that.
+
+So if I try this now
+
+and I call makeTwo requests,
+
+there's a chance our promise is rejected.
+
+It's pending.
+
+And then we get,
+
+"Here's your fake data from /page1."
+
+And that shows us that this information
+
+that the promise was resolved with
+
+was awaited and then stored or captured in a variable.
+
+So this is a pattern we'll do all the time
+
+in the next section
+
+when we're working with real requests.
+
+We'll await some request,
+
+and then whatever comes back,
+
+if it's resolved, we'll store in a variable.
+
+So in the next video,
+
+we'll talk about what happens if a promise is rejected.
+
+Because so far all of our promises have been resolved.
+
+But we need to be able
+
+to handle errors and handle rejection.
+
+So that's coming up next.
+
+
+Instructor: So the last thing we need to talk about
+
+with our async functions and the await keyword
+
+is what happens when a promise is rejected
+
+that we are awaiting.
+
+So we saw that if we await a promise
+
+and that promise is resolved,
+
+then whatever that value it's resolved with,
+
+will be stored in a variable, if we are using it.
+
+We could also just await something and ignore that value.
+
+But we can store it, save it in a variable.
+
+But that's only if the promise is resolved.
+
+If it's rejected,
+
+which in this case our fake request function,
+
+it returns a promise that is randomly rejected
+
+just to jog your memory.
+
+It's just a random number that determines
+
+how long the delay is and if it's rejected or not.
+
+And eventually, let's see, it's pending here.
+
+So that worked.
+
+We can try it again.
+
+Eventually we'll see one that is rejected.
+
+There we go.
+
+And what happens?
+
+Well, an error is thrown, and that isn't a real error.
+
+It's problematic.
+
+If I had code afterwards, console.log data
+
+or even just console.log hello.
+
+And I'm just gonna shift the number here to make it
+
+so that it's almost guaranteed to be a rejected promise.
+
+You can see that we get that error showing up
+
+and this line did not run.
+
+So it stops the execution of this function, it's an error.
+
+So what we can do is use good old fashioned try and catch.
+
+So it's been a while, but try catch,
+
+just in case you need a reminder.
+
+If I try something in here,
+
+like this will definitely give us an error.
+
+That does not exist.
+
+If I try running that, we get an error.
+
+However, if I try it and then I catch any errors,
+
+I can console.log or just do nothing in here.
+
+It's okay, we caught it.
+
+And so we see, it's okay.
+
+So if this code results in an error being thrown,
+
+we're going to catch it and then we can handle it in here.
+
+And e, by the way, refers to the error itself.
+
+So you can see here e is a reference error.
+
+That's the error we got from this.
+
+So if I put a try catch in here,
+
+try catch e or error, that can be anything you want,
+
+but I just like to use e.
+
+This is what we wanna try doing.
+
+Make our first fake request.
+
+And then actually, why don't we do a second one afterwards?
+
+Data2 equals await fakeRequest for page two.
+
+And maybe one of these will be rejected,
+
+just depending on that random number.
+
+And if it is, if either of them are, we catch it.
+
+And then in here we can do something like,
+
+what should we do?
+
+Console.log CAUGHT AN ERROR.
+
+And then we can console.log the error itself.
+
+Error is, and then e.
+
+So whatever value that this promise is rejected with,
+
+which in our case is connection timeouts, just always that.
+
+But often in the real world, if we're making a request,
+
+there are different things that could go wrong.
+
+So a promise will be rejected with a reason,
+
+with some information, and we can then access that
+
+if we have a parameter for our catch.
+
+So in our case, it's e.
+
+So I'm gonna print out data1
+
+and then data2, if we make it that far.
+
+Let's see what happens when I call makeTwoRequests.
+
+So the first one, okay, first one worked, second one worked.
+
+Let's try again.
+
+First one.
+
+And second one, come on.
+
+Don't make me cheat and change the,
+
+I'll change the values if this one doesn't work.
+
+Okay, I'm gonna cheat.
+
+And still?
+
+Come on.
+
+Okay, this feels good, there we go.
+
+Caught an error.
+
+And then you can see the error was connection timeout.
+
+That's the value that our promise was rejected with.
+
+So that's how we can work or handle errors,
+
+how we can handle rejected promises in an async function.
+
+We need to use try and catch.
+
+But overall, very simple syntax.
+
+Await inside of async, one thing,
+
+and then the next thing, and then the next thing.
+
+It's very clean, easy to follow.
+
+We don't have to worry about a bunch
+
+of dot thens and callbacks.
+
+So that's it for async functions.
+
+In the next section, we'll be using them quite a bit,
+
+when we can at least.
+
+And we're gonna move on to making requests,
+
+real requests, not fake requests.
+
+
+-->
+    <script src="app.js"></script>
+</body>
+
+</html>

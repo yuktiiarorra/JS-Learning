@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Prototypes</title>
+</head>
+
+<body>
+  <!-- Instructor: Welcome back.
+
+In this section we're focusing
+
+on object-oriented programming,
+
+or at least JavaScript's flavor of OOP,
+
+object-oriented programming.
+
+So we'll cover things like constructor functions
+
+and classes, super keyword, inheritance.
+
+But we're gonna start with a quick video on a quirky,
+
+but important aspect of JavaScript:
+
+object prototypes.
+
+So you may have come across this at some point.
+
+We've briefly touched on it
+
+throughout the course a couple times.
+
+We're now going to take a deeper dive
+
+into what the heck a prototype is.
+
+What does it mean? What is this thing?
+
+When I look at an array, what is this proto,
+
+__proto__ property?
+
+So that's what we're gonna talk about first,
+
+and then we'll go more into creating constructor functions
+
+and classes and all of that stuff.
+
+All right, so according to MDN, prototypes are the mechanism
+
+by which JavaScript objects inherit features
+
+from one another.
+
+Objects can have a prototype object,
+
+which acts as a template object.
+
+So what this means is that certain objects,
+
+like, we'll take an array as an example,
+
+an array has a whole bunch of different methods.
+
+If we look at something like Array on MDN,
+
+on the left side, we've seen this a couple times, Methods.
+
+Under Methods, there are so many methods
+
+that start with Array.prototype.
+
+.concat, entries, every, fill, keys, push, reduce.
+
+All these methods that we use all the time,
+
+like [1, 2, 3].push(4).
+
+That push method is not defined
+
+as a method on this array right here.
+
+If I save it to a variable,
+
+const arr, arr, = [1, 2, 3].
+
+If we look at that array,
+
+I don't see any methods right here.
+
+I mean, I could define my own method.
+
+arr.sing = function().
+
+And we can console.log,
+
+how about "LA LA LA!"
+
+Okay?
+
+So there is a function, or a method, technically,
+
+that I added to the array itself.
+
+The individual array, it has a method called sing.
+
+Remember, arrays are objects in JavaScript.
+
+So when we added that method to arr,
+
+we see it show up here.
+
+But when I call arr.push, push of five,
+
+I don't see that method listed here.
+
+I don't see any of the methods we used.
+
+They're all inside of this property called __proto__,
+
+or just proto.
+
+Some people also call this dunder.
+
+Double underscore, dunder. I just say proto.
+
+It's a property that references the Array prototype.
+
+So a prototype is the template object for,
+
+in this case, arrays.
+
+It contains a bunch of methods, typically,
+
+so all of these methods,
+
+that every array will have access to.
+
+But rather than defining them individually
+
+in every single array, a separate copy, right,
+
+I could make another array here.
+
+const arr2 = [4, 5, 6].
+
+We look at arr2,
+
+it doesn't have its own copy of push and pop.
+
+All that it has, just as the original array that we created,
+
+they both share a property called proto,
+
+which is a reference to this blueprint object,
+
+the prototype.
+
+This prototype contains all of the methods.
+
+And through the magic of JavaScript,
+
+I can simply access arr dot.
+
+And then what's another one we haven't used yet?
+
+How about includes? Does that array include two?
+
+We get true.
+
+This includes method is not defined
+
+on every single array that we make.
+
+It is defined on this prototype object.
+
+Now, the reason I'm bringing this up is that it matters.
+
+It's something we will cover and come back to
+
+as we talk about defining classes and constructor functions.
+
+So rather than having a separate method
+
+on every single array called push,
+
+there is one prototype.
+
+And each array has a reference to that prototype
+
+with this special property __proto__.
+
+And we actually can see this
+
+in other types of objects in JavaScript.
+
+What if I take a look at the document.body?
+
+And I save that to a variable.
+
+Const. We'll just call this body.
+
+If we look at body,
+
+I'm gonna have to console.dir(body).
+
+We'll open it up.
+
+It has certain properties that are specific to this body.
+
+Things like the baseURI, the background.
+
+But then it also has a proto down at the bottom.
+
+Its prototype is an HTMLBodyElement.
+
+And there are different methods and properties
+
+that correspond to that prototype template,
+
+this HTML body template.
+
+So that's the basic idea of a prototype
+
+or prototypes in JavaScript.
+
+We have this one object that is the prototype
+
+for other types of objects.
+
+So there is an Array prototype.
+
+If I look at Array.prototype.
+
+Capital A Array.
+
+So not an individual instance of an array,
+
+but capital A Array.
+
+Here is everything on that Array prototype.
+
+And I could actually define my own type of an object,
+
+my own brand-new object,
+
+and set its prototype to the Array prototype,
+
+and I would have access to those array methods
+
+in whatever object, my version of the array.
+
+But we're not there yet.
+
+All we need to know at this point is
+
+that prototypes are like a template object.
+
+That's actually what they are. They are objects.
+
+They contain, typically, a bunch of methods.
+
+And then we can create multiple objects
+
+that share the same prototype
+
+so that they all have access to the same methods,
+
+without having to have their own copy.
+
+Now, as a fun little demo here,
+
+we can actually mess with or add our own properties
+
+and methods to the Array prototype or object prototype,
+
+or whatever prototypes we want.
+
+There is a String.prototype as well.
+
+Strings are kind of confusing,
+
+'cause we've talked about how strings and numbers
+
+and booleans are technically primitive types.
+
+However, in JavaScript,
+
+they all get these intermediate object wrappers.
+
+And that's where all those string methods come from,
+
+the String prototype.
+
+So I could actually add on something
+
+to the String prototype.
+
+Right now, if I just take a look,
+
+we see a bunch of string methods,
+
+like concat and a property like length.
+
+What else do we have?
+
+substring, startsWith, search, replace.
+
+I could add my own method called grumpus.
+
+Go back to good ol' grumpus.
+
+Set it to an arrow function.
+
+And we'll just console.log.
+
+Or how about we alert? "GO AWAY!!!"
+
+Just like that. Okay?
+
+So it doesn't seem like much happened.
+
+We look at String.prototype,
+
+this prototype object, this template for other strings,
+
+now has a property called grumpus.
+
+So why don't I make a new string?
+
+I'll call this const cat = "Blue,"
+
+I guess, one of my cats.
+
+Now, what if I try and call cat.grumpus()?
+
+Hey! This page says, "GO AWAY!!!"
+
+So now every time I make a string,
+
+at least until I refresh my page,
+
+I now have access to a new string method, called grumpus.
+
+I could also add on a property.
+
+I could do String.prototype dot,
+
+how about we do yell?
+
+And it'll do something slightly more complicated.
+
+I think I'm gonna move over to my code here.
+
+Let's access String.prototype,
+
+which, remember, is the prototype object for every string.
+
+It is the place where string methods are stored.
+
+I can now add on something,
+
+let's go with yell, which will be a function.
+
+And let's just console.log(this)
+
+inside of here for a moment.
+
+So we're getting ahead of ourselves,
+
+but I wanna just show something kind of fun.
+
+If I run my code, I make some string like "hello,"
+
+and I call .yell(),
+
+this referred to the string "hello."
+
+So what I could do is console.log(this.toUppercase).
+
+So this refers to whatever string
+
+we're calling the method on,
+
+which is actually something we've seen before.
+
+Where we had an object,
+
+and we would refer to this.x inside of that object,
+
+this will refer to whatever's on the left-hand side
+
+of that dot, at least in this case.
+
+So let's try "hello".yell() again.
+
+All right, we've just called an existing method,
+
+.toUppercase, which is already there.
+
+So why don't we return a template literal string,
+
+where we have this .toUppercase()
+
+plus a bunch of bunch of exclamation points.
+
+And then how about some other stuff like OMG,
+
+more exclamation points.
+
+AGHGHGHG! That's screaming, apparently.
+
+Okay? Refresh my page.
+
+I make some string,
+
+like "i love you".yell().
+
+And this is what we get.
+
+We've made our own method
+
+that we can use on every single string.
+
+It's important to realize
+
+that this is not really a good idea.
+
+This is not a pattern
+
+that I would recommend you follow all the time.
+
+It's just a demonstration of how prototypes work.
+
+So we can add something to the Array prototype.
+
+Array.prototype, which is a specific object, a template,
+
+that stores methods and properties for every single array.
+
+And we can override something, like .pop.
+
+And we'll make that a function.
+
+But it will just always return,
+
+"SORRY, I WANT THAT ELEMENT,
+
+I WILL NEVER POP IT OFF!"
+
+Okay?
+
+So we are now replacing the existing pop
+
+that every array looks up to on its Array prototype.
+
+So if I make an array like [3, 4, 5]
+
+and I call pop(), huh, it doesn't work.
+
+We get our version. So kind of fun stuff.
+
+Not highly recommended, but it is going to be informative.
+
+It'll be helpful to understand prototypes.
+
+It's actually a relatively simple idea.
+
+It's very intimidating I think when you're starting out.
+
+But the idea boils down to having a single object
+
+that contains common properties
+
+and methods that other copies,
+
+other objects of arrays or other strings look up to
+
+to find their common properties.
+
+It's a place to store things, a template, a blueprint.
+
+There's so many ways of putting it,
+
+but the term in JavaScript is prototype.
+
+The one confusing thing that I would like to address
+
+is if I make an array here,
+
+const, I don't know, nums again.
+
+I know, it's so boring. nums, [7, 8, 9].
+
+If I look at nums,
+
+what is this __proto__ versus prototype?
+
+So they both are very similar,
+
+and they both sound like prototype or proto.
+
+This here, Array.prototype,
+
+is the actual object where we add the methods to
+
+or the properties.
+
+This is the template object, the prototype.
+
+This is a reference.
+
+So __proto__ is a property name on this array,
+
+or on this string.
+
+I could look.
+
+Or I don't have a string there, but I could make a string.
+
+const dog = "timothy."
+
+And if I look at dog.__proto__,
+
+it's a reference to the String prototype, to this object.
+
+So it's a reference
+
+versus this here is the actual prototype object
+
+that I can add on to.
+
+But inside individual strings or arrays or other objects,
+
+the property name that is used
+
+to reference that actual template,
+
+the prototype object, is __proto__.
+
+It's pretty rare that you would ever need
+
+to touch this yourself or do anything with __proto__.
+
+If anything, you will be accessing
+
+the actual prototype itself and manipulating it.
+
+So that is a brief primer on prototypes.
+
+Next, we're gonna talk about some basics
+
+of constructor functions in JavaScript.
+
+
+ -->
+  <script src="app.js"></script>
+</body>
+
+</html>

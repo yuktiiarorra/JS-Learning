@@ -1,0 +1,325 @@
+Instructor: All right,
+
+so now that we've seen a bit about prototypes,
+
+we are ready to move on to talking about
+
+basic object-oriented concepts in JavaScript.
+
+So we have a lot to talk about,
+
+things like factory functions, constructor functions,
+
+the new class keywords,
+
+constructors in a class, the new keyword.
+
+There's super inheritance, there's a lot of stuff,
+
+but it all has to do with this one central idea,
+
+which is organizing our code,
+
+designing and structuring our applications
+
+by breaking things up into distinct patterns of objects.
+
+When I say patterns of objects,
+
+I can also think of recipes for objects.
+
+So I have an example here.
+
+This is a class that we'll be creating later on.
+
+It's a little bit long.
+
+It models a color.
+
+Now that seems kind of stupid,
+
+but with colors, we have so many different systems.
+
+We have RGB colors where you can have a color like,
+
+I don't know this right here.
+
+We also have hexadecimal colors.
+
+I don't know what the hexadecimal version of this color is.
+
+I could just make something up.
+
+FF31, that is clearly not it,
+
+VS code has given me a preview.
+
+But that is another format for colors,
+
+we also have HSL colors
+
+and HSL is is always tricky.
+
+We have a number from zero to 360
+
+and then a percentage and another percentage.
+
+And this gives me another format for colors.
+
+Not to mention, we also have RGBA,
+
+where we have an alpha channel for opacity,
+
+for how transparent a color is from zero to one.
+
+Now a lot of the times when we're making colors
+
+or working with colors in the DOM,
+
+we frequently may not need to translate between two.
+
+Sometimes we need to,
+
+but there are times where it would be easier
+
+if we had a color as HSL, for example.
+
+If I wanna find the opposite color
+
+of this color right here,
+
+it's pretty easy because of this hue channel.
+
+So I don't wanna go into too much detail,
+
+but we can take this hue
+
+and all you need to do is add 180 to it
+
+to figure out the opposite.
+
+This is the saturation and the lightness,
+
+but all of the hue data is here versus RGB colors
+
+and hex colors, it's spread out across all
+
+of those different values.
+
+So it's much, much more complicated
+
+to calculate an opposite color.
+
+So I've made a class, essentially a recipe for colors.
+
+You pass in a name like carrot or emerald
+
+and then RGB values.
+
+And we can easily translate between different colors.
+
+So I have a color called nav color.
+
+Nav color has a couple different properties
+
+and it has some different methods.
+
+If we look at these methods,
+
+things like opposite RGB, RGBA.
+
+So I could call nav color .RGBA.
+
+Or let's do RGB and I get the RGB representation,
+
+but I could instead change that to hex
+
+and I now have a hex color.
+
+But what's more fun is that I can use it
+
+to find the opposite color.
+
+I've added an opposite method.
+
+So if I select that first H1, I'm selecting all of them.
+
+I'm gonna do it sort of in a hacky way.
+
+Take the zero with 1.style.background color
+
+and I set it equal to nav color.,
+
+and I'll just do an RGB color.
+
+All right, so it gives me this orange color.
+
+If I wanted to make this one the same color
+
+but slightly lighter, I could easily do it,
+
+first by selecting the correct H1
+
+and then calling the RGBA method
+
+and passing in maybe 0.8 for the opacity.
+
+Now I have a slightly lighter version,
+
+or I could keep going lighter.
+
+I could do 0.5
+
+or I could go with the opposite color, opposite,
+
+which is another method I added,
+
+which gives me an opposite hue across the color wheel.
+
+So orange to blue
+
+and it's all calculated using these color values.
+
+I also could go full saturation,
+
+which is another method I added.
+
+I can't remember, okay, it's called full saturation,
+
+which will take the root orange color called carrot,
+
+I think, and make it as saturated as possible,
+
+as you can see there.
+
+So there's many things we could do.
+
+The point is that this color object
+
+for this carrot orange color has different values
+
+that it's storing, different numbers.
+
+And it has different methods
+
+and they are grouped together in a repeatable,
+
+reusable object.
+
+I made a second color here using the exact same pattern.
+
+So this color, which I'm calling emerald,
+
+has the same methods, but we get different results.
+
+If I use that color, the variable name is logo color,
+
+I'll clear this, rerun this code,
+
+but I instead use logo color, the name of that variable.
+
+I now have that green,
+
+and I could do the second H1
+
+in a slightly lighter version, 0.7 and it's lighter.
+
+I could also do the opposite, as we saw.
+
+And we get this purplish, magentaish color,
+
+the opposite on the color wheel.
+
+So the same pattern, the same recipe for a color,
+
+the same methods, the same properties,
+
+but they have different values.
+
+We get different results frequently,
+
+and we've seen this before in a bunch of different contexts.
+
+When we learned how to make XHRs,
+
+which are XML HTTP requests,
+
+we ran this code new XML HTTP request.
+
+Save that to a variable, like rec request
+
+that made us an object with a bunch of different properties
+
+and methods already baked in.
+
+This line of code right here.
+
+We haven't talked about this new keyword,
+
+but we'll get there.
+
+But the key takeaway here is
+
+that we end up with this pattern.
+
+Every time I make a new request, I end up with an object.
+
+It may eventually have different values
+
+instead of just null everywhere, but it's the same pattern.
+
+They're cut from the same cookie cutter.
+
+Same thing with DOM stuff.
+
+When we select an H1, document query selector,
+
+just the first H1, that H1, ugh, if I do a console,
+
+.dir, I forgot about that.
+
+Let's take a look at that line there.
+
+It's an object and it has the same properties
+
+we've come to expect, and that's because
+
+it is cut from the same cookie cutter
+
+that all other heading elements are.
+
+It's called the HTML heading element.
+
+It is a recipe to make an object like this.
+
+So I think I'm going on and on about this.
+
+If you're already familiar with OOP,
+
+this idea of creating these classes
+
+or these object templates that contain a definition
+
+of the properties and the methods
+
+for a given instance of that recipe or class,
+
+this will all seem very basic and repetitive.
+
+But if you're new to this,
+
+it can be a little bit tricky
+
+to wrap your head around upfront.
+
+So we're gonna take it slow.
+
+I'm gonna start with one approach called a factory function,
+
+and I'll explain how it works
+
+and what is not so great about it.
+
+So that's coming up next.
+
+

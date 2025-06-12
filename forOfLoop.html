@@ -6,6 +6,319 @@
     <title>for of Loop</title>
 </head>
 <body>
+    <!-- -: Next up, a brand new loop we haven't seen, the for...of.
+
+So, for...of is newer in JavaScript,
+
+it's not just new to us in this course,
+
+but it's also newer in JavaScript,
+
+and unfortunately, that means that it
+
+is not supported in Internet Explorer.
+
+But, that should not stop you from using it.
+
+At least, it should not stop you
+
+from learning it, because it is a lot better,
+
+it's a significant improvement
+
+for iterating over arrays and other iterables.
+
+So, we'll get into what that means.
+
+Here, I have an array of different subreddits on Reddit.
+
+It's just a bunch of strings, doesn't really matter.
+
+Now, if I wanted to print each one out with what we know,
+
+I could do a for loop--
+
+for let i = 0; i < subreddits.length;
+
+and then i++, and then, let's do,
+
+maybe I'll print out a string, so we'll do
+
+console.log, and that string will be a template literal
+
+that will say 'Visit reddit.com/r/'
+
+that will say 'Visit reddit.com/r/'
+
+and then the subreddit name goes right in here.
+
+So dollar sign, curly braces, and then I want
+
+to put 'cringe' or 'books' or 'chickens'
+
+right in there, so I need to access 'subreddits,'
+
+square bracket, i, right?
+
+Inside of those curly braces, that should do it for me.
+
+Let's see.
+
+Refresh the page, open up the console, and it does work.
+
+Now, that's a kind of a lot of--
+
+it's not a huge amount of work,
+
+but it's kind of a lot of weird syntax
+
+just to iterate over an array, right?
+
+We've gotta work with i.
+
+So that does work, it's just not as clean
+
+as the for...of loop, which we'll take a look at right now.
+
+It looks like this--
+
+for, and then in parentheses, some variable name
+
+that we come up with, of-- the actual word of--
+
+some iterable thing.
+
+So to start, that iterable thing will be an array.
+
+So, I could rewrite this like this--
+
+for, let-- and then I need to come up
+
+with a variable name, and it's actually going to represent
+
+the individual elements in my array.
+
+So, for, let-- let's go with "sub of subreddits."
+
+Just like that.
+
+Now, this is a significant difference.
+
+I'm making a variable here called "sub,"
+
+and if I just console.log that sub...
+
+Let's just make sure that works. There we go!
+
+It's actually representing, it's storing each element
+
+in the array.
+
+We don't have to worry about i, the index,
+
+because right here, we're just making this i variable
+
+the index for the sole purpose
+
+of accessing individual elements out of the array.
+
+We're never using i to do any math.
+
+We don't really care about what i is,
+
+except for the fact that it helps us get out each element.
+
+But here, this is shorter, but it's also
+
+a lot easier to read.
+
+Let sub of subreddits.
+
+I could name this "subreddit," I could name this anything.
+
+This is just a variable that will exist each time
+
+through the loop, and it will store,
+
+the first time through, 'cringe,'
+
+and then 'books,' and then 'chickens,' and then 'funny.'
+
+So, if I wanted to just match what we have here,
+
+I would just add "sub" right there.
+
+Or if I name this "subreddit," make sure I have two Ds
+
+in there, "subreddit," just like that.
+
+I just need to match what I have,
+
+and there we go, we get the same outcome,
+
+but this is a lot nicer in my opinion.
+
+For...of is certainly an improvement
+
+over regular for loops.
+
+Not in every situation, but for situations
+
+where you're iterating over something like an array
+
+and you don't need the index, you don't care about it.
+
+If you do need the index, and sometimes there are situations
+
+where you need that index, it can be better
+
+to use a for loop.
+
+So, here's an example, though,
+
+where I'm using two for loops, nested,
+
+"i" and "j" are the two variable names I came up with,
+
+very standard, very boring, and honestly,
+
+not very easy to read.
+
+If I rewrote this using for...of loops,
+
+all that I'm doing is looping over the seatingChart
+
+where we have three different rows,
+
+I'm looping over into each row
+
+and then over each student and printing them out.
+
+Nothing very exciting.
+
+But I could rewrite it like this--
+
+for(let row of seatingChart).
+
+Just like that.
+
+And then inside of here--
+
+for(let student of row)...
+
+And then console.log(student).
+
+So, a lot easier to read because I can actually write
+
+a variable that corresponds to the individual element,
+
+not a variable that corresponds
+
+to an index or just a number that I then have
+
+to plug into the array.
+
+Here, I don't have to plug anything into the array.
+
+"Row" references each element in the parent,
+
+in the first array.
+
+And then for let student of that row array,
+
+student references this, and then this, and then this.
+
+And I think overall, that's pretty easy,
+
+and it's just way better to look at,
+
+and way better to write.
+
+It's a far better experience.
+
+We can verify that it does give us the same outcome.
+
+And it does, so here's the first batch,
+
+all the way down to Erika.
+
+And then here's the second batch, exactly the same outcome.
+
+So, for...of loops. Massive improvement.
+
+Now, let's revisit what I said
+
+about iterable objects, right here.
+
+Oh, here we go.
+
+A nice and easy way of iterating over arrays
+
+or other iterable objects.
+
+So there are other things
+
+that we can use a for...of loop with.
+
+I'll show you another example, which is a string--
+
+for, let-- let's do "char" for character,
+
+of, and then...
+
+Hm, I don't know, what should--
+
+I guess, "hello world," it's not very exciting,
+
+but we could do that, console.log(char), sure.
+
+Just like that.
+
+And there we go, h-e-l-l-o, space,
+
+blah blah blah blah blah,
+
+each character is being iterated over.
+
+So "char" is going to be "h," and then it will be "e,"
+
+and then "l," and then "l," so that's just one example
+
+of iterating over something that is not an array.
+
+Now, there are other iterable objects.
+
+If we go to MDN, you take a look at the page for for...of,
+
+there are things like maps and sets,
+
+which we have not yet talked about.
+
+One thing that I see a lot of students attempt
+
+to do is work with objects in for...of,
+
+and that's actually the subject
+
+of the next video, so I'm not gonna get ahead of myself.
+
+But long story short, most commonly,
+
+for...of is used with arrays.
+
+You can use it with other things
+
+that are considered "iterables" by JavaScript,
+
+like strings, that's really all we know so far.
+
+And the syntax is super nice, compact--
+
+for, some variable, of, some iterable,
+
+do something, usually using that variable.
+
+Cool. -->
     <script src="forOfLoop.js"></script>
 </body>
 </html>

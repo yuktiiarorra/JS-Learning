@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some & Every</title>
+</head>
+<body>
+    <!-- Instructor: The next two that we'll look at
+
+are kind of a pair, every and some.
+
+I usually would say some and every.
+
+I don't why I put every first.
+
+Both of them are very similar.
+
+They are Boolean methods, meaning they return true or false.
+
+So unlike map or filter, which return a new array,
+
+these two always return true or false.
+
+And they are ways to test if every element in an array
+
+passes some test,
+
+that's what every does.
+
+We pass in a function,
+
+and if every element when passed into
+
+that function returns true,
+
+then the entire every function call returns true.
+
+So for example, here I've got a bunch of exam scores
+
+and let's see if I want, I wanna know if everybody passed
+
+and let's say our passing score is 75.
+
+So I could do this, exams.every,
+
+and then I pass in a function.
+
+And every element in here, well that's confusing.
+
+Each element in here will be passed into that callback.
+
+And this callback is supposed
+
+to return true or false itself.
+
+So I could do something like score,
+
+score greater than or equal to 75.
+
+Okay, so each one, like 80 will be passed in,
+
+and that should return, in this case, true.
+
+That's true. 80 is greater than or equal to 75.
+
+All of these should return true,
+
+and because of that, every will return true.
+
+So let's try it out. We get true.
+
+But now as soon as I change one of these scores to go below,
+
+let's say this is 70, and I run this again,
+
+now we get false.
+
+So as soon as one of them returns false from this callback,
+
+the entire every is false.
+
+Now we also have some which is very similar
+
+the way that it works,
+
+except that it's going to test if any of the elements
+
+or if some of the elements pass the test.
+
+So it doesn't care, like every does,
+
+where every single thing has to return true
+
+from that callback.
+
+With some, it's only one or more.
+
+So if I used some here instead,
+
+we're just seeing is there any score,
+
+is there at least one score that is greater than 75?
+
+And of course there is, whoops, I didn't copy that
+
+and I'm not printing it.
+
+So we get true.
+
+So instead of doing that,
+
+why don't we go with our movies example down here
+
+and why don't we see if there are,
+
+I don't know, if there's any movie created
+
+after the year 2015.
+
+So movies.some and then our callback.
+
+So for a movie,
+
+we wanna see if a movie.year is greater than, what'd we say,
+
+2015 or something.
+
+Let's see. Is there at least one? Yes, there is.
+
+So it doesn't tell us which one, right?
+
+We could use filter if we wanted to make a new array,
+
+only containing those movies.
+
+All that we're saying is take this call back
+
+and tell me if it returns true at least once
+
+when you pass in each element from the array.
+
+And it does because one of them at least,
+
+"Parasite" is 2019.
+
+And you know, if I had changed that instead to be 2010,
+
+all of a sudden this whole thing returns false.
+
+There's not one element where this callback is true
+
+or where it returns true.
+
+So some and every go with one another.
+
+Hopefully relatively straightforward.
+
+They both are Booleans, they return true or false.
+
+And the function you need to write,
+
+the callback that you pass in
+
+should return true or false as well.
+
+
+ -->
+    <script src="Some&Every.js"></script>
+</body>
+</html>

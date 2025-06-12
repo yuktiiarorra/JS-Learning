@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks</title>
+</head>
+
+<body>
+    <!-- Next up, we'll continue talking about how JavaScript works behind the scenes, under the surface,
+
+under the hood, that's better.
+
+That's what I was looking for.
+
+I know I said under the surface, under the hood.
+
+OK, so this is all information that's going to help us understand why it's going to motivate why we're
+
+learning things like Promises and async functions and why this all matters in JavaScript and in other
+
+languages.
+
+It may not be an issue in some others it is, anyway.
+
+This sentence in front of us JS JavaScript is single-threaded.
+
+What does that mean?
+
+This is a vast simplification, but basically it means that there is this one thing in JavaScript that
+
+can be working on a process at any given point.
+
+Think of it as having a one-track mind.
+
+It cannot be multitasking in the sense that it's actually doing two things simultaneously.
+
+So another way of putting it is that JavaScript is running at most one line of code at a time.
+
+Now it can switch back and forth between different lines of code.
+
+They all happened very, very quickly for the most part.
+
+So we don't really think about it.
+
+We don't think that only one thing is happening at one time.
+
+But the reality is that JavaScript itself, at any given point in time, is running at most one line
+
+of code.
+
+Now, that seems like it could be very problematic.
+
+For example, shortly we're going to get into AJAX and making requests, loading information, using
+
+JavaScript.
+
+So we'll write code on the frontend that says things like Hello, movie API, please send me all the
+
+movies that match bat.
+
+They have bat in a title or in their title.
+
+Well, that's going to take time.
+
+That could take a split second half a second.
+
+Or if our Internet connection is poor if the server is down, if we have no Internet, that could take
+
+a couple of seconds or more to timeout.
+
+Or if we're trying to load something large, like a really large image or a huge set of data, I mean,
+
+that sometimes can take quite a while.
+
+So what happens in between that time?
+
+When I request it, I write the code to ask for something and then the time where I actually get a response.
+
+Well, if JavaScript can only do one thing at a time and this takes time, let's just say it takes five
+
+seconds.
+
+Does that mean nothing happens in my code for five seconds?
+
+Is everything just going to grind to a halt?
+
+What if I had something like this?
+
+This is, you know, not fully implemented code, but this is a common thing we might do.
+
+newTodo do equals some value from an input.
+
+And then I'm calling some function.
+
+It doesn't actually exist right here called saveToDatabase.
+
+And that can take time as well.
+
+My database is somewhere else.
+
+It's on a server somewhere.
+
+I've got to send a request and I need to hear back from the database or from the server that says,
+
+OK, that worked or no, that didn't work.
+
+So that might take, let's say, another five seconds.
+
+So is there five seconds in between this line running and this line where we extract the value and then
+
+a user waits for five seconds or ten seconds or longer, and then we set the input to have an empty
+
+string or just reset it to be empty.
+
+That is not a good experience for a user.
+
+And fortunately, that's not what happens.
+
+Even though JavaScript can only do one thing at a time, it can only focus it can run one line at most,
+
+one line at a time.
+
+There are ways around this.
+
+For example, we've seen this before,
+
+setTimeout. setTimeout is a way of running some code after a delay.
+
+OK, so imagine that I have a nice little console.log.
+
+Right, and I have.
+
+Hello everyone.
+
+And then I have my setTimeout, which just as a recap, it receives or it expects a function as an
+
+argument.
+
+So I'll just do an arrow function.
+
+And in here let's pretend actually instead of hello everyone, let's go with sending request to server.
+
+I'm just going to fake it.
+
+And then in here after the second argument is a number of milliseconds.
+
+So in this case, three thousand.
+
+aka three seconds after three seconds, I'm going to printout here is your data from the server and
+
+we'll just pretend we actually got something back.
+
+All right.
+
+And then down here, hopefully this is all recap, but I'll console.log.
+
+I am at the end of the file.
+
+All right.
+
+So what order do we expect to see things printed out in when I actually run this?
+
+This hopefully is obvious.
+
+This happens first, then this code runs.
+
+And we just talked about how only one thing at a time can happen.
+
+Right.
+
+So are we just waiting for three thousand milliseconds?
+
+Is JavaScript just counting, you know, one thousand 1001, 1002, 1003?
+
+No, it does not just sit there hogging everything and stopping this code from running.
+
+And instead this runs this runs kind of we'll talk about what that means and then life moves on and
+
+it just runs this line.
+
+And then after three seconds, this prints out.
+
+So we can see that here.
+
+Right.
+
+Sending request the server.
+
+I'm at the end of the file three seconds later.
+
+Here's your data from the server.
+
+So how does that work?
+
+Why didn't things just get held up?
+
+Why do I see this line?
+
+Printed out.
+
+If we just said JavaScript is single-threaded, shouldn't this just stop
+
+everything is just waiting for three seconds.
+
+Fortunately, the answer is no.
+
+How does it work?
+
+Well, the browser is actually doing the work.
+
+It's not JavaScript.
+
+And this is a bit of a this is the part that's really under the hood, that it's not a huge deal if
+
+you understand this.
+
+But it's good to know what happens is that the browser itself, your browser, whether it's Chrome or
+
+Firefox or Safari or something else, that browser, it's not written in JavaScript.
+
+That browser is written typically in a language like C++, and it can do things JavaScript can't do.
+
+So what happens is that JavaScript actually is going to hand off certain tasks to the browser to take
+
+care of browsers, come with something called Web APIs.
+
+And these Web APIs are generally methods, things that we can call from JavaScript that basically are
+
+handed off to the browser.
+
+It's JavaScript saying, you know, I can't really do this.
+
+Can you take care of this for me browser?
+
+And these things happen in the background.
+
+JavaScript doesn't really have to care about it because they've been handed off to the browser.
+
+So this includes things like setTimeout, but also things like making requests, which we'll see soon.
+
+It's the same idea.
+
+They take time.
+
+They could take five seconds.
+
+They might take a split second.
+
+It might take 10 seconds.
+
+Hopefully not.
+
+But JavaScript isn't the one doing it.
+
+JavaScript isn't in charge of that.
+
+Instead, it's handed off to the browser.
+
+So how it works in practice is that the call stack in JavaScript is able to recognize these special
+
+Web API functions and it can pass them off to the browser.
+
+So it says, here you go, please remind me in three seconds to to take care of this.
+
+And then once the browser finishes those tasks, let's say three seconds later, then they're added
+
+back to the call stack, then JavaScript takes over again and executes the appropriate code.
+
+So here's an example of what we just did, slightly different texts that were printed out here that
+
+we are printing out.
+
+console.log
+
+I print first.
+
+All right.
+
+So JavaScript can do that, right?
+
+It prints out.
+
+I print first.
+
+That's what we see.
+
+Then we encounter setTimeout.
+
+Now, that is one of the Web API functions.
+
+So it's passed off to the browser, which I'm indicating here representing is this down here.
+
+Hello browser.
+
+Can you please set a timer for three seconds.
+
+That's basically what's happening.
+
+And then after those three seconds are up, remind me to run this function.
+
+Okay, so then JavaScript just goes about its life.
+
+It does the next thing, console log.
+
+I print second and the browser this whole time is sitting there tapping its fingers, waiting and counting.
+
+Has it been three seconds?
+
+Has it been three seconds.
+
+And then after it has been three seconds says Time's up, I'm the browser.
+
+Hello JavaScript.
+
+Make sure you run that callback now and then JavaScript runs that callback and we get I print after
+
+three seconds.
+
+All right.
+
+So the whole mechanism by which this works is well, there's really two things.
+
+One, the fact that browsers come with these functions, these things that browsers can do for us for
+
+JavaScript.
+
+And the second is this concept of the callback of passing a function in that is not executed right away,
+
+but is instead executed later.
+
+If we had just written this code as a console.log or something, it would be immediately executed.
+
+But because it's wrapped in a function, it's it's not executed.
+
+It's wrapped up in a function until it's time for it to run.
+
+So this is a bit you know, we're kind of in the weeds here, but it's important to understand or at
+
+least I find that it's helpful just because when I say things like JavaScript can only do one thing
+
+at a time that seems entirely at odds with what we're seeing here, that this code is able to run before
+
+this finishes.
+
+How is it keeping track of that time and printing this out?
+
+But remember, it's not the browser is keeping track of the time.
+
+JavaScript just does one thing and we can actually see this over here.
+
+I'm just going to copy my code.
+
+That tool I showed you in the last video called Loupe, I have to replace this with an arrow function.
+
+Forget about that.
+
+Does not like arrow functions.
+
+OK, let's see what happens now, so I'm going to pause and it runs our first console.log sending
+
+request to server, OK, then I think actually I can open my console and we can see that there it is
+
+sending request to server and then it gets to this next part, the setTimeout, and it's going to
+
+pass that off to the Web APIs, which is what we see over here.
+
+There it is, and then it's this is visualizing the timer, so I don't actually know if this will take
+
+three or four seconds, but that's the principle console.log I'm at the end of the file.
+
+So JavaScript moves on its Call
+
+Stack does not contain this function at this point in time.
+
+But then those three seconds are up.
+
+The Web API is finished up, put it in the callback queue, and then JavaScript takes over again and it
+
+runs that callback and we finally end up with all three console.logs.
+
+So you don't need to be an expert in this.
+
+You don't even really need to know this.
+
+But I've found that it's helpful for what we're going to learn next.
+
+
+ -->
+    <script src="app.js"></script>
+</body>
+
+</html>

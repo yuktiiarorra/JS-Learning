@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce</title>
+</head>
+<body>
+    <!-- Lecturer: Next up we have Reduce,
+
+which is definitely the most intimidating.
+
+It's the one I've seen students struggle with the most.
+
+It is useful,
+
+but it takes a little bit of time to get used to.
+
+So don't feel bad if you need to re-watch this video
+
+or continue reading about reduce or looking at the examples.
+
+It's just not as simple as something like map
+
+or filter, but it is useful.
+
+So what it does, really its main goal is to take some array
+
+and reduce it down to a single value at the end of the day.
+
+Now, how it does that is up to us.
+
+So it's not like it's automatically going
+
+to sum every element in an array together.
+
+It can do a lot more than that,
+
+but we have to understand how it works.
+
+So I like to visualize it as a a nice science experiment.
+
+We've got a lot of liquids, we're combining 'em all,
+
+and then we get one drop out at the very end.
+
+It's kind of what we're doing here, but with an array.
+
+So I'm gonna show you an example first
+
+and walk through what it does.
+
+Basically, we have to provide a reducer function,
+
+which is really just a function
+
+that follows a particular format
+
+where there are two parameters.
+
+You don't have to name them.
+
+This obviously, you can name them whatever you want.
+
+But the first parameter represents
+
+what we call the accumulator or the total.
+
+It's basically going to be the thing
+
+that we're reducing down to.
+
+So in this case, I'm summing all elements together.
+
+This accumulator variable
+
+or this parameter will hold the sum
+
+and then I have current value
+
+or each number, whatever we wanna call it.
+
+This represents each individual element.
+
+And then from my function, this reducer function I wrote,
+
+I return some value.
+
+In this case, the accumulator plus the current value
+
+and whatever I return from here will be used
+
+for the next iterations accumulator.
+
+So at the very beginning, our first call,
+
+the accumulator starts at three,
+
+our current value starts at five,
+
+and then I return three plus five, which is eight.
+
+So I returned eight.
+
+Now next time through my accumulator
+
+is going to be equal to eight.
+
+So that's just how it works.
+
+Whatever I return from here will be used on the next
+
+iteration, the next go around when my function is called.
+
+So if eight is accumulator, current value then moves
+
+to seven and I return the sum of those two, which is 15.
+
+And then the process repeats.
+
+The first parameter accumulator will hold 15,
+
+and then the current value will be nine.
+
+I sum them together, that's 24
+
+and so on until eventually the final return value is 35.
+
+So let me show you this in practice,
+
+let's say I have an array of prices.
+
+Okay, so we'll have 9,99, 1,50, 19,99 and 49,99.
+
+It's a lot of 99, huh?
+
+Let's do 30.5. Okay?
+
+So that's my array of prices, const prices.
+
+And let's say I purchased all of them
+
+and if I wanted to figure out the total for
+
+what I owe without reduce,
+
+I could do something like this, right?
+
+For let price of prices,
+
+I could have a total variable up top, let total,
+
+I'll start it at zero for each price in there.
+
+Total plus equals price.
+
+And that should do it for me.
+
+I could console that log total and let's see what we get.
+
+111,97, okay?
+
+Now if I use reduce, it's a similar,
+
+it's really the same idea,
+
+I'm just going about it in a different way.
+
+Prices.reduce.
+
+Remember I pass in a callback
+
+and this callback needs to have two parameters.
+
+The first one is often referred to as the accumulator,
+
+but in my case it represents the total.
+
+So I'm just gonna call it total.
+
+And then the second one represents each individual
+
+elements in the array.
+
+What are they?
+
+I'll just call it probably a price
+
+or element or number, something like that.
+
+And then I'm going to return
+
+that total plus the price of each element.
+
+So that will start at 9.99, I add 1.50.
+
+That's the new total.
+
+Next time through, we have that sum,
+
+whatever that is, we add 19.99
+
+and we keep going until eventually
+
+I could do something like this.
+
+Const.total equals that and let's see what we get.
+
+What is total? It's 111.97.
+
+Same exact answer, just a different format.
+
+And I could shrink this down more, right?
+
+I could use an implicit return. I comment that out.
+
+Get rid of you, get rid of the return here
+
+and just do that, eh, it's okay.
+
+It might be a little bit, eh, I think it's okay
+
+to do in a single line, but either one works.
+
+They're doing exactly the same thing.
+
+So in this case, we've been summing together every element.
+
+If I wanted to, I could multiply every element together
+
+to get a product.
+
+It's a lot larger.
+
+I can do really any sort of mathematical operation.
+
+I could do all sorts of weird things,
+
+but that's not all we're limited to.
+
+We're not limited to multiplying or adding
+
+or dividing or anything like that.
+
+We can write things that we'll find the maximum value in an
+
+array or the minimum value in an array.
+
+So here's how that would work.
+
+Let's say I wanna find the minimum price in this array.
+
+We know what it is, it's very easy to see,
+
+but imagine there's a thousand elements in here.
+
+So one option is to use reduce and do something like this,
+
+prices.reduce.
+
+Now we're not really accumulating any value that's going
+
+to be totaled or summed or multiplied
+
+or anything like that,
+
+but what we are accumulating is the minimum value
+
+as we go through the array.
+
+So our accumulator, the first parameter, we're not gonna,
+
+well, we could call it total,
+
+but it doesn't really make sense.
+
+It's just gonna hold the value
+
+that is currently the smallest as we make our way through.
+
+So we'll call it min.
+
+And then the second value,
+
+the second parameter is the individual element,
+
+the current element,
+
+so I'll just call it curb price or price.
+
+And remember how reduce works, if I return a value
+
+or whatever I return from this callback will be used
+
+as the next version of the accumulator or the next min here.
+
+So basically what I wanna do is return either the current
+
+minimum value or the new price that we're accessing.
+
+So if we start at 9.99, that will be the min.
+
+We look at 1.50, well that's smaller.
+
+So we will return 1.50 and that will become the next min
+
+and it will stay the next min
+
+until we find something smaller, but we actually don't.
+
+So that could look like this.
+
+If price is less than min, we can return
+
+that new price and that will be what we return here.
+
+That's the next min next time through.
+
+Otherwise we can just return min.
+
+So let's take a look at what that gives us.
+
+Const min price and, oh, I don't have it over here.
+
+Min price 1.5 and that's accurate.
+
+I could do it the other way around
+
+if I wanted the max, I'm still calling it min,
+
+but here I'm just seeing if the current price, the element
+
+that we're looking at, one element at a time,
+
+if it's greater than what we saved
+
+or what we returned last time, then return that new element.
+
+So here we get the maximum, which is 49.99.
+
+Is that correct? Yes it is.
+
+Okay, so let's do one more example
+
+with the movies from the last few videos.
+
+Okay, so here's that movies array.
+
+And let's say that I wanna find the highest rated movie,
+
+just as an example here.
+
+This time we're working with objects,
+
+so it's still not very complicated compared to
+
+what we just saw, but there's an extra layer
+
+we need to pay attention to.
+
+So we have our movies, if I want the highest rated movie,
+
+movies.reduce.
+
+And then here we'll go with, you know, highest rated
+
+or something or best movie.
+
+Let's do that bestMovie and then currMovie like that.
+
+And what we wanna do is check if currMovie,
+
+it's not just currMovie greater than bestMovie
+
+because we're looking at the score.
+
+So if the current movie we're looking at dot score
+
+is greater than the best movie dot score,
+
+if that's the case, we will return our current movie,
+
+otherwise return best movie.
+
+So let's take a look at that. What is our best?
+
+Oh, I didn't save that to a variable.
+
+So let's save that to a variable. Highest rated.
+
+Okay, so highest rated is, "Amadeus," as it should be.
+
+That's just a great movie if you haven't seen it,
+
+it's not for everyone,
+
+but you know, it's funny, it's about classical music,
+
+but it's funny, it's got great,
+
+great huge set pieces, amazing costumes.
+
+Oh, you just gotta see it if you haven't seen it.
+
+Anyway, so that's a couple of applications for reduce,
+
+still pretty simple stuff,
+
+but hopefully you can see it's not just about reducing
+
+things down to a single value via math.
+
+It could be via comparison like we're doing here.
+
+It could be addition or multiplication.
+
+But really the point of reduce is
+
+to just boil things down
+
+to somehow end up with a single value.
+
+It's up to us how we get there.
+
+The last thing I'll show you is
+
+that we can specify an initial starting point
+
+for our accumulator parameter.
+
+So I've got a very simple example, evens, it's an array
+
+of two, four, six and eight.
+
+And let's just start by summing them all together
+
+with reduce, as we've already seen, evens.reduce.
+
+And then we'll add our callback in here with our sum
+
+and then each individual number
+
+and we will return,
+
+I'll just use the implicit return sum plus number or numb.
+
+Okay, so if I just run that right now, we get 20.
+
+But I can also pass in a second argument to reduce.
+
+So not a parameter that we're adding
+
+to the reducer function,
+
+this whole thing is a function we wrote.
+
+I'm talking about a separate second argument for reduce.
+
+So that's the first argument, a second argument
+
+and that argument will be used
+
+as the initial value for sum.
+
+So right now we're starting just
+
+by adding these all together, we get 20.
+
+But if I started with 100
+
+and then we add everything to that, well,
+
+I guess I'm not printing it out,
+
+I'll just copy it over here.
+
+We get 120, or if I started with, I dunno, 40, we get 60.
+
+So just know that there's a second argument we can specify
+
+and it will be the initial value for this reducer function.
+
+Okay, so that is a quick crash course in reduce,
+
+there's definitely a lot more you can do with reduce.
+
+It's pretty powerful,
+
+but it can be overwhelming when you're starting out.
+
+So get comfortable with the basics in this basic pattern,
+
+the signature of these reducer functions
+
+before you start to worry about all those other
+
+things you can do with it.
+
+All right, so that's reduce.
+
+
+ -->
+    <script src="Reduce.js"></script>
+</body>
+</html>

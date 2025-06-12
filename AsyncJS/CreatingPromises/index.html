@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Promises</title>
+
+    <style>
+        body {
+            transition: 1s background-color;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- -: Okay, so previously we talked about how to work
+
+with promises that have been returned from functions,
+
+how we can pass a call back into .then or to .catch.
+
+But I wrote the function for us.
+
+We didn't really go through the actual writing
+
+of the promise,
+
+or the creation of that promise.
+
+In this video, I wanna talk about it.
+
+This is not as important as working with promises
+
+when they are returned.
+
+In the next section after this,
+
+we're going to be making requests
+
+and talk about Ajax.
+
+And we won't be creating those promises ourself.
+
+We'll instead be just calling .then and .catch
+
+and that sort of thing on promises
+
+that have been made for us,
+
+just like what we've been doing.
+
+But it's good to know how to make promises,
+
+and it's a more advanced topic,
+
+and it's something you can use going forward
+
+to improve your code.
+
+But it's not as important
+
+as what we've already talked about.
+
+With that said,
+
+here's how we make a new promise.
+
+Just on its own, you can do this.
+
+New promise, capital P promise like that,
+
+and then it expects us to pass in a function.
+
+And this function is going to have two parameters.
+
+This is always how it works.
+
+Two parameters,
+
+first one we usually call resolve,
+
+and the second one we call reject.
+
+Now these are just parameters,
+
+so you can name them whatever you want,
+
+but they represent the resolution of this promise
+
+and the rejection of this promise.
+
+They are actually functions we can execute at any point
+
+inside of this promise.
+
+So for example, if I call resolve immediately,
+
+and if I just paste this over here,
+
+you'll see we get a promise that has been resolved,
+
+it has a status of resolved.
+
+If I instead called reject
+
+or whatever I name this second parameter,
+
+and paste it in over here,
+
+we get a rejected promise.
+
+And then if I do nothing
+
+and I just make a new promise,
+
+there's my promise object and it's still pending.
+
+It will continue to be pending
+
+until at some point hopefully resolve
+
+or reject is called inside of this function.
+
+So here's how we would use them.
+
+Let's make our fake request function.
+
+So I'm gonna call it fake request or something like that,
+
+equals a function,
+
+I guess we could pass in a URL.
+
+Okay, and then inside of here,
+
+we're going to take, to start,
+
+let's just take one second or two seconds
+
+and resolve our promise.
+
+So we're gonna make a new promise,
+
+new promise, just what I showed you.
+
+And then we have our callback,
+
+or this function inside, resolve and reject.
+
+And then we're going to return this promise.
+
+And then after a second, this promise will resolve.
+
+So set timeout,
+
+and then we have our callback in there,
+
+our delay of one second,
+
+and after a second we will call resolve.
+
+So if I execute that function, fake request,
+
+and I save it to a variable,
+
+I'll call it request, or req,
+
+and we can see it's now been resolved.
+
+Now I didn't go fast enough to show you
+
+that it was pending originally,
+
+but it has been resolved.
+
+So now I can add on my .catch
+
+and .then to the fake request,
+
+so the promise that gets returned.
+
+We can pass an a URL even though we're not using it,
+
+but let's do dog slash one dot then,
+
+and then when that finishes,
+
+we'll console that log done with request just like that.
+
+So hopefully we should see that after a second.
+
+There we go.
+
+All right, so what I did in the original video was
+
+I generated a larger delay instead of just one second,
+
+and then I randomly rejected or resolved.
+
+So why don't we just generate a random number,
+
+const, we'll do rand equals,
+
+and then math.random.
+
+And we'll just see if rand is less than five maybe.
+
+So if rand,
+
+or less than 0.5 rather,
+
+actually 50/50 chance seems a bit high.
+
+How about if it's below 0.7, we will resolve,
+
+otherwise we will reject,
+
+and we can always pass a value through.
+
+So we'll resolve with some information here,
+
+your fake data here,
+
+and then we'll reject with an error like,
+
+I don't know, request error.
+
+Okay.
+
+So now I can add on my .catch as well.
+
+And in here, let's console.log whatever that error is.
+
+Oh, no.
+
+And then error.
+
+Up here, done with request.
+
+And I'll console.log data is,
+
+and then we'll print out
+
+whatever our promise was resolved with,
+
+which in our case is just your fake data here.
+
+So let's see.
+
+Oh, no request error, okay.
+
+Oh no.
+
+Oh no again.
+
+There we go.
+
+Done with request.
+
+Data is your fake data here.
+
+So that's the basic idea.
+
+To make a new promise,
+
+we just pass in this function
+
+or a function where there are two parameters.
+
+The first one is a function that will resolve the promise.
+
+The second one will reject it.
+
+Name them whatever you want,
+
+but the only thing I've ever seen is resolve and reject.
+
+And if at any point you call resolve,
+
+that promise object will be resolved.
+
+And if at any point you call reject,
+
+the promise object will be rejected.
+
+All right, so let's see another example.
+
+If you remember early on in this section,
+
+I talked about callback hell.
+
+And we made this delayed color change function,
+
+which changes the background color of the body
+
+after some set delay that you can pass in.
+
+And then we structured it
+
+so that you could pass a callback in
+
+that will be executed after this set timeout finishes,
+
+or after it executes its callback.
+
+So this happens, and then this happens,
+
+and then this happens, and so on.
+
+And this was before we learned about promises.
+
+And just to recap what it looks like,
+
+there we go.
+
+We go from red to orange
+
+to yellow, green, blue, indigo, violet,
+
+and then we finish.
+
+Okay.
+
+So you could continue with this,
+
+but this is seven levels, right?
+
+And it's quite nested.
+
+So I could rewrite this to use promises instead.
+
+My delayed color change function could return a promise.
+
+Instead of us passing a callback in,
+
+do next, right,
+
+this is the next thing for that first delayed color change.
+
+This entire thing, it's just crazy.
+
+It's very nested.
+
+Instead of that, I'll rewrite this function,
+
+const delayed color change equals.
+
+You'll pass in the color and a delay,
+
+but not a callback.
+
+And then we'll return a promise in here, return new promise.
+
+And this promise, standard promise we just talked about,
+
+we have the resolve and reject parameters,
+
+although we're not really gonna reject this promise ever.
+
+There's no reason to.
+
+All that we wanna do is resolve it
+
+after we've changed the color,
+
+after this delay has finished.
+
+So we're gonna do a set timeout.
+
+Here's the function we'll run
+
+after whatever this delay is.
+
+So in this case, I was doing one second,
+
+but we could make it five seconds
+
+or three or two or it doesn't matter.
+
+So in here I'm gonna change the body color.
+
+So what is it,
+
+document.body.style.background color
+
+equals whatever color you passed in.
+
+And then we resolve.
+
+And that's it.
+
+So it's a little bulkier than what we had.
+
+Right, compare?
+
+But it's not a huge difference.
+
+Yeah, we have to work with this promise
+
+that we're returning.
+
+That's kind of annoying.
+
+But it's worth it,
+
+because what we're able to do now is avoid having
+
+to nest and pass a bunch of stuff in.
+
+I can just call delayed color change,
+
+pass in a color like red, and a delay,
+
+and we'll just start there, right?
+
+This is going to run,
+
+but we don't have anything happening after it.
+
+Okay, it does work.
+
+Now, if I want something to happen after it,
+
+I can't just do this as we know.
+
+I can't change that.
+
+Those will happen at the same time.
+
+So we only see orange,
+
+but I did return a promise.
+
+And we can see that here, that return to promise,
+
+and eventually that promise will be resolved.
+
+As you can see there.
+
+It starts as pending, now it's resolved.
+
+So I can use my .then
+
+.then and then we'll go to orange.
+
+Now if I return a promise,
+
+remember from within my dot then callback,
+
+I can chain promises.
+
+But let's just see that this works,
+
+red and then orange, and it does.
+
+So I could return it like this,
+
+or I could actually do it on a single line
+
+and just use an implicit return,
+
+like that.
+
+And just keep chaining these.
+
+Orange, yellow, green, blue.
+
+Sorry, almost there.
+
+Roy G Biv, indigo.
+
+There we go, violet.
+
+All right.
+
+So let's verify that it works.
+
+Get all the way to violet.
+
+Keep going.
+
+Looking good, looking good.
+
+And there we go. That's violet.
+
+Take a look at how easy this code is to read, right?
+
+Do this and then this, and then this, and then this.
+
+It's flat, or it's pretty much flat, right?
+
+We have a little bit of nesting, just one level deep.
+
+But otherwise, it's incredibly easy to read and look at
+
+compared to this, the exact same outcome.
+
+After one second, do this
+
+after a second, do this,
+
+change it to red, orange, yellow, and so on.
+
+Exactly the same.
+
+But because we're working with promises,
+
+we can really clean the code up
+
+and just make it easier to read.
+
+And we're not even bothering with rejecting this promise.
+
+We don't have a branching path
+
+where we could have a success and a fail.
+
+Everything is just success.
+
+We're resolving this promise.
+
+But if we did have a success and a fail,
+
+then the nesting gets even crazier,
+
+like we talked about earlier on in callback hell.
+
+And promises really don't get much crazier at all.
+
+We just add on a single dot catch
+
+and we can catch 'em all
+
+like it's Pokemon.
+
+All righty, so that's how you create promises.
+
+Again, it's something we'll be doing a ton right now.
+
+We're really more concerned about working
+
+with them when they've been returned to us.
+
+In the next section after this,
+
+we'll be doing this sort of thing a lot
+
+where we're calling .then and passing in callbacks,
+
+or we're calling .catch and passing in callbacks
+
+and chaining them together.
+
+But the promises we'll be working with
+
+will be coming from some library,
+
+or from some function we didn't write ourself,
+
+but we can, right?
+
+We know how to write this at this point.
+
+It's just not as important.
+
+So I'm not saying you shouldn't care at all,
+
+but just make sure you care more about this
+
+in the short term over actually writing promises.
+
+Okay, bye.
+
+
+ -->
+    <h1>Creating Promises</h1>
+    <script src="app.js"></script>
+</body>
+
+</html>

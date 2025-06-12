@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread</title>
+</head>
+<body>
+    <!-- Instructor: Next up, we get to spread,
+
+which is one of my favorite of the newer features
+
+in JavaScript.
+
+Unfortunately,
+
+it's a little bit hard to explain all in one go
+
+because it's actually used in multiple situations.
+
+It's kind of like a Swiss Army knife in JavaScript.
+
+So the official, well, this isn't official,
+
+but the definition from MDN at least, is that:
+
+"Spread syntax allows an iterable,
+
+such as an array, to be expanded in places where zero
+
+or more arguments for function calls
+
+or elements for array literals are expected,
+
+or an object expression to be expanded
+
+in places where zero or more key-value pairs
+
+for object literals are expected."
+
+Do you get that?
+
+Do you even need this video anymore?
+
+I feel like that's just a great explanation,
+
+we don't even need examples.
+
+But really, it's a lot to take in.
+
+But the main thing that hopefully you can tell
+
+from this definition is the phrase expanding,
+
+or just the word expanding,
+
+that's really the key, the idea of spread.
+
+We're taking something and spreading it out.
+
+Now, what we're spreading that iterable into
+
+is where the variation comes in.
+
+So the first example we'll see
+
+is spreading an array or an iterable
+
+into a function call, into separate arguments.
+
+So let me demo this first.
+
+Over in the console,
+
+there's this function,
+
+I mean, it doesn't exist just in the console,
+
+but Math.max.
+
+And max is expecting separate arguments,
+
+just values, and it's going to tell us
+
+the maximum value here.
+
+So it could take 10, 2, 50, 100 arguments,
+
+it will find the maximum.
+
+We also have Math.min, which works the same way,
+
+except it shows us the minimum.
+
+So I can have,
+
+let's just do it with three arguments this time.
+
+The minimum is one.
+
+So, it takes as many arguments as we want,
+
+which is a bit different than most of the functions
+
+and built-in methods we've seen
+
+where there's a very distinct,
+
+you know, you pass this one argument,
+
+or maybe two, or maybe one is optional.
+
+Anyway, now let's say that I have an array,
+
+and this array contains a bunch of numbers,
+
+in fact, it contains all of these numbers.
+
+So I'm going to save that here.
+
+const nums equals, that array of numbers right there.
+
+Now, I want to find the maximum or the min using Math.max.
+
+So if I try and pass that in,
+
+just like that, I'm going to get not a number.
+
+Because it doesn't know what to do,
+
+we just passed in a single array full of numbers.
+
+It's anticipating separate arguments,
+
+each one being a number.
+
+So, what I can do is use the spread syntax,
+
+which is three dots,
+
+to spread this array into separate arguments.
+
+So that looks like this: Math.max,
+
+and then instead of just nums,
+
+I'm going to do ... before.
+
+And that's the equivalent of this right here.
+
+So that entire array is going to be spread out
+
+into separate arguments, first argument,
+
+second argument, third argument.
+
+You can think of it as just removing those array brackets.
+
+So it doesn't actually change nums in any way,
+
+it's simply the act of passing it in to max, Math.max.
+
+We're spreading it,
+
+we're separating it into separate arguments,
+
+as that happens.
+
+So we could do the same thing for min,
+
+Math.min(...nums),
+
+and we get one, that's the minimum value in that array.
+
+Here's another example.
+
+console.log, we've seen takes as many arguments as we want.
+
+I can pass them in separately with commas.
+
+I mean, this is useless and meaningless,
+
+but if I do that, they're each printed,
+
+and they're separated by a space.
+
+So if I do console.log on my entire nums array,
+
+this is what we get.
+
+The array itself is printed.
+
+But if I spread that, just like that right there,
+
+it's a slight difference,
+
+at least what we see printed out,
+
+but it's actually a very significant difference
+
+in that each element from this array
+
+is passed in as a separate argument to console.log.
+
+So there are all separated by spaces.
+
+Now, I can actually do this with things that aren't arrays,
+
+there are other iterables, as we've talked about.
+
+Anything that we can iterate over with four of,
+
+like strings, I can also spread into a function call.
+
+So, if I console.log the string hello,
+
+it just prints out one thing, hello, nothing crazy.
+
+But if I spread that, one, two, three,
+
+it's going to spread each individual character
+
+into a separate argument.
+
+And so we end up with this.
+
+Again, it doesn't seem all that crazy,
+
+it doesn't seem very different,
+
+we're just getting a space between each letter.
+
+But that is how console.log works.
+
+It's what happens if we had called this right here.
+
+h, e, l, I won't do the whole thing,
+
+but you can see that's where those spaces come from
+
+when we pass in separate arguments.
+
+And that's exactly what happened.
+
+This individual, monolithic string
+
+was passed in as separate characters,
+
+separate individual arguments.
+
+Same thing here with the array nums,
+
+it was passed in as separate standalone arguments.
+
+So that's one situation where we spread an iterable
+
+into a function call.
+
+Next up, we'll see some other uses for spread.
+Instructor: Next up, we'll talk
+
+about the second piece here.
+
+Spread syntax allows an iterable such as an array
+
+to be expanded in places where zero or more elements
+
+for array literals are expected.
+
+Basically how we can spread an iterable into arrays.
+
+So what this looks like is something like this.
+
+Here I have two arrays, cats and dogs.
+
+Both Rusty and Wyatt, my previous dogs.
+
+Rest in peace, guys,
+
+and I want to make a a third array,
+
+I'll call this Pets or allPets,
+
+and I wanted to contain everything from cats
+
+and everything from dogs.
+
+And imagine these are actually hundreds of elements long,
+
+so it'd be a lot of work for me to type that out myself.
+
+The easiest thing to do is use the Spread operator.
+
+There are other options, right?
+
+We've seen how we can copy
+
+pieces of an array using things like Slice,
+
+but we're not gonna do that here
+
+because Spread allows us to spread
+
+an iterable like an array like this cats array
+
+into, in this case, a new array.
+
+So if we take a look at allPets,
+
+it looks just like cats, right?
+
+But they are not the same, it's a copy.
+
+So if I change one of them, allPets.push, whatever that is,
+
+allPets changes, but cats is unchanged.
+
+So we did actually copy the contents over using Spread
+
+and I can combine arrays,
+
+so I could do this.
+
+Cats and dogs just like that,
+
+and now allPets is the result
+
+of copying over everything from the cats array
+
+and everything from the dog's array
+
+and we have now very easily combined them
+
+into a third new array.
+
+So if I change the order,
+
+just to be clear here, dogs, cats,
+
+that impacts the eventual order we get
+
+when Spread finishes doing its thing.
+
+And I could also add my own stuff in there too.
+
+I could do dogs, comma, cats, comma.
+
+I don't know, let's say I have a pet turtle named Speedy.
+
+Speedy is added to the end there.
+
+I could add whatever I want in here.
+
+At the beginning, I can put some numbers.
+
+Doesn't make sense, but I can.
+
+So Spread is working the same way that we saw earlier
+
+where we're spreading an array into a function call,
+
+except we're not spreading it into a function call.
+
+We're spreading an array into another array
+
+or we're spreading two arrays into a third.
+
+We're combining things, we're copying things.
+
+So if I just wanted a direct copy,
+
+often you'll see this,
+
+just a spread like that.
+
+If I wanna combine, we do something like that
+
+and I can add on as we've seen.
+
+I can put other stuff in there,
+
+and remember that we're not limited to working with arrays.
+
+We have other iterable like strings.
+
+So I could take the string "hello"
+
+and put it in an array just like that
+
+or if I wanted to,
+
+I could spread it into a new array.
+
+Just like what we saw with console.log
+
+when I spread a string, each element
+
+or in this case, each character of the string
+
+is spread into its own element in an array.
+
+So that's all there is to using Spread
+
+in the context of an array literal.
+
+Next up, we'll talk about objects.
+
+
+-: The third and final situation
+
+where we use spread is in object literals.
+
+So instead of curly braces, we use this
+
+to copy properties from one object into a new object.
+
+So we can combine objects, we can make a new object
+
+based upon an old one, we can copy one, we can tweak one.
+
+That's kind of the main idea here.
+
+Just like what we saw with arrays,
+
+where we can copy elements from one array into a new array,
+
+we can spread properties from an object into a new object.
+
+So, as an example, I've got these two objects here,
+
+feline and canine.
+
+And actually, they both have a family property in common.
+
+Family: 'Felidae,' Family: 'Caninae.'
+
+I don't know, I never took Latin.
+
+Anyway, if I wanted to make a copy, a new object,
+
+using one of these-- so I'm just gonna do it over here
+
+to start-- I can do something like this.
+
+Feline. That just makes me a copy.
+
+So, brand new object with the same properties
+
+as the original feline.
+
+But I can also add on, so I can do feline.
+
+And then actually, I wanna add in a property called...
+
+I don't know, how about "color."
+
+Which will be black, sure.
+
+And that makes me a new object
+
+with the properties from feline copied over,
+
+or spread, into this new object, and color set to black.
+
+So, we could combine the two, feline and canine,
+
+into a new object called "catDog,"
+
+if you ever saw that show, animated show,
+
+Nickelodeon show in the 90s or 2000s.
+
+Anyway, I want to combine feline and canine.
+
+So I'm gonna do spread, feline, and then spread, canine.
+
+So this is going to copy over properties from both.
+
+But remember, there is a conflict.
+
+They both have a family property,
+
+and in that case, the order matters.
+
+So feline will be copied over first, and then canine.
+
+So when there's a conflict, canine is going to win,
+
+quote unquote, because it comes second,
+
+and it overwrites family.
+
+So if I switch that order up and just did it this way,
+
+canine... and then feline, comma, like that,
+
+we end up with family set to Felidae.
+
+Okay.
+
+And then if I actually wrote something else in here,
+
+like family is actually set to Steele family,
+
+then that's actually the winner, because it comes last.
+
+Okay.
+
+So, that's kind of the basic idea
+
+of copying objects using spread.
+
+It's just gonna take the properties
+
+that key valued pairs from one
+
+and add them into the new object.
+
+Also, sometimes I get asked about this,
+
+I can't imagine there's many situations you would need
+
+to do this, but if you try and spread an array
+
+into an object-- so let's have the array 2, 4, 6, 8.
+
+And I'll try spreading that into an object,
+
+so dot, dot, dot.
+
+What do you expect to see?
+
+What's the key and what's the value?
+
+The indices are used as the key,
+
+so at index 0 we have 2, 1 we have 4.
+
+2 we have 6, and 3 we have 8.
+
+Same thing with strings, if we try and spread a string,
+
+HIII... well, that one sucks, but sure.
+
+We have a lot of Is. It's just the index.
+
+So, not common, but it is a thing you can do.
+
+Now, what do we use this for? Why do we spread into objects?
+
+Well, a lot of the time, we'll use it
+
+when we're creating copies of an object,
+
+which is something you actually do a lot,
+
+especially if you're working with libraries
+
+and tools like React.
+
+That's a whole big topic we're not gonna get
+
+into at the moment, but there are valid reasons
+
+why you copy objects a lot rather than mutating them.
+
+Another situation, though-- imagine I have some data,
+
+let's say it's coming from a form.
+
+Some data from a user.
+
+And I want to take that email, blueman@gmail.password,
+
+that username, tfunke, and I wanna combine it
+
+into a new object with some additional information.
+
+Suppose this represents a user registering
+
+for my website.
+
+This is all a user needs to provide,
+
+but I also want to add in an ID,
+
+like their unique identifier, and maybe an
+
+isAdmin variable set to true or false,
+
+or property, rather, not a variable.
+
+So I can create a copy, I could do--
+
+copy everything over from datafromForm,
+
+that's the name of this object,
+
+and then I'm gonna add an ID, let's say it's set
+
+to that right there, isAdmin is gonna be false.
+
+So these are things not coming from the form, right?
+
+This is just coming from me.
+
+And then I'm gonna save this to a variable,
+
+const newUser, like that, and we'll take a look
+
+at it over here, newUser.
+
+And there we are.
+
+So, we took the data from the form,
+
+the fake form data, and then I added on my own stuff,
+
+ID and isAdmin.
+
+So, just one situation, sort of to illustrate
+
+why you might wanna know this,
+
+why it could be useful in the future.
+
+So that wraps up spread, there's a lot to it,
+
+but at the end of the day, it has
+
+to do with spreading one source
+
+of information into some destination,
+
+whether that's spreading arrays or iterables
+
+into function arguments, or spreading arrays
+
+or iterables into actual array literals,
+
+or spreading objects into objects.
+
+It all has to do with spreading,
+
+I guess that goes without saying.
+
+All right, next up, we're gonna talk about rest. -->
+    <script src="Spread.js"></script>
+</body>
+</html>

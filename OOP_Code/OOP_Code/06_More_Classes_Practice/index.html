@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Classes</title>
+</head>
+
+<body>
+  <!-- Teacher: Next up, we'll continue to add on
+
+to our color class
+
+so we can get more practice adding methods.
+
+So I have a very long, complicated function I found online,
+
+I did not write this.
+
+This function converts a RGB color into a HSL color.
+
+HSL is a very interesting color system.
+
+It stands for hue, saturation and lightness.
+
+And it looks like this: "hsl"
+
+and then we have a hue at the beginning from 0 to 360,
+
+like a degree around the color wheel.
+
+So let's do 130.
+
+Then we have saturation, which is a percentage.
+
+Let's go with 50%.
+
+Then we have lightness,
+
+which is also a percentage from 0 to 100, 80%.
+
+So that is a resulting color apparently.
+
+If I change lightness to be 100%, it's extremely light.
+
+If I go to 20%, it's a darker green.
+
+Let's go to 40.
+
+If I change saturation to 100%, it's very saturated.
+
+If I go down 10%, it is not at all saturated.
+
+Let's go around 80.
+
+And then hue is interesting
+
+because I can completely change the value of that color,
+
+the hue of the color, by just affecting one value.
+
+So I can do, you know, 0 will give me red apparently
+
+If I do 80,
+
+90,
+
+100,
+
+200,
+
+300,
+
+I'm making my way around the wheel all the way to 360
+
+where I'm back to red.
+
+So I can change the color very easily.
+
+I could make a more saturated color
+
+by impacting the second value, the saturation.
+
+I could make a different value entirely.
+
+I could go from red to the polar opposite by adding 180.
+
+So if 30 is the hue, I add 180.
+
+What is 180 plus 30? 210,
+
+which gives me this blue
+
+and I can easily lighten something.
+
+Well, 100% it will be white.
+
+But I could do 90% to get a very light blue,
+
+or I could darken it to a very dark blue.
+
+So let's make a function.
+
+I already have the logic,
+
+but let's use it to create HSL values
+
+and let's actually store HS and L on our class instances
+
+because we could reuse them for different functions.
+
+If I wanna make a lightened function or a darker,
+
+or a full saturation or something like that
+
+I want to use those HS and L values.
+
+Alright, so here's the function. It's called "calcHSL".
+
+It expects three arguments
+
+and at the end we have three variables.
+
+They're not being returned,
+
+but we could return H, S, and L as an array maybe.
+
+We could make a string.
+
+This has nothing to do with a class at the moment.
+
+I'm going to move this into my class.
+
+I'll put it down at the bottom 'cause it's so long and ugly
+
+and I don't wanna pass in RG and B.
+
+I have access to them on "this".
+
+So my constructor runs, right,
+
+RG and B are set, based off of whatever I passed in.
+
+If I ever call "calcHSL", R, G, and B will be on "this".
+
+Then what I'm going to do is actually assign H S and L
+
+to the object, to the instance.
+
+I'll do this.h equals h. H is calculated up here.
+
+S is calculated in the same function.
+
+Again, the logic does not matter.
+
+I have not even glanced at it.
+
+I just took it from a website.
+
+Where did I find this?
+
+I think on stack overflow, but it does work.
+
+Who knows how elegant it is, but it works.
+
+So now H, S, and L exist on the individual instances
+
+as long as I call "calcHSL".
+
+So let's try it.
+
+I have, why don't we go with a white one
+
+because white is probably easiest for us
+
+to tell if it's working.
+
+So I'm gonna refresh this and call white.calcHSL.
+
+And if I just look at white to begin with,
+
+it only has four properties, RGB and name.
+
+If I call "white.calcHSL"
+
+Hmm, assignment to constant.
+
+My bad, I think I can't use const here
+
+because the way the function is written, it is updating,
+
+as you can see here, divide equals slash equals.
+
+So I'll use let and now we should be good to go.
+
+All right, so we don't return anything.
+
+But if we look at white, it now has H, S, and L
+
+and lightness is set to 100, which makes sense
+
+as we experimented with a couple minutes ago.
+
+Lightness of 100 gives us white.
+
+So now let's make a function called HSL
+
+that will actually display the HSL correct format string.
+
+And to start, before I get there, I'm gonna show you
+
+that we can call a function from within the constructor.
+
+We can call one of these methods like this.calcHSL,
+
+we'll just call it immediately
+
+after we assign RGB a name,
+
+we'll call that function automatically
+
+whenever you make a new color,
+
+we'll calculate the HSL based off of the RGB
+
+that was passed in that we then added to the object.
+
+This is called, it looks up R G and B
+
+from the instance of the the actual class,
+
+the instance that was just created.
+
+And then it adds on.
+
+It tags its own new properties onto that instance.
+
+So let's make our function called just HSL,
+
+and it will extract D structure, H S and L from "this".
+
+And then we can return our template literal,
+
+which is going to be HSL.
+
+We need parentheses.
+
+Then we have the hue, which is not a percentage.
+
+It goes from 0 to 360.
+
+Then we have saturation, which is a percentage,
+
+so we need to add the percent.
+
+Then we have lightness, which is also a percentage.
+
+Let's see if that works.
+
+Refresh over here.
+
+We have our color white.
+
+It was created
+
+and now it automatically has H S and L properties
+
+and I should be able to call white.HSL and get a string.
+
+Let's verify on a different color. We have red.
+
+Let's verify that it works.
+
+Document.body.style.backgroundcolor again
+
+equals "red.HSL and it works.
+
+Okay, so now we could have a little bit of fun
+
+and define some other methods like one that I'll show you,
+
+we'll call opposite,
+
+which will take H and generate an opposite color.
+
+Remember it's a color wheel from 0 to 360.
+
+So I'll just add a method called "opposite".
+
+And we can start by just duplicating "this".
+
+We're gonna want to use H,
+
+but we're also gonna want it to make a new H, "newHue"
+
+equals,
+
+and what we'll do is add 180.
+
+So if we had, you know, 60 before we add 180.
+
+If we had 0 before, we add 180 to 180 degrees.
+
+The other side directly across that circle, the color wheel.
+
+But if we're above 180, then if we add another 180,
+
+like if we're at 200
+
+and you add 180, we're suddenly at 380.
+
+So what we can then do is modulo by 360,
+
+which will take us back to 20.
+
+If you're lost on the logic,
+
+don't worry too much, it's not that important.
+
+But we can do H plus 180 modulo
+
+360
+
+to keep us on that 360 degree wheel.
+
+If we go too far, we just start back at 0.
+
+All right, so then here we would put "newHue"
+
+instead of the existing hue, H.
+
+Let's try it out.
+
+So I'm gonna refresh.
+
+I'll run the same code. Red.HSL.
+
+Did I lose the line? Here we go.
+
+To update the body.
+
+Now let's do red.opposite,
+
+which gives us that color.
+
+They are opposite on the color wheel,
+
+at least as far as the hue,
+
+the saturation and lightness are still the same.
+
+Let's do one last one.
+
+Let's make one called "full saturation".
+
+And it's just gonna have the existing hue,
+
+the existing lightness,
+
+but set saturation to 100, full saturation,
+
+"fully saturated".
+
+All we need are H and L.
+
+We don't care about saturation
+
+because we're always going to return saturation set to 100%.
+
+Let's see if that one works.
+
+So we'll set the background color to red.hsl,
+
+and then we'll update it to fully saturated.
+
+And was it already at 100? Well that's disappointing.
+
+It was already 100 saturation.
+
+Let's try another example.
+
+Here's a different color.
+
+I'm giving it a name,
+
+which I have been leaving off for the record,
+
+which is actually not the best idea.
+
+So I should either add a default name,
+
+which I can do just like any other default parameter.
+
+or I should just pass in a name like I did here.
+
+Even though we're not using it anywhere,
+
+it's just good to have on there.
+
+We don't wanna have just undefineds all over the place.
+
+So let's save that to a variable constant "orange".
+
+And then we'll do the same thing
+
+where we change the background color,
+
+but we'll change it to orange.HSL or RGB. it doesn't matter.
+
+We should get the same thing.
+
+Okay, it's not 100.
+
+Now let's do full saturated or fully saturated.
+
+I don't know if you could see that, but it did change.
+
+If you go back to RGB or hex or any of these other ones.
+
+Slightly duller now fully saturated.
+
+And how about opposite? So it'll be our last one.
+
+Hey, nice, beautiful blue.
+
+Okay, so this is our color class.
+
+A lot of the logic to calculate the HSL,
+
+to convert from RGB to hex really doesn't matter.
+
+Don't focus on that.
+
+Focus on the interplay of the keyword "this',
+
+the idea of the constructor,
+
+adding in values to "this",
+
+to the individual instance, as properties,
+
+calling methods on "this",
+
+which allows us to access other methods in the same class,
+
+and then using the new keyword to instantiate new colors.
+
+
+ -->
+  <h1>Hello!!</h1>
+  <h1>Goodbye!</h1>
+  <script src="app.js"></script>
+</body>
+
+</html>

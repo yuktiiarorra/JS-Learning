@@ -6,6 +6,901 @@
     <title>Todo List</title>
 </head>
 <body>
+    
+<!-- Lecture thumbnail
+18:04 / 19:00
+208. Todo List Project CodeAlong
+Transcript
+Instructor: Okay, so let's go ahead and make our files
+
+before we can begin.
+
+I've made the basic HTML file.
+
+Nothing crazy.
+
+We've got, you know, our basic boilerplate,
+
+and then some text, or an H1 rather,
+
+and then a UL that just explains the commands.
+
+Again, not necessary, but just a reminder to us (laughs)
+
+and I guess hypothetical users
+
+that probably will never exist of how the app works.
+
+So I've got that done.
+
+Now I'm gonna make a file.
+
+I'll call this maybe todos.js.
+
+And I'll include a script.
+
+And I'm gonna do source equals todos.js.
+
+Okay, there we are.
+
+So this should include my script.
+
+Let's make sure it works.
+
+If I put maybe an alert in here.
+
+I always just like to, you know, test out that connection.
+
+So, now I'm gonna head over to my browser.
+
+I have the file open.
+
+I'm just gonna refresh.
+
+And we get the alerts.
+
+Okay, good news.
+
+So now, we basically need to implement everything.
+
+So why don't we start with the basic game loop, if you will,
+
+this while loop that continues to ask
+
+over and over and over, just to jog your memory, right,
+
+this is the solution.
+
+What would you like to do?
+
+It's just gonna keep asking me.
+
+Let's just keep entering gibberish.
+
+And then the one thing it knows is quit.
+
+So if I enter, quit,
+
+if that's the case we print out, you quit the app,
+
+and we stop bothering you, we stop asking.
+
+So to do that,
+
+basically we'll want some form of a while loop, right?
+
+And while something is not equal to quit.
+
+Now what is that something going to be?
+
+Well, let's start by asking a user to enter, you know,
+
+let's prompt them,
+
+what would you like to do?
+
+And then save that to a variable.
+
+And I'm gonna use let, not const,
+
+because I will be updating this variable.
+
+So let, what should we, maybe just input?
+
+And then here we'll say, while input
+
+is not equal to quit,
+
+we will just continuously ask you.
+
+So I'm gonna say, you know, input equals prompt,
+
+what would you like to do?
+
+So in other words,
+
+at the very beginning, ask one time,
+
+what would they like to do?
+
+Now if they happen to type "quit" as the first thing,
+
+then we're just done.
+
+But if they enter anything else,
+
+ask them again and again and again and again,
+
+and then at the end,
+
+let's do something like,
+
+okay, quit the app or something.
+
+I don't remember what we actually printed out over here.
+
+What was it?
+
+You quit the app.
+
+All right, close enough.
+
+So let's see what happens.
+
+What would you like to do?
+
+Just typing in anything.
+
+But as soon as I type quit,
+
+hopefully, should open the console.
+
+There we are.
+
+We see quit the app.
+
+Okay, next step.
+
+Let's quickly check to see if input is,
+
+basically we want to quit if you type the letter Q.
+
+So how would I do that?
+
+Well, with what we have right here,
+
+while input is not equal to quit, the string,
+
+I could add on another condition, but what would it be?
+
+Basically I want to keep running this code
+
+while you have not entered quit,
+
+and you have not entered Q.
+
+So that can be confusing
+
+because we're doing a while loop with not equality, right,
+
+this loop runs as long as you don't enter this,
+
+some people might think, oh, we want Or
+
+While your input is not quit or your input is not Q,
+
+but that's not the case.
+
+We only want this loop to run.
+
+This is the, you know, continuing to bother you
+
+and ask you questions.
+
+We want to keep asking you questions,
+
+as long as your previous input was not quit,
+
+and it was also not Q.
+
+If it was either one, then we're done.
+
+So I'm gonna do and input is not equal to Q.
+
+Okay.
+
+So let's see if that works.
+
+Refresh the page, let's type Q, and we're done.
+
+Try it one more time.
+
+I type quit.
+
+Oh boy, this is what happens
+
+when I have a mic in my face and I can't see the keyboard.
+
+(laughing) There we go.
+
+Okay, quit the app.
+
+So next step, let's implement the adding a to-do
+
+and listing a to-do feature.
+
+So first we need a place to store the to-dos.
+
+Now I'm gonna make a to-dos list, specifically an array.
+
+So I'm gonna use const, as we've talked about,
+
+it's most common with arrays.
+
+So const to-dos
+
+equals empty array.
+
+Or to help us out,
+
+let's just put something in there to begin with.
+
+How about collect eggs?
+
+And let's just do one more.
+
+Collect chicken eggs and
+
+how about clean cat litter box?
+
+So just litter box,
+
+put whatever you want in here, obviously.
+
+Okay, so now that we have two to-dos in there,
+
+why don't we focus on listing the to-dos,
+
+and remember how this is supposed to work.
+
+We list the to-dos,
+
+or just list the one, the default.
+
+We have this console.log, that's easy,
+
+but then we also have the index that we're printing out
+
+because we use that when we delete something.
+
+So it's nice to show the user that index.
+
+So let's implement List,
+
+let's, you know, add some logic in here,
+
+so that when a user types List as their input
+
+so that would be in the loop.
+
+Instead of just asking them, what would you like to do?
+
+First we're gonna check,
+
+well, what if their input was exactly equal to list?
+
+Also, you know what,
+
+this is sort of a silly thing to point out,
+
+but I'm realizing I'm being sloppy
+
+with mixing double and single quotes.
+
+Personally, I like to use single quotes
+
+or at least I need to be consistent.
+
+I don't have to but style wise I like it.
+
+So I'm just gonna quickly change that.
+
+Okay, so where was I?
+
+Yes, if the input that a user types
+
+is equal to the string list,
+
+what do we want to do?
+
+Well, why don't we just start by recognizing it,
+
+you know, console.log,
+
+maybe just the stars to begin with.
+
+So just a list of stars, a list, a string of asterisks,
+
+just like that.
+
+So let's just make sure we can see that
+
+if I do type list.
+
+So I'll type something that's not list,
+
+I'll type list,
+
+okay, and then I'll quit.
+
+So now what we actually wanna do is print out each to-do
+
+from the to-dos array.
+
+But I also want the index.
+
+So a for of loop, unfortunately, is not gonna work for me.
+
+What I'm going to use instead is a for loop,
+
+a regular old for loop.
+
+So how do we loop over the array?
+
+For, I'll use I,
+
+starting at index zero,
+
+while it's less than todos.length.
+
+Add one more to I each time.
+
+So we start at index zero
+
+and then we keep looping, incrementing I,
+
+until we hit the highest index in the array,
+
+and we stop before we hit the length of the array.
+
+Because remember, you know this array is a length of two,
+
+but the highest index is one, 01.
+
+Okay?
+
+So then we'll print out a string.
+
+And the easiest option I think is a string template literal.
+
+So we'll show I.
+
+And then a colon.
+
+And then the actual to-do.
+
+Well how do I get the to-do?
+
+I use the index.
+
+Todos, square bracket, I.
+
+Just a quick note,
+
+later on we'll see another option
+
+for how we could achieve this,
+
+where we want the to-do itself, the string and the index,
+
+there's a method built into arrays called For Each.
+
+So if you know about that, that is one option,
+
+but I'm not gonna show it now,
+
+but we'll get to it and you'll see what I'm talking about
+
+in a couple of sections.
+
+Okay?
+
+So let's see what happens now,
+
+does it actually work how it's supposed to?
+
+Let's do list.
+
+Looks good to me.
+
+And then quit.
+
+So now let's implement new,
+
+so I can make a new to-do.
+
+We'll just add in another conditional, a check.
+
+We'll do an else if
+
+input is equal to new.
+
+Just like that.
+
+What we're going to-do is prompt the user again,
+
+and this time ask them for their new to-do.
+
+So I'll use const,
+
+because we're only gonna ask them one time, right?
+
+The reason I use let here for input
+
+is that we're reassigning input over and over and over.
+
+So I'll use const.
+
+So const new todo, probably, is what I would call this,
+
+or new text or something.
+
+Yeah, new todo, equals prompt.
+
+And we'll do something like, okay, what is the new to-do?
+
+And then we'll take that result, which will be a string
+
+and we'll just add that on to the to-dos array.
+
+Now how do we do that? We use push.
+
+That's one option.
+
+Todos.push, newToDo.
+
+And then I like to provide some basic feedback.
+
+So let's do a simple console.log.
+
+On the solution,
+
+if I type new, I enter new to-do, okay,
+
+it says blah blah blah, added to list.
+
+So let's do that. Let's print that out.
+
+String template literal, new to-do,
+
+added to the list.
+
+Just like that.
+
+Okay, let's see if it works.
+
+I'll refresh the page. Let's do a new.
+
+Okay, what is the new to-do?
+
+How about walk the dog?
+
+Walk the dog added to the list.
+
+Now let's actually type list and there it is.
+
+Okay, let's do one more, walk the cats.
+
+Show them all with list, walk the cats is there.
+
+Okay, so now all we have left is delete.
+
+So we'll just do another else if
+
+input equals delete.
+
+Now this is the the most annoying one to-do
+
+because first of all, we need to ask,
+
+what are you trying to delete?
+
+So we'll use prompts.
+
+We'll call this index, prompt,
+
+okay, what is the index,
+
+or enter an index.
+
+Enter an index to delete.
+
+Great, let's just make sure we see that.
+
+And then I'm gonna console.log the index.
+
+Okay, so I'll refresh the page, lemme quit, refresh.
+
+Let's list and then let's do a delete.
+
+Make sure we see, okay, we do.
+
+Enter an index to delete.
+
+If I enter one, okay, it looks good,
+
+it looks like that's working for us.
+
+We see one here.
+
+So now we need to take that index
+
+and somehow remove the element at that index.
+
+How do we do that?
+
+Well, we use this splice method.
+
+That's one option.
+
+So just to recap splice, let me get out of here,
+
+If I have an array, like what we have to-dos,
+
+if I do a splice, it works to, you know,
+
+remove a section of an array.
+
+So if I do something like splice, you know, from index of,
+
+well, let me add on to to-dos a bit.
+
+To-dos, maybe I'll just do numbers, const nums equals one,
+
+two, three, four, five.
+
+If I do nums.splice, then I specify a starting index,
+
+like index of two, how about, and then a number to delete.
+
+Let's say I wanna delete one. What happens?
+
+Well let's look at nums.
+
+I just deleted element three, which is index of two.
+
+It's kind of confusing, right?
+
+But zero, one, two, and I just deleted one item.
+
+So that's basically what we want to-do.
+
+But this, the initial index that we're starting
+
+to delete at, is not gonna be two,
+
+at least not every time, hardcoded,
+
+it's going to be whatever the user enters.
+
+So we're gonna splice, do it right here,
+
+todos.splice from the user's index
+
+and only for one element.
+
+Now we are trusting that the user enters
+
+a valid index, right, which is fine at this point.
+
+We haven't talked about,
+
+you know, handling errors,
+
+because potentially there could be an error,
+
+especially if the user enters something that's not a number.
+
+We'll just trust that a user can do it,
+
+and then let's console.log something different instead.
+
+This will actually give us the results
+
+that comes back right inside of an array.
+
+If you recall, you can see right here when I call splice,
+
+it gave me back this array
+
+with the element that was deleted.
+
+So if I wanted to, I could save that, deleted stuff,
+
+or just deleted equals todos.splice.
+
+Okay?
+
+And then I'll console.log something like,
+
+okay, deleted,
+
+and then we could actually add in the thing
+
+that was just deleted.
+
+Now that's an array. So I'll do index of zero.
+
+Now you don't have to do this, right?
+
+This is above and beyond,
+
+but lemme just demonstrate it first.
+
+So let me add something new, make,
+
+well, let's not do something dumb.
+
+How about cook dinner?
+
+List.
+
+Okay, index of two, let's try deleting it.
+
+Or let's actually do clean litter box, index of one.
+
+So I'm gonna enter one.
+
+It says, okay, deleted clean litter box.
+
+Now let's list.
+
+And it actually was removed.
+
+We can see here the array has now shrunk.
+
+Just to recap what's happening here, right,
+
+we're asking for an index.
+
+Now again, a user could enter something that is invalid.
+
+Let's see what happens there.
+
+Let's try and delete
+
+with a string index, and, oh, look at that,
+
+deleted collect chicken eggs.
+
+So here's what's going on.
+
+Just as a demo, I've got an array of strings,
+
+and if we, you know, splice from index of one to one, right,
+
+we remove B.
+
+But if I have a string in here, well first of all,
+
+if it's a string containing a number, it will, you know,
+
+try and convert it to a number.
+
+And so that still works.
+
+But if it's a string like this, it just defaults
+
+to zero, index of zero.
+
+So that could be problematic.
+
+If we want to, I guess I can show this,
+
+we can add an extra step in here where we can attempt
+
+to turn this string,
+
+it's always a string from prompt,
+
+turn that into a number with parse int,
+
+like this, parse int of index.
+
+Now honestly I'm embarrassed,
+
+I can't remember if we've covered it yet or not.
+
+If not, parse int again, it takes a string and it returns,
+
+if I can just get out of here, parse int,
+
+like that, a string, you know, like 23,
+
+it gives us the actual number 23.
+
+But if we do something like that, we'll get not a number.
+
+Okay?
+
+So basically what we want to do now is check
+
+if we got not a number,
+
+we're not gonna try and delete something.
+
+You know, that means you entered a string,
+
+or, well, they always entered a string,
+
+but you entered letters or something
+
+that does not contain a valid integer.
+
+So unfortunately checking
+
+to see if something's not a number
+
+is actually kind of complicated.
+
+It's not hard, but we just haven't talked about it.
+
+But there's a method called number-dot,
+
+what is it, is not a number.
+
+And then if we pass something in, you know,
+
+like a number like this, we actually get false.
+
+But if I pass in not a number, we get true.
+
+So again, it's kind of weird,
+
+but what we can do is check to see when you parse
+
+that int on that index.
+
+So let's call that, you know, const,
+
+let's go with this will be, how about string?
+
+What should we call this?
+
+Index string, STR, and then this will be const index
+
+equals parse int of that index string.
+
+So we'll get the string version from a user.
+
+You know what, actually, what I would probably rather do,
+
+I'm sorry for being a bit scatterbrained here,
+
+is just do it in one go:
+
+Ask them and then immediately parse int on their input.
+
+All right, so now we have index
+
+and we're just going to check if number.is not a number
+
+of index.
+
+So if it is not a number, I think I'll actually reverse it
+
+or negate it and just put this code inside.
+
+So if the index that you entered when we converted it
+
+to an actual number, if we did not get not a number,
+
+meaning it's valid, we will try and delete from your to-do.
+
+Otherwise, you know, I'll do something like, hmm,
+
+maybe unknown index and we'll just leave it at that.
+
+Okay, so a bit of a tangent, more complicated than I wanted
+
+to make it, but now hopefully if a user enters
+
+an invalid index, let's see actually if it works, of course.
+
+So let's add an a new to-do, blah-blah,
+
+here's another new one, boo-boo,
+
+and then list them and let's delete blah-blah, index of two.
+
+So delete, and then two.
+
+Okay, let's list them and it's gone.
+
+But now if I try and delete something like this,
+
+unknown index, great,
+
+and hopefully it didn't delete anything.
+
+Well I just typed delete again, I meant to type list.
+
+Let's do another invalid index.
+
+How about, you know, something else you could do is,
+
+is add a check in to make sure the index
+
+was a valid index in the array.
+
+Because what happens if I enter, you know, 88?
+
+Deleted, undefined, so we didn't actually delete anything.
+
+So that's something you could consider adding in.
+
+But for the sake of time, I'm just gonna stop here.
+
+Let's get outta this.
+
+Whoops.
+
+Q.
+
+There we are, we quit the app and we are done.
+
+All right, so this is definitely the longest thing
+
+we've really written so far.
+
+Still not that impressive, I know,
+
+but it's a lot of pieces, especially once we talked about,
+
+you know, parsing ints and you know, working with arrays
+
+and splice and string template literals and conditionals
+
+and a for loop and a while loop.
+
+There's a lot going on here.
+
+So whether you got this on your own
+
+or a small part of it on your own
+
+or you just follow it along with me, either way,
+
+it's definitely an accomplishment in this course.
+
+The one thing I would recommend is making sure
+
+that you can walk through this code
+
+and explain, you know,
+
+what's going on here, what does this mean,
+
+why is there an and, why two not equals,
+
+what's going on here?
+
+What's I, what's the square brackets, you know, to-dos I,
+
+what's splice doing?
+
+Anyway, congrats.
+
+We've made it through a decent chunk of JavaScript,
+
+but as you probably have noticed,
+
+we've got an even decenter chunk to go.
+
+All right, I'll shut up. -->
+
+
+
     <h1>Todo List</h1>
     <ul>
         <li>"new"-Add a Todo</li>
@@ -13,6 +908,6 @@
         <li>"delete"-Remove Specific Todo</li>
         <li>"quit"-Quit App</li>
     </ul> 
-    <script src="./TodoList.js"></script>
+    <script src="./TodoList.js" async defer></script>
 </body>
 </html>

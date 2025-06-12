@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks & Array Methods</title>
+</head>
+<body>
+    <!-- Instructor: The next of these callback array methods
+
+we'll see is called map.
+
+So map is similar to forEach in the sense
+
+that it accepts a callback function
+
+and it runs that function once per element in the array.
+
+But what's very different is that it then generates
+
+a new array using the result,
+
+using the return value of that callback.
+
+So it's a way to map an array from one state to another.
+
+We could double every number.
+
+Or in this example, I have a text array
+
+with some lowercase strings,
+
+and then I'm calling texts.map.
+
+We pass in our callback function
+
+and I'm using t as a parameter here, return t.toUpperCase.
+
+So whatever that return value is,
+
+coming back from this callback function,
+
+map is going to take that
+
+and add it into a new array that it creates and it returns,
+
+and I can save it under the variable caps.
+
+So I'll show you some examples here. Here is numbers.
+
+Once again, our lovely array of just consecutive integers.
+
+And let's say I wanna double every single one.
+
+I could do this, numbers.map,
+
+and then I pass in my callback.
+
+For each num,
+
+I said for each, but we're not actually
+
+using the function forEach.
+
+I'm just saying do this for each num,
+
+and then create a new array with it.
+
+Thank you map, that's what you're supposed to do.
+
+So for num, that's our parameter here.
+
+N-U-M, I'm going to return
+
+num times two.
+
+So it's gonna call this function on every element.
+
+So it's gonna call it on one. So num will be one.
+
+We return two.
+
+And it sticks that in a new array,
+
+and then we pass in two, or it does, map does.
+
+So two is passed to this function.
+
+Well that returns four,
+
+and that's added to a new array
+
+that it constructs based upon our initial array, numbers.
+
+So it doesn't mutate numbers,
+
+it doesn't change it in any way,
+
+but it makes a new array for us.
+
+And then I can save that to a variable, const doubles.
+
+Let's take a look. Here is doubles.
+
+2, 4, 6, 8, 10, and so on.
+
+So we've taken every element
+
+and it's been run through this function
+
+that we passed into map,
+
+and that generates a new array with the results.
+
+So let's try working with the movies array this time
+
+where we've got our objects
+
+and maybe I just wanna form an array
+
+just of the movie titles.
+
+That's it.
+
+So to do that, I could use map, movies.map,
+
+and then my function, movie.
+
+And all I'll return is not the movie object,
+
+but movie.title.
+
+So I'm mapping over that, each element in this array,
+
+and then I'm just saying return the title,
+
+and put that in a new array.
+
+Return the title, return the title.
+
+So if I save that to a variable,
+
+const titles = movies.map.
+
+Let's take a look. There we are.
+
+We have an array of titles.
+
+Or I could do something entirely different.
+
+I could do movie.title.toUpperCase, just like that.
+
+Take a look at titles.
+
+Now we've got our uppercased movie titles.
+
+So we're just taking data in an array, a starting array,
+
+and usually transforming it
+
+as we map it into a new copied array.
+
+So we could just use map to make a direct copy.
+
+I could literally just return movie, in this case,
+
+but there's easier ways of doing that.
+
+So it's typically used when we need a portion of our data
+
+or we want to, I mean, doubling something's not very common.
+
+But when we need to transform every element
+
+in some starting array and create a new array
+
+based upon that starting array, map is often a good choice.
+
+So it accepts callback,
+
+it runs that callback on every element,
+
+and it takes that return value we get back
+
+and it shoves it in a new array that it returns to us
+
+that we can then save in a variable or do something with.
+
+So that's an intro to map.
+
+Instructor: So now that we've learned a bit
+
+about arrow functions,
+
+let's revisit things like map and forEach,
+
+and see how we could use arrow functions there
+
+to shorten things up even more.
+
+So here's our movies array, once again,
+
+with our four movie objects.
+
+And let's say I want to map over them.
+
+We'll use a typical function expression first.
+
+And for each movie here, what should we return
+
+in the new array we're creating with map?
+
+Let's do basically the same thing that we did earlier.
+
+Maybe instead of doing out of 100, let's divide by 10,
+
+so we'll get 9.5 or 9.0, that sort of thing.
+
+So, we'll return our template literal string here,
+
+back ticks, and then the movie title.
+
+So right there, movie.title.
+
+And then the score, which is movie.score.
+
+Let's try dividing by 10.
+
+So let's see what that looks like.
+
+Save that to variable const,
+
+what should we call this?
+
+Just, I don't know, newMovies. (chuckles)
+
+And that's what it looks like right there,
+
+"Amadeus - 9.9", "Stand By Me - 8.5".
+
+Okay.
+
+Alrighty. So if I wanted to rewrite this
+
+using an arrow function, it's pretty simple.
+
+I can really shrink it down, so I can do const.
+
+I'll just comment it out.
+
+newMovies is kind of a terrible name.
+
+movies.map, and then my arrow function.
+
+And what is my parameter here?
+
+Well, I'll just call it movie, still, movie like that.
+
+And then, in here,
+
+I can just copy this string if I wanted to.
+
+So that's a little bit of an improvement.
+
+Also, remember, I can get rid of those parentheses.
+
+And also, remember, I can get rid of the curly braces,
+
+replace them with parens,
+
+and get rid of the return keyword.
+
+Like that.
+
+Now we have our implicit return,
+
+we can just verify it still works.
+
+Take a look at newMovies.
+
+Okay, it's still good.
+
+And I could even do this on one line if I wanted to.
+
+Just like that. Now, I personally think
+
+it's too long to do that
+
+when we're doing this long string template literal,
+
+so I wouldn't, but it is totally valid and it still works.
+
+So I would probably keep it at this right there.
+
+Still, definitely shorter than what we had before.
+
+You don't have to write the function keyword,
+
+you don't need return,
+
+it's just a little bit cleaner.
+
+So this is where arrow functions pop up a lot,
+
+is when we're passing a function
+
+into another function or a method.
+
+So we're passing in this function here to map,
+
+or to forEach, or to some of the other methods
+
+we're about to see.
+
+It just really cleans things up.
+
+All right, that is pretty much it.
+
+That's a wrap on error functions.
+
+
+
+ -->
+    <script src="mapMethod.js"></script>
+</body>
+</html>

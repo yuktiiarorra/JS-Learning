@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring Params</title>
+</head>
+<body>
+    <!-- Instructor: The last use case for destructuring
+
+we'll talk about is actually in our function parameter list.
+
+So when we're defining a function,
+
+we're writing our parameters between those parentheses,
+
+we can de-structure the values that are being passed in.
+
+And this is most frequently used with objects.
+
+So here's an example.
+
+We'll come back to our movies thing in just a moment,
+
+but let's write a simple function.
+
+This function is expecting you to pass in
+
+some sort of user objects.
+
+Let's just take our user objects we've been working with.
+
+So function, why don't we just go with fullName
+
+and it's expecting a user
+
+and then we're going to print out
+
+your first name and your last name
+
+or maybe just return first name and last name.
+
+So I could do it this way.
+
+return and then string template literal,
+
+write user.firstName, is it first or first name?
+
+Okay, firstName and then a space.
+
+user.lastName, that will work if I call it
+
+fullName with user.
+
+Whoops, we get Harvey Milk.
+
+Okay, but I could use destructuring as we just saw.
+
+So I'm gonna duplicate that
+
+and destructure those two like this.
+
+const firstName, lastName equals user.
+
+And then we can just return firstName and lastName
+
+without having to write user.
+
+So not a big improvement, right?
+
+This is shorter, but if we had a lot
+
+we were doing with firstName and lastName,
+
+then this might be nicer.
+
+It still should work and it does.
+
+But if I never plan on using any of the other stuff in user,
+
+I don't need, I don't know, born, died, bio, city,
+
+state, email, password.
+
+I just want the first name and last name
+
+I can destructure on the way into the function,
+
+if that makes sense.
+
+I can do this, function fullName, I'm expecting an object.
+
+And from that object I want to
+
+destructure firstName and lastName.
+
+And then I'll just return this exact same line here.
+
+So much shorter.
+
+I don't have to bother with user at all.
+
+I don't need anything else from the object,
+
+just first name and last name.
+
+So we'll try that.
+
+And we get Harvey Milk still, it's working, okay?
+
+So that's just a simple example,
+
+but you will see that frequently.
+
+You can also give a default value,
+
+just like you would whenever we're destructuring
+
+any old object like we saw previously, just like this.
+
+That's our default last name,
+
+if we can't find one on our object that's passed in.
+
+So this is frequently used as well with array methods.
+
+Just as an example, I've got these movies
+
+and let's say that I want to filter the movies
+
+based upon score.
+
+So just like we did earlier,
+
+I'll do something like movies.filter,
+
+and then we'll do, for each movie,
+
+let's just, well, let's call it movie.
+
+I want to return where the movie, what is it?
+
+movie.score is greater than
+
+how about greater than or equal to 90.
+
+I want the higher-rated movies.
+
+So let's take a look at those movies.
+
+We get those three, "Amadeus", "Parasite" and "Alien".
+
+But another option is just to destructure score immediately
+
+on the way in, so I don't have to do movie.score,
+
+I can do this, curly braces score and that's it.
+
+If I'm only using score, that's definitely shorter.
+
+Now this is still a one-liner.
+
+There are longer functions
+
+and maybe in a longer function
+
+we want title, score, and year.
+
+I wanna destructure all three.
+
+Let's do an example of map.
+
+Oh, I guess I should verify and show that this does work.
+
+There we go, same three movies.
+
+So let's use map and I wanna map each movie.
+
+So movies.map, and then I'll do my movie.
+
+And then in here we'll return,
+
+how about some sort of string template, literal in here
+
+where we do movie.title is rated,
+
+and then movie.score,
+
+and then I'll put the year afterwards,
+
+inside of parentheses movie.year.
+
+So let's see what that looks like.
+
+There we go.
+
+We get "Amadeus" 1984 is rated 99.
+
+"Sharknato" 2013 is rated 35.
+
+So I could shorten this up by using destructuring
+
+and this is still a pretty short function,
+
+but I could destructure those three things on the way in.
+
+So I do need parentheses when I'm destructuring
+
+in a function call,
+
+and then I'll want title, score and year,
+
+and then I can remove movie
+
+and just refer to those three;
+
+title, year and score.
+
+Verify still works and it does.
+
+So a little bit of an improvement.
+
+We don't have to reference movie all over the place.
+
+We don't have to make separate variables,
+
+we don't have to extract things ourself.
+
+Instead, it's all done for us on the way in
+
+thanks to these curly braces, all right?
+
+So that's destructuring parameters
+
+when they're passed into a function.
+
+
+ -->
+    <script src="DestructuringParams.js"></script>
+</body>
+</html>

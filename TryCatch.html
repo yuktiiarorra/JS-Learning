@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Catch</title>
+</head>
+<body>
+    <!-- Instructor: Next up,
+
+just a one-off video on a topic
+
+that doesn't really have anything to do with functions,
+
+at least not directly.
+
+We're gonna talk about a statement in JavaScript
+
+called Try/Catch, or I guess they're two statements,
+
+but they go together,
+
+and they have to do with errors or exceptions in JavaScript.
+
+Specifically, they have to do with catching errors
+
+and preventing them from breaking
+
+or stopping the execution of our code.
+
+Sometimes you might anticipate, okay, this could go wrong,
+
+there might be an error here.
+
+And if there is, I want to grab it
+
+and stop it from propagating outwards
+
+and crashing everything.
+
+So let me just show you a very quick example.
+
+We'll generate an error deliberately to start.
+
+So I'm just in a new app.js.
+
+An easy way to generate an error,
+
+you know, something that doesn't exist.
+
+Like, hello.toUpperCase, there is no hello.
+
+And if I try executing this code over here,
+
+uncaught reference error, hello is not defined.
+
+Notice the term, uncaught.
+
+Try/Catch, you know, past tense of catch, caught.
+
+So if we want to,
+
+or if we anticipate that this might result in an error,
+
+we wrap it in a try block or a try statement.
+
+It looks like this.
+
+Try and then curly braces.
+
+And now if I move this code in there,
+
+it's gonna complain to me.
+
+Unfortunately, just to try on its own is not enough.
+
+I believe, actually, do I get an error?
+
+Yes, it says missing catch or finally after try.
+
+So we can't just have a try, we need to also add in a catch,
+
+which is the block of code that will run
+
+if something went wrong, if there was an exception
+
+or an error generated inside of this try.
+
+So it just looks like this.
+
+I'll do a console.log error.
+
+Okay.
+
+So let's try refreshing the page
+
+and you can see, my code has not stopped or it didn't break.
+
+Just to prove that, I'll put some code down here.
+
+Console.log after.
+
+And that code still runs.
+
+Whereas if I didn't have the Try/Catch
+
+and I just ran this code that generates an error,
+
+everything stops.
+
+This line never is executed.
+
+So if I use try
+
+and then catch any error that arises,
+
+I can ensure my code continues to execute
+
+and also I can handle my error.
+
+There might be different things you want to do.
+
+This is very silly to deliberately cause an error,
+
+but there are times you might try something
+
+that could result in an error.
+
+In fact, when we get to AJAX
+
+and making requests and async functions,
+
+this is going to be really, really important
+
+using try and catch.
+
+We'll introduce a lot of unpredictability into our code.
+
+We'll be connecting to APIs
+
+and trying to connect to the internet
+
+and there's a lot of reasons things could go wrong.
+
+The internet could be down
+
+The API you're requesting might not exist anymore.
+
+Permission's denied.
+
+All these things could go wrong.
+
+So we try and then if something goes wrong we catch.
+
+So I'll show you a quick example
+
+just of a function where this might be useful.
+
+So imagine we have a very simple,
+
+another very silly function called
+
+how about just yell,
+
+and it accepts or it expects a message to be passed in
+
+and we'll just do a console.log
+
+or maybe just return or something, message.toUpperCase,
+
+and then we'll repeat it three times maybe.
+
+So let's start by just console dot logging that.
+
+And if I call yell,
+
+yell of hello.
+
+Okay, there we go.
+
+Eh, not great, but that works.
+
+But of course there's a problem if I don't pass in a string.
+
+If I pass in a number,
+
+like that,
+
+we get an uncaught type error.
+
+Message.toUpperCase is not a function because it's a number.
+
+There is no to uppercase method.
+
+So I can use Try/Catch here.
+
+At least that's one strategy that I can use
+
+to handle the situation where a message is not a string.
+
+I mean one option is just a straight up check,
+
+is message a string?
+
+But this is just a different approach.
+
+So what I can do
+
+is just wrap that whole thing in a Try/Catch.
+
+So try that.
+
+And then if something goes wrong,
+
+I actually have access in catch
+
+to the particular exception or error.
+
+So I could just console.log that out if I wanted to,
+
+console.log(e), or I can do something else,
+
+like console.log, you know, please pass a string.
+
+And now if I try refreshing the page
+
+and I call yell again with a number,
+
+we caught the error,
+
+we print it out
+
+and then we also say please pass a string next time.
+
+So you know, I could do something else.
+
+I'll just probably do this here.
+
+Please pass a string next time.
+
+And that's pretty much it.
+
+We are successfully catching the error, the potential error,
+
+at least in here, that we're trying this code,
+
+we're assuming it's going to work.
+
+And then if it doesn't, that's okay.
+
+We'll catch any sort of error and then just print this out.
+
+So I should verify.
+
+If I do call it with something valid,
+
+like hello, it still works.
+
+It's just when I do something invalid, like I pass true,
+
+or I pass an array
+
+or something that does not have to uppercase,
+
+really anything that's not a string,
+
+please pass a string next time.
+
+Now I'm not saying that's the best approach
+
+for setting up this function,
+
+returning a string that says please pass a string
+
+or console dot logging a string.
+
+That doesn't really make sense.
+
+It's just a simple illustration here.
+
+But you would probably return false or null or something.
+
+So that's a basic idea of Try/Catch.
+
+I think you'll find it a lot more useful
+
+when we get to async functions
+
+and also when we get to Express
+
+and Node we will be using try and catch all the time.
+
+Okay, if something goes wrong in between the braces of try,
+
+whatever it is, we will be able to catch it
+
+and then handle it however we'd like.
+
+
+ -->
+    <script src="TryCatch.js"></script>
+</body>
+</html>

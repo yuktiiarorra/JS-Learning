@@ -1,0 +1,4435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>functions</title>
+</head>
+<body>
+    <!-- Instructor: All right, next up, JavaScript functions.
+
+The last of the big topics in JavaScript we have remaining,
+
+at least the big fundamental topics.
+
+So there are lots of other things we need to cover.
+
+Smaller pieces of JavaScript, more advanced things,
+
+but functions are right up there with stuff like arrays
+
+and conditionals and variables.
+
+We will use functions all the time from here on out.
+
+So what are they?
+
+Why don't we start there.
+
+Functions are just reusable chunks of code
+
+that we've wrapped up and given a name
+
+so that I can use them at any point.
+
+So these are super useful
+
+for reducing the duplication in our code
+
+and just making our code easier to look at,
+
+not just to look at, but easier to understand.
+
+And we use them a lot.
+
+I'm talking a lot, lot, all the time.
+
+Every single thing, like I've mentioned from here on out,
+
+you're bound to almost guaranteed
+
+to use functions in your code.
+
+So here's a situation
+
+where we would benefit from a function.
+
+We've seen this a lot, generating a random integer.
+
+Unfortunately, in JavaScript we get Math.random,
+
+that gives us a decimal from zero to one.
+
+So then we usually multiply it
+
+and then we often floor it
+
+to get an integer and we shift it.
+
+In this case, I'm trying to get a dice, a die roll,
+
+dice, die, a die roll from one to six.
+
+So let's say I save that to variable, die1.
+
+That's not bad.
+
+I need to run this code, I don't have an option.
+
+That's it.
+
+This gives me a random number from one to six, hopefully.
+
+Let's take a look, die1 is one, I'm refreshing.
+
+Now it's five, now it's six.
+
+But let's say I'm making a game
+
+where I need six random dice.
+
+So I don't need it just once,
+
+but I actually need six more of these.
+
+Well, I would have to write this line every single time.
+
+And this isn't that bad.
+
+This is a pretty short line of code
+
+compared to some of the things that we'll encounter,
+
+but it's a simple example.
+
+So then I would need die2, die3, die4, die5, and die6.
+
+And this will work or it should work.
+
+Let's take a look.
+
+Let's look at die1.
+
+We got four, die2 is six, and so on.
+
+All right, so that's working.
+
+But it would be much nicer in my opinion,
+
+if we could do something just like,
+
+instead of having to do all of that,
+
+just rollDie and then duplicate that a bunch of times.
+
+Anytime I needed a new number from one to six,
+
+I could just call rollDie,
+
+assume that these were two and three and so on.
+
+So we'll be able to do that shortly,
+
+once we learn how to write functions
+
+and we talk about return values.
+
+But there's actually another level
+
+that we could take this to.
+
+If rollDie gives us a random number from one to six,
+
+maybe there's another part in our game where we use,
+
+let's say this is like a Dungeons & Dragons sort of clone,
+
+or I don't know if you could clone that.
+
+But let's say it's a role playing game
+
+where you actually have a 12-sided die at some point
+
+and you have some six-sided dice.
+
+And I don't really, it's been a long time
+
+since I played D&D, but whatever,
+
+there's different sizes of the dice that you use.
+
+So we could even make this a fancier rollDie
+
+that actually is going to accept a number of sides.
+
+So here we could roll a 20-sided die
+
+and this is rolling a six-sided die.
+
+And this could be rolling a, I don't know,
+
+another 20 and here's a 12.
+
+So we could make a function that does exactly that.
+
+It actually accepts an input.
+
+It allows us to modify its behavior.
+
+So that's our real end goal is to make functions
+
+that are just nice, reusable chunks of code,
+
+but also write these functions in a way that they're sort
+
+of modular or reusable where we can pass in some sort
+
+of input that will impact the output that we get out.
+
+And again, rollDie is a simple function relatively.
+
+But there are so many things
+
+that you'll see later on in the course
+
+where writing functions might save us
+
+not just one line at a time, but maybe 20 plus lines
+
+or 40 or 50 or 1,000 lines for some of these nasty functions
+
+that actually call other functions,
+
+which call other functions.
+
+I'm getting ahead of myself, but we'll get there soon,
+
+but let's start with the basics, of course.
+
+In the next video,
+
+we'll tackle writing our first silly function.
+
+
+Instructor: Okay, so let's learn
+
+how we actually write these functions and use them.
+
+It's a two step process.
+
+We need to first define the function,
+
+sort of like registering it, telling JavaScript about it,
+
+and then later after the fact, at any point,
+
+we can execute that function or we can run it.
+
+We might run it once, we might run it a thousand times.
+
+So we have to register it as a thing,
+
+hello JavaScript, here's my function called roll die,
+
+but that won't actually run it.
+
+The code in that function won't be executed
+
+until I run it later on.
+
+So let's start with step one, defining a function.
+
+There are actually multiple ways of doing this,
+
+but here is one of the most common,
+
+the easiest to start with, function,
+
+the actual keyword function, and then a space,
+
+and then the name of our function
+
+we're registering or defining,
+
+and then parentheses and then curly braces,
+
+and then we put our code inside those curly braces.
+
+Whatever code is in those curly braces
+
+will not run right away.
+
+It will only run when we execute our function,
+
+which we do later on.
+
+So let's define our first very simple function.
+
+Here's a demo of a silly one, it's called grumpus,
+
+it's just console.logs three times.
+
+"ugh, you again", "for the last time", "LEAVE ME ALONE"
+
+Maybe it's, you know, ugh, it's you again,
+
+for the last time, leave me alone.
+
+Anyway, it's a simple function, yes, not very useful
+
+just print these three lines again,
+
+but let's try defining our own simple function.
+
+So we could define about just a function
+
+called sing, sure, sing.
+
+Remember function, that keyword.
+
+Notice it's purple here, right, just like let something.
+
+The keyword let is purple, keyword function,
+
+and then a space, and then our function name.
+
+Now, if this is multiple words like sing song,
+
+it needs to be, well, I should, that's a complete lie,
+
+it does not need to be camel cased,
+
+but conventionally, it's camel cased,
+
+just like with a variable name.
+
+The first letter is lowercase,
+
+and then the first letter
+
+of every subsequent word is uppercase.
+
+So singSong or singSongLoudly or something like that.
+
+You should always try and come up with descriptive names
+
+for your functions, of course, and then our parentheses,
+
+and then opening and closing curly braces.
+
+And then inside of these curly braces, we put our code,
+
+whatever code is in here, whether it's one line
+
+or a thousand lines, that's the code that will be executed
+
+when our function is actually run.
+
+So let's do something simple like console.log DO, RE, MI.
+
+How do you spell RE in DO, RE, MI?
+
+I think it's MI like that, DO, RE.
+
+Yeah, I looked it up, it's just RE.
+
+All right, so DO, RE MI, let's just start there.
+
+Three console.logs, nothing crazy.
+
+If I head over here and I refresh,
+
+we won't see anything printed out, right?
+
+Just by putting the code inside
+
+of those function curly braces,
+
+JavaScript ignores it for the moment,
+
+it doesn't actually execute it.
+
+If I had those three lines down here,
+
+of course they would run.
+
+So important to understand that,
+
+when we register our function,
+
+when we define it, it does not run.
+
+So if I hop over here again,
+
+we will have this thing called singSong.
+
+If I type that identifier, JavaScript tells me,
+
+yeah, I know about that much in the same way it does
+
+when I just type alert without the parentheses.
+
+It tells me, yep, that's the thing.
+
+It says native code, right, it's built into the browser.
+
+It comes with JavaScript, unlike this,
+
+it's one that I actually wrote, but it's the same idea.
+
+It has that little f to indicate this is a function,
+
+I know that function versus if I just type something
+
+that it doesn't know about, I get an error.
+
+So we have successfully told JavaScript about our function,
+
+now we need to execute it or run it, step two.
+
+So we've seen this before.
+
+We just write the name of the function,
+
+it has to match exactly of course,
+
+and then parentheses opening
+
+and closing immediately afterwards.
+
+This will execute that function.
+
+So singSong like that, parentheses,
+
+and that will execute it.
+
+There we go, DO, RE, MI, our three console.logs.
+
+Every time I call singSong with parentheses,
+
+we get DO, RE, MI.
+
+I can do it in here, let's sing, you know,
+
+I don't know, 10 plus times, refresh the page, there we go.
+
+It runs 10 plus times, we get 30-ish console.logs
+
+of DO, RE, and MI.
+
+So it's the same exact principle we've seen before.
+
+If we wanna to call anything console.log, right,
+
+I have to add on those parentheses at the end.
+
+Console.log without them, we just get,
+
+yep, that's a function, I know that,
+
+I'm JavaScript, I know it.
+
+But if we add those parentheses,
+
+then it's actually going to execute it.
+
+We just didn't pass in anything,
+
+but if I did, it prints that out.
+
+Same thing with alerts, that doesn't mean much,
+
+it's just JavaScript echoing back to us, yeah, I know that.
+
+But I add something in here inside parentheses,
+
+it actually alerts me.
+
+So this process, that two step process is critical.
+
+We define the function and then we execute it afterwards.
+
+Now, in general, you should only attempt
+
+to call your function after it's been defined.
+
+However, you'll see that if I tried to call it beforehand,
+
+for some weird reason, I don't have any issues with that.
+
+You would think there'd be an error, right?
+
+It's like if I defined a variable after I tried to use it.
+
+This is a wonky sort of, I won't even call it a feature,
+
+a wonky part of JavaScript, we will learn more about it.
+
+But if you really wanna get ahead of yourselves,
+
+you can look up something called hoisting.
+
+But just because this does work
+
+does not mean that you should do this.
+
+You should always, at least for now,
+
+define your functions before you use them.
+
+And there are other syntaxes we'll see
+
+for defining a function,
+
+where what I just showed you would break everything.
+
+But honestly I kind of regret even mentioning it
+
+'cause we're so new to functions.
+
+I just want you to get in the habit
+
+of defining your functions first
+
+before you actually use them.
+
+Anyway, that's our first attempt
+
+at writing functions or a function.
+
+We've got a lot more to cover, so that's all coming up next.
+
+
+Instructor: All right, so next up,
+
+we get to talk about arguments.
+
+So arguments in JavaScript is basically a fancy way
+
+of saying inputs to a function,
+
+and currently, our very simple functions
+
+do not accept any inputs.
+
+They don't do anything with inputs.
+
+They behave the exact same way every time.
+
+singSong, it just sings a song.
+
+It doesn't even sing a song,
+
+it just does "Do-Re-Mi," right? (chuckles)
+
+It's kind of a bleak function,
+
+A very simplistic and tuneless song, "Do-Re-Mi,"
+
+so there's no input that we would pass in.
+
+It's just the exact same thing every time.
+
+Here's our grumpus function from earlier, right?
+
+It just prints out, "Ugh, you again for the last time.
+
+Leave me alone."
+
+I like to diagram and imagine functions as a little machine
+
+where we call it, we pass nothing in, in this case.
+
+There's no inputs to our grumpus machine,
+
+but we get out these angry console.logs.
+
+Or here's another example,
+
+we could write a function called greet, be nice and simple,
+
+and this greet function, function greet, accepts nothing.
+
+It doesn't really do anything, except it console.logs "HI!"
+
+Okay, I'm gonna just comment out all of our singSongs here,
+
+and if we were to execute greet, I refresh the page,
+
+we get "HI!"
+
+Every time I call greet, it's exactly the same thing,
+
+but what I'd like to do, a lot of the time at least,
+
+is write functions that accept inputs.
+
+So I could do something like greet('Tim'), greet('Anya'),
+
+and we get a different output from our machine,
+
+"Hi Tim," "Hi Anya."
+
+So nothing revolutionary,
+
+but that input does impact what we get out.
+
+Or if you go back to that example I talked about,
+
+the rollDie function,
+
+if I could specify I want to roll a die or a dice,
+
+no, a single die.
+
+Geez, it keeps tripping me up.
+
+A single die that's six-sided, or 20-sided, or 12-sided,
+
+that would be an input,
+
+and that would have a pretty significant impact
+
+on what we get out.
+
+So again, this term, arguments.
+
+Arguments refers to the actual value right here.
+
+This is an argument, Tim.
+
+Anya is an argument,
+
+or here's another example of a function.
+
+This is one we could write, called average,
+
+and we can pass in multiple arguments,
+
+and it should give us, as its output,
+
+the average of those values.
+
+So 20 and 25, we get 22.5.
+
+Three, two, five, and six, the average of that is four,
+
+assuming that I didn't screw up my math here
+
+when I was making these slides.
+
+So the concept here again, arguments,
+
+is nothing actually new to us.
+
+We've been working with arguments,
+
+we've passed arguments in to built-in methods,
+
+things like indexOf, right?
+
+That is an argument right here.
+
+What we're looking for, in this case, is the letter H,
+
+what is the index of H in "hello"?
+
+What is the index of O in "hello"?
+
+IndexOf.
+
+Other, I mean, there's so many things we've done,
+
+like you know, sum array.
+
+Let's do [1,2,3].push(4).
+
+Oh my goodness, can't even get the syntax correct, right?
+
+We just pushed on four, or (4, 5, 6).
+
+Technically, we can't actually see it,
+
+'cause I didn't save it to a variable,
+
+but we've seen this before where we have things like that,
+
+nums.push(5,6,7),
+
+all of those values have now been pushed on
+
+to an array, nums.
+
+That is an example of passing inputs to a function.
+
+In this case, it's not one we wrote, it's just push.
+
+console.log, right?
+
+We use that all the time.
+
+When I console.log something,
+
+that is an argument I'm passing in to the method
+
+called console.log,
+
+and we'll learn more about the distinction
+
+between methods and functions.
+
+All you need to know is that every method is a function.
+
+So console.log, or you know, string, or array .push,
+
+or string.indexOf, those are methods,
+
+but they're also functions.
+
+Don't get tripped up on it for now.
+
+Focus on this concept of arguments.
+
+They are inputs we pass in.
+
+So how do we do this?
+
+How do we define our own arguments?
+
+Well, inside of our function definition,
+
+inside of the parentheses, we add in some variable name.
+
+It's actually something we call a parameter,
+
+and we can give it any name we want,
+
+but it should be something, first of all,
+
+that is allowed in JavaScript,
+
+so don't do, like, you know, function, or if, or let,
+
+but it should also mean something.
+
+So generally, I would avoid something like X, or Y, or Z.
+
+Sometimes there are situations where that makes sense,
+
+like if you're just adding two numbers, X and Y,
+
+I guess it's okay,
+
+but whatever we put in here,
+
+it is just going to hold the value of an argument
+
+that is passed to our function.
+
+So in this case, greet accepts a person, or a name,
+
+or whatever we want to call this right here.
+
+That has to be passed in when you execute greet.
+
+So if we call greet('Arya'), person will be Arya.
+
+If we call greet('Ned'), person will be Ned.
+
+So let's try that.
+
+Let's define greet, so it accepts a firstName.
+
+So this still has no meaning to anything
+
+outside of this function.
+
+FirstName does not exist down here,
+
+it only exists in this function.
+
+I could start by just doing console.log,
+
+why don't I do 'firstName is:
+
+and then we can just ${}.
+
+Instead of our string template literal,
+
+we'll add firstName, okay?
+
+Okay, and then I'll call greet,
+
+so I'll refresh the page, greet,
+
+and I'll pass in, how about Elvis?
+
+Just like that, and there we go, firstName is: Elvis.
+
+So whatever name we put here,
+
+I could call this something else,
+
+I could call this, I don't know, idiotperson.
+
+It's very rude.
+
+As long as I use idiotperson.
+
+Really, it should be camelCase,
+
+if we're being consistent with JavaScript conventions.
+
+Whatever is passed in here will be stored under idiotPerson,
+
+and accessible in the function.
+
+So we'll try that one more time.
+
+This time, if I greet('Elvis'), still the exact same thing.
+
+Although I wrote firstName,
+
+it technically is not firstName anymore, it's idiotPerson,
+
+but let's go back, that is just so rude of me.
+
+Now, it's important to understand that this has no
+
+sort of smartness or logic about it.
+
+It's just gonna hold whatever we pass in first.
+
+So I could pass in something like that, a big number,
+
+and it's still gonna tell us that firstName
+
+is that massive number,
+
+so it's purely based upon the order things are passed in.
+
+We'll see how we can have multiple arguments
+
+in just a moment,
+
+but there's no intelligence to it.
+
+So the name matters for us,
+
+the name does not matter to JavaScript in any way.
+
+So let's, instead of just doing firstName,
+
+is firstName, let's get rid of that,
+
+and do a console.log where we just greet somebody
+
+by their first name.
+
+So 'Hey there, ${firstName},
+
+and then maybe an exclamation point at the end.
+
+So now, when I call greet('Elvis'),
+
+we get, "Hey there, Elvis!"
+
+If I call greet on our massive number,
+
+"Hey there, massive number!"
+
+What happens if I don't pass anything in?
+
+Do we get an error if I just do greet?
+
+What do you think?
+
+Nope, we get undefined.
+
+So if an expected argument is not passed in,
+
+if it's not provided, it's gonna have a value of undefined.
+
+Now, we'll learn how we can change that,
+
+how we could give a default or a backup value
+
+in a little bit,
+
+but that's just another situation where undefined comes up.
+
+Now, a little bit of terminology just to review this.
+
+When we define our function, this right here,
+
+this firstName is what we call a parameter.
+
+It is the value in the function definition that we use.
+
+So firstName here, firstName there, that is a parameter.
+
+When we actually call greet,
+
+and we pass a value in, like this right here,
+
+Elvis is the argument, or it's an argument,
+
+so it's not a huge deal,
+
+but it's just something to to pay attention to.
+
+So argument is what we pass inside the parentheses
+
+when we execute,
+
+and the parameter, or a parameter,
+
+is just this placeholdery variable that we define
+
+for use inside of our function definition.
+
+So next step, we'll get a lot more practice with arguments.
+Instructor: Next up, multiple arguments.
+
+So we can define functions
+
+that expect more than one argument to be passed in.
+
+So not just person,
+
+but maybe it's firstName and lastName, for example.
+
+And to make that work,
+
+we just need to tell our function, when we define it,
+
+that there's more than one parameter
+
+that we wanna work with.
+
+So let's do (firstName, lastName).
+
+And that's kinda it.
+
+We define our two parameters here.
+
+We separate them by a comma.
+
+But what's most important to understand is that
+
+everything is decided by order.
+
+So if I pass in two arguments to greet(), like this.
+
+And I do something like, I don't know,
+
+greet('George', 'Clooney'), right?
+
+Oh my God, Geroge?
+
+George,
+
+Clooney, is there an E-Y?
+
+I don't know.
+
+Let's say it's like that.
+
+That would be firstName, and that would be lastName.
+
+And that makes sense to us, you know,
+
+in just terms of language and English.
+
+George, is a first name and Clooney is usually a last name.
+
+But that is not what JavaScript cares about.
+
+It cares about the order.
+
+George, comes first so it's matched to firstName.
+
+Clooney, comes second, so it's matched to lastName.
+
+So if I switched them up and did ('Clooney', 'George')
+
+inside of this function,
+
+firstName would hold the value of 'Clooney',
+
+and lastName would be 'George'.
+
+So if I wanted to do something...
+
+I don't know, what should we do here?
+
+How about, "Hey there, firstName..."
+
+and then we'll use the initial of your last name.
+
+So "Hey there, George C." Or "Hey there, Colt S."
+
+Or something like that.
+
+So we'll do firstName.
+
+Then how would I get the first letter of the lastName?
+
+I would do lastName[0], just like that.
+
+And then let's put a period there maybe,
+
+so it looks like an initial.
+
+And then let's try calling this.
+
+So save it, refresh my page.
+
+We'll greet('Elvis','Presley').
+
+And we get, "Hey there, Elvis P."
+
+Cool, so that's working. Let's try another one.
+
+Just remember, you know, if I did it this way,
+
+greet('Presley', 'Elvis').
+
+This is going to be firstName, that's lastName,
+
+it's all about the order.
+
+So we get, "Hey there, Presley E." which,
+
+I do know somebody with the first name of Presley,
+
+so I guess it's not that ridiculous.
+
+But of course, usually we're not doing something
+
+as simple as printing out, you know, first name
+
+and then the first initial of your last name.
+
+Often, there's a huge difference
+
+between one argument and another.
+
+They might not even be the same type.
+
+We might actually write a function that you know,
+
+expects a string and then a boolean and a number.
+
+It's not that common, but it is something we can do
+
+so that order really does matter.
+
+So let's try an example that's
+
+a little bit more complicated.
+
+Let's try to function, we'll call it repeat.
+
+And I want repeat to expect
+
+or to accept a string like "hi".
+
+And then I wanted to accept a number like three.
+
+And then I wanted to print out hihihi, like that.
+
+So it should accept a string and then a number
+
+and repeat that string N number times, N times,
+
+and just print out a single line.
+
+So how do we do this?
+
+Well, we need to define our function. We'll call it repeat.
+
+And then we need two different parameters,
+
+and again, the order matters.
+
+So the first one, let's go with a name that makes sense,
+
+like str, I wouldn't do string, but probably str,
+
+or message or you know, whatever you want.
+
+Let's just go with str.
+
+And then after that, let's go with num or,
+
+I mean you could do repetitions, it's a bit long,
+
+so maybe just numTimes.
+
+And then in here, how do we repeat a string numTimes?
+
+Well, there is the repeat method built in to strings.
+
+We're gonna ignore that, so we're not gonna use that.
+
+We're going to do it the old fashioned way using a loop.
+
+So we're gonna loop numTimes, times.
+
+So whatever that is,
+
+we could just do a for(let i = 0; i < numbTimes; i ++)
+
+And let's do some things very simple like console.log("HI").
+
+And let's just see what happens if I call
+
+repeat whatever string, we're not using it, five times.
+
+We should see Hi five times and we do.
+
+Chrome collapses it for me into just a single line,
+
+but we see five.
+
+All right. So instead of printing out hi,
+
+what I want to do is take this string
+
+and concatenate it five times,
+
+so that whatever our str is,
+
+let's say it's just a letter
+
+or how about just a dollar sign?
+
+We end up with five or 10 or whatever dollar signs in a row.
+
+So I'm gonna add them all up into a string.
+
+So let's make a new string.
+
+We'll call this result and it'll start as an empty string.
+
+And then in here, each time through the loop,
+
+we will just do a result += str,
+
+which is the string that's been passed in.
+
+So whatever that is, let's say it's a dollar sign,
+
+we start with our result as empty.
+
+We loop a certain number of times, 10 times,
+
+every time through, we add onto the result string
+
+with R dollar sign.
+
+Whatever STR holds, and then at the very end
+
+let's console.log(results) and see what we end up with.
+
+Okay, so let's call repeat.
+
+Sure, we'll do a dollar sign and then five.
+
+And we get five dollar signs. All right?
+
+If I do something else, like
+
+I love my chickens and I repeat that,
+
+let's add a space after that, 10 times, there we go.
+
+I love my chickens, I love my chickens,
+
+I love my chickens and so on.
+
+Alright, so I just wanted to show you
+
+that we can define a function that expects
+
+different types of values to be passed in.
+
+So a string and then a number.
+
+And if I mix that order up, it's problematic, right?
+
+If I did it the other direction,
+
+repeat, 10, comma, I love my chickens, what happens?
+
+Well, it does not look very good.
+
+It looks like nothing was printed out. Why?
+
+Well, because our loop never actually ran.
+
+We had let i = 0; i <
+
+and then i was supposed to be less than a string.
+
+Well that's gonna prevent the loop from
+
+actually executing at all.
+
+This will never run. So we're just console.logging
+
+an empty string and that's exactly what we see here.
+
+So that order does matter.
+
+Okay, so that's multiple arguments.
+
+We can have more than two arguments if we wanted to,
+
+and often we will.
+
+All we need to do is separate them,
+
+separate the list of parameters by commas
+
+inside our function definition,
+
+the order matters, blah, blah, blah.
+
+As I've said a million times,
+
+it's really the exact same pattern.
+
+So whatever parameter name you define first,
+
+that will hold the first value.
+
+The second one will hold the second value,
+
+the third one will hold the third and so on.
+
+And I should mention, you know,
+
+we don't have to pass in our second arguments,
+
+just like we didn't have to pass in a first name here.
+
+Let's leave one of them off and see what happens.
+
+So if I call greet, let's just do it the right way first.
+
+Let's do 'Arsene', 'Wenger' like that.
+
+Hey there, Arsene W.
+
+Now if I instead left off his last name,
+
+and we just did this instead, we get an error.
+
+But why are we getting that error?
+
+Says cannot read property '0' of undefined.
+
+So the error is not because we didn't provide,
+
+or it's not from JavaScript yelling at us about
+
+missing an argument, it's instead the result of
+
+last name being undefined.
+
+So we made it through this hurdle,
+
+it's just that this is a problem.
+
+We can't do undefined[0].
+
+So I just wanna be clear there, right?
+
+We can ignore arguments or just not pass them in.
+
+JavaScript doesn't care until
+
+that argument is used in a way in the code
+
+that could cause an error.
+
+Alright, so I'm gonna stop here.
+
+We can have multiple arguments and
+
+that's kind of what we just saw.
+
+
+Instructor: Next up the return keyword.
+
+So we've talked about writing functions that accept inputs.
+
+I showed that little diagram of a little machine here
+
+where we have our inputs on the left.
+
+Now let's talk about the output of a function.
+
+So far we've been console.logging things, right?
+
+And you can think of that I guess as an output,
+
+but it is not an output that we can capture or reuse.
+
+Compare that to other built-in methods.
+
+Things like two uppercase or index of
+
+where they return a value
+
+and we can capture that value in a variable, for example.
+
+Or we could pass it on to something else.
+
+We can chain methods together, as we've seen before.
+
+That is a different idea.
+
+That's a completely different concept than just printing
+
+something out using console.log.
+
+If we tried to write a function like add,
+
+which we can do right now,
+
+our function add will accept two numbers.
+
+We'll just go with X and Y.
+
+You could go with num1 or NUM2
+
+but at the end of the day,
+
+they're just both basically number placeholders.
+
+And then we'll console log X plus Y.
+
+So we can do that.
+
+And if we call add
+
+nine and four, we get 13.
+
+But if I try and save that to a variable,
+
+let total equal add, what is total?
+
+It's undefined.
+
+So even though we printed out 13,
+
+that is not a capturable value.
+
+We're only console.logging it.
+
+Whereas if I called something like, you know, let,
+
+I mean I don't know math.random, for example.
+
+If I save that to a variable, let R equals math.random
+
+R actually captures that value the output
+
+of this random function.
+
+So to write these functions that actually have
+
+a concrete output, that's not just printed,
+
+but something that we can save, kind of put in a jar
+
+and bottle up, we need to use the return keyword.
+
+So return is a really, really important part
+
+of writing our functions.
+
+We have our inputs and then we have our output,
+
+which we can output using the return keyword just like this.
+
+So now if I return X plus Y,
+
+I could also do this on two lines, right?
+
+I could do let sum equals X plus Y.
+
+There's no reason really to do it this way.
+
+And then I can return sum,
+
+but I just want you to understand that they're separate,
+
+adding them together and then returning.
+
+Let's try calling add now, nine, four, we get 13.
+
+Let's save it to a variable.
+
+Const sum
+
+and let's look at sum, it now holds that value.
+
+It holds 13.
+
+So we're exporting our value out of the function.
+
+So that's the first bit about the return keyword.
+
+The second thing you should know is
+
+that the return keyword actually stops the execution
+
+of your function.
+
+So whenever it's encountered,
+
+if I have something afterwards, like console.log
+
+and of function, this line will never run,
+
+never, ever, ever run.
+
+And actually fiesco tells me, "Unreachable code detected."
+
+See how it grays it out?
+
+That's because there's a return right in front of it.
+
+And this return runs no matter what.
+
+So if I try, you know, running add,
+
+we get our value out, but this never prints out.
+
+But there are times where we might put a return
+
+in a conditional block and it might not run every time.
+
+So let me just show an example of that.
+
+Let's check to see if X and Y are numbers
+
+or if they're not numbers.
+
+So if, let's do type of X
+
+equals number, if you remember how type of works.
+
+So let's actually do, if it's not equal to number
+
+or if type of Y
+
+is not equal to number.
+
+If that's the case, what do we want to return?
+
+Let's just return maybe false or zero
+
+or not a number.
+
+I don't know, let's just return false.
+
+Just to be distinct so we know that that part's running.
+
+Otherwise we'll do this code.
+
+So we could put an else here, like that,
+
+and then return our sum.
+
+But we actually don't need that else
+
+because the only way we ever make it to this code,
+
+the only way this line
+
+and this line ever run is if this never ran.
+
+Because remember, return stops the execution
+
+of our function.
+
+So let's see if that works.
+
+Type of X, type of Y.
+
+If either of them is not a number, we return false,
+
+otherwise we'll return the sum.
+
+So let's just try add nine and four.
+
+That's good, nine and A, we get false
+
+because we returned false because this was true
+
+and we never made it to this line here
+
+or to any of this code.
+
+So most of the time we just do this in line, just like that.
+
+The other thing you need to know about return is
+
+that we can only return a single value.
+
+Now that value could be an array, it could be an object
+
+that has a whole bunch of stuff in it,
+
+but we can only return one thing and only one thing.
+
+So I'm not returning two things here, right?
+
+Only one of these ever runs.
+
+I'm just saying, when you actually have
+
+your return statement, only one value can be returned.
+
+So this will be evaluated to be a single number.
+
+It will be returned.
+
+We could make a pair if we wanted to input two things
+
+in an array, but it has to be a single array.
+
+So to summarize, return is how we get values out
+
+of a function so we can save them and capture them.
+
+So instead of just printing something out,
+
+I could do something like this, add nine comma A.
+
+Well, let's not do A, let's do add one comma five.
+
+And I'm actually gonna pass that in
+
+to another example of add.
+
+Let's do add 1, 5, 9.
+
+So what's happening here?
+
+Well, this code is going to run, that will evaluate to six,
+
+and then I'm adding six plus nine.
+
+And when I say it evaluates to six,
+
+I mean it returns the value six.
+
+And then we can add them together just like this
+
+returns to value 15.
+
+And I can save that into a variable total.
+
+And it's not just gone forever, like a console.log.
+
+It's actually saved.
+
+And this is something we've seen all, we've seen this a lot
+
+with other built-in methods and functions,
+
+things like math.random
+
+that returns a random number between zero and one,
+
+two uppercase, returns a string
+
+that's been capitalized, it's all in caps, it returns
+
+that value and we can save it or use it in some way.
+
+So very different from printing.
+
+Then the other things we saw about return,
+
+we can only return a single value, and importantly,
+
+return whenever it's encountered in a function,
+
+stops the execution of that function.
+
+So when I say encountered, remember that means
+
+whenever it actually runs,
+
+not when it's just physically written in the function,
+
+but it has to actually run that line.
+
+And if that's the case, the entire function stops.
+
+It's done.
+
+Instructor: Next up we're gonna talk about scope,
+
+which is sometimes a topic that strikes fear
+
+in the hearts of some of my students in person,
+
+but I promise is not that bad.
+
+Scope refers to what I like to call variable visibility.
+
+Basically the fact that
+
+where we define a variable in JavaScript impacts
+
+where we have access to it.
+
+So if we put a variable in a function
+
+versus putting it out in the open
+
+versus putting a variable
+
+in a nested function inside of a function,
+
+which is actually something we can do,
+
+we haven't seen that yet,
+
+those all impact where we can use that variable later on.
+
+So I'm gonna just go through a couple of examples.
+
+In this first one, I'm just gonna demonstrate over here,
+
+we'll play a little game here.
+
+Imagine I have a function called,
+
+how about collectEggs?
+
+I'm collection my chicken's eggs.
+
+I have to do this every morning.
+
+And in here I define a variable.
+
+Let totalEggs.
+
+And let's say it's equal to I got six this morning, okay?
+
+So let's say I got six today.
+
+And then I console.log(totalEggs).
+
+totalEggs, just like that.
+
+I run my function collectEggs, and we get six.
+
+That makes sense.
+
+That's printed out.
+
+We defined that variable, I'm printing it.
+
+Now what about if I tried to access
+
+and print totalEggs down here?
+
+What do you think happens in this case?
+
+Well, if I run my code, I immediately get an error.
+
+TotalEggs is not defined at app.js line four.
+
+Why?
+
+Well, it's in a function.
+
+This function hasn't even been executed yet.
+
+So what if I ran the function first?
+
+Maybe that's the problem.
+
+So let's call collectEggs and then print out totalEggs.
+
+Because now we know this function will actually run
+
+at least one time.
+
+So totalEggs will be initialized.
+
+It will be defined and it'll have the value of six.
+
+Then I'll print it out, okay?
+
+So what happens now when I refresh?
+
+Same thing, totalEggs is not defined.
+
+So what we're seeing here,
+
+we're running up against function scope.
+
+Variables we define inside of a function,
+
+where we actually use the let keyword,
+
+we define that value of that variable in the function,
+
+they are scoped to that function.
+
+So I don't have access to total eggs after the fact.
+
+It's like a little bubble.
+
+This function between those two braces
+
+is its own little world with a glass dome around it,
+
+if you wanna think of it that way.
+
+And totalEggs only lives in there.
+
+So if I really needed access to totalEggs out here,
+
+this is not something you see very often at all,
+
+but I could do this.
+
+Let totalEggs.
+
+Set it equal to six or zero or whatever it is.
+
+And then in the function, instead of using the let keyword,
+
+I'll just update totalEggs and set it to six.
+
+And then let's see what happens now.
+
+So I will print totalEggs in the beginning right here.
+
+It should be zero, right?
+
+It starts at zero.
+
+Then I execute collectEggs,
+
+and we're setting it to six.
+
+Notice again, I'm not using let.
+
+That will make me a new variable.
+
+And we get zero and then six.
+
+So this is not super common to update an existing variable,
+
+what we would call a global variable,
+
+from within a function.
+
+Usually in our functions,
+
+we have our own internal variables,
+
+like I used this example of a glass dome
+
+or a bubble surrounding this function.
+
+That's really common.
+
+Most functions behave as a standalone machine
+
+where they take some inputs and they give you some outputs.
+
+But they don't necessarily impact the world around them,
+
+except that they give you some sort of output
+
+that you can capture.
+
+So that's an example of function scope.
+
+In this diagram, I'm using a different variable.
+
+It's called message, I'm on fire.
+
+It's declared inside of helpMe.
+
+It is not available.
+
+We can't access it outside of that function.
+
+So here's my next question.
+
+Let's define a variable here.
+
+I'll call this one bird,
+
+and it will be scarlet macaw.
+
+And then I will define a function called birdWatch.
+
+And in here I'm gonna make a different bird variable.
+
+I'm using the let keyword.
+
+Let bird equal...
+
+How about...
+
+What's another bird that I like?
+
+A great blue heron.
+
+I sometimes watch these guys in my backyard.
+
+They eat gophers just straight out of the ground.
+
+Swallow them whole.
+
+It's quite crazy.
+
+They look like dinosaurs.
+
+Okay, so if that's what I've done,
+
+I have my bird variable up top, scarlet macaw,
+
+and then inside of birdWatch,
+
+I have another variable with the exact same name,
+
+what happens?
+
+So if I start by just console.logging bird right there,
+
+we see scarlet macaw.
+
+We never even executed birdWatch.
+
+I could execute it, birdWatch, just like that,
+
+but it's not gonna make an impact
+
+because this variable is scoped to that function.
+
+But now, what if I print out bird in here just like that?
+
+What is the value going to be?
+
+Refresh and we see great blue heron.
+
+Now, what if I just got rid of this line entirely?
+
+Do we have access to bird inside of this function?
+
+Well, it's defined outside of it.
+
+And we do.
+
+So if there's a variable defined with the same name
+
+in the function in this scope here in this glass dome,
+
+then we will reference that variable first.
+
+When I reference bird, if there is a closer version of bird,
+
+that one wins out.
+
+That's what we see first or we encounter first.
+
+So that's how we end up with great blue heron.
+
+But if not, if no bird is found here,
+
+well, here's a different bird variable.
+
+We'll use that one.
+
+So we get scarlet macaw.
+
+So that's another example of function scope where,
+
+I used different birds here,
+
+but our bird variable is scoped to this birdWatch function.
+
+So next up we're gonna talk about a different type of scope,
+
+something called block scope.
+
+
+Instructor: So next up,
+
+a little bit more on the topic of scope.
+
+So I'm going to type up a very simple example.
+
+Let's have a variable.
+
+We'll call it radius = 8;.
+
+And then I'll have a conditional.
+
+Really, this is just a dummy conditional,
+
+could be anything.
+
+If radius is positive, if it's greater than zero,
+
+let's make a variable in here called PI.
+
+It will be declared with const 3.14159.
+
+And we could make another one, I guess.
+
+Let, I don't know,
+
+msg = 'HIII!', not GIII.
+
+Okay, so this is pointless, it's silly.
+
+It means nothing to have PI in a message and radius.
+
+But what I want to illustrate here is that down here,
+
+if I try and print out radius,
+
+hopefully we know that we'll have access to it, right?
+
+There's no function involved.
+
+It's just a variable I declared
+
+and that I'm using it.
+
+So let's see what we get.
+
+We get eight.
+
+But what about this?
+
+What if I console.log(PI)?
+
+Ooh, "PI is not defined."
+
+What's going on?
+
+This might make sense, right?
+
+If this was a function like we saw previously,
+
+you declare a variable in a function,
+
+it's scopes to that function.
+
+But this is not a function.
+
+It's a conditional.
+
+Same thing with msg here.
+
+It's scoped to this block.
+
+So that's a new word for us, block.
+
+Block refers to basically anytime
+
+you see those curly braces except for a function.
+
+So a block includes things
+
+like conditionals, most commonly,
+
+but also loops.
+
+So if I declared a variable,
+
+well, let's do just a regular for loop,
+
+(i =0; i< 5; i++).
+
+And then in here, if I declared a variable,
+
+let msg = that,
+
+if I run this code, okay, no problem.
+
+If I look at message, it does not exist.
+
+I have no access to it after that loop.
+
+Console.log(msg), it doesn't exist.
+
+Inside that loop though, I do have access to it,
+
+as you can see right there.
+
+So this wasn't always the case with variables.
+
+If you can recall all the way back
+
+when I first introduced variables,
+
+I talked about the old way of making a variable
+
+using the var keyword.
+
+Now, when we use the var keyword,
+
+our variables are scoped to functions,
+
+but they are not scoped to blocks.
+
+So if I run this now,
+
+we actually do have access
+
+to our message after the fact.
+
+Even Otter, if I used var here
+
+for my i counter variable,
+
+I could console.log(i) long after my loop ended.
+
+It still exists, it's still in scope.
+
+And we get five.
+
+But if we use let or const,
+
+our variables are block scoped.
+
+So in this case, our i counter
+
+only exists in this block.
+
+It does not exist after the fact.
+
+And if I go back and change that to let,
+
+it does not exist after the fact either.
+
+So that happens with both conditionals,
+
+it happens with different sorts of loops.
+
+And this is important to understand.
+
+This is something that,
+
+it's one of the main reasons
+
+let and const were introduced,
+
+was to add in variables
+
+that followed these sort of scoping rules,
+
+this idea of block scoped variables.
+
+It might seem kind of annoying or counterintuitive,
+
+but trust me, they exist for a reason.
+
+You can quickly run into issues around scoping,
+
+especially if you're still using the var keyword,
+
+which you shouldn't be.
+
+All right, so, so far we've seen
+
+this idea of function scope,
+
+where if we define a variable in a function,
+
+it is scoped to that function.
+
+If we have sort of a conflict, right,
+
+there are two different variables.
+
+One defined outside of a function called bird,
+
+one inside the function.
+
+Well, outside the function, we have no choice.
+
+We don't have access to this version.
+
+But inside the function,
+
+we will be using our JavaScript uses the closest version,
+
+which here is golden pheasant, a beautiful bird.
+
+So are mandarin ducks, by the way.
+
+Look them up if you've never seen them.
+
+Ah, beautiful.
+
+Then, we got to this idea of block scoping.
+
+Now, block scope is a similar concept.
+
+It just means that instead of dealing with a function,
+
+if our variables are declared inside of a block,
+
+those variables only exist in that world
+
+of those curly braces,
+
+between the curly braces rather.
+
+So it's kind of the same exact idea as function scope,
+
+except we're talking about conditionals.
+
+We're talking about loops.
+
+This variable PI only exists in this yellow box.
+
+Circ for circumference only exists in here.
+
+Radius is available here and here
+
+and everywhere in this code that we can see,
+
+whereas these two variables
+
+only exist in that yellow box.
+
+Now, if we had used the var keyword,
+
+which you shouldn't,
+
+but we would've used five years ago,
+
+in that case, our variables would not be scoped
+
+to this block at all.
+
+And I would have access to PI and circumference down here.
+
+So that's block scoping.
+
+
+Instructor: So the last little bit
+
+of this incredibly fun topic of scope
+
+is something called lexical scoping.
+
+And this basically means
+
+that if we have some outer function,
+
+let's call this one bankRobbery, robbery,
+
+and then some inner function defined inside of it.
+
+For example, if I have another function here
+
+called cryForHelp, and let's say I have a variable
+
+called heroes, const heroes =,
+
+and we'll have a couple heroes in here,
+
+how about Spiderman, Wolverine, Black Panther,
+
+and how about Batwoman?
+
+Just like that.
+
+Inside of cryForHelp, let's try and access heroes.
+
+So let's do for (lets hero of heroes)
+
+console.log, something like, (`PLEASE HELP ME`)
+
+how about help us, and then the hero's name,
+
+and let's do two uppercase.
+
+All right, so if that's what we have,
+
+first of all, what happens if I run this code right now?
+
+Absolutely nothing.
+
+Well, we don't see anything at least, why?
+
+Well, we never executed bankRobbery.
+
+So what if I execute bankRobbery? What happens then?
+
+I need to execute it.
+
+Also nothing. Why?
+
+Well, I declared a variable called heroes,
+
+but this is just another function, I never ran it.
+
+I still have to execute that function if I want to use it.
+
+So if I called cryForHelp in here,
+
+and this is kind of a weird thing to do,
+
+but soon you'll see that actually nesting functions
+
+is not that odd, it's totally valid,
+
+it's just one function inside of another.
+
+And the point that I'm making here has to do with scoping.
+
+So now what do you expect to see?
+
+CryForHelp is called,
+
+and in this function, CryForHelp,
+
+we're referencing heroes.
+
+Heroes does not exist in this function,
+
+but it exists in the parent function.
+
+So do we have access to it or not?
+
+Well, let's see.
+
+BankRobbery, and it looks like it works.
+
+PLEASE HELP US, SPIDERMAN, WOLVERINE,
+
+BLACK PANTHER, BATWOMAN.
+
+So what this tells us
+
+is really this concept of lexical scope,
+
+an inner function nested inside of some parent function
+
+has access to the scope or to the variables to find
+
+in the scope of that outer function.
+
+So we could further nest things even more if we wanted to.
+
+Just to make this, I mean, this is silly,
+
+but let's write a function called, I don't know, just inner.
+
+All right, it's not a very good name,
+
+but let's put all of that in there.
+
+That all goes inside of inner.
+
+And then in here, I'm going to execute inner.
+
+So bankRobbery, I call that,
+
+it makes a variable, here's a function,
+
+it doesn't run it until we get to CryForHelp,
+
+that runs CryForHelp,
+
+we define a function inner, we execute it.
+
+Inside of inner, we are referencing heroes,
+
+which is not defined in here or in here,
+
+but it's defined two levels up
+
+in the grandparent function called bankRobbery,
+
+and we still have access to it.
+
+So that's all there is to lexical scope.
+
+And a nested or an inner function
+
+has access to the same stuff
+
+as the parent function or grandparent
+
+or however many levels up.
+
+So if something exists in bankRobbery,
+
+we have access to it inside of inner.
+
+If something exists in CryForHelp,
+
+I would have access to it in inner as well,
+
+but it does not work the other way,
+
+just to be very clear there, right?
+
+If I defined a variable in CryForHelp,
+
+like let color = 'purple,'
+
+I'll have access to that inside of inner,
+
+but I don't have access to that up top
+
+inside of bankRobbery.
+
+I know it's not the most riveting topic ever,
+
+but it is important.
+
+Alright, goodbye.
+
+
+Instructor: Next up,
+
+something called function expressions.
+
+An entirely different way of defining a function.
+
+It's not really entirely different,
+
+but it's conceptually a different
+
+way of defining a function.
+
+So far we've seen this, function, let's do add x and y,
+
+and then we can return x plus y.
+
+Nothing crazy, this is called a function statement.
+
+We are defining a function using the function keyword.
+
+And if over here I take a look at add, well, first of all,
+
+it's a function as we know, so it's a function.
+
+And then if I call it add three and four, we get seven.
+
+But there's a different way of defining a function
+
+and it actually involves storing a function
+
+in a variable just like this.
+
+So here I'm making a variable, I'm calling it square,
+
+and then I'm creating a function.
+
+But this function doesn't have a name, if you can see that.
+
+It just is function and then parentheses.
+
+So if I try that on my own, just right here,
+
+function, like that, I'm gonna get a syntax error.
+
+It's expecting an identifier,
+
+but if I instead, I'll leave that one there.
+
+If I instead made a variable like const add,
+
+and set it equal to function,
+
+and then my arguments x and y, return x plus y,
+
+that's not a problem.
+
+This is a function expression.
+
+So this right side, after the equal sign,
+
+creates a function.
+
+And I'm storing that in a variable
+
+just like I would store an object or an array or a number.
+
+It's the same exact concept.
+
+And to use this,
+
+it's no different than using any other function we've made.
+
+So lemme just refresh the page.
+
+Here's add, it's a function,
+
+and if I call add three comma four, we also get seven.
+
+So same syntax for executing
+
+or for running our function,
+
+we use the name of the function,
+
+but this time it's actually not the name of the function.
+
+That's what's confusing.
+
+It's the name of the variable.
+
+This function does not actually have a name.
+
+So technically functions are objects behind the scenes.
+
+We really don't need to go into it.
+
+I regret mentioning it,
+
+but every function has the the option of having a name,
+
+an actual name attached to it.
+
+In this case, we're storing a function with no name
+
+inside of a variable.
+
+In this case, we're actually making a function
+
+with the name of add.
+
+Now they both behave the exact same way when we call them,
+
+it's not a big deal, but it's just something to point out.
+
+Just like if I were to store the number,
+
+I don't know, how about well, pi, sure, 3.14.
+
+I've been leaning heavily on that example.
+
+But 3.14 is just a number.
+
+It does not have a name, but the variable,
+
+the container, does have a name.
+
+Same idea here.
+
+Now the reason I'm showing this to you now,
+
+there's really two.
+
+One is that it's just good to know about
+
+and you'll encounter it.
+
+And I didn't want you to feel nervous
+
+or panic if you see it.
+
+It's just another syntax.
+
+We're defining a function, saving it in a variable.
+
+But the second reason is that it actually demonstrates
+
+something that is gonna come up a lot in this course,
+
+which is functions are values in JavaScript.
+
+We can store them, we can pass them around,
+
+just like we could pass around and store a number
+
+or an array or an object.
+
+JavaScript basically considers functions
+
+just like any other value, like an array.
+
+So this is our first example of that.
+
+We're storing a function in a variable,
+
+but soon we'll see we can do crazy things.
+
+We can pass functions as an argument.
+
+We can return functions as the return value,
+
+just like we could return a number.
+
+So this is our first little preview of that.
+
+It demonstrates that concept
+
+that functions are treated just like anything else.
+
+They're just a value.
+
+So that's it for now, those are function expressions.
+
+
+Instructor: So next up, we get to talk
+
+about higher order functions,
+
+which is a fancy way of saying functions
+
+that work with other functions,
+
+or they operate on or with other functions.
+
+So this really comes down to two main things,
+
+functions that accept other functions as arguments
+
+and usually do something with them,
+
+and then also functions that can return a function.
+
+As we saw previously, a function is just a value
+
+that can be stored in a variable, it can be passed around.
+
+So if we can put it in a variable, like "let do",
+
+or how about let greet equal function, curly braces.
+
+I'm just gonna do it on one line, console.log.
+
+"Hi." Just like that.
+
+I now have stored a function in this variable,
+
+and I can execute it.
+
+Great. Hopefully that's review from the last video.
+
+Now if I can store that function in a variable,
+
+I can also pass it around as an argument.
+
+And that's what we're gonna start with here.
+
+So we can define a function like this one right here
+
+called callTwice.
+
+And callTwice is going to expect a function
+
+to be passed in.
+
+So I'll show that here.
+
+Function callTwice.
+
+And what I want it to do is accept some argument
+
+that is a function.
+
+Now we're not gonna guarantee, we're not gonna verify
+
+that it actually is a function,
+
+but we'll expect some argument,
+
+can call it func or f
+
+or I mean really anything as we've already seen,
+
+but func makes sense.
+
+We don't wanna call it function
+
+because that's a reserved word, but func.
+
+And then to execute this,
+
+imagine that it's just a variable holding a function
+
+just like this right here, greet, is holding a function.
+
+Whatever is passed into our callTwice function
+
+will be stored in this func.
+
+So let's try executing func.
+
+There's our first time,
+
+and there's our second time.
+
+So if I call callTwice like this,
+
+and if I were to pass in one, that's gonna cause problems
+
+because it's gonna try and execute one.
+
+If we try and do that, one with parentheses,
+
+tells me one is not a function,
+
+but I could instead pass in a function.
+
+For example, let's define a function called,
+
+I don't know, how about just rollDie, and we will return,
+
+or maybe we'll console.log so we can see it.
+
+Console.log, and let's just get
+
+our role equals math.floor.
+
+I'm just gonna do a random number.
+
+Math.random times six plus one, like that,
+
+and then we will print out that roll.
+
+So let's just verify that part works.
+
+RollDie.
+
+Not a number. Nope.
+
+I screwed it up.
+
+Math.floor of math.random times, oh, what am I missing?
+
+Parentheses here.
+
+We have to execute math.random.
+
+Try that again.
+
+Okay, so now if I call callTwice just like this,
+
+and I want to pass in a function like rollDie
+
+so that it will be called twice,
+
+which admittedly is very silly,
+
+but it at least demonstrates this principle.
+
+We need to pass rollDie through as an argument,
+
+just like we would pass a string or a number.
+
+So, rollDie.
+
+Now I've seen a lot of students who are tempted to do this.
+
+That is very different.
+
+This is going to execute our function immediately
+
+and give us some random number like five,
+
+and then that's passed through to callTwice.
+
+What we wanna do is pass through the value of the function,
+
+rollDie, so that inside of callTwice it can be executed.
+
+So watch this.
+
+Refresh the page, and there we go.
+
+One and two, five and four, six and four.
+
+Or I could write another function.
+
+How about this one?
+
+Function callTenTimes.
+
+It will accept some function.
+
+We'll just call it f this time.
+
+And then in here, how do we run something 10 times?
+
+Let's do a for loop, for let i equal zero,
+
+i less than 10, i plus plus.
+
+What do we do in here?
+
+I'm just gonna execute whatever function f was passed in.
+
+So now if I refresh the page here
+
+and I do something like callTenTimes of rollDie,
+
+we get 10 different rolls of our die.
+
+So that's just our first example
+
+of passing a function as an argument.
+
+So we invoke that function,
+
+we're calling that argument, or that parameter rather, func.
+
+Then we invoke it, we add the parentheses twice in this case
+
+to execute it twice.
+
+It's a simple and silly example,
+
+but we will see many, many functions that expect us
+
+to pass other functions into them
+
+as we make more progress here.
+
+All right, so that's our first type
+
+of a higher order function.
+
+They're just functions that operate on
+
+or with other functions,
+
+and we just saw one that accepted a function as an argument.
+
+Next up, we'll talk about returning a function
+
+as the return value.
+
+-: Okay, so we've seen that we can pass functions
+
+as arguments to other functions.
+
+Now let's talk about the second bullet point here,
+
+which is returning a function
+
+as a value from within a function.
+
+So, we could have a function that does one of these things
+
+or that does both of them, or as we've seen
+
+in a lot of examples up until this point,
+
+we can have functions that do neither of these things.
+
+But the point here is just to illustrate
+
+that functions are just regular old values
+
+and we can pass 'em around, whether
+
+that means returning them or passing them as arguments.
+
+So to show you some examples of how this works,
+
+it's a little challenging
+
+because I can show you a very simple, obvious example,
+
+just proof that this is a thing we can do,
+
+but it's not gonna seem immediately useful.
+
+So that's what I'm gonna start with,
+
+but then I'll try and show you an example
+
+that makes a bit more sense.
+
+So, let's start by defining a function,
+
+and I'm gonna call this function "make mystery func".
+
+And it is going to randomly return either
+
+a fun, happy function or a sad depressing function
+
+or an annoying function.
+
+So, we'll pick a random number in here.
+
+So if, well first we need our random number.
+
+So let's do math dot random const rand,
+
+and then we'll just check if it's greater than 0.5.
+
+What do we return?
+
+We're going to return a function.
+
+And there's a couple ways of doing this,
+
+but the easiest one is just
+
+to declare it in line right here.
+
+We've seen this before, right?
+
+A function expression, that's a value.
+
+I could capture that and put it in a variable
+
+or I can just return it, which is what I'm doing here.
+
+But I will actually capture it in a variable
+
+on the other side when I execute this function.
+
+So, inside of this function it doesn't need a name,
+
+but let's see, return function.
+
+How about console dot log.
+
+This will be our good function.
+
+"Congrats, I am a good function."
+
+How about we'll say something like,
+
+"You win a million dollars."
+
+You win a million dollars.
+
+Okay, so there's our silly good function,
+
+and then otherwise we'll return a different function.
+
+And this will use alert and say,
+
+"You have been infected by a computer virus."
+
+Another alert, "Stop trying to close this window."
+
+How about that? Nice and annoying.
+
+Okay, so depending on this random number,
+
+we are returning one of these two functions.
+
+Neither of them have a name.
+
+And so if I were to just call this function,
+
+it's called "make mystery func", make mystery func,
+
+and I execute it.
+
+I didn't execute it there,
+
+I accidentally hit shift enter.
+
+There we go.
+
+It returned to me this function,
+
+at least this time we got the bad function.
+
+Let's try it again.
+
+I got the good function.
+
+Good, good, good, bad.
+
+So, I'm still never calling function.
+
+It's simply just the, it's the return value.
+
+I need to capture it.
+
+Just like any other return value,
+
+if I want to save it and use it, I need to capture it.
+
+So I would do something like this, const "func"
+
+or "my func" or maybe just "mystery equals
+
+make mystery func".
+
+Now our variable mystery holds a function
+
+and I can execute it like that.
+
+"Congrats. I'm a good function.
+
+You win a million dollars."
+
+So let's try it again.
+
+I did use const here,
+
+so I'm just gonna refresh and try it again.
+
+What's mystery this time, we got the bad one, we call it.
+
+"You have been infected by a computer virus.
+
+Stop trying to close this window.
+
+Stop trying to close this window.
+
+Stop trying to close this," oh my goodness.
+
+And there you go.
+
+So that's a silly example.
+
+We are returning a function,
+
+but it seems kind of useless to do that.
+
+But I'm gonna show you another example here
+
+that maybe it's a bit more useful.
+
+It's still very simple and honestly not at all useful,
+
+but it's a pattern that is useful.
+
+So sometimes what you'll see in some code
+
+is a function that generates a function
+
+based upon some input.
+
+So here's a function that it does generate,
+
+it returns a function to us.
+
+But it's the same thing every time.
+
+I mean there's two choices,
+
+but it's the same exact thing every time.
+
+There's no inputs that we pass in to influence that.
+
+But we can make a function,
+
+I'm gonna call this one, my example, "make between func",
+
+and it's gonna accept two numbers, a min and a max.
+
+And here's how I want it to work.
+
+When I call "make between func", make between func,
+
+and I pass in five and 10,
+
+I want it to return to me a function.
+
+And that function is going to test whether
+
+a value is between five and 10.
+
+If I were to call make between func
+
+of 50 and 100, it should make me a new function.
+
+And that function should tell me if a value
+
+is between 50 and 100.
+
+So, actually why don't we start with that?
+
+How do I just make a function that tells me if something
+
+is between 50 and 100?
+
+Well function, let's just call it, like, "is between",
+
+it takes a number, right?
+
+N or num.
+
+And then if I wanna know if it's between 50 and 100,
+
+I could do return, and then how about num
+
+is greater than or equal to 50
+
+and num is less than or equal to 100, right?
+
+That makes me a function.
+
+It's just a, it's nothing fancy, nothing new,
+
+no higher order anything.
+
+It's just a function called "is between",
+
+and it tells us if an input we pass in
+
+is between 50 and 100.
+
+So let's verify.
+
+Is between 30, that gives us false, but how about 80?
+
+That gives us true.
+
+So now what if I wanted another version of this
+
+to test if a number is between one and 10?
+
+So I could call this, you know, it's two,
+
+it's stupid, but I could do one and num is greater than 10,
+
+or sorry, other way around.
+
+Num is greater than or equal to one
+
+and num is less than or equal to 10.
+
+So if I call that 'is between two",
+
+we get false if I pass in 80,
+
+but if I pass in five, we get true.
+
+So I'm writing these functions myself every time
+
+I need them, a new "is between" function,
+
+but I could make a factory function.
+
+A factory function is just a function
+
+that will make a function for me.
+
+So, here's how it's going to work.
+
+Again, function "make between func",
+
+and I'm gonna pass in a min and a max
+
+and it's going to return to me a new function.
+
+And this function is going to accept an argument,
+
+we'll call it num just like we did here.
+
+And then all we do from within this function is return.
+
+Same exact pattern we have, except instead of hard coding,
+
+50 and 100 or 1 and 10, we'll use min and max.
+
+So is num greater than or equal to min
+
+and num is less than or equal to max.
+
+So, I would need to call "make between func".
+
+And I'm actually gonna do this from the console,
+
+so you can just see it.
+
+Make between func, and I'm gonna pass in,
+
+let's do, I wanna know if a number is between 100 and 200.
+
+So that returns to me a function.
+
+Now what's hard to understand
+
+or what might be hard to understand
+
+is that min and max have a value, right?
+
+In this case 100 and 200.
+
+This function, "make between func",
+
+is going to return to me this function here
+
+where min and max are actually the same value
+
+that they were in the scope of this function.
+
+Basically whatever they were at the time
+
+we returned this function.
+
+So min was 100 in this case and max was 200.
+
+So it returned to me this function
+
+and I could save that in a variable.
+
+So I could do, you know, const test range
+
+equals this function.
+
+But then I could also turn around
+
+and make a second one and a third one.
+
+So, let's try it.
+
+Let's call "make between func" with 100 and 200
+
+and save that to a variable.
+
+We'll call this one const, I don't know.
+
+What about, let's actually do ages.
+
+So let's say you're between one, or zero, and 18.
+
+That function that tells us if you are
+
+between zero and 18, we'll call that "is child".
+
+Okay?
+
+Let's look at is child. It's just a function.
+
+And if I pass in a number to it, like 40, we get false.
+
+But if I pass in something between zero and 18,
+
+like seven, we get true.
+
+Now I could turn around and make another one.
+
+Let's call this "is adult",
+
+and that's if you're between, "make between func",
+
+if you're between 18, and technically
+
+the way we implemented this, I guess it needs
+
+to be 19 because the range is inclusive.
+
+That's beyond, well that doesn't really matter.
+
+So let's just do 18 up to 64. Okay.
+
+And then let's do one more, "is senior".
+
+And that will be "make between func"
+
+from 65 to let's say 120, just to be extra safe
+
+in case some adults live to that age.
+
+I don't think they do, but just in case.
+
+So now if I call is senior, right,
+
+I have a new version, a new function that was returned to me
+
+that is different from this one.
+
+"Is adult" and "is senior" and "is child",
+
+they all follow the same pattern,
+
+but the factory function called "make between func"
+
+made me a different version based upon
+
+my min and max that I passed in.
+
+So this is one situation,
+
+it's not, it doesn't seem useful, at least here, right?
+
+These simple functions that are just
+
+telling true or false, a number is between X and Y
+
+or min and max.
+
+Not amazing.
+
+But this is a common pattern to set up a factory function.
+
+And maybe it's not that common,
+
+but it's something that you will encounter at some point
+
+if you continue pursuing JavaScript.
+
+Also, it's just a, you know, an illustration
+
+of this concept of higher order functions
+
+and returning functions.
+
+So, let's check it out. Just make sure it works.
+
+Is senior of 40, should be false.
+
+90 should be true.
+
+Is adult of 90 should be false,
+
+but 50 should be true, zero should be false.
+
+And then we've already seen is child of let's do a 17.
+
+That's true, but 19 is false.
+
+So we've made this factory function, it returns a function.
+
+That function doesn't have a name, right?
+
+It's just kind of is returned as a value.
+
+It's passed around, like here's this thing,
+
+do with it whatever you want,
+
+and it's up to us to capture it in a variable,
+
+which is exactly what we did.
+
+Cool. So, that's returning a function as a value.
+
+
+Instructor: Next up we're gonna talk about functions
+
+and objects and how they intersect to form methods.
+
+So I've used the term method before when we do things like,
+
+you know, hello.toUpperCase,
+
+that is a string method
+
+or you know, we've seen a bunch of other ones.
+
+An array method like push, right?
+
+Where we can do something [1,2,3]. or maybe indexOf,
+
+indexOf(2) gives us that answer of one.
+
+That is an array method, that's a string method.
+
+And then I've talked about things like
+
+when we define a function, function add X and Y,
+
+and then we return, just doing it on one line here,
+
+X plus Y.
+
+That is what we call a function, right?
+
+Hopefully that's review at this point.
+
+So what's the difference between a method and a function?
+
+Well, a method is simply a function that has been placed
+
+as a property on an object.
+
+Basically, if we access a function by using
+
+a dot in front of its name,
+
+like something.indexOf, string.toUppercase, it's a method,
+
+but it's also a function.
+
+So every method is a function,
+
+but not every function is a method.
+
+So we can actually add our own methods to objects.
+
+Here's an example.
+
+We can add a function as a property value.
+
+Just like we saw in the past few videos.
+
+We can store a function in a variable.
+
+We can pass a function as an argument,
+
+we can return a function from a function.
+
+We can also use a function
+
+as the value in a property in an object.
+
+So here I've created my own math object.
+
+I don't know why I didn't lead with that.
+
+Oh, the math object itself, it mainly consists
+
+of a bunch of these methods.
+
+They're just functions and they're stored as properties.
+
+So we could make our own little math object.
+
+We can try that over here. Const math.
+
+How about myMath equals an object and here.
+
+I could add, you know, a simple property like PI, 3.14,
+
+that's not a method.
+
+159, and then I could add in how about square?
+
+Square is going to be a function
+
+and that function will accept a single argument.
+
+We'll call it num
+
+and we'll return the square, which is numb times numb.
+
+And then if I wanted something else afterwards,
+
+I could add another method.
+
+How about square?
+
+I guess we could do something simple like,
+
+well let's just do cube.
+
+Let's start there. Same idea.
+
+So function, we'll accept a num,
+
+return, and then we could do num times num times num.
+
+Or we can do num star star three,
+
+which is numb to the third power.
+
+All right, so let's try this out.
+
+We've made an object called myMath, we can access .PI.
+
+That's just a regular, I mean they're all regular
+
+properties, but that's just a number that we're storing.
+
+But then if I do .square, that gives me the function,
+
+but I didn't execute it.
+
+I still need to call it, so I can do that here.
+
+Let's pass in a number like two. The square of two is four.
+
+myMath.cube.
+
+That will give us, if we do two, it gives us eight,
+
+two times two times two.
+
+So hopefully you get the picture here.
+
+That's kinda all there is to this idea of a method.
+
+It's just a function that's been added
+
+as a property on some object.
+
+Now, when we talk about string methods
+
+and array methods, right?
+
+Those aren't functions we're defining on those objects.
+
+And this is where it gets kind of confusing
+
+because technically arrays are objects in JavaScript,
+
+strings even.
+
+We don't need to go into it, but they're wrapped
+
+in an object when you use them.
+
+I regret mentioning that, but it's there.
+
+I've said it and I mean I guess I could edit that out,
+
+but I'm kind of joking.
+
+What you really need to know is that objects
+
+are everywhere in JavaScript.
+
+Whether it's an object we're actually creating,
+
+like this right here, myMath, the object's literal
+
+or it's an array or it's a string
+
+that is wrapped in this weird mysterious object temporarily.
+
+Methods are simply functions added as properties on objects.
+
+So we access them.
+
+I mean technically you don't have to use this dot syntax.
+
+You could do this as we've seen before.
+
+This is odd, but we could do this
+
+and then execute just like that, myMath of cube
+
+and then execute it with four as the argument.
+
+But that's a very weird syntax to see.
+
+Normally you would just do this.
+
+Alright, so let's see the main idea
+
+of adding methods to an object.
+
+Simple enough, hopefully it's just a property.
+
+Now there is a nice shorter syntax that has been added
+
+to JavaScript more recently
+
+because this is something we do relatively commonly.
+
+There's a shortcut or a shorthand and it looks like this.
+
+So instead of having to do some function name
+
+or some property name colon a function,
+
+we can just write add and then our parentheses
+
+and then curly braces or multiply
+
+or whatever the name of our function
+
+or the name of the property should be.
+
+So I could rewrite this.
+
+This whole thing is just square.
+
+I don't even need the function keyword. Same thing here.
+
+Cube, I don't need the function keyword.
+
+Now definitely, I do need those commas
+
+'cause we're in an object.
+
+Sometimes I see people get confused,
+
+they forget you're in an object
+
+and if you leave that out, we'll have a lovely syntax error.
+
+So you can see there, so we need that.
+
+But this is a nice shortcut or a nice shorthand syntax.
+
+It still works exactly the same way.
+
+We can do myMath.cube of two, we still get eight.
+
+Same thing, it's just a shorthand,
+
+so if we just verify that, look at myMath,
+
+it still has cubes set to a function
+
+and square set to a function,
+
+and that's all there is to it.
+
+So next up we get to talk about the keyword.
+
+This a riveting, an important part of working
+
+with methods in JavaScript.
+
+So that's up next.
+
+Instructor: Next up, let's talk
+
+about the dreaded keyword, this, in JavaScript,
+
+which hopefully we can make a bit palatable
+
+and not too scary.
+
+So I'm gonna keep this brief.
+
+There's a lot that we could go into,
+
+but I'm gonna just go over the main essentials
+
+at this point.
+
+In JavaScript, there is a keyword called this.
+
+Just like we have other keywords, right,
+
+we have things like return and const in lut.
+
+This is another one, T-H-I-S.
+
+And it also makes it kind of hard to discuss
+
+because we use the word this a lot.
+
+So I'll try and be very clear about that
+
+as we make our way through this video.
+
+So the keyword, this, is something that we typically use
+
+inside of an object in a method.
+
+That's at least the most common situation to use this.
+
+And I'll show you an example of that.
+
+So let's make a new object here.
+
+We'll call this my cat, which is cat.
+
+And my cat is gonna have a name, which is Blue Steele.
+
+And then we'll have a color, she's sort of a gray cat
+
+and she is a Scottish fold.
+
+And then I'll add a method. And this method will be meow.
+
+Okay? And I'm gonna use that shorthand syntax we just saw.
+
+So meow is just going to console.log,
+
+I don't know, meow, meow, meow, all right?
+
+It's nothing crazy.
+
+So if I run this code over here
+
+and I take a look at my cat object
+
+and I call meow, we see meow, meow, meow.
+
+Okay, not too exciting, but it does work.
+
+Now the keyword this is going to refer to,
+
+inside of this method, it will refer
+
+to the cat object itself.
+
+So this is useful if I wanna be able
+
+to access things like Blue's name or her color
+
+or her breed inside this method.
+
+And that's a really common situation to create an object
+
+that contains different properties, different pieces
+
+of information, as well as different methods
+
+or pieces of functionality.
+
+And we often want those methods to have access
+
+to the data in the object.
+
+So meow, maybe I wanted to say Blue Steele says meow.
+
+To do that, inside of here, I can't just access name
+
+or color or breed on their own.
+
+We'll see I get this error.
+
+If I try running cat.meow, color is not defined.
+
+It's looking for a variable called color. It doesn't exist.
+
+But there is a special property called color on this object.
+
+And in order to access that,
+
+I can do this.name or breed, or let's do color to start.
+
+I'll run that code now, and we get gray.
+
+So if I wanted to do this, I don't know,
+
+let's do this.name instead of a string template literal,
+
+says meow, like that.
+
+Now if I execute this, Blue Steele says meow.
+
+Okay, so the key word, this, is going to refer
+
+to this object, but that's actually not always the case.
+
+And this is why it's somewhat dreaded,
+
+why it can be confusing,
+
+'cause I think this is relatively straightforward.
+
+If we're in a method
+
+and we write this dot some property,
+
+it refers to the object that this method is defined on.
+
+And that's great.
+
+But as I mentioned, that's not how it always works.
+
+The value of this actually can change.
+
+And it depends on the invocation context
+
+of the function it's used in.
+
+So what does that mean?
+
+It depends on how we actually call the function.
+
+So in this example, I'm calling cat.meow.
+
+The keyword this, as we saw, refers to cat.
+
+It refers to that entire object.
+
+But if I change things up just a tiny bit,
+
+and this is gonna seem kind of weird to do,
+
+but I just wanna prove a point here.
+
+If I make a new variable, let's call this, I don't know,
+
+how about meow2,
+
+I'm gonna set it equal to cat.meow, just like that.
+
+I'm not actually executing it.
+
+I'm just referring to that method.
+
+We've seen how to do that before, right?
+
+I'm just setting a reference to this thing.
+
+It happens to be a function.
+
+So now if I call meow2
+
+and I execute it with parentheses, it is a function.
+
+If I look at it, there we are.
+
+It's that same function that we wrote earlier.
+
+I've now just captured it in a variable
+
+and now I'm calling it with parentheses.
+
+Hmm, what the heck? Blank says meow.
+
+But when I did cat.meow, the same exact code on the inside,
+
+it now says Blue Steele says meow.
+
+So what's the difference?
+
+Well, the difference is in that invocation context.
+
+When I'm invoking the function here, it's a method on cat
+
+and I'm actually writing cat.meow.
+
+This refers to that object to the left of the dot.
+
+When I ran it here without the cat.meow,
+
+it's the same function,
+
+but I've just called it in a different way.
+
+I've invoked it differently.
+
+The keyword, this, is not going to refer to the cat object.
+
+Instead, let's see what it refers to.
+
+Let's console.log.
+
+This is, and then we'll just print out this.
+
+Let's see what it refers to.
+
+So we'll do this again, cat.meow.
+
+This is the object, cat. That makes sense.
+
+So that's where I can access this.name, this.color.
+
+Now when I call meow2, which is the method
+
+that we just captured in a separate variable, what is this?
+
+What the heck? This window thing, what's going on here?
+
+Well, if you are not familiar with the window object,
+
+we haven't really talked much about it,
+
+builds into JavaScript.
+
+Every time we open up a new browser window
+
+and we're working with JavaScript,
+
+there is a special object, the top level object.
+
+Think of it as just like the main object
+
+that everything lives inside of, called window.
+
+And if I look at it here, well,
+
+I don't know why I capitalized it, there we go,
+
+all of the functions we use, things like alert,
+
+they actually exist inside of the window.
+
+It's just a big old object. It's a huge object.
+
+And we'll see some of these things
+
+once we talk about dom manipulation.
+
+You'll learn more about them.
+
+But it's huge. It contains lots and lots of things.
+
+And actually, if I define a function like function scream
+
+and what should it do?
+
+Just console.log ahhhhhh, just like that.
+
+We call that by calling scream and executing it, right?
+
+But actually, it's added to the window for me,
+
+even though I never wrote the word window anywhere.
+
+There is a method now on the window called scream.
+
+It's exactly what I just wrote.
+
+So by defining something here,
+
+defining it just out in the open,
+
+if I had done it in a file, it's exactly the same.
+
+It just exists on its own out here
+
+and it seems like it's just floating around,
+
+but it's actually in this top level object
+
+in JavaScript called the window.
+
+So to be more specific, if I wanted to,
+
+I could do window.scream, but nobody does that.
+
+It's actually the same thing with alerts.
+
+I could do window.alert, that,
+
+and it works instead of just doing alert,
+
+but it seems stupid and nobody does that.
+
+Now, I bring this up
+
+because as we saw when I called meow2, wherever you are,
+
+it said that this is referring to the window object
+
+instead of what we had here where this was referring
+
+to whatever came to the left of that dot,
+
+the left of the period.
+
+That is what this referred to.
+
+The keyword, this, referred to cat.
+
+But here, the way I invoked it,
+
+nothing came to the left of meow2.
+
+But that's actually not true.
+
+You can think of it as the window object is over here
+
+on the left hand side of meow2.
+
+It's really just the default value for the keyword, this.
+
+For example, if I just type this out here,
+
+I don't get an error.
+
+I'm just in the middle of the nothingness in the console.
+
+I'm not in an object,
+
+or at least not an object I've created or defined.
+
+It's set to the window object. Same idea here.
+
+So if this is confusing you, I don't blame you.
+
+If this is confusing you, don't blame yourself,
+
+don't feel bad, spend a little bit of time on it.
+
+But honestly, this should not be a roadblock.
+
+It's one of those things that you can put aside
+
+or write a note about, revisit.
+
+I have a pretty comprehensive YouTube video on the keyword
+
+of this if you wanna learn a lot more about it.
+
+It's something that will come up every so often
+
+in the next couple of sections and units,
+
+and we'll see actual applications of it
+
+where it makes more sense,
+
+where it's not doing stupid stuff like a cat meowing
+
+and referring to this.name.
+
+But I just wanted to illustrate the basics
+
+with something simple,
+
+and then we'll start to see some actual useful stuff
+
+once we pick back up with building things.
+
+We've been on more than a bit
+
+of a long JavaScript, just syntax tear.
+
+And I know it's not that exciting,
+
+but very, very soon, I can actually see it
+
+on the horizon in front of me,
+
+I'm looking at my outline,
+
+we're very close to getting back
+
+to building interactive things with HTML and CSS
+
+and then adding JavaScript in.
+
+Anyway, long story short about the keyword, this,
+
+if you struggle with it,
+
+please do not let it derail your hopes and your dreams.
+
+Almost every new JavaScript developer has
+
+to confront the keyword, this, at some point.
+
+And not to scare you, but if only shown you some
+
+of its weirdness and how it changes.
+
+There are other times this can even mean something else
+
+or be evaluated to something else,
+
+but that shouldn't deter you.
+
+It's just part of JavaScript. So don't ignore it.
+
+But don't go down a rabbit hole
+
+and don't stress out about trying
+
+to understand every little bit of this,
+
+at least not until we've got a bit more practice with it.
+
+So I'm gonna be quiet. I'm just rambling on at this point.
+
+Okay, so that's the keyword, this. Okay, bye.
+
+
+-: All right, so now we get to the main course.
+
+Delicious arrow functions.
+
+They're not delicious, but they are super useful
+
+and they are really the main thing I hope you take away
+
+from this unit, although everything's pretty important here.
+
+Okay, so arrow functions are a newer syntax
+
+for defining functions.
+
+Unfortunately, no Internet Explorer support,
+
+probably not a surprise at this point.
+
+Anytime I say newer syntax
+
+or newer feature, there's almost always
+
+this little Internet Explorer logo crossed out.
+
+So it's a newer alternative,
+
+that is more compact to a regular function
+
+or compared to a regular function expression.
+
+It allows us to write functions without actually
+
+having to write the the keyword function.
+
+And they're really useful,
+
+especially when we're doing things like this
+
+where we're passing a function in that it only exists
+
+to be passed into this other function called map.
+
+It's just an argument. We're never reusing it.
+
+It's like a one-time thing.
+
+So making this shorter would be great.
+
+And that's where arrow functions come in.
+
+So newer syntax, more compact, but they do the same thing.
+
+They help us make a function expression.
+
+So this is what it looks like, at least this is an example.
+
+We have parentheses
+
+and then our list of parameters there,
+
+one or more as you can see here.
+
+And then an arrow,
+
+which is an equal sign and a greater than sign
+
+and then curly braces.
+
+So arrow functions are used to create function expressions.
+
+Basically anytime we have this, right, function,
+
+let's do const add equals function
+
+X and Y, return X plus Y.
+
+This is a function expression.
+
+It can't exist on its own.
+
+It's a value.
+
+We can save it in a variable, we can pass it
+
+as an argument, we can return it,
+
+but we can't just declare this function on its own.
+
+We have to use a function statement
+
+and give it a name like add, like that.
+
+Anyway, arrow functions are exactly the same.
+
+We can't write an arrow function
+
+just on its own like this here.
+
+If I had X and Y
+
+and I wrote this same syntax, we get an error.
+
+JavaScript's not happy with me
+
+or in this case VS Code's not happy with me,
+
+but I can save it in a variable.
+
+So I'll do that here.
+
+Const add equals,
+
+and then instead of writing function,
+
+I just need my parentheses and then my parameters X and Y,
+
+and then my arrow and then curly braces,
+
+and then return X plus Y, if that's what I want.
+
+So now to execute add, it's exactly the same.
+
+I call it just like any other function
+
+because it is just like any other function.
+
+We just created it with a nicer,
+
+I don't even know if I'd say nicer,
+
+but a more compact syntax.
+
+So these do the exact same thing.
+
+So let's try a few more examples.
+
+Let's write an arrow function.
+
+We'll call this one, how about just square, right?
+
+Nothing crazy.
+
+Const square equals, you don't have to use const,
+
+but it's pretty much standard.
+
+We don't plan on reassigning
+
+or updating the value of square or add.
+
+They're just functions.
+
+We declare them once and that's it.
+
+So we'll accept a number X or num or something,
+
+and we'll return X times X
+
+or X star star two.
+
+We'll run this.
+
+What's the square of nine?
+
+81. All right.
+
+So there's another example of an arrow function.
+
+Now, if we have an arrow function with no arguments,
+
+so we haven't seen that yet,
+
+but let's just do something silly like, well,
+
+actually it doesn't even need to be silly.
+
+How about roll die?
+
+Roll die,
+
+I want it to be an arrow function,
+
+but there's no arguments that need to be passed in.
+
+You might think we could do this, but we can't.
+
+We have to have the empty parentheses.
+
+And then in here I can do a return math dot floor,
+
+math dot random, as we've seen many times before.
+
+Shift that up by one.
+
+Let's call roll die, and we get one and two,
+
+and yeah, there we go.
+
+It's working.
+
+So you have to have those empty parens.
+
+If there is no arguments
+
+or no parameters that you want
+
+to declare, you still need them.
+
+And then on the other side of things,
+
+if we only have one parameter,
+
+like this example here of X,
+
+those parentheses are actually optional.
+
+So I could have written it this way,
+
+but that only works when there's a single argument
+
+you're expecting to be passed in like square.
+
+It will not work if we have zero, as we've talked about,
+
+or if we have more than one.
+
+So this gives me a syntax error.
+
+If I get rid of the parens here, it does not like that,
+
+and I'll have a bad time if I refresh the page.
+
+But when there's just a single parameter like X,
+
+which I don't even really like X,
+
+let's go with num, that's a better name.
+
+When there's just a single one there,
+
+parentheses are optional, and it's really a style thing.
+
+You wanna be consistent, of course,
+
+and you wanna be consistent across your code base,
+
+but across your company as well.
+
+And often those rules will be decided,
+
+or those conventions will be decided
+
+for you when you're working somewhere
+
+and you won't have a choice.
+
+Your engineering team or somebody will decide,
+
+we definitely don't want those parens there,
+
+or you have to have those parens there.
+
+But from JavaScript's perspective,
+
+it does not matter at all.
+
+As long as there's only one parameter,
+
+two or more, you've gotta have 'em,
+
+zero, you've gotta have 'em.
+
+So that's the basics of arrow functions.
+
+A syntactically compact alternative
+
+to a regular old function expression.
+
+
+Narrator: In the last video, we saw
+
+that arrow functions are a more compact alternative
+
+to your typical function expression
+
+so arrow functions are already compact
+
+compared to a typical function expression
+
+but there's actually a way to make them even more compact.
+
+To shrink 'em down more
+
+at least in certain situations,
+
+we can take advantage of implicit returns.
+
+So this is something we can only do with arrow functions.
+
+It does not work with a typical function expression.
+
+Basically, we can leave off the return keyword
+
+in certain situations.
+
+So if we have this arrow function rollDie,
+
+all that it does is it returns this single value.
+
+There's nothing else that happens in here.
+
+It's just a one-liner.
+
+What I can actually do is eliminate that return statement.
+
+So I'm just gonna comment that one out so we have it
+
+as a record, eliminate the return keyword,
+
+but that's not good enough.
+
+If I just leave it at that and we take a look at rollDie,
+
+and I execute it, I mean, there's no error.
+
+We're just not returning anything.
+
+It's the same as if I had just done, you know, 1+1.
+
+It just vanishes into thin air.
+
+But if I replace these curly braces with parentheses,
+
+this is the new syntax with arrow functions
+
+to make an implicit return.
+
+This tells JavaScript I'm just returning this one thing.
+
+I don't need to write the return keyword.
+
+Just automatically, implicitly return it for me.
+
+So let's try that now.
+
+Refresh and now it's working.
+
+We actually get that value returned,
+
+even though I never said return it.
+
+So implicit returns are useful just to shorten code up,
+
+but what's extra useful,
+
+well, I shouldn't say extra useful,
+
+but what's nice is that with a short one-liner,
+
+let's say we had a function called you know, add,
+
+and it's an arrow function with a and b,
+
+and it returns a + b like that,
+
+I can use an implicit return
+
+with my parentheses, and that's better.
+
+Whoops, there we go.
+
+But I actually can get rid of these parentheses entirely
+
+and do it on one line.
+
+So this is equivalence right there.
+
+This is making a function called add,
+
+or that's the variable it's stored in.
+
+It has two parameters and it returns the sum of them.
+
+So I can do it on one line.
+
+Now you can technically do this
+
+for any of these implicit returns.
+
+I could do this on one line,
+
+but you have to make it a determination.
+
+Is this worth it to put on a single line?
+
+I think it's on the borderline.
+
+It's starting to get a little bit long.
+
+And personally I'd probably do it like this.
+
+But then for shorter ones, absolutely put it on one line.
+
+Right here's another example I have, this isEven function.
+
+Here it is as a regular function expression,
+
+no arrow involved whatsoever.
+
+Now here's an arrow function expression.
+
+Now here's the arrow function with no parenths,
+
+they're optional, around the parameter.
+
+And then here's the one with an implicit return.
+
+We use those parentheses instead of curly braces.
+
+We can get rid of the return keyword.
+
+And then here's the final version,
+
+one-liner with an implicit return.
+
+So nice improvements, you don't have to use them,
+
+but I just wanted to introduce them.
+
+You'll see them, especially as we make more progress here
+
+and start writing a lot more complicated JavaScript code.
+
+These can really shorten things up significantly.
+
+Now one thing about implicit returns,
+
+they only work if there is one
+
+and only one statement, one expression, rather,
+
+in the body of your function.
+
+JavaScript is just gonna take whatever
+
+that one thing evaluates to.
+
+This one, in this case, it's a single line.
+
+What does it evaluate to?
+
+And it returns that.
+
+But if we had something else in here,
+
+like just a variable, let's just do something silly,
+
+let msg = that, all of a sudden we get an error.
+
+It tells me it expected an end to my parentheses,
+
+because these are supposed to go
+
+around just a single expression, but I have two.
+
+I have two things going on.
+
+It doesn't know what to return.
+
+It's very confused and it's not gonna work.
+
+So implicit returns only work in a situation
+
+where there is one value very clearly,
+
+just a single expression to be evaluated and returned.
+
+And that works a lot of the time.
+
+But we also frequently create functions
+
+that definitely are not that simple, right?
+
+They take up multiple lines.
+
+There's multiple things going on.
+
+We need variables.
+
+So for one-liners, for short functions,
+
+arrow functions with an implicit return is a great feature,
+
+but it's definitely not something you need to use
+
+or that you even can use for every single function.
+
+All right, so that's implicit returns with arrow functions.
+
+ -->
+    <script src="functions.js"></script>
+</body>
+</html>
